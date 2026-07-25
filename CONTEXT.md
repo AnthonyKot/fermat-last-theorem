@@ -363,6 +363,28 @@ quotation scan, no tracked PDFs), then add:
 
 ## Status
 
-Spine formulated (25 essays, 19 ledger lines) and checked against the transcript. Sourcing upgraded to
-web-assisted tiers; the LMFDB pipeline is tested and working. One check script written and passing
-(`checks/dim_s2_gamma0.py`). Nothing written, nothing scaffolded.
+Spine formulated (25 essays, 19 ledger lines) and checked against the transcript. Sourcing is
+web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in `SOURCES.md`.
+
+**Scaffolded and committed** (`git init`, branch `main`, one commit): `index.html` with the full
+25-essay contents (4 linked, 21 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
+`resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
+
+**Written:** 01, 02, 22, 25 — the two ends of the rope. **Unwritten:** 03–21, 23, 24.
+
+**Check scripts, all passing:** `dim_s2_gamma0.py`, `frey_discriminant.py`,
+`kummer_regular_primes.py`.
+
+### Open items for the next pass
+
+1. **Resolve the p > 7 threshold** (Corrections #7). Essay 25 currently flags it in prose and essay 24
+   must settle it. Verify against Mazur 1978 and Ribet 1990 directly, not via the survey.
+2. **Part V is unblocked** — DDT is fetched. Its citable structure so far: §1.2 and §1.5 (modular
+   curves), §1.8 (Shimura–Taniyama), theorem 2.15 in §2.2 (ramification of the Frey representation),
+   §3.2 (Serre's conjectures). Read the chapter openings for the deformation-theory and R = T sections
+   before drafting 19–21.
+3. **Essay 02's second case** is an outline, and `about.html` says so. Either complete it or leave the
+   fence — but do not quietly upgrade the claim.
+4. When 03–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become back-references and its
+   ledger must close. `verify.sh`'s forward-dependency check will enforce the direction; the closing
+   itself needs a human look.
