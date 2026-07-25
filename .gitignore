@@ -1,0 +1,18 @@
+# Reference material — never committed, never pushed.
+# The transcript is a third-party auto-caption track; the source texts are
+# copyrighted. Both exist locally only so that claims can be verified against
+# them. verify.sh fails if anything here becomes tracked.
+resources/
+sources/
+
+# Any stray downloaded reference
+*.pdf
+*.epub
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+__pycache__/
+*.pyc

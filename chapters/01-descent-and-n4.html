@@ -1,0 +1,231 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 · Descent, and the exponent four — No Such Form</title>
+<meta name="description" content="Fermat's method of infinite descent, the parametrisation of Pythagorean triples, a full proof that x^4 + y^4 = z^2 has no solution, and the reduction of Fermat's Last Theorem to odd prime exponents.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part I · The old method — Essay 01</p>
+    <h1>Descent, and the exponent four</h1>
+    <p class="lede">The one case of his theorem Fermat actually proved. It needs no machinery at all,
+      it is completely convincing, and it is the reason the rest of this collection has to exist.</p>
+
+    <div class="claim">
+      <span class="tag">This essay proves</span>
+      There are no positive integers with $x^4 + y^4 = z^2$. Hence none with $x^4 + y^4 = z^4$; and
+      Fermat's Last Theorem reduces to the case of odd prime exponents.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Nothing. This is the bottom of the ladder, and deliberately so: the whole argument below uses
+        only the integers, divisibility, and greatest common divisors. No curves, no groups, no fields.
+        A reader who has never met any of the objects that occupy the next twenty-four essays can check
+        every line of this one.</p>
+      <p>That is worth registering, because it sets up the question the collection answers. Fermat's
+        method settles $n=4$ in a page. It also settles, with more work, a handful of other small
+        exponents. It does not settle the general case, and the reason it does not is structural rather
+        than a matter of effort. Seeing the method succeed is the only way to understand what its
+        failure later costs.</p>
+      <p>Two conventions. Throughout, a <em>solution</em> means one in positive integers — the cases
+        where some variable is zero are uninteresting and are excluded once and for all. And a solution
+        is <em>primitive</em> when its terms share no common factor.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Descent</h3>
+      <p>The engine is a single observation about the positive integers: any non-empty set of them has
+        a least element. So if you can show that every solution to some equation manufactures a
+        strictly smaller solution, you have shown there are no solutions at all. There cannot be a
+        smallest member of a set in which every member has a smaller companion, so the set is empty.</p>
+      <p>This is <strong>infinite descent</strong>. The name is slightly misleading: no infinite
+        process is ever carried out. One descending step, plus minimality, is the whole argument. What
+        makes it delicate is that the smaller solution has to be produced <em>constructively</em> from
+        the original, and that construction is where the arithmetic lives.</p>
+
+      <h3>Every primitive Pythagorean triple, described</h3>
+      <p>The descent needs one input: complete control over the solutions of $x^2 + y^2 = z^2$. There
+        are infinitely many, and they can all be written down.</p>
+      <p>Suppose $x^2 + y^2 = z^2$ with $\gcd(x,y) = 1$. First, $x$ and $y$ cannot both be odd: the
+        square of an odd number is $1$ modulo $4$, so two of them sum to $2$ modulo $4$, and no square
+        is $2$ modulo $4$. They are not both even either, since they are coprime. So exactly one is
+        even; say it is $y$, which makes $x$ and $z$ odd. Now factor:</p>
+      <p>$$ y^2 \;=\; z^2 - x^2 \;=\; (z-x)(z+x). $$</p>
+      <p>Because $z$ and $x$ are both odd, $z-x$ and $z+x$ are both even; write $z - x = 2s$ and
+        $z + x = 2t$. Any common divisor of $s$ and $t$ divides both their sum $z$ and their difference
+        $x$, which are coprime, so $\gcd(s,t) = 1$. Substituting, $y^2 = 4st$, so $(y/2)^2 = st$ with
+        $s$ and $t$ coprime. A product of two coprime numbers is a square only if each factor is
+        separately a square — this is the first appearance of unique factorisation in this collection,
+        and it will be the last one that goes through without incident. Write $s = n^2$ and $t = m^2$.
+        Then</p>
+      <p>$$ x \;=\; m^2 - n^2, \qquad y \;=\; 2mn, \qquad z \;=\; m^2 + n^2, $$</p>
+      <p>with $m > n > 0$ coprime. They have opposite parity, since $z = m^2+n^2$ is odd. Conversely
+        every such $m, n$ gives a primitive triple. Nothing has been lost: this is all of them.</p>
+
+      <h3>The theorem</h3>
+      <p><strong>There are no positive integers $x, y, z$ with $x^4 + y^4 = z^2$.</strong></p>
+      <p>Note that this is stronger than the case $n = 4$ of Fermat's claim, which only forbids $z$
+        from being a perfect square. Proving the stronger statement is what makes the descent work,
+        because the class of equations is then closed under the construction.</p>
+      <p>Suppose solutions exist. Among them choose one with $z$ as small as possible. Everything
+        below derives a solution with a strictly smaller third term.</p>
+      <p><em>Step 1: the solution is primitive.</em> If a prime $q$ divided both $x$ and $y$, then
+        $q^4$ would divide $z^2$, so $q^2$ divides $z$, and $(x/q,\; y/q,\; z/q^2)$ is a solution with a
+        smaller third term. Minimality forbids this, so $\gcd(x,y) = 1$.</p>
+      <p><em>Step 2: read it as a Pythagorean triple.</em> Since $(x^2)^2 + (y^2)^2 = z^2$, the triple
+        $(x^2, y^2, z)$ is primitive Pythagorean. As above, one of $x^2, y^2$ is even; say $y$ is even.
+        The parametrisation gives coprime $m > n > 0$ of opposite parity with</p>
+      <p>$$ x^2 = m^2 - n^2, \qquad y^2 = 2mn, \qquad z = m^2 + n^2. $$</p>
+      <p><em>Step 3: descend once, inside the parametrisation.</em> The first equation says
+        $x^2 + n^2 = m^2$, another primitive triple. Here $x$ is odd, so this time it is $n$ that must
+        be even and $m$ that is odd. Applying the parametrisation again gives coprime $a > b > 0$ of
+        opposite parity with</p>
+      <p>$$ x = a^2 - b^2, \qquad n = 2ab, \qquad m = a^2 + b^2. $$</p>
+      <p><em>Step 4: extract three squares.</em> Substitute into $y^2 = 2mn$:</p>
+      <p>$$ y^2 \;=\; 2 \cdot (a^2+b^2) \cdot 2ab \;=\; 4ab(a^2+b^2), \qquad \text{so} \qquad
+             \left(\tfrac{y}{2}\right)^{2} = ab\,(a^2+b^2). $$</p>
+      <p>The three factors $a$, $b$, $a^2+b^2$ are pairwise coprime: $a$ and $b$ are coprime by
+        construction, and any common divisor of $a$ and $a^2+b^2$ divides $b^2$, hence is $1$; likewise
+        for $b$. A product of pairwise coprime numbers is a square only if each factor is. So</p>
+      <p>$$ a = u^2, \qquad b = v^2, \qquad a^2 + b^2 = w^2 $$</p>
+      <p>for some positive integers $u, v, w$.</p>
+      <p><em>Step 5: the smaller solution.</em> Substituting the first two into the third,</p>
+      <p>$$ u^4 + v^4 \;=\; a^2 + b^2 \;=\; w^2. $$</p>
+      <p>That is a solution of the same equation. Is it smaller? Since $w \geq 1$ we have
+        $w \leq w^2 = a^2 + b^2 = m$, and since $m \geq 1$ we have $m \leq m^2$, and since $n > 0$ we
+        have $m^2 < m^2 + n^2 = z$. Chaining these,</p>
+      <p>$$ w \;\leq\; w^2 \;=\; m \;\leq\; m^2 \;<\; m^2 + n^2 \;=\; z. $$</p>
+      <p>So $w < z$, contradicting the minimality of $z$. No solution exists. $\blacksquare$</p>
+
+      <h3>The case $n = 4$</h3>
+      <p>Immediately: if $x^4 + y^4 = z^4$ then $x^4 + y^4 = (z^2)^2$, which the theorem forbids. This
+        is the only case of his Last Theorem for which Fermat left a proof.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The exponents collapse to primes</h3>
+      <p>The result above does more than dispose of one exponent; it removes an infinite family of
+        them, and it does so by a triviality worth spelling out. Every integer $n \geq 3$ is divisible
+        either by $4$ or by an odd prime. (If $n$ has no odd prime factor it is a power of two, and
+        being at least $3$ it is then divisible by $4$.)</p>
+      <p>Now suppose $x^n + y^n = z^n$ with $n = dk$. Then</p>
+      <p>$$ (x^{k})^{d} + (y^{k})^{d} = (z^{k})^{d}, $$</p>
+      <p>so a solution for exponent $n$ yields one for every divisor $d$ of $n$. Taking $d = 4$ or
+        $d = p$ an odd prime, we conclude: <strong>if Fermat's Last Theorem holds for the exponent $4$
+        and for every odd prime exponent, it holds for every $n \geq 3$.</strong> The first half is now
+        done. What remains, forever after, is the odd primes.</p>
+      <p>Essay <a href="02-unique-factorization-and-n3.html">02</a> removes $p = 3$ by a similar
+        descent carried out in a larger number system, leaving the primes $p \geq 5$ — which is exactly
+        the hypothesis under which the Frey curve is built in essay
+        <a href="22-the-frey-curve.html">22</a>.</p>
+
+      <h3>A worked descent, made visible</h3>
+      <p>The proof is a contradiction argument, so it never exhibits anything. But the machinery inside
+        it is constructive and can be watched. Take the primitive triple with $m = 2$, $n = 1$:
+        $x = 3$, $y = 4$, $z = 5$. Step 3 of the proof would next demand that $x^2 + n^2 = m^2$, i.e.
+        $9 + 1 = 4$, which is false — so this triple is simply not of the shape the proof produces, and
+        the descent never starts. That is the normal situation. The proof's content is that the
+        constraints of steps 2 through 4 can <em>never</em> be met simultaneously, and each individual
+        attempt failing early is what that looks like from the outside.</p>
+      <p>Where the mechanism does bite is in the coprime-factors-are-squares step, and that step is
+        worth testing, because everything later in this collection turns on when it is available. It
+        holds in the ordinary integers. Consider $ab = 36$ with $a = 4$, $b = 9$: coprime, product a
+        square, and indeed each is a square. But drop coprimality — $a = 2$, $b = 18$ — and the
+        conclusion dies while the hypothesis on the product survives. The step is exactly as strong as
+        the uniqueness of prime factorisation, no more.</p>
+
+      <h3>Why this method cannot finish the job</h3>
+      <p>Look at what made the descent possible. At two separate points the argument factored a
+        difference of squares and then asserted that coprime factors of a square are individually
+        squares. For exponent $4$ these factorisations are available inside $\mathbb{Z}$, because
+        $z^2 - x^2 = (z-x)(z+x)$.</p>
+      <p>For an odd prime $p$, the analogous move would factor $x^p + y^p$. Over the integers it
+        offers almost nothing. It factors completely only if one is willing to work with $p$-th roots
+        of unity — in the ring generated by $\zeta_p$, where</p>
+      <p>$$ x^p + y^p \;=\; \prod_{j=0}^{p-1}\left(x + \zeta_p^{\,j}\, y\right). $$</p>
+      <p>That is the natural continuation, and it is what essay 02 pursues. It works beautifully for
+        $p = 3$. It then fails, and the failure is not a gap in anyone's ingenuity but a genuine
+        arithmetic fact about those rings: they need not have unique factorisation. Every abstraction
+        in Parts I through IV is downstream of that failure.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>The descent and the reduction.</strong> Darmon, Diamond and Taylor's expository survey
+        <em>Fermat's Last Theorem</em> opens with this material: Fermat proved the stronger statement
+        about $x^4 + y^4 = z^2$, and the observation that every $n \geq 3$ is divisible by an odd prime
+        or by $4$ is what reduces the problem to prime exponents. That survey also notes something the
+        proof above quietly illustrates — solutions to $x^4+y^4=z^2$ correspond to rational points on
+        an elliptic curve, so even Fermat's elementary argument was, in retrospect, about the objects of
+        Part II.</p>
+      <p><strong>Pythagorean triples.</strong> Any introduction to elementary number theory
+        parametrises them; the derivation above is self-contained and needs no reference.
+        <span class="unverified">unverified</span> pointers are avoided here because none are needed.</p>
+      <p><strong>Check the descent yourself.</strong> The single step worth doing by hand is Step 4.
+        Take coprime $a, b$ of opposite parity, form $ab(a^2+b^2)$, and confirm the three factors are
+        pairwise coprime. Then ask what would go wrong if $a$ and $b$ shared a factor — that is the
+        crack through which the whole of the next essay enters.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col discharged">
+          <h3>Discharged here</h3>
+          <ul>
+            <li>Infinite descent, and the parametrisation of primitive Pythagorean triples</li>
+            <li>Fermat's Last Theorem for $n = 4$ <span class="lref">(L1, first half)</span></li>
+            <li>The reduction: it suffices to treat odd prime exponents <span class="lref">(L1)</span></li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>$n = 3$, leaving the primes $p \geq 5$ <span class="lref">(L1, essay 02)</span></li>
+            <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essay 05)</span></li>
+            <li>$\mathbb{Z}_p$ and the valuation $v_\ell$ <span class="lref">(L3, essay 04)</span></li>
+            <li>Elliptic curves, reduction, the conductor <span class="lref">(L4–L5, essays 06–08)</span></li>
+            <li>$E[n]$, the Tate module <span class="lref">(L6, essay 09)</span></li>
+            <li>$\bar\rho_{E,p}$, Mazur, Néron–Ogg–Shafarevich <span class="lref">(L7–L9, essay 10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 13–15)</span></li>
+            <li>Eichler–Shimura, modularity <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>The Frey curve and its representation <span class="lref">(L15–L17, essays 22–24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2)) = 0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="../index.html"><span class="dir">←</span> Contents</a>
+      <a class="next" href="02-unique-factorization-and-n3.html"><span class="dir">Next essay →</span> 02 · Unique factorisation, and where it runs out</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 01 · Original prose; no source text reproduced.</p>
+  </div>
+</footer>

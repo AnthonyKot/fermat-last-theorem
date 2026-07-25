@@ -1,0 +1,219 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>22 · The Frey curve — No Such Form</title>
+<meta name="description" content="Turning a hypothetical solution of Fermat's equation into an elliptic curve: the normalisations, the Frey curve y^2 = x(x - a^p)(x + b^p), and its discriminant 16(abc)^{2p}.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part VI · The contradiction — Essay 22</p>
+    <h1>The Frey curve</h1>
+    <p class="lede">Assume the theorem is false. The solution you are handed is a triple of integers,
+      which is nothing to work with. Frey's idea was to build a curve out of it — and then let the
+      curve be impossible instead.</p>
+
+    <div class="claim">
+      <span class="tag">This essay proves</span>
+      Given a primitive solution $a^p + b^p = c^p$ with $p \geq 5$ prime, and after a normalisation
+      costing nothing, the curve $E : y^2 = x(x - a^p)(x + b^p)$ is an elliptic curve over
+      $\mathbb{Q}$ with discriminant $\Delta = 16\,(abc)^{2p}$.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>From essays <a href="01-descent-and-n4.html">01</a> and
+        <a href="02-unique-factorization-and-n3.html">02</a>: Fermat's Last Theorem holds for $n = 4$
+        and $n = 3$, so any counterexample occurs at a prime exponent $p \geq 5$; and if a solution
+        exists at all, a primitive one does — divide out any common factor, since the equation is
+        homogeneous.</p>
+      <p>That is genuinely all this essay needs. The construction below is elementary: a cubic
+        polynomial, its roots, and its discriminant. What is <em>not</em> elementary is the reason for
+        performing it, and that reason lives in essays not yet written.</p>
+      <div class="fence">
+        <strong>Forward dependencies, declared.</strong> Essays 03–21 are unwritten. This essay is
+        careful to prove only what is self-contained — the construction and the discriminant — and to
+        mark everything else as owed. In particular the terms <em>elliptic curve</em>,
+        <em>discriminant</em>, <em>conductor</em> and <em>semistable</em> are used here in advance of
+        essays 06 and 08, which define them. The ledger below records that debt rather than hiding it.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Normalising the solution</h3>
+      <p>Suppose, for contradiction, that $a^p + b^p = c^p$ with $a, b, c$ non-zero integers, $p \geq 5$
+        prime, and $\gcd(a,b,c) = 1$. Two adjustments cost nothing and buy a great deal.</p>
+      <p><em>One term is even.</em> The three cannot all be odd, since then the left side would be even
+        and the right odd. Nor can two be even, because primitivity would then force the third even
+        too. So exactly one of $a, b, c$ is even. Permuting the roles — which the equation tolerates,
+        as $a^p + b^p = c^p$ can be rewritten as $a^p + (-c)^p = (-b)^p$ using that $p$ is odd — we may
+        take <strong>$b$ to be the even one</strong>, so $a$ and $c$ are odd.</p>
+      <p><em>And $a^p \equiv -1 \pmod 4$.</em> Since $a$ is odd, $a^p$ is $1$ or $3$ modulo $4$. If it
+        is $1$, replace the triple $(a,b,c)$ by $(-a,-b,-c)$: because $p$ is odd this is still a
+        solution, and it flips the residue. So we may assume $a^p \equiv -1 \pmod 4$.</p>
+      <p>One consequence is worth recording now, because it is what the arithmetic at the prime $2$ will
+        later use. Since $b$ is even, $2^p$ divides $b^p$, and $p \geq 5$ gives $2^5 = 32$, so</p>
+      <p>$$ b^p \equiv 0 \pmod{32}. $$</p>
+      <p>The condition looks like an extra hypothesis but is free, and it is available only because the
+        exponent is at least $5$ — the first place in the whole argument where $p \geq 5$ does real
+        work rather than merely excluding known cases.</p>
+
+      <h3>The curve</h3>
+      <p>Write $A = a^p$ and $B = b^p$, so that $A + B = c^p$. Frey's construction is to take the three
+        quantities $0$, $A$ and $-B$ as the roots of a cubic, and read the result as a curve:</p>
+      <p>$$ E \;:\; y^2 \;=\; x\,(x - a^p)\,(x + b^p). $$</p>
+      <p>Expanded, $E : y^2 = x^3 + (B - A)\,x^2 - AB\,x$, which is a cubic in Weierstrass form with
+        integer coefficients. It defines an elliptic curve provided the cubic has no repeated root — and
+        its three roots $0$, $A$, $-B$ are distinct, since $A$ and $B$ are non-zero and $A \neq -B$
+        (that would force $c^p = 0$).</p>
+      <p>Nothing about this is inevitable-looking, so here is what motivates it. The
+        solution supplies three numbers with an additive relation. A cubic supplies three roots whose
+        differences are constrained by its discriminant. Frey's construction matches the two: put the
+        solution's terms in as roots, and the additive relation $A + B = c^p$ becomes a statement about
+        root differences — which is to say, about the discriminant.</p>
+
+      <h3>The discriminant</h3>
+      <p>For a curve $y^2 = f(x)$ with $f$ monic of degree three and roots $e_1, e_2, e_3$, the
+        discriminant is $16$ times the discriminant of $f$:</p>
+      <p>$$ \Delta \;=\; 16\,(e_1-e_2)^2 (e_1-e_3)^2 (e_2-e_3)^2. $$</p>
+      <p>Substituting $e_1 = 0$, $e_2 = A$, $e_3 = -B$, the three differences are</p>
+      <p>$$ e_1 - e_2 = -A, \qquad e_1 - e_3 = B, \qquad e_2 - e_3 = A + B = c^p, $$</p>
+      <p>and every one of them is a $p$-th power. Therefore</p>
+      <p>$$ \Delta \;=\; 16\,A^2 B^2 (A+B)^2 \;=\; 16\,\bigl(a^p b^p c^p\bigr)^{2}
+             \;=\; 16\,(abc)^{2p}. $$</p>
+      <p>That is the whole point of the construction, and it deserves to be stated in words: <strong>the
+        discriminant of the Frey curve is sixteen times a perfect $2p$-th power.</strong> Discriminants
+        of elliptic curves are ordinarily unstructured integers. This one has every prime appearing to a
+        multiple of $2p$, with the sole exception of $2$. A curve whose discriminant is that special is
+        under enormous constraint, and the remaining essays of Part VI extract the constraints one at a
+        time until they collide.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The construction, watched on a solution that exists</h3>
+      <p>The curve above is built from a solution that — as we intend to prove — does not exist, so it
+        can never be written down. But the construction is pure algebra in $A$ and $B$, and it can be
+        exercised on the one exponent where solutions are plentiful: $p = 1$. Take $3 + 5 = 8$, so
+        $A = 3$, $B = 5$, $c = 8$. Then</p>
+      <p>$$ E \;:\; y^2 = x(x-3)(x+5) = x^3 + 2x^2 - 15x, $$</p>
+      <p>a perfectly ordinary elliptic curve, and</p>
+      <p>$$ \Delta = 16\,(3 \cdot 5 \cdot 8)^2 = 16 \cdot 14400 = 230400 = 2^{10} \cdot 3^2 \cdot 5^2 . $$</p>
+      <p>Two things are visible here that matter later. First, the primes dividing $\Delta$ are exactly
+        $2$ and the primes dividing $abc = 3 \cdot 5 \cdot 8$ — the bad behaviour of the curve is
+        confined to the primes appearing in the solution. Second, the odd primes appear to even
+        exponents ($3^2$, $5^2$) while $2$ appears to the tenth. For $p = 1$ the exponent $2p = 2$ is
+        unremarkable; for $p \geq 5$ the same computation forces every odd prime to appear to a multiple
+        of $10$ or more, and it is that rigidity the argument exploits.</p>
+      <p>The script <code>checks/frey_discriminant.py</code> confirms the identity along two independent
+        routes — once from the root differences, once by expanding the cubic and applying the standard
+        Weierstrass discriminant formula in the $b$-invariants. The two share no algebra, so their
+        agreement is a genuine check rather than a restatement. It verifies several triples with
+        $a + b = c$, and then the identity in $A$ and $B$ for larger exponents.</p>
+
+      <h3>What the curve is for</h3>
+      <p>It is worth setting out the shape of the remaining argument, since this essay has built the
+        object that carries it. Four properties of $E$ will be established, each in its own essay, and
+        each individually reasonable:</p>
+      <ul>
+        <li><strong>$E$ is semistable</strong> (essay 23). The discriminant's $p$-th-power structure
+          forces the worst kind of degeneration never to occur, so the conductor is square-free.</li>
+        <li><strong>$E$ is therefore modular</strong> (essay 23, by the theorem stated in essay 18).
+          Wiles proved modularity precisely for semistable curves, and $E$ is one.</li>
+        <li><strong>The mod $p$ representation of $E$ has conductor $2$</strong> (essay 24). The curve's
+          own conductor is large — it is the product of the primes dividing $abc$ — but its mod $p$
+          representation is ramified only at $2$.</li>
+        <li><strong>So a weight-2 newform of level $2$ exists</strong> (essay 25, by Ribet's theorem),
+          <strong>and none does</strong>, because that space has dimension zero.</li>
+      </ul>
+      <p>Every step is a theorem about curves or forms. None mentions Fermat. The equation enters only
+        here, in the construction, and it exits as a contradiction twenty pages later.</p>
+
+      <h3>A note on who did this</h3>
+      <p>The curve is Gerhard Frey's, from 1986, following earlier work of Yves Hellegouarch on
+        associating curves to Fermat-type solutions. Frey's contribution was not merely the formula but
+        the recognition of what it was for: that a solution to Fermat's equation would produce a curve
+        so lightly ramified that it could not be modular, and hence that the Shimura–Taniyama conjecture
+        implied Fermat's Last Theorem. That implication was made precise and proved by Ribet in 1990,
+        and the conjecture itself by Wiles in 1995. The order matters and is often told backwards: the
+        reduction came first, and it is what made Wiles's target worth attacking.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>The construction and its normalisation.</strong> Darmon, Diamond and Taylor's survey
+        <em>Fermat's Last Theorem</em> gives Frey's curve in its introduction in the form used here,
+        together with the normalisations $a^p \equiv -1 \pmod 4$ and $b^p \equiv 0 \pmod{32}$, and
+        credits Hellegouarch for the earlier construction. It states there that the curve is semistable,
+        i.e. of square-free conductor — which is essay 23's job to establish.</p>
+      <p><strong>Weierstrass forms and discriminants.</strong> Silverman's <em>The Arithmetic of
+        Elliptic Curves</em> is the standard reference for the $b$-invariants, the discriminant formula,
+        and the classification of reduction types. <span class="unverified">unverified</span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/frey_discriminant.py</code>. Better, do
+        the $p = 1$ case by hand: expand $x(x-3)(x+5)$, compute $b_2 = 8$, $b_4 = -30$, $b_6 = 0$,
+        $b_8 = -225$, and confirm that
+        $-b_2^2 b_8 - 8b_4^3 - 27b_6^2 + 9b_2b_4b_6 = 230400$. Then check it equals
+        $16(3 \cdot 5 \cdot 8)^2$. The agreement of a formula in the coefficients with a formula in the
+        roots is the entire content of the discriminant's role here.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col discharged">
+          <h3>Discharged here</h3>
+          <ul>
+            <li>Normalisation of a hypothetical solution: $b$ even, $a^p \equiv -1 \bmod 4$, $b^p \equiv 0 \bmod 32$</li>
+            <li>The Frey curve $y^2 = x(x-a^p)(x+b^p)$ is an elliptic curve over $\mathbb{Q}$ <span class="lref">(L15)</span></li>
+            <li>Its discriminant is $16(abc)^{2p}$ — verified two independent ways</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>Definitions used above in advance: elliptic curve, discriminant, conductor <span class="lref">(L4, essays 06–08)</span></li>
+            <li>$G_{\mathbb{Q}}$, Frobenius, traces <span class="lref">(L2, essay 05)</span></li>
+            <li>$\mathbb{Z}_p$ and $v_\ell$ — needed for the valuation argument next <span class="lref">(L3, essay 04)</span></li>
+            <li>Semistable ⟺ square-free conductor <span class="lref">(L5, essay 08)</span></li>
+            <li>$E[n]$, the Tate module, $\bar\rho_{E,p}$ <span class="lref">(L6–L7, essays 09–10)</span></li>
+            <li>Mazur, Néron–Ogg–Shafarevich <span class="lref">(L8–L9, essay 10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 13–15)</span></li>
+            <li>Eichler–Shimura, modularity <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Semistability of $E$, conductor $= \mathrm{rad}(abc)$ <span class="lref">(L16, essay 23)</span></li>
+            <li>Conductor of $\bar\rho_{E,p}$ is $2$ <span class="lref">(L17, essay 24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2)) = 0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="02-unique-factorization-and-n3.html"><span class="dir">← Previous written essay</span> 02 · Unique factorisation, and where it runs out</a>
+      <a class="next" href="25-ribet-and-the-end.html"><span class="dir">Next written essay →</span> 25 · Ribet, and the end</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 22 · Original prose; no source text reproduced.</p>
+  </div>
+</footer>

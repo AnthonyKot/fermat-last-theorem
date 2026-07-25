@@ -1,0 +1,249 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25 · Ribet, and the end — No Such Form</title>
+<meta name="description" content="Ribet's level-lowering theorem applied to the Frey representation forces a weight-2 newform of level 2 to exist. The dimension of that space is computed to be zero, and the argument closes.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part VI · The contradiction — Essay 25</p>
+    <h1>Ribet, and the end</h1>
+    <p class="lede">Everything built so far converges on a single object: a weight-2 newform of level
+      two. It must exist. The space it would live in has dimension zero.</p>
+
+    <div class="claim">
+      <span class="tag">This essay states and proves</span>
+      <strong>States:</strong> Ribet's level-lowering theorem, with hypotheses.
+      <strong>Proves:</strong> $\dim S_2(\Gamma_0(2)) = 0$, by the dimension formula.
+      <strong>Concludes:</strong> Fermat's Last Theorem.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>From essay <a href="22-the-frey-curve.html">22</a>: assuming a primitive solution
+        $a^p + b^p = c^p$ with $p \geq 5$ prime, normalised so that $b$ is even and
+        $a^p \equiv -1 \pmod 4$, the Frey curve</p>
+      <p>$$ E \;:\; y^2 = x(x-a^p)(x+b^p) $$</p>
+      <p>is an elliptic curve over $\mathbb{Q}$ with discriminant $\Delta = 16\,(abc)^{2p}$.</p>
+      <div class="fence">
+        <strong>Declared debts.</strong> Essays 03–21, 23 and 24 are unwritten, so this essay
+        <em>assumes</em> four results rather than pointing back to established ones. They are listed
+        explicitly below and carried in the ledger as owed. Until they are written, this essay is a
+        conditional argument, and describing it otherwise would be a misrepresentation.
+      </div>
+      <p>The four assumed inputs:</p>
+      <ul>
+        <li><strong>(A)</strong> $E$ is semistable, and modular — a weight-2 newform of level
+          $\mathrm{rad}(abc)$ has the same Galois representation. <span class="lref">essay 23, via
+          Wiles's theorem in essay 18</span></li>
+        <li><strong>(B)</strong> The mod $p$ representation $\bar\rho = \bar\rho_{E,p}$ is continuous,
+          odd, and irreducible. <span class="lref">essay 24, via Mazur</span></li>
+        <li><strong>(C)</strong> $\bar\rho$ is finite at $p$, and its conductor is exactly $2$.
+          <span class="lref">essay 24, via Néron–Ogg–Shafarevich</span></li>
+        <li><strong>(D)</strong> $\dim S_2(\Gamma_0(N)) = 1 + \frac{\mu}{12} - \frac{\nu_2}{4} -
+          \frac{\nu_3}{3} - \frac{\nu_\infty}{2}$, where $\mu$ is the index of $\Gamma_0(N)$ in
+          $\mathrm{SL}_2(\mathbb{Z})$ and $\nu_2, \nu_3, \nu_\infty$ count elliptic points of order two
+          and three and cusps. <span class="lref">essay 13</span></li>
+      </ul>
+      <p>One caveat on (B), because it is the hypothesis most often stated loosely. Irreducibility comes
+        from Mazur's theorem that a semistable elliptic curve over $\mathbb{Q}$ has no rational cyclic
+        subgroup of order $\ell$ for $\ell > 7$. That threshold is $7$, not $5$. The exponents $p = 5$
+        and $p = 7$ are therefore not covered by this route — they are covered instead by the classical
+        nineteenth-century results, so the argument of this essay runs for $p \geq 11$ and the two small
+        primes are handled separately. Essay 24 must settle this precisely; here it is flagged rather
+        than glossed.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>The gap that level lowering closes</h3>
+      <p>Assumption (A) gives a modular form, but of level $\mathrm{rad}(abc)$ — the product of the
+        primes dividing $abc$. That number is enormous and entirely unknown; it depends on the solution
+        we are trying to rule out. No contradiction can come from it directly.</p>
+      <p>Assumption (C) says something quite different. The representation $\bar\rho$, as opposed to the
+        curve, is ramified only at $2$: its conductor is $2$, full stop, regardless of how large $abc$
+        is. So we have one object described two ways — as coming from a form of vast level, and as
+        having conductor $2$. Bridging that gap is precisely the content of the following theorem.</p>
+
+      <h3>Ribet's theorem</h3>
+      <p><strong>Level lowering (Ribet, 1990).</strong> Let $p > 3$ be prime and let</p>
+      <p>$$ \bar\rho : G_{\mathbb{Q}} \longrightarrow \mathrm{GL}_2(\mathbb{F}_p) $$</p>
+      <p>be a continuous, odd, irreducible representation. Suppose $\bar\rho$ is finite at $p$, and that
+        $\bar\rho$ is modular of weight $2$ and level $N$ — meaning there is a weight-2 newform of level
+        $N$ whose associated representation is isomorphic to $\bar\rho$. Let $N(\bar\rho)$ denote the
+        conductor of $\bar\rho$. Then $\bar\rho$ is modular of weight $2$ and level $N(\bar\rho)$.</p>
+      <p>Stated in one sentence: <em>a modular mod $p$ representation is modular at the level its own
+        conductor predicts.</em> The level of the form can be pushed down to the conductor of the
+        representation, discarding exactly the ramification that belonged to the curve rather than to
+        the representation.</p>
+      <p>This theorem is stated here, not proved. It was conjectured by Serre in 1987 as part of a much
+        broader programme relating mod $p$ representations to modular forms, and proved by Ribet — before
+        Wiles, and this ordering is the historically important point. Level lowering is what made the
+        modularity of the Frey curve worth wanting.</p>
+
+      <h3>Applying it</h3>
+      <p>Check the hypotheses against what we have. The exponent satisfies $p > 3$. By (B), $\bar\rho$
+        is continuous, odd and irreducible. By (C) it is finite at $p$. By (A) it is modular of weight
+        $2$ and level $\mathrm{rad}(abc)$. And by (C) its conductor is $2$. Every hypothesis is met, so
+        the conclusion follows:</p>
+      <p><strong>There exists a newform of weight $2$ and level $2$.</strong></p>
+      <p>Such a form lies in $S_2(\Gamma_0(2))$, the space of weight-2 cusp forms of level $2$. It is a
+        non-zero element of that space — a newform is in particular a non-zero cusp form. So that space
+        is not the zero space.</p>
+
+      <h3>Computing the space</h3>
+      <p>Now evaluate the dimension formula (D) at $N = 2$. Four numbers are needed, and all four are
+        elementary.</p>
+      <p><em>The index.</em> $[\mathrm{SL}_2(\mathbb{Z}) : \Gamma_0(N)] = N \prod_{q \mid N}(1 + 1/q)$,
+        so</p>
+      <p>$$ \mu \;=\; 2\left(1 + \tfrac{1}{2}\right) \;=\; 3. $$</p>
+      <p><em>The cusps.</em> The number of cusps of $\Gamma_0(N)$ is
+        $\sum_{d \mid N} \varphi\bigl(\gcd(d, N/d)\bigr)$. For $N = 2$ the divisors are $1$ and $2$, each
+        contributing $\varphi(1) = 1$, so</p>
+      <p>$$ \nu_\infty \;=\; 2. $$</p>
+      <p>Concretely these are the cusps $\infty$ and $0$.</p>
+      <p><em>The elliptic points.</em> For $N = 2$ there is one elliptic point of order two and none of
+        order three:</p>
+      <p>$$ \nu_2 \;=\; 1, \qquad \nu_3 \;=\; 0. $$</p>
+      <p>Substituting,</p>
+      <p>$$ \dim S_2(\Gamma_0(2)) \;=\; 1 + \frac{3}{12} - \frac{1}{4} - \frac{0}{3} - \frac{2}{2}
+             \;=\; 1 + \frac{1}{4} - \frac{1}{4} - 1 \;=\; 0. $$</p>
+      <p>The space is zero-dimensional. There is no weight-2 cusp form of level $2$ at all, let alone a
+        newform. $\blacksquare$</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The chain collapses</h3>
+      <p>Read the contradiction backwards, one link at a time.</p>
+      <ul>
+        <li>The space $S_2(\Gamma_0(2))$ is zero, so <strong>no newform of weight 2 and level 2
+          exists.</strong></li>
+        <li>Ribet's theorem says that if $\bar\rho$ existed with the stated properties, such a newform
+          would exist. So <strong>$\bar\rho$ does not exist.</strong></li>
+        <li>But $\bar\rho$ was constructed from the mod $p$ torsion of $E$, and would exist if $E$ did.
+          So <strong>$E$ does not exist.</strong></li>
+        <li>And $E$ was constructed from the solution by an explicit formula, so it would exist if the
+          solution did. So <strong>the solution does not exist.</strong></li>
+      </ul>
+      <p>There are no non-zero integers with $a^p + b^p = c^p$ for prime $p \geq 5$. With essay 01
+        ($n = 4$ and the reduction to prime exponents) and essay 02 ($n = 3$), there are none for any
+        $n \geq 3$. Fermat's Last Theorem. $\blacksquare$</p>
+
+      <h3>How much room there was</h3>
+      <p>A natural worry about an argument that ends in a zero is whether it only barely ends there.
+        It does not. The script <code>checks/dim_s2_gamma0.py</code> evaluates the same formula for every
+        level and reports that $\dim S_2(\Gamma_0(N)) = 0$ for</p>
+      <p>$$ N = 1, 2, \dots, 10,\; 12,\; 13,\; 16,\; 18,\; 25, $$</p>
+      <p>cross-checked against the classical list of levels at which it vanishes. Level $2$ sits well
+        inside that range, not at its edge. Had the Frey representation's conductor come out as $3$ or
+        $4$ or $5$ instead, the contradiction would have arrived just the same. What matters is not the
+        exact value $2$ but that level lowering drives the level down to a <em>small</em> number, into a
+        range where the spaces are empty for the boring reason that there is no room in them.</p>
+      <p>The same script also confirms $\dim S_2(\Gamma_0(11)) = 1$, matching the LMFDB entry for the
+        newform labelled <code>11.2.a.a</code> — so the formula that returns zero at level $2$ is the
+        same one that correctly returns one at level $11$, where a form demonstrably does exist. A
+        dimension formula that only ever produced zeroes would prove nothing.</p>
+
+      <h3>What the proof does not give</h3>
+      <p>It is worth being precise about the shape of what has been achieved, because a proof by
+        contradiction of a non-existence statement is a peculiar kind of knowledge.</p>
+      <p><em>No bounds, no near-misses, no algorithm.</em> The argument shows a solution cannot exist. It
+        offers no way to measure how badly the equation fails, no bound on how close $a^p + b^p$ can come
+        to a $p$-th power. Contrast essay 02's numerical verification below four million: that was
+        weaker logically but richer computationally.</p>
+      <p><em>No explanation.</em> There is no sense in which this proof says <em>why</em> Fermat's
+        equation has no solutions. It says that a solution would force two rigid structures — one
+        geometric, one analytic — to agree in a place where one of them is empty. That is a reason, but
+        it is not the kind of reason the question seems to ask for, and it is certainly not what Fermat
+        had in mind in his margin.</p>
+      <p><em>The general question is still open.</em> Fermat's equation is one case of a family of
+        Diophantine questions about which far less is known. The ABC conjecture, which would imply
+        results of Fermat's kind for a whole class of equations at once, remains unsettled.</p>
+      <p><em>And modularity has since grown.</em> Wiles's theorem covered semistable curves, which is
+        all the Frey curve needs. Breuil, Conrad, Diamond and Taylor removed the hypothesis entirely in
+        2001: every elliptic curve over $\mathbb{Q}$ is modular. The tool built for one 350-year-old
+        problem turned out to be a general theorem about the arithmetic of curves, and that — rather
+        than Fermat's equation — is what the proof is now used for.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Level lowering.</strong> Ribet's 1990 paper in <em>Inventiones Mathematicae</em>, on
+        modular representations arising from modular forms, is the source; Serre's 1987 paper is where the
+        conjecture was formulated. Darmon, Diamond and Taylor's survey <em>Fermat's Last Theorem</em>
+        recounts the reduction in its introduction and treats Serre's conjectures in its third chapter,
+        with the ramification of the Frey representation stated precisely as its theorem 2.15.</p>
+      <p><strong>The dimension formula.</strong> Diamond and Shurman's <em>A First Course in Modular
+        Forms</em> develops the index, cusp and elliptic-point counts for $\Gamma_0(N)$ and the genus
+        formula they feed. <span class="unverified">unverified</span></p>
+      <p><strong>The form that does exist.</strong> LMFDB newform <code>11.2.a.a</code>: level $11$,
+        weight $2$, trivial character, dimension $1$, with coefficients beginning
+        $1, -2, -1, 2, 1, 2, -2$. It is attached to the elliptic curve isogeny class <code>11.a</code> —
+        the smallest conductor for which a curve exists at all, and the standard first example of
+        modularity in action.</p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/dim_s2_gamma0.py</code>. The four numbers
+        $\mu = 3$, $\nu_2 = 1$, $\nu_3 = 0$, $\nu_\infty = 2$ are each computable in a line, and the
+        formula then gives $0$ in one step. It is a genuinely small calculation, and the whole
+        350-year-old problem rests on it — which is the most surprising thing about the proof and the
+        reason this collection is named after it.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col discharged">
+          <h3>Discharged here</h3>
+          <ul>
+            <li>Ribet's level-lowering theorem, stated with hypotheses <span class="lref">(L18)</span></li>
+            <li>Its hypotheses checked against the Frey representation</li>
+            <li>$\mu = 3$, $\nu_2 = 1$, $\nu_3 = 0$, $\nu_\infty = 2$ at level $2$</li>
+            <li>$\dim S_2(\Gamma_0(2)) = 0$, computed and cross-checked <span class="lref">(L19)</span></li>
+            <li>The contradiction, and Fermat's Last Theorem — conditional on the four inputs below</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li><strong>(A)</strong> $E$ semistable and modular <span class="lref">(L14, L16; essays 18, 23)</span></li>
+            <li><strong>(B)</strong> $\bar\rho$ irreducible, and the $p > 7$ threshold resolved <span class="lref">(L8; essays 10, 24)</span></li>
+            <li><strong>(C)</strong> $\bar\rho$ finite at $p$, conductor $2$ <span class="lref">(L9, L17; essays 10, 24)</span></li>
+            <li><strong>(D)</strong> The dimension formula itself <span class="lref">(L10; essay 13)</span></li>
+            <li>Everything (A)–(D) rests on: essays 03–21, 23, 24</li>
+          </ul>
+        </div>
+      </div>
+      <p class="empty">The ledger does not close yet. It closes when essays 03–21, 23 and 24 are
+        written; that is what this collection is for.</p>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="22-the-frey-curve.html"><span class="dir">← Previous written essay</span> 22 · The Frey curve</a>
+      <a class="next" href="../index.html"><span class="dir">Contents →</span></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 25 · Original prose; no source text reproduced.</p>
+  </div>
+</footer>

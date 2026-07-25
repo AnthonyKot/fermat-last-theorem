@@ -1,0 +1,223 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Such Form — Fermat's Last Theorem, one rung at a time</title>
+<meta name="description" content="Twenty-five essays building the proof of Fermat's Last Theorem from Fermat's own descent to the 1995 contradiction, each adding one object and declaring what the argument still owes.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="index.html">Contents</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Fermat's Last Theorem, one rung at a time</p>
+    <h1>No Such Form</h1>
+    <p class="lede">Twenty-five essays from Fermat's own descent to the contradiction that ends the
+      problem. Each adds exactly one object, and each closes by stating what the argument now has and
+      what it still owes.</p>
+
+    <p>The proof of Fermat's Last Theorem is usually told in one of two unsatisfying registers. Either
+      the mathematics is replaced by metaphor — an elliptic curve is a doughnut, a modular form is a
+      kind of symmetry — or it opens at full altitude, with residual representations and level
+      structures, and assumes you already know why anyone would build such things. This collection
+      takes the third route: build the objects in order, and never use one before it exists.</p>
+
+    <p>The argument has a shape worth stating up front, because everything else is in service of it.
+      Suppose $a^p + b^p = c^p$ had a solution. Then one could build a particular elliptic curve from
+      it. That curve would be modular, by a theorem of Wiles. Its mod $p$ Galois representation would
+      then come from a modular form whose level could be lowered — by a theorem of Ribet — all the way
+      to $2$. But the space of weight-2 cusp forms of level $2$ has dimension zero. There is no such
+      form. So there was no such solution.</p>
+
+    <p>Every essay follows four rungs: <strong>What we already have</strong> (named by essay number, so
+      nothing is smuggled in), <strong>The construction</strong> (one new object or theorem),
+      <strong>What it buys</strong> (a worked example, and the later essay that consumes it), and
+      <strong>Reading</strong>. Then a <strong>ledger</strong> — what this essay discharged, and what
+      the final contradiction is still owed. The series is finished when the ledger is empty.</p>
+
+    <p>Two theorems are stated and not proved: Wiles's modularity theorem and Ribet's level-lowering
+      theorem. Part V describes the machinery of the first without proving it, and says so on every
+      page. <a href="about.html">About</a> sets out exactly which doors are opened and which are
+      pointed at.</p>
+
+    <!-- ===================== TABLE OF CONTENTS ===================== -->
+
+    <section class="part">
+      <p class="part-head">Part I · The old method, and why it stops</p>
+      <p class="part-intro">Fermat's descent, in full, for the two exponents it reaches. Then the
+        obvious generalisation, and the precise way it fails — which is the reason the remaining
+        twenty essays exist.</p>
+      <ul class="toc">
+        <li><a href="chapters/01-descent-and-n4.html">
+          <span class="n">01</span>Descent, and the exponent four
+          <span class="adds"><span class="proved">Proves:</span> $x^4+y^4=z^2$ has no solution — hence Fermat for $n=4$, and the reduction to odd prime exponents</span>
+        </a></li>
+        <li><a href="chapters/02-unique-factorization-and-n3.html">
+          <span class="n">02</span>Unique factorisation, and where it runs out
+          <span class="adds"><span class="proved">Proves:</span> Fermat for $n=3$ in the Eisenstein integers — then the failure of unique factorisation, class numbers, and Kummer's regular primes</span>
+        </a></li>
+        <li><span class="stub">
+          <span class="n">03</span>The absolute Galois group<span class="soon">soon</span>
+          <span class="adds">Field extensions, the Galois correspondence, $G_{\mathbb{Q}}$ as a profinite group, Frobenius elements</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">04</span>A new pair of sunglasses: the $p$-adics<span class="soon">soon</span>
+          <span class="adds">The valuation $v_\ell$, the rings $\mathbb{Z}_p$ and $\mathbb{Q}_p$, modules and free modules of finite rank</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">05</span>Galois representations<span class="soon">soon</span>
+          <span class="adds">$\rho : G_{\mathbb{Q}} \to \mathrm{GL}_2(K)$, ramification, the conductor of a representation, and why traces of Frobenius are enough</span>
+        </span></li>
+      </ul>
+    </section>
+
+    <section class="part">
+      <p class="part-head">Part II · Elliptic curves</p>
+      <p class="part-intro">A cubic equation with a group law on its solutions. Counting those
+        solutions modulo each prime produces a sequence of integers; the Galois group acting on its
+        torsion produces a representation. Both come back later.</p>
+      <ul class="toc">
+        <li><span class="stub">
+          <span class="n">06</span>Elliptic curves, written correctly<span class="soon">soon</span>
+          <span class="adds">The general Weierstrass form, smoothness, the discriminant — and why the short form fails over $\mathbb{Q}$</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">07</span>The group law<span class="soon">soon</span>
+          <span class="adds">Chord-and-tangent addition, $E(\mathbb{Q})$ as an abelian group, and the complex torus $E(\mathbb{C}) \cong \mathbb{C}/\Lambda$</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">08</span>Reduction and the conductor<span class="soon">soon</span>
+          <span class="adds">Good, multiplicative and additive reduction; $a_\ell = \ell+1-\#E(\mathbb{F}_\ell)$; semistable means square-free conductor</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">09</span>Division points and the Tate module<span class="soon">soon</span>
+          <span class="adds">$E[2]$ and $E[3]$ by hand, then $E[n] \cong (\mathbb{Z}/n)^2$; the Tate module, free of rank 2 over $\mathbb{Z}_p$</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">10</span>The representation attached to a curve<span class="soon">soon</span>
+          <span class="adds">$\rho_{E,p}$ and its reduction $\bar\rho_{E,p}$; <span class="stated">states</span> Mazur's isogeny theorem and the Néron–Ogg–Shafarevich criterion</span>
+        </span></li>
+      </ul>
+    </section>
+
+    <section class="part">
+      <p class="part-head">Part III · Modular forms</p>
+      <p class="part-intro">A function on the upper half-plane, symmetric under a group of matrices.
+        The space of such functions is finite-dimensional — computably so — and carries operators whose
+        eigenvalues are its own Fourier coefficients.</p>
+      <ul class="toc">
+        <li><span class="stub">
+          <span class="n">11</span>The modular group and its quotient<span class="soon">soon</span>
+          <span class="adds">$\mathbb{H}$, $\mathrm{SL}_2(\mathbb{Z})$, the fundamental domain, $\Gamma_0(N)$, cusps and elliptic points</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">12</span>Modular forms<span class="soon">soon</span>
+          <span class="adds">Weight-$k$ modularity, holomorphy at the cusps, $q$-expansions, Eisenstein series, cusp forms</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">13</span>How large is the space?<span class="soon">soon</span>
+          <span class="adds">The valence formula, then $\dim S_2(\Gamma_0(N))$ from the index and the counts $\nu_2, \nu_3, \nu_\infty$</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">14</span>Hecke operators<span class="soon">soon</span>
+          <span class="adds">Commuting self-adjoint operators, a simultaneous eigenbasis, and eigenvalues that are Fourier coefficients</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">15</span>Newforms, and the meaning of the level<span class="soon">soon</span>
+          <span class="adds">Oldforms, degeneracy maps, Atkin–Lehner theory, and what "level" names</span>
+        </span></li>
+      </ul>
+    </section>
+
+    <section class="part">
+      <p class="part-head">Part IV · The two worlds are one</p>
+      <p class="part-intro">Two constructions from unrelated fields emit the same kind of object and,
+        on every example anyone checked, the same numbers. Wiles proved the coincidence is a theorem.</p>
+      <ul class="toc">
+        <li><span class="stub">
+          <span class="n">16</span>The representation attached to a form<span class="soon">soon</span>
+          <span class="adds"><span class="stated">States</span> Eichler–Shimura: a weight-2 newform gives $\rho_{f,p}$ with $\operatorname{tr}\rho_f(\mathrm{Frob}_\ell) = a_\ell(f)$</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">17</span>Two $L$-functions, one shape<span class="soon">soon</span>
+          <span class="adds">Euler products, and why the multiplicativity of Hecke eigenvalues mirrors unique factorisation</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">18</span>The modularity theorem<span class="soon">soon</span>
+          <span class="adds">Conductor matches level, $a_\ell$ matches $a_\ell$; <span class="stated">states</span> modularity — Wiles–Taylor 1995 for semistable curves, BCDT 2001 in general</span>
+        </span></li>
+      </ul>
+    </section>
+
+    <section class="part">
+      <p class="part-head">Part V · Wiles's machine</p>
+      <p class="part-intro">An anatomy, not a proof. These three essays describe the objects and the
+        strategy of the 1995 paper; they do not prove it, and they say so on every page.</p>
+      <ul class="toc">
+        <li><span class="stub">
+          <span class="n">19</span>Deformations of a representation<span class="soon">soon</span>
+          <span class="adds">Lifting a fixed $\bar\rho$ to characteristic zero; deformation conditions; the universal deformation ring $R$</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">20</span>$R = T$<span class="soon">soon</span>
+          <span class="adds">The Hecke algebra as the modular side, the surjection $R \to T$, and Taylor–Wiles patching</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">21</span>Where the induction starts<span class="soon">soon</span>
+          <span class="adds">Langlands–Tunnell supplies modularity mod 3; the 3–5 switch when $\bar\rho_{E,3}$ is reducible</span>
+        </span></li>
+      </ul>
+    </section>
+
+    <section class="part">
+      <p class="part-head">Part VI · The contradiction</p>
+      <p class="part-intro">Assume a solution. Build a curve from it. Every property established in the
+        previous twenty-one essays now applies at once, and they cannot all hold.</p>
+      <ul class="toc">
+        <li><a href="chapters/22-the-frey-curve.html">
+          <span class="n">22</span>The Frey curve
+          <span class="adds"><span class="proved">Proves:</span> from a solution, the curve $y^2 = x(x-a^p)(x+b^p)$ has discriminant $16(abc)^{2p}$</span>
+        </a></li>
+        <li><span class="stub">
+          <span class="n">23</span>Semistable, therefore modular<span class="soon">soon</span>
+          <span class="adds">Valuations of the discriminant give multiplicative reduction everywhere, a square-free conductor, and modularity by essay 18</span>
+        </span></li>
+        <li><span class="stub">
+          <span class="n">24</span>The Frey representation<span class="soon">soon</span>
+          <span class="adds">Irreducible by Mazur, unramified outside 2 and $p$ by Néron–Ogg–Shafarevich, and of conductor exactly 2</span>
+        </span></li>
+        <li><a href="chapters/25-ribet-and-the-end.html">
+          <span class="n">25</span>Ribet, and the end
+          <span class="adds"><span class="stated">States</span> level lowering; then $\dim S_2(\Gamma_0(2)) = 0$ — computed — and the argument closes</span>
+        </a></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <p>Four essays are written: the two ends of the rope — <a href="chapters/01-descent-and-n4.html">01</a>
+      and <a href="chapters/02-unique-factorization-and-n3.html">02</a> at the beginning,
+      <a href="chapters/22-the-frey-curve.html">22</a> and
+      <a href="chapters/25-ribet-and-the-end.html">25</a> at the end. They were written first
+      deliberately: with the destination on paper, every construction in between has to justify itself.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Original prose throughout; no source text reproduced. Numerical claims are
+      computed from scratch and cross-checked — see <a href="about.html">About</a>.</p>
+  </div>
+</footer>
