@@ -180,6 +180,64 @@ PY
 echo "== generated proof status agrees with the canonical ledger data =="
 python3 scripts/render_status.py --check || fail=1
 
+echo "== claim summaries distinguish proof from accepted import =="
+python3 - <<'PY' || fail=1
+import glob, json, os, re, sys
+
+raw = json.load(open("data/ledger.json"))
+accepted = set(raw["completion_policy"]["accepted_assumption_ids"])
+problems = 0
+
+for path in sorted(glob.glob("chapters/*.html")):
+    text = open(path).read()
+    name = os.path.basename(path)
+    number = int(name[:2])
+
+    # "Discharges" used to mean both "proved" and "registered as an import" in
+    # adjacent essays.  It is now forbidden in the compact claim summary: the
+    # machine-readable resolution must say which mechanism actually applies.
+    if "<strong>Discharges:</strong>" in text:
+        print(f"  {name}: ambiguous claim label 'Discharges'; use a ledger-resolution mode")
+        problems += 1
+
+    modes = re.findall(r'data-ledger-resolution="(proved|mixed|imported)"', text)
+    if not modes:
+        continue
+    if len(modes) != 1:
+        print(f"  {name}: expected one ledger-resolution mode, found {len(modes)}")
+        problems += 1
+        continue
+
+    items = [
+        item for item in raw["proof_register"]
+        if number in item["essays"]
+        and item["role"] == "required_for_flt"
+        and item["availability"] == "available"
+    ]
+    has_proof = any(item["register"] == "proved" for item in items)
+    has_import = any(
+        item["register"] == "stated" and item["id"] in accepted for item in items
+    )
+    expected = (
+        "mixed" if has_proof and has_import
+        else "proved" if has_proof
+        else "imported" if has_import
+        else None
+    )
+    if modes[0] != expected:
+        print(
+            f"  {name}: claim says {modes[0]}, register requires {expected} "
+            f"(proved={has_proof}, accepted import={has_import})"
+        )
+        problems += 1
+
+print(
+    "  claim resolution modes agree with the proof register"
+    if not problems else f"  {problems} claim-resolution problem(s)"
+)
+sys.exit(1 if problems else 0)
+PY
+
 echo "== no Tier C textbook section numbers (no owned copies to verify against) =="
 hits=$(grep -rInE '(Silverman|Diamond|Shurman|Washington|Cornell|Stevens)[^<]{0,80}(§|Ch\.? ?[0-9]|p\.? ?[0-9]|section ?[0-9])' chapters/*.html *.html 2>/dev/null)
 if [ -n "$hits" ]; then echo "  FAIL: precise citation to an unowned textbook:"; echo "$hits"; fail=1

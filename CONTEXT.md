@@ -115,7 +115,7 @@ They behave differently on purpose, and the difference must not be smoothed away
 |---|---|---|
 | Direction | a forward promise | a standing trust obligation |
 | Over the collection | **shrinks**, and must reach empty | **accumulates**, and never empties |
-| Discharged by | a later essay **resolving** it — proving it, or being the essay that states an accepted assumption | nothing — it is permanent by construction |
+| Resolved by | a later essay making it available — either **proving it** or **registering it as an accepted import**; these are different actions and must be named separately | nothing — it is permanent by construction |
 | Scope shown | per essay, because it changes essay to essay | per essay for what that essay adds |
 | Global view | the release gate in `verify.sh` | the allowlist plus About's generated block |
 
@@ -130,7 +130,7 @@ nothing can ever discharge it, and filing it as owed would keep the release gate
 
 The schema originally had only *proved* and *assumed*, and results of the form "this follows from a
 theorem imported in an earlier essay" had nowhere to sit. Filed as assumed they broke the column's own
-definition — they *are* discharged by something, namely the upstream import — and they inflated the
+definition — they *are* supported by something, namely the upstream import — and they inflated the
 roster, putting two entries under one root. Two records had drifted into exactly that state:
 `09-torsion-general` (from essay 07's uniformization) and `23-modularity-applied` (from essay 18's
 Modularity Theorem).
@@ -226,7 +226,7 @@ essay files, and `verify.sh` rejects a frozen pointer.
 Essay 25 needs exactly these. Every line must be resolved by a proof or a declared import, and no essay
 may use a line before the essay that makes it available.
 
-| # | Ledger line | Discharged in |
+| # | Ledger line | Resolved in |
 |---|---|---|
 | L1 | FLT reduces to exponents p prime, p ≥ 5 | 01; 02 proves the first case for n = 3 but still owes the second-case descent |
 | L2 | G_Q exists; Frobenius elements; traces of Frobenius determine a semisimple representation | 03, 05 |
@@ -237,7 +237,7 @@ may use a line before the essay that makes it available.
 | L7 | ρ̄_{E,p} : G_Q → GL₂(F_p) exists, tr ρ̄(Frob_ℓ) ≡ a_ℓ | 10 |
 | L8 | Mazur's isogeny theorem ⟹ irreducibility of ρ̄_{E,p} for **p > 7**, E semistable | 10 (stated) |
 | L9 | Néron–Ogg–Shafarevich: unramified at ℓ ⟺ good reduction at ℓ | 10 (stated) |
-| L10 | dim S₂(Γ₀(N)) from Riemann–Hurwitz, the index, and ν₂, ν₃, ν_∞ — **discharged, essay 13** | 13 |
+| L10 | dim S₂(Γ₀(N)) from Riemann–Hurwitz, the index, and ν₂, ν₃, ν_∞ — **resolved by proof plus registered imports, essay 13** | 13 |
 | L11 | Hecke eigenbasis exists; eigenvalues = Fourier coefficients | 14 |
 | L12 | Newforms; the level of a newform | 15 |
 | L13 | Eichler–Shimura: weight-2 newform → ρ_{f,p} | 16 (stated) |
@@ -323,8 +323,8 @@ if copies arrive.
 | 01 | descent-and-n4 | Infinite descent; Pythagorean parametrization; **FLT for n = 4, proved** | Fermat's own method, in full. The gcd lemmas the video front-loads are stated here as tooling, where they are used. Fixes the exponent reduction: any n ≥ 3 has an odd prime factor or is divisible by 4. |
 | 02 | unique-factorization-and-n3 | **First case for n = 3 proved; second case outlined**; then unique factorization as a *structure*: UFDs, the failure in Z[ζ₂₃], class numbers, regular primes, Kummer's partial result | The pivot of Part I. The video proves n = 3 by elementary number theory and introduces UFDs separately; we keep both and connect them. Until the second-case descent is expanded, L1 remains open. See Deviations #2. |
 | 03 | galois-and-g-q | Field extensions and degree, the Galois correspondence, Q̄, **G_Q** as a profinite group, **Frobenius elements** at primes | Why G_Q resists direct study: not finite, no presentation. Motivates 05 instead of asserting it. |
-| 04 | p-adics-and-modules | The p-adic valuation v_ℓ, Z_p and Q_p, "small means highly divisible"; modules over a ring, free modules and rank | **Not in my first draft; the transcript forced it.** Needed for T_p(E) ≅ Z_p² (09), GL₂(Z_p) (10), the finite-at-p condition (24), and the valuation computation (23). Discharges L3. |
-| 05 | galois-representations | Continuous ρ : G_Q → GL₂(K); ramified/unramified primes; conductor of a representation; irreducibility; **traces of Frobenius determine a semisimple ρ** | The linearization move. The trace fact is load-bearing — it makes "these two representations are isomorphic" *checkable* in 18, so it lives here. Discharges L2. |
+| 04 | p-adics-and-modules | The p-adic valuation v_ℓ, Z_p and Q_p, "small means highly divisible"; modules over a ring, free modules and rank | **Not in my first draft; the transcript forced it.** Needed for T_p(E) ≅ Z_p² (09), GL₂(Z_p) (10), the finite-at-p condition (24), and the valuation computation (23). Resolves L3. |
+| 05 | galois-representations | Continuous ρ : G_Q → GL₂(K); ramified/unramified primes; conductor of a representation; irreducibility; **traces of Frobenius determine a semisimple ρ** | The linearization move. The trace fact is load-bearing — it makes "these two representations are isomorphic" *checkable* in 18, so it lives here. Resolves L2, partly by registered import. |
 
 ### PART II — ELLIPTIC CURVES (5)
 
@@ -332,9 +332,9 @@ if copies arrive.
 |---|------|--------------|-------|
 | 06 | elliptic-curves | General Weierstrass form, smoothness, the discriminant, the point at infinity; why short integral form loses information at 2 and 3 | Corrections #1, #2. Short form exists over Q, but its integral arithmetic can be bad at 2 and 3; the Frey argument happens at 2. Get the distinction right here or pay in 23. |
 | 07 | the-group-law | Chord-and-tangent addition, E(Q) abelian, associativity (stated), E(C) ≅ C/Λ | The torus is not decoration: it is what makes a modular parametrization X₀(N) → E conceivable in Part IV. |
-| 08 | reduction-and-conductor | Minimal integral models; reduction mod ℓ; good, multiplicative, additive reduction; a_ℓ = ℓ + 1 − #E(F_ℓ); the conductor; **semistable ⟺ conductor squarefree** | Discharges L4, L5. Check: brute-force a_ℓ for a small curve. |
-| 09 | torsion-and-tate-module *(written)* | E[2] and E[3] explicitly, then E[n] ≅ (Z/n)² in characteristic 0; the **Tate module** T_p(E), free of rank 2 **over Z_p**; det = cyclotomic character | The video's route — compute two small cases, then generalize — is the right one; keep it. Name the ring (Corrections #3). Rank 2 is why the representations are 2×2. Discharges L6. |
-| 10 | elliptic-representation | ρ_{E,p} : G_Q → GL₂(Z_p) from the action on T_p(E); reduction to ρ̄_{E,p}; tr ρ(Frob_ℓ) = a_ℓ; **Mazur's isogeny theorem**; **Néron–Ogg–Shafarevich** | Discharges L7; states L8, L9. Both named theorems were absent from the plan summary and are the *methods* 24 needs. Introduce here so 24 can cite rather than assert. |
+| 08 | reduction-and-conductor | Minimal integral models; reduction mod ℓ; good, multiplicative, additive reduction; a_ℓ = ℓ + 1 − #E(F_ℓ); the conductor; **semistable ⟺ conductor squarefree** | Resolves L4 and L5, with the conductor criterion registered as an import. Check: brute-force a_ℓ for a small curve. |
+| 09 | torsion-and-tate-module *(written)* | E[2] and E[3] explicitly, then E[n] ≅ (Z/n)² in characteristic 0; the **Tate module** T_p(E), free of rank 2 **over Z_p**; det = cyclotomic character | The video's route — compute two small cases, then generalize — is the right one; keep it. Name the ring (Corrections #3). Rank 2 is why the representations are 2×2. Resolves L6 conditionally on the registered uniformization import. |
+| 10 | elliptic-representation | ρ_{E,p} : G_Q → GL₂(Z_p) from the action on T_p(E); reduction to ρ̄_{E,p}; tr ρ(Frob_ℓ) = a_ℓ; **Mazur's isogeny theorem**; **Néron–Ogg–Shafarevich** | Resolves L7 partly by registered import; registers L8 and L9 as imports. Both named theorems were absent from the plan summary and are the *methods* 24 needs. Introduce here so 24 can cite rather than assert. |
 
 ### PART III — MODULAR FORMS (5)
 
@@ -342,9 +342,9 @@ if copies arrive.
 |---|------|--------------|-------|
 | 11 | the-modular-group | ℍ, SL₂(Z) by fractional linear transformations, the fundamental domain, Γ₀(N), index, cusps, elliptic points | Geometry first, functions second. The counts defined here are exactly what 13 plugs in. |
 | 12 | modular-forms | Weight-k modularity, holomorphy at the cusps, q-expansions, Eisenstein series, cusp forms, the decomposition M_k = ⟨E_k⟩ ⊕ S_k | Concrete: write actual q-expansions. |
-| 13 | valence-and-dimension | **WRITTEN 2026-07-26.** Weight 2 is the differential weight because d(γz) = dz/(cz+d)²; then **Riemann–Hurwitz** on X₀(N) → X(1) gives **dim S₂(Γ₀(N)) = 1 + μ/12 − ν₂/4 − ν₃/3 − ν_∞/2** | Discharges L10, i.e. assumption (F) — essay 25 drops from four named inputs to three. **The valence formula is not used**; see the deviation note below. Imports `13-genus-is-dimension` and `13-riemann-hurwitz`. Does mention level 2, deliberately: the slack argument (15 vanishing levels below 400) is what shows the ending is not knife-edge. |
-| 14 | hecke-operators *(written)* | T_n on S_k(Γ₀(N)); they commute; self-adjoint under the Petersson product; **spectral theorem ⟹ simultaneous eigenspaces**; a₁ = 1 ⟹ eigenvalues *are* the Fourier coefficients; multiplicativity | The prime-to-level coefficient formula and its consequences are proved; Petersson self-adjointness is imported. At general level the good-Hecke eigenspaces need not be one-dimensional — the precise cliff that 15 resolves. Discharges L11. |
-| 15 | newforms-and-level *(written)* | Oldforms, degeneracy maps, Atkin–Lehner–Li, **newforms** as the honest basis, the exact level | Discharges L12. The level-$11$ form is raised to level $22$ in two independent ways; the good operators cannot separate the copies, while $U_2=\left(\begin{smallmatrix}-2&1\\-2&0\end{smallmatrix}\right)$ has nonreal eigenvalues and is not Hermitian. The second machine is therefore named and registered explicitly: `15-newforms` imports bad-prime stability, multiplicity one, the full-Hecke eigenform theorem, and uniqueness of primitive level. |
+| 13 | valence-and-dimension | **WRITTEN 2026-07-26.** Weight 2 is the differential weight because d(γz) = dz/(cz+d)²; then **Riemann–Hurwitz** on X₀(N) → X(1) gives **dim S₂(Γ₀(N)) = 1 + μ/12 − ν₂/4 − ν₃/3 − ν_∞/2** | Resolves L10, i.e. assumption (F), by proof plus two registered imports — essay 25 drops from four named inputs to three. **The valence formula is not used**; see the deviation note below. Imports `13-genus-is-dimension` and `13-riemann-hurwitz`. Does mention level 2, deliberately: the slack argument (15 vanishing levels below 400) is what shows the ending is not knife-edge. |
+| 14 | hecke-operators *(written)* | T_n on S_k(Γ₀(N)); they commute; self-adjoint under the Petersson product; **spectral theorem ⟹ simultaneous eigenspaces**; a₁ = 1 ⟹ eigenvalues *are* the Fourier coefficients; multiplicativity | Resolves L11 by proof of the coefficient formula plus a registered import of Petersson self-adjointness. At general level the good-Hecke eigenspaces need not be one-dimensional — the precise cliff that 15 resolves. |
+| 15 | newforms-and-level *(written)* | Oldforms, degeneracy maps, Atkin–Lehner–Li, **newforms** as the honest basis, the exact level | Registers L12 as an accepted import. The level-$11$ form is raised to level $22$ in two independent ways; the good operators cannot separate the copies, while $U_2=\left(\begin{smallmatrix}-2&1\\-2&0\end{smallmatrix}\right)$ has nonreal eigenvalues and is not Hermitian. The imported `15-newforms` machine covers bad-prime stability, multiplicity one, the full-Hecke eigenform theorem, and uniqueness of primitive level. |
 
 ### PART IV — THE TWO WORLDS ARE ONE (3)
 
@@ -352,7 +352,7 @@ if copies arrive.
 |---|------|--------------|-------|
 | 16 | modular-representation | **Eichler–Shimura**: a weight-2 newform of level N gives ρ_{f,p} with tr ρ_f(Frob_ℓ) = a_ℓ(f), via J₀(N) | States L13. Stated, not proved — say so. Both worlds now emit the same kind of object. |
 | 17 | two-l-functions | L(E, s) as an Euler product in the a_ℓ; L(f, s) from the coefficient sequence, its Euler product resting on multiplicativity (14); analytic continuation and functional equation | Merges the plan's two L-function threads. The video's framing — the Riemann zeta Euler product works because of unique factorization, and Hecke coefficients are multiplicative the same way — is a good one and connects back to 02. |
-| 18 | modularity-theorem | The clues assembled (a_ℓ ↔ Fourier coefficients, conductor ↔ level), Taniyama–Shimura–Weil, then the **Modularity Theorem**: semistable (Wiles–Taylor 1995), general (BCDT 2001) | Discharges L14. Check: the conductor-11 curve against the level-11 newform's q-expansion, both computed independently and compared — the most convincing paragraph in the book for a 20-line script. |
+| 18 | modularity-theorem | The clues assembled (a_ℓ ↔ Fourier coefficients, conductor ↔ level), Taniyama–Shimura–Weil, then the **Modularity Theorem**: semistable (Wiles–Taylor 1995), general (BCDT 2001) | Registers L14 as an accepted import. Check: the conductor-11 curve against the level-11 newform's q-expansion, both computed independently and compared — the most convincing paragraph in the book for a 20-line script. |
 
 ### PART V — WILES'S MACHINE (anatomy, 3)
 
@@ -368,9 +368,9 @@ Not in the video at all. Opens with a standing banner: these three essays descri
 
 | # | Slug | Construction | Notes |
 |---|------|--------------|-------|
-| 22 | the-frey-curve | Assume a primitive solution aᵖ + bᵖ = cᵖ, p prime ≥ 5; normalize (coprimality, aᵖ ≡ −1 mod 4, bᵖ ≡ 0 mod 32); build **y² = x(x − aᵖ)(x + bᵖ)**; compute the discriminant 16(abc)^{2p} | Discharges L15. **Frey 1986**, following Hellegouarch (DDT p. 8) — not 1984 as the plan summary has it. Turn a solution into a curve whose properties are absurdly good. DDT's convention aᵖ + bᵖ = cᵖ adopted so the citable source and the essay agree. |
-| 23 | semistable-and-modular | ℓ-adic valuations of the discriminant ⟹ multiplicative reduction at every bad prime ⟹ **semistable**, conductor = rad(abc) ⟹ **modular** by 18 | Discharges L16. The valuation computation is done in full — elementary, and the one place a reader can check Wiles's hypothesis is met. Uses 04. |
-| 24 | the-frey-representation | ρ̄ = ρ̄_{Frey,p}: **irreducible** via Mazur's isogeny theorem (10), unramified outside 2 and p via **Néron–Ogg–Shafarevich** (10), finite at p, and **conductor exactly 2** | Discharges L17. Corrections #5 lives here: the *curve's* conductor is rad(abc); it is the *representation's* conductor that is 2. Level lowering exists to close exactly that gap. |
+| 22 | the-frey-curve | Assume a primitive solution aᵖ + bᵖ = cᵖ, p prime ≥ 5; normalize (coprimality, aᵖ ≡ −1 mod 4, bᵖ ≡ 0 mod 32); build **y² = x(x − aᵖ)(x + bᵖ)**; compute the discriminant 16(abc)^{2p} | Proves L15. **Frey 1986**, following Hellegouarch (DDT p. 8) — not 1984 as the plan summary has it. Turn a solution into a curve whose properties are absurdly good. DDT's convention aᵖ + bᵖ = cᵖ adopted so the citable source and the essay agree. |
+| 23 | semistable-and-modular | ℓ-adic valuations of the discriminant ⟹ multiplicative reduction at every bad prime ⟹ **semistable**, conductor = rad(abc) ⟹ **modular** by 18 | Resolves L16 by proof, with modularity itself remaining a registered import. The valuation computation is done in full — elementary, and the one place a reader can check Wiles's hypothesis is met. Uses 04. |
+| 24 | the-frey-representation | ρ̄ = ρ̄_{Frey,p}: **irreducible** via Mazur's isogeny theorem (10), unramified outside 2 and p via **Néron–Ogg–Shafarevich** (10), finite at p, and **conductor exactly 2** | Resolves L17 through proved calculations and registered local imports. Corrections #5 lives here: the *curve's* conductor is rad(abc); it is the *representation's* conductor that is 2. Level lowering exists to close exactly that gap. |
 | 25 | ribet-and-the-end | **Ribet's level-lowering theorem** (1990) with its hypotheses; applied: modular of level rad(abc) ⟹ modular of level 2, so a weight-2 newform of level 2 exists. But μ = 3, ν₂ = 1, ν₃ = 0, ν_∞ = 2 gives 1 + 3/12 − 1/4 − 0 − 1 = 0, so **dim S₂(Γ₀(2)) = 0**. No such form. Hence no such representation, no such curve, no such solution. ∎ | Imports L18 and proves the L19 computation once essay 13 supplies its formula; the required debt then empties without disguising Ribet as proved. Closes with what the proof does *not* give: no effective bounds, no explanation of *why*, and the ABC-shaped questions still open. Note the slack — levels 1, 2, 3, 4 all give 0 — so the contradiction is not knife-edge. |
 
 **Parts I and II have all ten essays written, and Part I still carries one debt inside it.** Do not
@@ -662,7 +662,7 @@ Essay 03 also supplies the reason traces are the right invariant at all: $\mathr
 *conjugacy class*, so only conjugation-invariant quantities can be read off it — which retro-justifies
 essay 10's phrasing and is the hook essay 05 needs for `05-traces-determine`.
 
-**L3, L4 and L5 are now discharged.** Essay 04 supplies $v_\ell$, $\mathbb{Z}_\ell$ and free modules;
+**L3, L4 and L5 are now resolved.** Essay 04 supplies $v_\ell$, $\mathbb{Z}_\ell$ and free modules;
 essay 08 supplies reduction types, the conductor, and semistable ⟺ square-free conductor. Essay 23's
 valuation argument is therefore unblocked and is the natural next essay: it needs only 04, 08 and 22,
 all written, plus a declared import of modularity from 18.
