@@ -20,9 +20,70 @@ DATA = ROOT / "data" / "ledger.json"
 ABOUT = ROOT / "about.html"
 START = "<!-- proof-register:start -->"
 END = "<!-- proof-register:end -->"
+INDEX = ROOT / "index.html"
+COUNT_START = "<!-- essay-count:start -->"
+COUNT_END = "<!-- essay-count:end -->"
 STAMP_START = "<!-- build-stamp:start -->"
 STAMP_END = "<!-- build-stamp:end -->"
 REPO = "https://github.com/AnthonyKot/fermat-last-theorem"
+
+
+WORDS = {
+    1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight",
+    9: "Nine", 10: "Ten", 11: "Eleven", 12: "Twelve", 13: "Thirteen", 14: "Fourteen",
+    15: "Fifteen", 16: "Sixteen", 17: "Seventeen", 18: "Eighteen", 19: "Nineteen",
+    20: "Twenty", 21: "Twenty-one", 22: "Twenty-two", 23: "Twenty-three",
+    24: "Twenty-four", 25: "Twenty-five",
+}
+
+
+def write_essay_count() -> bool:
+    """Generate the contents page's written-essay tally from the files on disk.
+
+    This paragraph was hand-maintained, went stale for four consecutive essays,
+    and shipped saying "Eight" when twelve existed. A count on a page is a
+    promise to update it; generating it is the only way to keep the promise.
+    """
+    files = sorted((ROOT / "chapters").glob("*.html"))
+    nums = [int(f.name[:2]) for f in files]
+    links = ", ".join(
+        f'<a href="chapters/{f.name}">{n:02d}</a>' for f, n in zip(files[:-1], nums[:-1])
+    )
+    last = f'<a href="chapters/{files[-1].name}">{nums[-1]:02d}</a>'
+    para = (
+        f"    {COUNT_START}<p><strong>{WORDS[len(files)]} of the twenty-five essays are written</strong>"
+        f" — {links} and {last} — and the remaining {25 - len(files)} are listed above as stubs."
+        f"</p>{COUNT_END}"
+    )
+    text = INDEX.read_text(encoding="utf-8")
+    pattern = re.compile(re.escape(COUNT_START) + r".*?" + re.escape(COUNT_END), re.S)
+    if not pattern.search(text):
+        raise ValueError("index.html is missing the essay-count markers")
+    new = pattern.sub(lambda _m: para.strip(), text, count=1)
+    if new != text:
+        INDEX.write_text(new, encoding="utf-8")
+        return True
+    return False
+
+
+def check_essay_count() -> str:
+    """The generated tally must match the files on disk."""
+    files = sorted((ROOT / "chapters").glob("*.html"))
+    text = INDEX.read_text(encoding="utf-8")
+    m = re.search(
+        re.escape(COUNT_START) + r"<p><strong>([A-Za-z-]+) of the twenty-five essays are written",
+        text,
+    )
+    if not m:
+        raise ValueError("index.html has no generated essay count; run --write")
+    if m.group(1) != WORDS[len(files)]:
+        raise ValueError(
+            f"index.html says {m.group(1)} essays are written; {len(files)} files on disk"
+        )
+    linked = set(re.findall(r'href="chapters/(\d\d)-', text))
+    if linked != {f.name[:2] for f in files}:
+        raise ValueError("index.html's essay links do not match the files on disk")
+    return f"{m.group(1)} ({len(files)})"
 
 
 def stamp_pages() -> list[Path]:
@@ -497,6 +558,8 @@ def main() -> int:
             print("updated about.html from data/ledger.json")
         else:
             print("about.html already up to date")
+        if write_essay_count():
+            print("updated index.html's essay count")
         stamped = write_stamps()
         print(f"build stamp written to {stamped} page(s)" if stamped else "build stamp already current")
         return 0
@@ -504,6 +567,12 @@ def main() -> int:
     if before != after:
         print("about.html is out of date; run: python3 scripts/render_status.py --write")
         return 1
+    try:
+        counted = check_essay_count()
+    except ValueError as exc:
+        print(f"essay count: {exc}")
+        return 1
+    print(f"contents-page essay count agrees with the files on disk: {counted}")
     try:
         stamp = check_stamps()
     except ValueError as exc:
