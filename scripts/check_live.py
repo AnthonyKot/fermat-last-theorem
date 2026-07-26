@@ -1,54 +1,47 @@
 #!/usr/bin/env python3
-"""Assert the PUBLISHED site matches this checkout. Reads no local HTML.
+"""Assert the PUBLISHED site matches this checkout and its canonical register.
 
-Every previous live check in this project was a hand-rolled curl pipeline, and
-every one of them got disputed. The failure mode is real: a check that reads the
-filesystem keeps passing while the site keeps not changing. So this fetches the
-github.io URLs and nothing else.
+The local verifier proves that generated HTML agrees with data/ledger.json.
+This checker closes the other half: it fetches github.io with cache-busting and
+compares every served page and the served register with this checkout byte for
+byte. A local-only change, an unpushed commit, a failed Pages build, a stale CDN
+response, and a partial deploy therefore all fail for the same concrete reason:
+the published artifact differs.
 
 What it asserts, per page:
   * HTTP 200;
-  * the served build stamp names HEAD or HEAD's parent. It cannot be HEAD alone:
-    committing the stamp changes the hash, so the generator records HEAD at
-    generation time, which becomes the parent once committed. Anything older
-    means the deploy has not caught up or the generator was not re-run;
-  * every page serves the SAME stamp, so a partial deploy is visible;
+  * the response body equals the corresponding committed source;
   * the HTML parses with no tag outside the known set, catching math or entities
     that leaked into markup on the way through the CDN.
+The full run also fetches data/ledger.json and requires it to equal the local
+canonical register, so a completion report cannot silently mix local status with
+an older public site.
 
 Usage:
-    python3 scripts/check_live.py            # all pages
-    python3 scripts/check_live.py 24 25      # just those essays
+    python3 scripts/check_live.py             # all pages + canonical register
+    python3 scripts/check_live.py 24 25       # just those essays
     python3 scripts/check_live.py --expect 25 "Two assumptions"
 """
 
 from __future__ import annotations
 
 import argparse
+import difflib
 import re
-import subprocess
 import sys
 import time
-import urllib.error
 import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://anthonykot.github.io/fermat-last-theorem"
-STAMP = re.compile(r'Built from <a href="[^"]+/commit/([0-9a-f]+)"><code>\1</code></a> · ([^<·]+) ·')
 KNOWN = {
     "meta", "title", "link", "script", "header", "div", "a", "nav", "button", "main", "p",
     "h1", "h2", "h3", "span", "section", "ul", "ol", "li", "em", "strong", "table", "thead",
     "tbody", "tr", "th", "td", "br", "footer", "code", "hr", "sup", "sub", "abbr", "figure",
     "figcaption", "blockquote", "b", "i", "details", "summary",
 }
-
-
-def git(*args: str) -> str:
-    return subprocess.run(
-        ["git", *args], cwd=ROOT, capture_output=True, text=True, check=True
-    ).stdout.strip()
 
 
 class TagCheck(HTMLParser):
@@ -77,13 +70,33 @@ def fetch(path: str, tries: int = 3) -> str:
     raise RuntimeError(f"{path}: {last}")
 
 
-def pages(selection: list[str]) -> list[str]:
+def paths(selection: list[str]) -> list[str]:
     chapters = sorted(p.name for p in (ROOT / "chapters").glob("*.html"))
     if selection:
         wanted = set(selection)
         chapters = [c for c in chapters if c[:2] in wanted]
         return [f"chapters/{c}" for c in chapters]
-    return ["index.html", "about.html"] + [f"chapters/{c}" for c in chapters]
+    return [
+        "index.html",
+        "about.html",
+        "data/ledger.json",
+        *[f"chapters/{c}" for c in chapters],
+    ]
+
+
+def short_diff(path: str, expected: str, actual: str) -> list[str]:
+    diff = difflib.unified_diff(
+        expected.splitlines(),
+        actual.splitlines(),
+        fromfile=f"checkout/{path}",
+        tofile=f"published/{path}",
+        lineterm="",
+        n=2,
+    )
+    lines = list(diff)
+    if len(lines) > 18:
+        return lines[:18] + [f"... {len(lines) - 18} more diff line(s)"]
+    return lines
 
 
 def main() -> int:
@@ -93,42 +106,33 @@ def main() -> int:
                     help='assert TEXT appears in a page ("index", "about" or an essay number)')
     args = ap.parse_args()
 
-    head, parent = git("rev-parse", "--short", "HEAD"), git("rev-parse", "--short", "HEAD^")
-    allowed = {head, parent}
-    print(f"HEAD {head}, parent {parent} — a served stamp must be one of these")
-
-    stamps: dict[str, str] = {}
     problems = 0
-    for path in pages(args.essays):
+    fetched: dict[str, str] = {}
+    for path in paths(args.essays):
         try:
             body = fetch(path)
         except RuntimeError as exc:
             print(f"  FAIL {path}: {exc}")
             problems += 1
             continue
-        m = STAMP.search(body)
-        if not m:
-            print(f"  FAIL {path}: no build stamp served")
-            problems += 1
-            continue
-        sha, when = m.group(1), m.group(2).strip()
-        stamps[path] = sha
-        checker = TagCheck()
-        checker.feed(body)
+        fetched[path] = body
+        expected = (ROOT / path).read_text(encoding="utf-8")
         flags = []
-        if sha not in allowed:
-            flags.append(f"stamp {sha} is neither HEAD nor its parent — deploy is behind")
-        if checker.bogus:
-            flags.append(f"bogus tags {sorted(set(checker.bogus))}")
+        if body != expected:
+            flags.append("published bytes differ from this checkout")
+        if path.endswith(".html"):
+            checker = TagCheck()
+            checker.feed(body)
+            if checker.bogus:
+                flags.append(f"bogus tags {sorted(set(checker.bogus))}")
         if flags:
-            problems += len(flags)
+            problems += 1
             print(f"  FAIL {path}: " + "; ".join(flags))
+            if body != expected:
+                for line in short_diff(path, expected, body):
+                    print(f"       {line}")
         else:
-            print(f"  ok   {path}  {sha} · {when}")
-
-    if len(set(stamps.values())) > 1:
-        print(f"  FAIL stamps disagree across pages: {sorted(set(stamps.values()))}")
-        problems += 1
+            print(f"  ok   {path}")
 
     for page, text in args.expect or []:
         path = {"index": "index.html", "about": "about.html"}.get(page)
@@ -139,7 +143,9 @@ def main() -> int:
                 problems += 1
                 continue
             path = f"chapters/{match[0].name}"
-        body = fetch(path)
+        body = fetched.get(path)
+        if body is None:
+            body = fetch(path)
         if text in body:
             print(f'  ok   {path} contains "{text[:50]}"')
         else:

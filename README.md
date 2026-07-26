@@ -60,8 +60,8 @@ This collection was written without a personal library of the standard textbooks
 net — a checked page reference — is unavailable. Two substitutes carry it instead, both executable:
 
 ```bash
-./verify.sh                     # everything local
-python3 scripts/check_live.py   # the PUBLISHED site, reading no local files
+./verify.sh          # everything local
+./verify.sh --live   # local checks, then byte-compare the PUBLISHED site and register
 ```
 
 - **Ledger checks.** Every essay must carry proved/assumed/owed columns, and no essay's "What we
@@ -119,6 +119,12 @@ python3 scripts/check_live.py   # the PUBLISHED site, reading no local files
     bad primes from the discriminant, $a_\ell$ against the LMFDB newform coefficients, the Hasse bound,
     and both reduction types located two independent ways — by point count and by the tangent
     directions at the singular point.
+- **Generated site facts.** The contents tally, About status, assumption total, and every chapter's
+  previous/next links are regenerated together. The footer contains stable source/deployment links,
+  not a guessed commit hash: a commit cannot truthfully contain its own hash.
+- **Published-artifact check.** `./verify.sh --live` cache-busts every public URL and requires every
+  served HTML file plus `data/ledger.json` to equal this verified checkout byte for byte. It therefore
+  catches local-only work, unpushed commits, failed builds, stale caches and partial deployments.
 - Plus the ported checks: computed count sync, link resolution, math-delimiter balance, prev/next
   contiguity, a scan forbidding section numbers for textbooks not owned, a check that every precise
   citation is logged in `SOURCES.md`, and an n-gram check against the reference transcript.
@@ -151,9 +157,9 @@ static/style.css         shared styles (themes, ledger, print)
 static/theme.js          theme toggle + KaTeX auto-render
 checks/*.py              scripts backing every numerical claim
 data/ledger.json         canonical proof-status, role, debt and completion policy
-scripts/render_status.py regenerates/checks About's block, the essay count and the trajectory
-scripts/check_live.py    fetches the published site and checks its build stamps
-verify.sh                all checks; exits non-zero on failure
+scripts/render_status.py regenerates/checks status, counts, navigation and deployment footers
+scripts/check_live.py    byte-compares the published pages and register with this checkout
+verify.sh                local checks; --live also verifies the deployed artifact
 CONTEXT.md               authoring notes: spine, ledger, style guide
 SOURCES.md               Tier A citation ledger
 ```

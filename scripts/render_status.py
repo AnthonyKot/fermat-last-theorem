@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Render the About page's proof-status block from the canonical ledger data.
+"""Render every repeated site fact from its canonical source.
 
 Serving the site still has no build step: generated HTML is committed. During
 authoring, use --write after changing data/ledger.json. verify.sh uses --check
-and fails when the committed page has drifted from the register.
+and fails when committed status, inventory, or navigation has drifted.
 """
 
 from __future__ import annotations
@@ -22,6 +22,8 @@ START = "<!-- proof-register:start -->"
 END = "<!-- proof-register:end -->"
 INDEX = ROOT / "index.html"
 COUNT_START = "<!-- essay-count:start -->"
+ABOUT_COUNT_START = "<!-- about-essay-count:start -->"
+ABOUT_COUNT_END = "<!-- about-essay-count:end -->"
 ASSUM_START = "<!-- assumption-count:start -->"
 ASSUM_END = "<!-- assumption-count:end -->"
 FINALE = ROOT / "chapters" / "25-ribet-and-the-end.html"
@@ -32,12 +34,48 @@ REPO = "https://github.com/AnthonyKot/fermat-last-theorem"
 
 
 WORDS = {
-    1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight",
+    0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six",
+    7: "Seven", 8: "Eight",
     9: "Nine", 10: "Ten", 11: "Eleven", 12: "Twelve", 13: "Thirteen", 14: "Fourteen",
     15: "Fifteen", 16: "Sixteen", 17: "Seventeen", 18: "Eighteen", 19: "Nineteen",
     20: "Twenty", 21: "Twenty-one", 22: "Twenty-two", 23: "Twenty-three",
     24: "Twenty-four", 25: "Twenty-five",
 }
+
+
+def essay_files() -> list[Path]:
+    return sorted((ROOT / "chapters").glob("[0-9][0-9]-*.html"))
+
+
+def essay_title(path: Path) -> str:
+    source = path.read_text(encoding="utf-8")
+    match = re.search(r"<h1>(.*?)</h1>", source, re.S)
+    if not match:
+        raise ValueError(f"{path.relative_to(ROOT)} has no h1")
+    return re.sub(r"\s+", " ", match.group(1)).strip()
+
+
+def joined_html(parts: list[str]) -> str:
+    if not parts:
+        return ""
+    if len(parts) == 1:
+        return parts[0]
+    return ", ".join(parts[:-1]) + " and " + parts[-1]
+
+
+def written_links(prefix: str) -> str:
+    return joined_html(
+        [f'<a href="{prefix}{path.name}">{int(path.name[:2]):02d}</a>' for path in essay_files()]
+    )
+
+
+def owed_count(items: list[dict], policy: dict) -> int:
+    accepted_ids = set(policy["accepted_assumption_ids"])
+    return sum(
+        item["role"] == "required_for_flt"
+        and not closes_required_debt(item, accepted_ids)
+        for item in items
+    )
 
 
 def write_essay_count() -> bool:
@@ -47,7 +85,7 @@ def write_essay_count() -> bool:
     and shipped saying "Eight" when twelve existed. A count on a page is a
     promise to update it; generating it is the only way to keep the promise.
     """
-    files = sorted((ROOT / "chapters").glob("*.html"))
+    files = essay_files()
     nums = [int(f.name[:2]) for f in files]
     links = ", ".join(
         f'<a href="chapters/{f.name}">{n:02d}</a>' for f, n in zip(files[:-1], nums[:-1])
@@ -67,6 +105,59 @@ def write_essay_count() -> bool:
         INDEX.write_text(new, encoding="utf-8")
         return True
     return False
+
+
+def about_essay_count(items: list[dict], policy: dict) -> str:
+    files = essay_files()
+    written = {int(path.name[:2]) for path in files}
+    missing = [n for n in range(1, 26) if n not in written]
+    missing_text = joined_html([f"{n:02d}" for n in missing])
+    debts = owed_count(items, policy)
+    if missing:
+        remaining = (
+            f"The {WORDS[len(missing)].lower()} unwritten "
+            f'essay{"" if len(missing) == 1 else "s"} '
+            f'{"is" if len(missing) == 1 else "are"} {missing_text}.'
+        )
+    else:
+        remaining = "No essays remain unwritten."
+    return (
+        f"{ABOUT_COUNT_START}<p><strong>{WORDS[len(files)]} of twenty-five essays are written:</strong> "
+        f"{written_links('chapters/')}."
+        f" {remaining}"
+        f" The canonical proof register currently records {debts} required "
+        f'item{"" if debts == 1 else "s"} still owed, so the chain does not yet close. '
+        f'The <a href="index.html">contents page</a> gives the reading order and the contribution '
+        f"of every written and planned essay.</p>{ABOUT_COUNT_END}"
+    )
+
+
+def write_about_essay_count(items: list[dict], policy: dict) -> bool:
+    text = ABOUT.read_text(encoding="utf-8")
+    pattern = re.compile(
+        re.escape(ABOUT_COUNT_START) + r".*?" + re.escape(ABOUT_COUNT_END), re.S
+    )
+    if not pattern.search(text):
+        raise ValueError("about.html is missing the about-essay-count markers")
+    new = pattern.sub(lambda _m: about_essay_count(items, policy), text, count=1)
+    if new != text:
+        ABOUT.write_text(new, encoding="utf-8")
+        return True
+    return False
+
+
+def check_about_essay_count(items: list[dict], policy: dict) -> str:
+    text = ABOUT.read_text(encoding="utf-8")
+    expected = about_essay_count(items, policy)
+    pattern = re.compile(
+        re.escape(ABOUT_COUNT_START) + r".*?" + re.escape(ABOUT_COUNT_END), re.S
+    )
+    match = pattern.search(text)
+    if not match:
+        raise ValueError("about.html has no generated essay status; run --write")
+    if match.group(0) != expected:
+        raise ValueError("about.html's essay status has drifted; run --write")
+    return f"{WORDS[len(essay_files())]} ({len(essay_files())})"
 
 
 def write_assumption_count(policy: dict) -> bool:
@@ -103,7 +194,7 @@ def check_assumption_count(policy: dict) -> str:
 
 def check_essay_count() -> str:
     """The generated tally must match the files on disk."""
-    files = sorted((ROOT / "chapters").glob("*.html"))
+    files = essay_files()
     text = INDEX.read_text(encoding="utf-8")
     m = re.search(
         re.escape(COUNT_START) + r"<p><strong>([A-Za-z-]+) of the twenty-five essays are written",
@@ -121,8 +212,8 @@ def check_essay_count() -> str:
     return f"{m.group(1)} ({len(files)})"
 
 
-def stamp_pages() -> list[Path]:
-    return sorted(ROOT.glob("*.html")) + sorted((ROOT / "chapters").glob("*.html"))
+def public_pages() -> list[Path]:
+    return sorted(ROOT.glob("*.html")) + essay_files()
 
 
 def git(*args: str) -> str:
@@ -133,72 +224,103 @@ def git(*args: str) -> str:
     ).stdout.strip()
 
 
-def build_stamp() -> str:
-    """The revision the generator ran against, plus when it ran.
+def deployment_footer() -> str:
+    """A stable footer with no guessed deployment revision.
 
-    A published page cannot carry its own commit hash -- committing the stamp
-    changes the hash -- so this names the *source revision*: HEAD at generation
-    time, which is the parent commit once the stamp itself is committed. That is
-    enough to answer "is what I am reading current", which is the only question
-    it exists to answer. verify.sh pins it to HEAD or HEAD's parent, so content
-    cannot be edited without re-running the generator.
+    A commit cannot contain its own hash. The old footer therefore named the
+    parent while calling it the build revision, which was structurally capable
+    of being stale. Exact deployment identity now belongs to check_live.py,
+    which compares the served artifact with this checkout byte for byte.
     """
-    import datetime
-
-    sha = git("rev-parse", "--short", "HEAD")
-    when = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     return (
-        f'{STAMP_START}<p class="build-stamp">Built from '
-        f'<a href="{REPO}/commit/{sha}"><code>{sha}</code></a> · {when} · '
-        f'<a href="{REPO}">source</a></p>{STAMP_END}'
+        f'{STAMP_START}<p class="build-stamp">'
+        f'<a href="{REPO}">Source</a> · '
+        f'<a href="{REPO}/deployments">deployment history</a>'
+        f"</p>{STAMP_END}"
     )
 
 
-def write_stamps() -> int:
-    stamp = build_stamp()
+def write_deployment_footers() -> int:
+    footer = deployment_footer()
     pattern = re.compile(re.escape(STAMP_START) + r".*?" + re.escape(STAMP_END), re.S)
     changed = 0
-    for path in stamp_pages():
+    for path in public_pages():
         text = path.read_text(encoding="utf-8")
         if STAMP_START not in text:
             raise ValueError(f"{path} has no build-stamp markers")
-        new = pattern.sub(lambda _m: stamp, text, count=1)
+        new = pattern.sub(lambda _m: footer, text, count=1)
         if new != text:
             path.write_text(new, encoding="utf-8")
             changed += 1
     return changed
 
 
-def check_stamps() -> str:
-    """Every page carries the same stamp, and it names HEAD or HEAD's parent."""
-    pattern = re.compile(
-        re.escape(STAMP_START) + r'<p class="build-stamp">Built from '
-        r'<a href="[^"]+/commit/([0-9a-f]+)"><code>\1</code></a> · ([^<·]+) · '
-        r'<a href="[^"]+">source</a></p>' + re.escape(STAMP_END)
-    )
-    seen: set[tuple[str, str]] = set()
-    for path in stamp_pages():
+def check_deployment_footers() -> str:
+    """Every page carries the stable source/deployment links."""
+    expected = deployment_footer()
+    for path in public_pages():
+        text = path.read_text(encoding="utf-8")
+        if text.count(STAMP_START) != 1 or text.count(STAMP_END) != 1:
+            raise ValueError(
+                f"{path.relative_to(ROOT)} must carry exactly one deployment footer"
+            )
+        pattern = re.compile(re.escape(STAMP_START) + r".*?" + re.escape(STAMP_END), re.S)
+        if pattern.search(text).group(0) != expected:
+            raise ValueError(
+                f"{path.relative_to(ROOT)} has a stale deployment footer; run --write"
+            )
+    return f"{len(public_pages())} page(s)"
+
+
+def chapter_nav(index: int, files: list[Path]) -> str:
+    previous = files[index - 1] if index else None
+    following = files[index + 1] if index + 1 < len(files) else None
+    if previous is None:
+        left = '<a href="../index.html"><span class="dir">←</span> Contents</a>'
+    else:
+        left = (
+            f'<a href="{previous.name}"><span class="dir">← Previous written essay</span> '
+            f'{int(previous.name[:2]):02d} · {essay_title(previous)}</a>'
+        )
+    if following is None:
+        right = '<a class="next" href="../index.html"><span class="dir">Contents →</span></a>'
+    else:
+        right = (
+            f'<a class="next" href="{following.name}"><span class="dir">Next written essay →</span> '
+            f'{int(following.name[:2]):02d} · {essay_title(following)}</a>'
+        )
+    return f'<nav class="chapter-nav">\n      {left}\n      {right}\n    </nav>'
+
+
+def write_navigation() -> int:
+    files = essay_files()
+    pattern = re.compile(r'<nav class="chapter-nav">.*?</nav>', re.S)
+    changed = 0
+    for index, path in enumerate(files):
         text = path.read_text(encoding="utf-8")
         found = pattern.findall(text)
         if len(found) != 1:
             raise ValueError(
-                f"{path.relative_to(ROOT)} must carry exactly one well-formed build stamp; found {len(found)}"
+                f"{path.relative_to(ROOT)} must carry exactly one chapter navigation block"
             )
-        seen.add(found[0])
-    if len(seen) != 1:
-        raise ValueError(f"build stamps disagree across pages: {sorted(seen)}")
-    sha, when = seen.pop()
-    allowed = {git("rev-parse", "--short", "HEAD")}
-    try:
-        allowed.add(git("rev-parse", "--short", "HEAD^"))
-    except Exception:
-        pass
-    if sha not in allowed:
-        raise ValueError(
-            f"build stamp names {sha}, which is neither HEAD nor its parent "
-            f"({sorted(allowed)}); re-run scripts/render_status.py --write"
-        )
-    return f"{sha} · {when}"
+        new = pattern.sub(lambda _m: chapter_nav(index, files), text, count=1)
+        if new != text:
+            path.write_text(new, encoding="utf-8")
+            changed += 1
+    return changed
+
+
+def check_navigation() -> str:
+    files = essay_files()
+    pattern = re.compile(r'<nav class="chapter-nav">.*?</nav>', re.S)
+    for index, path in enumerate(files):
+        text = path.read_text(encoding="utf-8")
+        found = pattern.findall(text)
+        if len(found) != 1 or found[0] != chapter_nav(index, files):
+            raise ValueError(
+                f"{path.relative_to(ROOT)} has stale prev/next navigation; run --write"
+            )
+    return f"{len(files)} written essays"
 
 REGISTER_LABELS = {
     "proved": "Proved",
@@ -666,17 +788,29 @@ def main() -> int:
             print("about.html already up to date")
         if write_essay_count():
             print("updated index.html's essay count")
+        if write_about_essay_count(items, policy):
+            print("updated about.html's essay count")
         if write_assumption_count(policy):
             print("updated essay 25's assumption count")
-        stamped = write_stamps()
-        print(f"build stamp written to {stamped} page(s)" if stamped else "build stamp already current")
+        navigated = write_navigation()
+        print(
+            f"navigation regenerated on {navigated} page(s)"
+            if navigated
+            else "chapter navigation already current"
+        )
+        footers = write_deployment_footers()
+        print(
+            f"deployment footer regenerated on {footers} page(s)"
+            if footers
+            else "deployment footers already current"
+        )
         return 0
 
     if before != after:
-        # The trajectory is computed from git history, so a commit that touches
-        # data/ledger.json leaves the committed page one row short until the next
-        # render -- the same off-by-one as the build stamp, and for the same
-        # reason. Accept the render as of HEAD's parent too.
+        # The trajectory is computed from git history, so a commit that contains
+        # a data/ledger.json change cannot also contain a row naming its own hash.
+        # Accept the render as of HEAD's parent; the next authoring render adds
+        # that historical row.
         try:
             lagged = replace_block(before, render_block(items, policy, revisions, upto="HEAD^"))
         except Exception:  # noqa: BLE001
@@ -692,26 +826,38 @@ def main() -> int:
         return 1
     print(f"contents-page essay count agrees with the files on disk: {counted}")
     try:
+        about_counted = check_about_essay_count(items, policy)
+    except ValueError as exc:
+        print(f"About essay count: {exc}")
+        return 1
+    print(f"About essay count agrees with the files and register: {about_counted}")
+    try:
         assumed = check_assumption_count(policy)
     except ValueError as exc:
         print(f"assumption count: {exc}")
         return 1
     print(f"closing essay's assumption total agrees with the register: {assumed}")
     try:
-        stamp = check_stamps()
+        navigation = check_navigation()
     except ValueError as exc:
-        print(f"build stamp: {exc}")
+        print(f"chapter navigation: {exc}")
         return 1
-    print(f"build stamp consistent on every page: {stamp}")
+    print(f"chapter navigation is generated and current: {navigation}")
+    try:
+        footers = check_deployment_footers()
+    except ValueError as exc:
+        print(f"deployment footer: {exc}")
+        return 1
+    print(f"deployment footer contains no mutable revision: {footers}")
     accepted_ids = set(policy["accepted_assumption_ids"])
-    owed_count = sum(
+    outstanding = sum(
         item["role"] == "required_for_flt"
         and not closes_required_debt(item, accepted_ids)
         for item in items
     )
     print(
         "proof register and about.html agree; "
-        f"{owed_count} required item(s) still owed; "
+        f"{outstanding} required item(s) still owed; "
         f"{len(accepted_ids)} accepted assumption record(s)"
     )
     return 0

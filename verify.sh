@@ -9,10 +9,24 @@
 #   * no Tier C textbook section numbers anywhere
 #   * every Tier A citation is logged in SOURCES.md
 #   * no long n-grams shared with the reference transcript
-# Counts are COMPUTED, never typed. Exits non-zero on any hard failure.
+# Counts are COMPUTED, never typed. Pass --live to add a byte-for-byte check of
+# the deployed github.io artifact and canonical register. Exits non-zero on any
+# hard failure.
 set -u
 cd "$(dirname "$0")"
 fail=0
+live=0
+if [ "$#" -gt 1 ]; then
+  echo "usage: ./verify.sh [--live]"
+  exit 2
+fi
+if [ "$#" -eq 1 ]; then
+  if [ "$1" != "--live" ]; then
+    echo "usage: ./verify.sh [--live]"
+    exit 2
+  fi
+  live=1
+fi
 
 echo "== count sync (computed, not typed) =="
 files=$(ls chapters/*.html 2>/dev/null | wc -l | tr -d ' ')
@@ -229,6 +243,15 @@ echo "== no copyrighted PDFs or transcripts tracked by git =="
 tracked=$(git ls-files 2>/dev/null | grep -Ei '\.(pdf|epub)$|^resources/|^sources/' )
 if [ -n "$tracked" ]; then echo "  FAIL: should not be tracked:"; echo "$tracked"; fail=1
 else echo "  none tracked"; fi
+
+if [ "$live" = 1 ]; then
+  echo "== deployed site equals this verified checkout =="
+  if python3 scripts/check_live.py; then
+    echo "  published HTML and canonical register match"
+  else
+    fail=1
+  fi
+fi
 
 echo "----------"
 if [ "$fail" = 0 ]; then echo "VERIFY: PASS"; else echo "VERIFY: FAIL"; fi

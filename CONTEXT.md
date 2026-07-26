@@ -217,7 +217,9 @@ what this essay proves or explicitly assumes.
 `verify.sh` checks the structure now and will check exact carry-forward equality when the middle
 essays exist.
 
-Header, footer, prev/next nav copied verbatim between essays.
+Copy the structural chapter shell, but never maintain previous/next links by hand.
+`python3 scripts/render_status.py --write` derives every chapter navigation block from the written
+essay files, and `verify.sh` rejects a frozen pointer.
 
 ## The master ledger
 
@@ -381,19 +383,18 @@ five essays written, one debt outstanding"**. The third is free and true, and is
 What *is* true and worth saying: essays 01–10 form an unbroken reading path with no forward references,
 verified by the two symmetric ledger checks rather than asserted.
 
-⚠ **Never verify a deploy with a hand-rolled command.** Every ad-hoc `curl | grep` check in this
-project got disputed, and the dispute was always reasonable, because such a check is indistinguishable
-from one that read the working tree. Use **`python3 scripts/check_live.py`**. It fetches the github.io
-URLs, reads no local HTML, and asserts every page serves the same stamp and that the stamp is HEAD or
-HEAD's parent. It cannot be HEAD alone — committing the stamp changes the hash, so the generator records
-HEAD at generation time and that becomes the parent once committed. Add `--expect 25 "some text"` to
-assert specific served content.
+⚠ **Never verify a deploy with a hand-rolled command or a committed revision stamp.** Every ad-hoc
+`curl | grep` check in this project got disputed, and reasonably: it can prove one phrase arrived while
+the index, About page or another chapter stayed behind. A commit also cannot contain its own hash, so
+the former "Built from" footer necessarily named a parent while presenting it as the deployment.
 
-⚠ **The build stamp cannot detect a stale essay.** `render_status.py --write` rewrites every stamp on
-every run, so all pages always carry the same revision — that is by design, since the stamp answers
-"is this deploy current". It says nothing about whether a given essay's *content* was revisited when its
-neighbours changed. Nine essays had drifted with identical stamps. Use the ledger checks for that, not
-the stamp.
+Use **`./verify.sh --live`**. The local half first proves that the register, generated status, counts
+and navigation agree. The live half then cache-busts every github.io URL and requires every served HTML
+file plus `data/ledger.json` to equal that verified checkout byte for byte. Local-only work, an unpushed
+commit, a failed build, cache lag and a partial deploy all become the same explicit failure. The public
+footer now contains only stable links to source and deployment history; deployment identity belongs to
+the comparison, not to a self-referential string in the artifact. For a narrow diagnostic,
+`python3 scripts/check_live.py 24 25` and `--expect 25 "some text"` remain available.
 
 ## Sequencing notes (writing order is not reading order)
 
@@ -582,7 +583,8 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
 
 - Plain HTML, one shared `static/style.css`, one small `static/theme.js`. No build step.
 - `data/ledger.json` is the canonical proof-status register. `scripts/render_status.py --write`
-  refreshes the committed About block; serving and deployment still require no build.
+  refreshes the committed About block, both completion summaries, every chapter navigation block and
+  the stable deployment footer; serving and deployment still require no build.
 - KaTeX from CDN with SRI hashes **copied byte-for-byte from book 2's chapters**.
 - Light/dark theme honouring `prefers-color-scheme`, toggle persisted in `localStorage`.
 - Relative links only; `.nojekyll`; GitHub Pages from repo root.
@@ -591,8 +593,8 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
 
 ## verify.sh — what it must check
 
-Port book 2's checks (count sync, link resolution, math-delimiter balance, prev/next contiguity,
-quotation scan, no tracked PDFs), then add:
+Port book 2's checks (count sync, link resolution, math-delimiter balance, generated prev/next
+contiguity, quotation scan, no tracked PDFs), then add:
 
 1. **Current ledger structure** — every written essay has proved/assumed/owed columns; every
    registered item is in the column dictated by its mode and carries canonical mode/role badges; and
