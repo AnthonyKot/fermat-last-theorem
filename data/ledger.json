@@ -90,7 +90,17 @@
       "essays": [
         4
       ],
-      "text": "$\\mathbb{Z}_\\ell$ is a ring whose units are the elements of valuation $0$, with the single maximal ideal $\\ell\\mathbb{Z}_\\ell$, and every element has a unique digit expansion."
+      "text": "On the valuation-ring side: $\\mathbb{Z}_\\ell$ is a ring whose units are the elements of valuation $0$, so it has the single maximal ideal $\\ell\\mathbb{Z}_\\ell$."
+    },
+    {
+      "id": "04-digit-expansion",
+      "register": "proved",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [
+        4
+      ],
+      "text": "On the congruence side: every compatible sequence has exactly one digit expansion and every digit string occurs, proved for $\\varprojlim\\mathbb{Z}/\\ell^n\\mathbb{Z}$ directly, without appeal to completeness or to the identification of the two constructions."
     },
     {
       "id": "04-free-modules",

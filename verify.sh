@@ -20,6 +20,37 @@ links=$(grep -oE 'href="chapters/[0-9][^"]*\.html"' index.html | sort -u | wc -l
 echo "  $files essay files on disk; $links distinct essay links on the contents page"
 if [ "$files" != "$links" ]; then echo "  FAIL: contents page ($links) != essay files ($files)"; fail=1; fi
 
+echo "== HTML well-formed: no math leaking into the tag parser =="
+# A raw "<" inside math is swallowed by the HTML tokenizer as a tag name, which
+# silently destroys the rest of the sentence. Source review does not catch it;
+# only parsing does. Two spans in essay 04 were lost this way. Two guards:
+# normalise every angle bracket in math to \lt / \gt, and parse for bogus tags.
+python3 - <<'PY' || fail=1
+import glob, re, sys
+from html.parser import HTMLParser
+KNOWN = {"meta","title","link","script","header","div","a","nav","button","main","p","h1","h2","h3",
+         "span","section","ul","ol","li","em","strong","table","thead","tbody","tr","th","td","br",
+         "footer","code","hr","sup","sub","abbr","figure","figcaption","blockquote","b","i"}
+MATH = re.compile(r'\$\$(.+?)\$\$|(?<!\$)\$([^$\n]+?)\$(?!\$)', re.S)
+bad = 0
+for f in sorted(glob.glob("*.html") + glob.glob("chapters/*.html")):
+    t = open(f).read()
+    for m in MATH.finditer(t):
+        body = m.group(1) or m.group(2)
+        if "<" in body or ">" in body:
+            line = t[: m.start()].count("\n") + 1
+            print(f"  RAW ANGLE BRACKET in math {f}:{line}: use \\lt or \\gt -> ${body.strip()[:50]}$")
+            bad += 1
+    class P(HTMLParser):
+        def handle_starttag(s, tag, attrs):
+            if tag not in KNOWN:
+                print(f"  BOGUS TAG <{tag}> in {f}:{s.getpos()[0]} (math or entity leaked into markup)")
+                globals().__setitem__("bad", globals()["bad"] + 1)
+    P().feed(t)
+print("  OK" if not bad else f"  {bad} problem(s)")
+sys.exit(1 if bad else 0)
+PY
+
 echo "== links resolve + math delimiters balance =="
 python3 - <<'PY' || fail=1
 import re, os, glob, sys

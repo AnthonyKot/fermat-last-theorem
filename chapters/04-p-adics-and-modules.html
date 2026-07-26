@@ -57,6 +57,22 @@
         where $\mathrm{GL}_2$ will act.</p>
       <p>We also need one piece of vocabulary the reader may not have met, since it is not quite in
         the standard first course: a module. It appears in Rung 2's second half.</p>
+      <div class="fence">
+        <strong>A notation convention, fixed here and used for the rest of the collection.</strong>
+        Two different primes are in play from now on, and conflating them is the easiest way to
+        misread the endgame.
+        <ul>
+          <li>$p$ is reserved for the <strong>Fermat exponent</strong> — the prime in
+            $a^p+b^p=c^p$, fixed once a hypothetical solution is assumed.</li>
+          <li>$\ell$ denotes an <strong>auxiliary prime</strong>, one we are free to vary: the prime we
+            reduce a curve modulo, or take a valuation at.</li>
+        </ul>
+        Everything in this essay is stated for a general $\ell$, and so is everything in essays 08
+        through 10. The two letters collide at exactly one point, and it is the point of the whole
+        argument: the Frey construction takes the auxiliary prime to be the Fermat exponent itself,
+        $\ell=p$. So $\mathbb{Z}_p$ and $\bar\rho_{E,p}$ in the later essays are the general
+        $\mathbb{Z}_\ell$ and $\bar\rho_{E,\ell}$ specialised, not different objects.
+      </div>
     </section>
 
     <section class="rung">
@@ -78,7 +94,7 @@
         $x=\ell^{a}u$ and $y=\ell^{b}w$ with $a\leq b$; then
         $x+y=\ell^{a}(u+\ell^{b-a}w)$, and the bracket is a rational number with no $\ell$ in its
         denominator, so its valuation is at least $0$. Note the strengthening we get for free: if
-        $a<b$, the bracket is $u$ plus something divisible by $\ell$, hence has valuation exactly
+        $a\lt b$, the bracket is $u$ plus something divisible by $\ell$, hence has valuation exactly
         $0$, so</p>
       <p>$$ v_\ell(x)\neq v_\ell(y)\quad\Longrightarrow\quad v_\ell(x+y)=\min\bigl(v_\ell(x),v_\ell(y)\bigr). $$</p>
       <p>Now invert the scale. Define the <strong>$\ell$-adic absolute value</strong></p>
@@ -95,7 +111,7 @@
         <em>non-archimedean</em>. It has consequences that are worth absorbing now, because they are
         why the word “continuous” will later be doing real work:</p>
       <ul>
-        <li>Every point of a ball is its centre. If $|y-x|_\ell<r$ then the balls of radius $r$ about
+        <li>Every point of a ball is its centre. If $|y-x|_\ell\lt r$ then the balls of radius $r$ about
           $x$ and about $y$ contain exactly the same points.</li>
         <li>Two balls are therefore either disjoint or nested — never partially overlapping.</li>
         <li>Every open ball is also closed. The space is <em>totally disconnected</em>: it falls apart
@@ -154,6 +170,15 @@
         numerals extended infinitely to the <em>left</em> instead of to the right. The series
         converges because $|b_i\ell^i|_\ell\leq\ell^{-i}\to0$: in this metric, high powers of $\ell$
         are the negligible ones.</p>
+      <p>Two remarks on what that argument rests on, because the two constructions are not
+        interchangeable for bookkeeping purposes. First, the digit expansion was derived entirely from
+        compatibility — it is a fact about $\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$ and uses neither
+        completeness nor the isomorphism above. Second, the same is true of the unit criterion: a
+        compatible sequence is invertible exactly when its first term is non-zero in
+        $\mathbb{Z}/\ell$. So a reader who prefers to <em>define</em> $\mathbb{Z}_\ell$ as the inverse
+        limit gives up nothing and assumes strictly less; the metric route is kept first because the
+        ultrametric geometry is what makes the word “continuous” meaningful in essay 05. The ledger
+        records the two facts separately for exactly this reason.</p>
 
       <h3>Modules, and what “rank two” means</h3>
       <p>A <strong>module</strong> over a commutative ring $R$ is an abelian group $M$ with a
@@ -169,9 +194,9 @@
         $\mathbb{Z}_\ell/\ell\mathbb{Z}_\ell\cong\mathbb{F}_\ell$, and dimension over a field is well
         defined.</p>
       <p>This is the vocabulary the later essays need, and the reason to insist on it is that
-        “two-dimensional” would be the wrong phrase. Essay 09 builds an object that is free of rank
-        $2$ <em>over $\mathbb{Z}_\ell$</em> — not a vector space over a field — and essay 10 makes the
-        Galois group act on it. Choosing a basis then turns that action into $2\times2$ matrices with
+        “two-dimensional” would be the wrong phrase. Essay 09 builds, for <em>every</em> prime $\ell$,
+        an object free of rank $2$ <em>over $\mathbb{Z}_\ell$</em> — not a vector space over a field —
+        and essay 10 makes the Galois group act on it. Choosing a basis then turns that action into $2\times2$ matrices with
         entries in $\mathbb{Z}_\ell$. The group of invertible such matrices is
         $\mathrm{GL}_2(\mathbb{Z}_\ell)$, and invertibility there is a stronger requirement than
         invertibility over the field $\mathbb{Q}_\ell$:</p>
@@ -207,7 +232,7 @@
       $$</p>
       <p>The first is the geometric series $\sum_{i\geq0}3^i$, whose value “ought to be”
         $1/(1-3)=-\tfrac12$ — and in $\mathbb{Q}_3$ it genuinely converges to exactly that, because
-        the ratio $3$ has $|3|_3<1$. A divergent series in one metric is a convergent one in
+        the ratio $3$ has $|3|_3\lt 1$. A divergent series in one metric is a convergent one in
         another.</p>
       <div class="table-scroll">
         <table>
@@ -264,9 +289,17 @@
 
     <section class="rung">
       <h2><span class="num">Rung 4</span> Reading</h2>
-      <p><strong>Absolute values and the non-archimedean condition.</strong> Andrew Sutherland's MIT
-        18.785 Fall 2021 Lecture 8, §8.1, lists the absolute-value axioms and the strengthened
-        inequality that defines the non-archimedean case, together with the corresponding metric and
+      <p><strong>Absolute values and the valuation, at the source.</strong> Andrew Sutherland's MIT
+        18.785 Fall 2021 Lecture 1, <em>Absolute values and discrete valuations</em>, is the primary
+        treatment: definition 1.2 gives the absolute-value axioms and the fourth condition defining the
+        non-archimedean case, lemma 1.4 characterises that case by boundedness on sums of ones, and
+        definition 1.7 defines $v_p$ on $\mathbb{Q}$ together with $|x|_p=p^{-v_p(x)}$. Definition 1.10
+        gives a valuation as a homomorphism satisfying the minimum inequality — the two properties
+        proved in Rung 2. Theorem 1.8 (Ostrowski) shows the archimedean absolute value and the $|\cdot|_p$
+        are, up to equivalence, the only ones on $\mathbb{Q}$: the sunglasses of the title come in
+        exactly one family per prime.</p>
+      <p><strong>The same axioms, recalled where completions begin.</strong> That course's Lecture 8,
+        §8.1, restates the axioms and the strengthened inequality alongside the corresponding metric and
         ultrametric conditions, and collects the ball properties recorded above.</p>
       <p><strong>Completions.</strong> The same notes' definition 8.1 fixes Cauchy sequences and
         completeness, and definition 8.3 constructs the completion of a metric space and extends the
@@ -309,9 +342,16 @@
             <li data-proof-id="04-p-adic-integers">
               <span class="ledger-mode ledger-mode--proved">Proved</span>
               <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              $\mathbb{Z}_\ell$ is a ring whose units are the elements of valuation $0$, with a single
-              maximal ideal $\ell\mathbb{Z}_\ell$, and every element has a unique digit expansion
+              <em>On the valuation-ring side:</em> $\mathbb{Z}_\ell$ is a ring whose units are the
+              elements of valuation $0$, so it has the single maximal ideal $\ell\mathbb{Z}_\ell$
               <span class="lref">(L3)</span></li>
+            <li data-proof-id="04-digit-expansion">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              <em>On the congruence side:</em> every compatible sequence has exactly one digit
+              expansion, and every digit string occurs — proved for
+              $\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$ directly, with no appeal to completeness or to
+              the identification below <span class="lref">(L3)</span></li>
             <li data-proof-id="04-free-modules">
               <span class="ledger-mode ledger-mode--proved">Proved</span>
               <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>

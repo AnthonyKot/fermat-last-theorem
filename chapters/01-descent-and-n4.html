@@ -78,7 +78,7 @@
         and it will be the last one that goes through without incident. Write $s = n^2$ and $t = m^2$.
         Then</p>
       <p>$$ x \;=\; m^2 - n^2, \qquad y \;=\; 2mn, \qquad z \;=\; m^2 + n^2, $$</p>
-      <p>with $m > n > 0$ coprime. They have opposite parity, since $z = m^2+n^2$ is odd. Conversely
+      <p>with $m \gt n \gt 0$ coprime. They have opposite parity, since $z = m^2+n^2$ is odd. Conversely
         every such $m, n$ gives a primitive triple. Nothing has been lost: this is all of them.</p>
 
       <h3>The theorem</h3>
@@ -93,11 +93,11 @@
         smaller third term. Minimality forbids this, so $\gcd(x,y) = 1$.</p>
       <p><em>Step 2: read it as a Pythagorean triple.</em> Since $(x^2)^2 + (y^2)^2 = z^2$, the triple
         $(x^2, y^2, z)$ is primitive Pythagorean. As above, one of $x^2, y^2$ is even; say $y$ is even.
-        The parametrisation gives coprime $m > n > 0$ of opposite parity with</p>
+        The parametrisation gives coprime $m \gt n \gt 0$ of opposite parity with</p>
       <p>$$ x^2 = m^2 - n^2, \qquad y^2 = 2mn, \qquad z = m^2 + n^2. $$</p>
       <p><em>Step 3: descend once, inside the parametrisation.</em> The first equation says
         $x^2 + n^2 = m^2$, another primitive triple. Here $x$ is odd, so this time it is $n$ that must
-        be even and $m$ that is odd. Applying the parametrisation again gives coprime $a > b > 0$ of
+        be even and $m$ that is odd. Applying the parametrisation again gives coprime $a \gt b \gt 0$ of
         opposite parity with</p>
       <p>$$ x = a^2 - b^2, \qquad n = 2ab, \qquad m = a^2 + b^2. $$</p>
       <p><em>Step 4: extract three squares.</em> Substitute into $y^2 = 2mn$:</p>
@@ -111,10 +111,10 @@
       <p><em>Step 5: the smaller solution.</em> Substituting the first two into the third,</p>
       <p>$$ u^4 + v^4 \;=\; a^2 + b^2 \;=\; w^2. $$</p>
       <p>That is a solution of the same equation. Is it smaller? Since $w \geq 1$ we have
-        $w \leq w^2 = a^2 + b^2 = m$, and since $m \geq 1$ we have $m \leq m^2$, and since $n > 0$ we
-        have $m^2 < m^2 + n^2 = z$. Chaining these,</p>
-      <p>$$ w \;\leq\; w^2 \;=\; m \;\leq\; m^2 \;<\; m^2 + n^2 \;=\; z. $$</p>
-      <p>So $w < z$, contradicting the minimality of $z$. No solution exists. $\blacksquare$</p>
+        $w \leq w^2 = a^2 + b^2 = m$, and since $m \geq 1$ we have $m \leq m^2$, and since $n \gt 0$ we
+        have $m^2 \lt m^2 + n^2 = z$. Chaining these,</p>
+      <p>$$ w \;\leq\; w^2 \;=\; m \;\leq\; m^2 \;\lt \; m^2 + n^2 \;=\; z. $$</p>
+      <p>So $w \lt z$, contradicting the minimality of $z$. No solution exists. $\blacksquare$</p>
 
       <h3>The case $n = 4$</h3>
       <p>Immediately: if $x^4 + y^4 = z^4$ then $x^4 + y^4 = (z^2)^2$, which the theorem forbids. This
