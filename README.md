@@ -9,8 +9,8 @@ Third in a series built the same way, after [The Quantum Quartet](https://anthon
 quantum information).
 
 Each essay follows four rungs — **What we already have → The construction → What it buys → Reading** —
-and closes with a three-part **ledger**: what it proves, what it explicitly imports, and what the final
-contradiction is still owed. The series is finished when the required debt is empty; imported results
+and closes with a three-part **ledger**: what it proves, what it explicitly assumes, and what the final
+contradiction is still owed. The series is finished when the required debt is empty; assumed results
 remain visible as assumptions. See [`about.html`](about.html) for the generated proof boundary.
 
 ## Reading it
@@ -53,11 +53,11 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
 ./verify.sh
 ```
 
-- **Ledger checks.** Every essay must carry proved/imported/owed columns, and no essay's "What we
+- **Ledger checks.** Every essay must carry proved/assumed/owed columns, and no essay's "What we
   already have" may cite an essay at or after its own number. Every registered item must appear in the
   column dictated by its canonical proof mode, with matching mode and FLT-chain/background badges.
 - **Proof-register sync.** `data/ledger.json` is the source of truth for the public account of what is
-  proved, imported, outlined, conditional or planned, whether it is required by the FLT chain, and
+  proved, assumed, outlined, conditional or planned, whether it is required by the FLT chain, and
   which required imports the completion policy accepts. `about.html` contains a committed generated
   block; verification fails if either side drifts.
 - **Computed numbers.** Every numerical claim has a script in `checks/`, run by `verify.sh`, and where

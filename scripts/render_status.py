@@ -23,7 +23,7 @@ END = "<!-- proof-register:end -->"
 
 REGISTER_LABELS = {
     "proved": "Proved",
-    "stated": "Imported",
+    "stated": "Assumed",
     "outlined": "Outlined",
     "conditional": "Conditional",
     "described": "Described",
@@ -31,7 +31,7 @@ REGISTER_LABELS = {
 
 PLANNED_LABELS = {
     "proved": "To prove",
-    "stated": "To import",
+    "stated": "To assume",
     "outlined": "To complete",
     "conditional": "Conditional",
     "described": "To describe",
@@ -39,7 +39,7 @@ PLANNED_LABELS = {
 
 CHAPTER_MODE_LABELS = {
     "proved": "Proved",
-    "stated": "Imported",
+    "stated": "Assumed",
     "outlined": "Outlined",
     "conditional": "Conditional",
     "described": "Described",
@@ -122,7 +122,7 @@ def load_register() -> tuple[list[dict], dict]:
                 raise ValueError(f"{item['id']} is not inside a ledger column")
             expected_column = {
                 "proved": "proved-here",
-                "stated": "imported-here",
+                "stated": "assumed-here",
                 "outlined": "owed",
                 "conditional": "owed",
                 "described": "owed",
@@ -241,7 +241,7 @@ def render_block(items: list[dict], policy: dict) -> str:
         "      appears here only when it is both available and marked proved.</p>",
         *render_items(proved),
         "",
-        "    <h3>Explicitly imported, not proved here</h3>",
+        "    <h3>Explicitly assumed, not proved here</h3>",
         '    <p class="scope-note">These available inputs are named in the completion policy. They',
         "      close a dependency without being presented as proofs.</p>",
         *render_items(imported),

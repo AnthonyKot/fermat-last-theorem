@@ -81,7 +81,7 @@ for f in essays:
     led = t.split('<section class="ledger">', 1)[1]
     expected_columns = (
         'class="col proved-here"',
-        'class="col imported-here"',
+        'class="col assumed-here"',
         'class="col owed"',
     )
     if any(column not in led for column in expected_columns):

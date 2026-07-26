@@ -137,10 +137,13 @@ Exact headings (`<section class="rung">`, `<h2>` with a numbered pill):
 3. **What it buys** — an original worked example, plus the specific later essay that consumes this.
 4. **Reading** — topic-level citations only (see Sourcing), flagged unverified.
 
-Then the **ledger** (`<section class="ledger">`): three columns, *proved here*, *imported here* and
+Then the **ledger** (`<section class="ledger">`): three columns, *proved here*, *assumed here* and
 *still owed*. A registered item carries canonical mode and role badges. Proved items alone receive a
-green check; stated results remain imports; outlined and conditional results remain owed. The owed
-column is the previous essay's debt minus what this essay proves or explicitly imports.
+green check; outlined and conditional results remain owed. The middle column is named *assumed*, not
+*imported*, on purpose: everything in it is an unproved result taken from the literature — a live trust
+obligation — and never merely a pointer to an earlier essay of this collection. Provenance from an
+earlier essay belongs in Rung 1, not in the ledger. The owed column is the previous essay's debt minus
+what this essay proves or explicitly assumes.
 `verify.sh` checks the structure now and will check exact carry-forward equality when the middle
 essays exist.
 
@@ -398,7 +401,7 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
 Port book 2's checks (count sync, link resolution, math-delimiter balance, prev/next contiguity,
 quotation scan, no tracked PDFs), then add:
 
-1. **Current ledger structure** — every written essay has proved/imported/owed columns; every
+1. **Current ledger structure** — every written essay has proved/assumed/owed columns; every
    registered item is in the column dictated by its mode and carries canonical mode/role badges; and
    no essay's *What we already have* names an essay number ≥ its own.
 2. **Proof-register sync** — every available `data/ledger.json` item maps to exactly one essay-ledger

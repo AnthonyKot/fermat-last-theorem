@@ -190,12 +190,12 @@ th { font-weight: 700; color: var(--ink); font-size: .8rem; letter-spacing: .04e
   text-transform: uppercase; margin: 0 0 .5rem;
 }
 .ledger .proved-here h3 { color: var(--have); }
-.ledger .imported-here h3 { color: var(--accent); }
+.ledger .assumed-here h3 { color: var(--accent); }
 .ledger .owed h3 { color: var(--owed); }
 .ledger ul { list-style: none; margin: 0; padding: 0; font-size: .88rem; line-height: 1.45; }
 .ledger li { margin-bottom: .4rem; padding-left: 1.1rem; position: relative; color: var(--ink-soft); }
 .ledger .proved-here li::before { content: "✓"; position: absolute; left: 0; color: var(--have); font-weight: 700; }
-.ledger .imported-here li::before { content: "↗"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.ledger .assumed-here li::before { content: "↗"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 .ledger .owed li::before { content: "○"; position: absolute; left: 0; color: var(--owed); }
 .ledger-mode,
 .ledger-role {
