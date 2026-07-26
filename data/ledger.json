@@ -824,7 +824,7 @@
       "essays": [
         25
       ],
-      "text": "The final contradiction is assembled conditionally on the explicit inputs assigned to essays 13, 18, 23 and 24, and the collection's full FLT conclusion also still owes the outlined second case for $n=3$."
+      "text": "The final contradiction is assembled conditionally on exactly three inputs -- modularity (essay 18), the dimension formula (essay 13) and Ribet's theorem, stated here -- and the collection's full FLT conclusion additionally on essay 02's outlined second case for $n=3$. Nothing else is external: the irreducibility threshold and the conductor of $\\bar\\rho$ are both settled in essay 24."
     },
     {
       "id": "25-level-two",

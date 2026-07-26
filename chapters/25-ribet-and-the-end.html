@@ -30,8 +30,8 @@
     <div class="claim">
       <span class="tag">This essay states, computes, and concludes conditionally</span>
       <strong>States:</strong> Ribet's level-lowering theorem, with hypotheses.
-      <strong>Computes:</strong> $\dim S_2(\Gamma_0(2)) = 0$, conditional on the dimension formula
-      assigned to essay 13.
+      <strong>Computes:</strong> $\dim S_2(\Gamma_0(2)) = 0$, given the dimension formula essay 13
+      will derive.
       <strong>Concludes conditionally:</strong> Fermat's Last Theorem.
     </div>
 
@@ -43,53 +43,58 @@
       <p>$$ E \;:\; y^2 = x(x-a^p)(x+b^p) $$</p>
       <p>is an elliptic curve over $\mathbb{Q}$ with discriminant $\Delta = 16\,(abc)^{2p}$.</p>
       <div class="fence">
-        <strong>Declared debts, now two rather than four.</strong> When this essay was written, all of
-        03, 05, 09–21, 23 and 24 were unwritten and it had to assume four results outright. Two are now
-        established: essay <a href="23-semistable-and-modular.html">23</a> proves the Frey curve
-        semistable, and essay <a href="24-the-frey-representation.html">24</a> proves
-        $N(\bar\rho)=2$ and settles irreducibility for $p\gt7$ — and for $p=5,7$ outside two residual
-        cases. What is still assumed is <strong>(A)</strong> modularity itself, from the unwritten essay
-        18, and <strong>(D)</strong> the dimension formula, from the unwritten essay 13. Until those
-        exist this remains a conditional argument, and describing it otherwise would be a
-        misrepresentation.
+        <strong>Two assumptions, and they are both about the modular side.</strong> Everything on the
+        elliptic-curve side of the argument is now established, and both remaining assumptions live in
+        essays that are not yet written:
+        <ul>
+          <li><strong>(M) Modularity.</strong> Every semistable elliptic curve over $\mathbb{Q}$ is
+            modular. Stated in essay 18, applied in essay
+            <a href="23-semistable-and-modular.html">23</a>, proved nowhere here.</li>
+          <li><strong>(F) The dimension formula.</strong>
+            $\dim S_2(\Gamma_0(N))=1+\frac{\mu}{12}-\frac{\nu_2}{4}-\frac{\nu_3}{3}-\frac{\nu_\infty}{2}$,
+            with $\mu$ the index of $\Gamma_0(N)$ in $\mathrm{SL}_2(\mathbb{Z})$ and
+            $\nu_2,\nu_3,\nu_\infty$ counting elliptic points of order two and three and cusps.
+            Derived in essay 13.</li>
+        </ul>
+        Ribet's theorem is stated in this essay and not proved. So the argument below is conditional on
+        exactly three things — (M), (F), and Ribet — and on nothing else.
       </div>
-      <p>The four inputs, with their present status:</p>
-      <ul>
-        <li><strong>(A)</strong> $E$ is semistable, and modular — a weight-2 newform of level
-          $\mathrm{rad}(abc)$ has the same Galois representation. <span class="lref">essay 23, via
-          Wiles's theorem in essay 18</span></li>
-        <li><strong>(B)</strong> The mod $p$ representation $\bar\rho = \bar\rho_{E,p}$ is continuous,
-          odd, and irreducible. <span class="lref">no longer assumed — oddness proved in essay 10,
-          irreducibility in essay 24</span></li>
-        <li><strong>(C)</strong> $\bar\rho$ is finite at $p$, and its conductor is exactly $2$.
-          <span class="lref">no longer assumed — the conductor is computed in essay 24, which imports
-          only finiteness at $p$</span></li>
-        <li><strong>(D)</strong> $\dim S_2(\Gamma_0(N)) = 1 + \frac{\mu}{12} - \frac{\nu_2}{4} -
-          \frac{\nu_3}{3} - \frac{\nu_\infty}{2}$, where $\mu$ is the index of $\Gamma_0(N)$ in
-          $\mathrm{SL}_2(\mathbb{Z})$ and $\nu_2, \nu_3, \nu_\infty$ count elliptic points of order two
-          and three and cusps. <span class="lref">essay 13</span></li>
-      </ul>
-      <p>One remark on (B), because it used to be the loosest point in the argument and no longer is.
-        Irreducibility comes from Mazur's isogeny theorem, and the form that applies is the sharpened
-        one: no rational $p$-isogeny exists when $p\geq5$, the curve has full rational $2$-torsion, and
-        its conductor is square-free. Essay <a href="24-the-frey-representation.html">24</a> checks all
-        three for the Frey curve — from essays 22, 09 and 23 respectively — so <strong>the argument runs
-        for every prime $p\geq5$</strong>, with no exceptional exponents and nothing handed to
-        nineteenth-century work. Earlier drafts of this collection carried $n=5$ and $n=7$ as external
-        classical inputs; that debt is discharged.</p>
-      <p>The four inputs above close the modular argument. The collection's claim to a proof of the
-        full theorem now has exactly <strong>one</strong> further debt: essay 02 outlines rather than
-        proves the second-case descent for $n=3$. Nothing else is external.</p>
+      <p>What that leaves established, with the essay that does it:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>What the endgame needs</th><th>Status</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td>$E$ is semistable, conductor $\operatorname{rad}(abc)$</td><td><strong>proved</strong></td><td><a href="23-semistable-and-modular.html">23</a>, from a minimal model at $2$</td></tr>
+            <tr><td>$\bar\rho$ is continuous and <em>odd</em></td><td><strong>proved</strong></td><td><a href="10-elliptic-representation.html">10</a>, for every elliptic curve at once</td></tr>
+            <tr><td>$\bar\rho$ is <em>irreducible</em>, all $p\geq5$</td><td><strong>proved</strong></td><td><a href="24-the-frey-representation.html">24</a>, by Mazur's sharpened theorem</td></tr>
+            <tr><td>$N(\bar\rho)=2$</td><td><strong>proved</strong></td><td><a href="24-the-frey-representation.html">24</a>, reading essay 23's valuations mod $p$</td></tr>
+            <tr><td>$\bar\rho$ is finite at $p$</td><td>assumed</td><td><a href="24-the-frey-representation.html">24</a></td></tr>
+            <tr><td>$E$ is modular of level $\operatorname{rad}(abc)$</td><td>assumption <strong>(M)</strong></td><td>essay 18</td></tr>
+            <tr><td>The dimension formula</td><td>assumption <strong>(F)</strong></td><td>essay 13</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two of those rows were the loosest points in the whole collection until recently, and both are
+        now closed. Irreducibility used to be stated with a threshold of $p\gt7$, leaving $n=5$ and
+        $n=7$ to nineteenth-century work; essay 24 applies Mazur's theorem in its sharpened form —
+        which needs $p\geq5$, full rational $2$-torsion, and a square-free conductor, all three proved
+        here for independent reasons — so <strong>the argument runs for every prime $p\geq5$</strong>
+        with no exceptional exponents. And the conductor of $\bar\rho$ used to be assumed; it is now
+        computed.</p>
+      <p>So the collection's claim to a proof of the full theorem has exactly <strong>one</strong>
+        external debt left, and it is not in this Part: essay
+        <a href="02-unique-factorization-and-n3.html">02</a> outlines rather than proves the
+        second-case descent for $n=3$.</p>
     </section>
 
     <section class="rung">
       <h2><span class="num">Rung 2</span> The construction</h2>
 
       <h3>The gap that level lowering closes</h3>
-      <p>Assumption (A) gives a modular form, but of level $\mathrm{rad}(abc)$ — the product of the
+      <p>Assumption (M) gives a modular form, but of level $\mathrm{rad}(abc)$ — the product of the
         primes dividing $abc$. That number is enormous and entirely unknown; it depends on the solution
         we are trying to rule out. No contradiction can come from it directly.</p>
-      <p>Assumption (C) says something quite different. The representation $\bar\rho$, as opposed to the
+      <p>Essay 24 says something quite different. The representation $\bar\rho$, as opposed to the
         curve, is ramified only at $2$: its conductor is $2$, full stop, regardless of how large $abc$
         is. So we have one object described two ways — as coming from a form of vast level, and as
         having conductor $2$. Bridging that gap is precisely the content of the following theorem.</p>
@@ -111,17 +116,18 @@
         modularity of the Frey curve worth wanting.</p>
 
       <h3>Applying it</h3>
-      <p>Check the hypotheses against what we have. The exponent satisfies $p \gt 3$. By (B), $\bar\rho$
-        is continuous, odd and irreducible. By (C) it is finite at $p$. By (A) it is modular of weight
-        $2$ and level $\mathrm{rad}(abc)$. And by (C) its conductor is $2$. Every hypothesis is met, so
-        the conclusion follows:</p>
+      <p>Check the hypotheses against what we have. The exponent satisfies $p\gt3$. Essay 10 gives
+        continuity and oddness, and essay 24 irreducibility for every $p\geq5$. Essay 24 assumes
+        finiteness at $p$ and <em>computes</em> the conductor to be $2$. Assumption (M) makes $\bar\rho$
+        modular of weight $2$ and level $\operatorname{rad}(abc)$. Every hypothesis is met, so the
+        conclusion follows:</p>
       <p><strong>There exists a newform of weight $2$ and level $2$.</strong></p>
       <p>Such a form lies in $S_2(\Gamma_0(2))$, the space of weight-2 cusp forms of level $2$. It is a
         non-zero element of that space — a newform is in particular a non-zero cusp form. So that space
         is not the zero space.</p>
 
       <h3>Computing the space</h3>
-      <p>Now evaluate the dimension formula (D) at $N = 2$. Four numbers are needed, and all four are
+      <p>Now evaluate the dimension formula (F) at $N = 2$. Four numbers are needed, and all four are
         elementary.</p>
       <p><em>The index.</em> $[\mathrm{SL}_2(\mathbb{Z}) : \Gamma_0(N)] = N \prod_{q \mid N}(1 + 1/q)$,
         so</p>
@@ -156,10 +162,12 @@
         <li>And $E$ was constructed from the solution by an explicit formula, so it would exist if the
           solution did. So <strong>the solution does not exist.</strong></li>
       </ul>
-      <p>The modular contradiction rules out the prime exponents to which its hypotheses apply. It applies to every prime $p\geq5$. Once
-        essay 02's second case for $n=3$ is supplied in full, essay 01's reduction leaves no exponent
-        $n\geq3$. Fermat's Last Theorem. In the current collection that
-        last sentence is conditional, exactly as the ledger records. $\blacksquare$</p>
+      <p>The modular contradiction applies to <em>every</em> prime $p\geq5$ — no exponent in that range
+        is excluded, which was not true of earlier drafts of this collection. Essay 01 reduced every
+        $n\geq3$ to $n=4$ or an odd prime and settled $n=4$; essay 02 settles the first case of $n=3$ and
+        outlines the second. So once that outline becomes a proof, no exponent $n\geq3$ survives:
+        Fermat's Last Theorem. Today that last sentence is conditional on (M), (F), Ribet and essay 02,
+        exactly as the ledger records — and on nothing else. $\blacksquare$</p>
 
       <h3>How much room there was</h3>
       <p>A natural worry about an argument that ends in a zero is whether it only barely ends there.
@@ -256,11 +264,10 @@
             <li data-proof-id="25-contradiction">
               <span class="ledger-mode ledger-mode--conditional">Conditional</span>
               <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              The final contradiction remains conditional on (A)–(D) and the second case for
-              $n=3$</li>
-            <li><strong>(A)</strong> $E$ modular. Its semistability is no longer owed
-              <span class="lref">(L14; essay 18)</span></li>
-            <li><strong>(D)</strong> The dimension formula itself <span class="lref">(L10; essay 13)</span></li>
+              The final contradiction remains conditional on (M), (F) and Ribet, and the collection's
+              full claim also on essay 02's second case for $n=3$</li>
+            <li><strong>(M)</strong> Modularity itself <span class="lref">(L14; essay 18)</span></li>
+            <li><strong>(F)</strong> The dimension formula <span class="lref">(L10; essay 13)</span></li>
             <li>The second-case descent for $n=3$ <span class="lref">(L1; essay 02)</span></li>
             <li>What remains is the modular side alone: the unwritten essays 11–21</li>
           </ul>
@@ -281,6 +288,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 25 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/c89c0cf"><code>c89c0cf</code></a> · 2026-07-26 18:00 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/5ae400b"><code>5ae400b</code></a> · 2026-07-26 18:06 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
