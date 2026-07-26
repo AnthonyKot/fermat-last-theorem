@@ -28,10 +28,11 @@
       two. It must exist. The space it would live in has dimension zero.</p>
 
     <div class="claim">
-      <span class="tag">This essay states and proves</span>
+      <span class="tag">This essay states, computes, and concludes conditionally</span>
       <strong>States:</strong> Ribet's level-lowering theorem, with hypotheses.
-      <strong>Proves:</strong> $\dim S_2(\Gamma_0(2)) = 0$, by the dimension formula.
-      <strong>Concludes:</strong> Fermat's Last Theorem.
+      <strong>Computes:</strong> $\dim S_2(\Gamma_0(2)) = 0$, conditional on the dimension formula
+      assigned to essay 13.
+      <strong>Concludes conditionally:</strong> Fermat's Last Theorem.
     </div>
 
     <section class="rung">
@@ -68,6 +69,10 @@
         nineteenth-century results, so the argument of this essay runs for $p \geq 11$ and the two small
         primes are handled separately. Essay 24 must settle this precisely; here it is flagged rather
         than glossed.</p>
+      <p>The four inputs above close the modular argument. The collection's claim to a proof of the
+        full theorem has one further debt: essay 02 currently outlines rather than proves the
+        second-case descent for $n=3$. The classical cases $p=5$ and $p=7$ are likewise external to
+        the Frey-curve route and must be sourced precisely when essay 24 settles the threshold.</p>
     </section>
 
     <section class="rung">
@@ -144,9 +149,10 @@
         <li>And $E$ was constructed from the solution by an explicit formula, so it would exist if the
           solution did. So <strong>the solution does not exist.</strong></li>
       </ul>
-      <p>There are no non-zero integers with $a^p + b^p = c^p$ for prime $p \geq 5$. With essay 01
-        ($n = 4$ and the reduction to prime exponents) and essay 02 ($n = 3$), there are none for any
-        $n \geq 3$. Fermat's Last Theorem. $\blacksquare$</p>
+      <p>The modular contradiction rules out the prime exponents to which its hypotheses apply. Once
+        the separately handled classical exponents $3$, $5$ and $7$ are supplied in full, essay 01's
+        reduction leaves no exponent $n\geq3$. Fermat's Last Theorem. In the current collection that
+        last sentence is conditional, exactly as the ledger records. $\blacksquare$</p>
 
       <h3>How much room there was</h3>
       <p>A natural worry about an argument that ends in a zero is whether it only barely ends there.
@@ -194,7 +200,9 @@
         with the ramification of the Frey representation stated precisely as its theorem 2.15.</p>
       <p><strong>The dimension formula.</strong> Diamond and Shurman's <em>A First Course in Modular
         Forms</em> develops the index, cusp and elliptic-point counts for $\Gamma_0(N)$ and the genus
-        formula they feed. <span class="unverified">unverified</span></p>
+        formula they feed.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
       <p><strong>The form that does exist.</strong> LMFDB newform <code>11.2.a.a</code>: level $11$,
         weight $2$, trivial character, dimension $1$, with coefficients beginning
         $1, -2, -1, 2, 1, 2, -2$. It is attached to the elliptic curve isogeny class <code>11.a</code> —
@@ -213,11 +221,14 @@
         <div class="col discharged">
           <h3>Discharged here</h3>
           <ul>
-            <li>Ribet's level-lowering theorem, stated with hypotheses <span class="lref">(L18)</span></li>
+            <li data-proof-id="25-ribet">Ribet's level-lowering theorem, stated with hypotheses
+              <span class="lref">(L18)</span></li>
             <li>Its hypotheses checked against the Frey representation</li>
             <li>$\mu = 3$, $\nu_2 = 1$, $\nu_3 = 0$, $\nu_\infty = 2$ at level $2$</li>
-            <li>$\dim S_2(\Gamma_0(2)) = 0$, computed and cross-checked <span class="lref">(L19)</span></li>
-            <li>The contradiction, and Fermat's Last Theorem — conditional on the four inputs below</li>
+            <li data-proof-id="25-level-two">The level-$2$ dimension arithmetic, computed and
+              cross-checked; the formula remains owed <span class="lref">(L19)</span></li>
+            <li data-proof-id="25-contradiction">The contradiction, and Fermat's Last Theorem —
+              conditional on the four inputs below and the separately handled classical cases</li>
           </ul>
         </div>
         <div class="col owed">
@@ -227,6 +238,7 @@
             <li><strong>(B)</strong> $\bar\rho$ irreducible, and the $p > 7$ threshold resolved <span class="lref">(L8; essays 10, 24)</span></li>
             <li><strong>(C)</strong> $\bar\rho$ finite at $p$, conductor $2$ <span class="lref">(L9, L17; essays 10, 24)</span></li>
             <li><strong>(D)</strong> The dimension formula itself <span class="lref">(L10; essay 13)</span></li>
+            <li>The second-case descent for $n=3$ <span class="lref">(L1; essay 02)</span></li>
             <li>Everything (A)–(D) rests on: essays 03–21, 23, 24</li>
           </ul>
         </div>

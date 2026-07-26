@@ -206,14 +206,54 @@ th { font-weight: 700; color: var(--ink); font-size: .8rem; letter-spacing: .04e
 }
 .fence strong { color: var(--owed); }
 
+/* ---- generated proof register ---- */
+.scope-note {
+  color: var(--ink-soft); font-family: var(--sans);
+  font-size: .88rem; line-height: 1.5;
+}
+.scope-register {
+  list-style: none; padding: 0; margin: 0 0 1.5rem;
+  font-family: var(--sans); font-size: .92rem;
+}
+.scope-register li {
+  border-bottom: 1px solid var(--rule);
+  padding: .65rem 0; margin: 0;
+}
+.scope-mode {
+  display: inline-block; min-width: 5.8rem;
+  margin-right: .45rem; font-size: .68rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.scope-mode--proved { color: var(--have); }
+.scope-mode--stated,
+.scope-mode--outlined,
+.scope-mode--conditional { color: var(--owed); }
+.scope-mode--described { color: var(--accent); }
+.scope-essays { color: var(--ink-faint); font-size: .84em; white-space: nowrap; }
+
+/* ---- prerequisite bands ---- */
+.prereq {
+  margin: .8rem 0 1.1rem; padding: .65rem .8rem;
+  border-left: 3px solid var(--accent-soft);
+  background: var(--bg-raised); color: var(--ink-soft);
+  font-family: var(--sans); font-size: .84rem; line-height: 1.45;
+}
+.prereq .label {
+  display: block; margin-bottom: .18rem;
+  color: var(--accent); font-size: .66rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+
 /* ---- unverified citation mark ---- */
 .unverified {
-  font-family: var(--sans); font-size: .68rem; font-weight: 700;
+  display: inline-block;
+  font-family: var(--sans); font-size: .62rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase;
   color: var(--owed); border: 1px solid var(--owed); border-radius: 999px;
-  padding: .08em .45em; margin-left: .35em; white-space: nowrap;
-  vertical-align: .1em;
+  padding: .02em .42em; margin-left: .3em; white-space: nowrap;
+  vertical-align: super; line-height: 1.35;
 }
+.unverified::before { content: "unverified source"; }
 
 /* ---- table of contents (landing) ---- */
 .part { margin: 2.4rem 0; }

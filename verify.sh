@@ -4,7 +4,8 @@
 # Ports the checks from The Bridge (count sync, links, math delimiters, prev/next
 # contiguity, quotation scan, no tracked PDFs) and adds the four this book needs,
 # because it has no owned source texts to check pointers against:
-#   * the ledger chain carries forward and no essay uses a result too early
+#   * every written essay carries a ledger and no essay uses a result too early
+#   * the generated public proof status matches the canonical ledger data
 #   * no Tier C textbook section numbers anywhere
 #   * every Tier A citation is logged in SOURCES.md
 #   * no long n-grams shared with the reference transcript
@@ -90,6 +91,9 @@ for f in essays:
 print("  ledgers present, no forward dependencies" if not prob else f"  {prob} ledger problem(s)")
 sys.exit(1 if prob else 0)
 PY
+
+echo "== generated proof status agrees with the canonical ledger data =="
+python3 scripts/render_status.py --check || fail=1
 
 echo "== no Tier C textbook section numbers (no owned copies to verify against) =="
 hits=$(grep -rInE '(Silverman|Diamond|Shurman|Washington|Cornell|Stevens)[^<]{0,80}(§|Ch\.? ?[0-9]|p\.? ?[0-9]|section ?[0-9])' chapters/*.html *.html 2>/dev/null)

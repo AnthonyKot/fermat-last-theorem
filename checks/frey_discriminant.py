@@ -27,6 +27,22 @@ def disc_from_weierstrass(A, B):
     b8 = a1 * a1 * a6 + 4 * a2 * a6 - a1 * a3 * a4 + a2 * a3 * a3 - a4 * a4
     return -b2 * b2 * b8 - 8 * b4 ** 3 - 27 * b6 * b6 + 9 * b2 * b4 * b6
 
+def disc_from_minimal_model(A, B):
+    """The integral model used at 2 when A=-1 mod 4 and B=0 mod 16.
+
+    y^2 + xy = x^3 + ((B-A-1)/4)x^2 - (AB/16)x
+    has discriminant (ABC)^2/2^8, where C=A+B.
+    """
+    assert A % 4 == 3 and B % 16 == 0
+    a1, a3, a6 = 1, 0, 0
+    a2 = (B - A - 1) // 4
+    a4 = -(A * B) // 16
+    b2 = a1 * a1 + 4 * a2
+    b4 = 2 * a4 + a1 * a3
+    b6 = a3 * a3 + 4 * a6
+    b8 = a1 * a1 * a6 + 4 * a2 * a6 - a1 * a3 * a4 + a2 * a3 * a3 - a4 * a4
+    return -b2 * b2 * b8 - 8 * b4 ** 3 - 27 * b6 * b6 + 9 * b2 * b4 * b6
+
 def factor(n):
     n = abs(n); out = {}; d = 2
     while d * d <= n:
@@ -59,6 +75,19 @@ if __name__ == "__main__":
         d1, d2 = disc_from_roots(A, B), disc_from_weierstrass(A, B)
         assert d1 == d2 == 16 * (A * B * C) ** 2
         print(f"  a={a} b={b} p={p}:  both routes give 16*(A*B*C)^2  ->  {d1 == d2}")
+
+    # At 2, the normalization A=-1 mod 4 and B=0 mod 16 makes the standard
+    # integral change to a minimal model possible. Its discriminant is smaller
+    # than the displayed model's by 2^12.
+    print("\nminimal model at 2:\n")
+    for A, B in [(3, 16), (7, 32), (-1, 32)]:
+        C = A + B
+        d_displayed = disc_from_weierstrass(A, B)
+        d_minimal = disc_from_minimal_model(A, B)
+        assert d_displayed == 16 * (A * B * C) ** 2
+        assert d_minimal == (A * B * C) ** 2 // (2 ** 8)
+        assert d_displayed == (2 ** 12) * d_minimal
+        print(f"  A={A:>2} B={B:>2}: displayed/minimal = 2^12  ->  {d_displayed == 2**12 * d_minimal}")
 
     # the worked example printed in essay 22
     d = disc_from_roots(3, 5)

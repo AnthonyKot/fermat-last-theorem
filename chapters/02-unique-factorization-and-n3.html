@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>02 · Unique factorisation, and where it runs out — No Such Form</title>
-<meta name="description" content="Fermat's Last Theorem for n = 3 by descent in the Eisenstein integers, then the failure of unique factorisation in cyclotomic rings, class numbers, and Kummer's regular primes.">
+<meta name="description" content="The first case of Fermat's Last Theorem for n = 3 in the Eisenstein integers, an outline of the second, then the failure of unique factorisation, class numbers, and Kummer's regular primes.">
 <script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="stylesheet" href="../static/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
@@ -138,8 +138,9 @@
         cube, and analyse which units can occur — this is the step that requires care, because there are
         six of them; (4) recombine to produce a solution of the same shape with $n$ replaced by
         $n - 1$. Minimality of $n$ then finishes it.</p>
-      <p>Together the two cases give Fermat's Last Theorem for $n = 3$. With essay 01, the exponents
-        still open are the primes $p \geq 5$.</p>
+      <p>Completing that second-case descent would combine with the first case to give Fermat's Last
+        Theorem for $n = 3$. With essay 01, that would leave only the primes $p \geq 5$. In the
+        collection as it stands, this remains an explicit debt rather than a completed reduction.</p>
 
       <h3>Now do it for every prime — and watch it fail</h3>
       <p>The obvious plan is to repeat this in $\mathbb{Z}[\zeta_p]$ for each odd prime, factoring
@@ -235,7 +236,9 @@
         infinitely many regular primes, and the verification below four million.</p>
       <p><strong>Cyclotomic fields and class numbers.</strong> Washington's <em>Introduction to
         Cyclotomic Fields</em> is the standard reference for class numbers of $\mathbb{Q}(\zeta_p)$,
-        Bernoulli congruences, and regularity. <span class="unverified">unverified</span></p>
+        Bernoulli congruences, and regularity.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
       <p><strong>Check it yourself.</strong> Run <code>checks/kummer_regular_primes.py</code>. It
         computes Bernoulli numbers from the standard recurrence, derives the irregular primes, and
         asserts the classical start of that sequence. Then verify by hand that $37$ divides
@@ -250,14 +253,19 @@
           <ul>
             <li>The Eisenstein integers, their norm, six units, and unique factorisation</li>
             <li>$\lambda = 1-\omega$, the ramified prime above $3$</li>
-            <li>Fermat for $n = 3$, first case complete; second case outlined</li>
-            <li>Exponents reduce to the primes $p \geq 5$ <span class="lref">(L1, complete)</span></li>
-            <li>Unique factorisation demonstrably fails; class numbers and regular primes</li>
+            <li data-proof-id="02-n3-first-case">Fermat for $n = 3$, first case complete</li>
+            <li data-proof-id="02-n3-second-case">Fermat for $n = 3$, second case outlined</li>
+            <li>Conditional on the outlined second-case descent, exponents reduce to the primes
+              $p \geq 5$ <span class="lref">(L1, not yet complete)</span></li>
+            <li data-proof-id="02-ufd-failure">Unique factorisation demonstrably fails</li>
+            <li>Class numbers and regular primes</li>
+            <li data-proof-id="02-kummer">Kummer's regular-prime criterion, stated</li>
           </ul>
         </div>
         <div class="col owed">
           <h3>Still owed</h3>
           <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
             <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essay 05)</span></li>
             <li>$\mathbb{Z}_p$ and the valuation $v_\ell$ <span class="lref">(L3, essay 04)</span></li>
             <li>Elliptic curves, reduction, the conductor <span class="lref">(L4–L5, essays 06–08)</span></li>

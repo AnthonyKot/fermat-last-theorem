@@ -31,7 +31,7 @@ Scaffold and the full 25-essay map are complete. Four essays are written — the
 | 01 | Descent, and the exponent four | $x^4+y^4=z^2$ has no solution, proved in full; reduction to odd prime exponents |
 | 02 | Unique factorisation, and where it runs out | $n=3$ first case in the Eisenstein integers; failure of unique factorisation; Kummer's regular primes |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
-| 25 | Ribet, and the end | Level lowering stated; $\dim S_2(\Gamma_0(2)) = 0$ computed; the contradiction |
+| 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Essays 03–21, 23 and 24 are stubbed on the contents page, and essay 25 states
@@ -49,6 +49,10 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
 - **Ledger checks.** Every essay must carry a ledger, and no essay's "What we already have" may cite an
   essay at or after its own number. Forward dependency is the one defect a careful read never catches,
   because each essay is internally correct.
+- **Proof-register sync.** `data/ledger.json` is the source of truth for the public account of what is
+  proved, stated, outlined, conditional or planned. `about.html` contains a committed generated block;
+  every available item is tied to exactly one essay-ledger entry by `data-proof-id`, and verification
+  fails if either side drifts.
 - **Computed numbers.** Every numerical claim has a script in `checks/`, run by `verify.sh`, and where
   possible confirmed a second independent way:
   - `dim_s2_gamma0.py` — the dimension formula, cross-checked against the classical list of levels where
@@ -88,6 +92,8 @@ chapters/NN-slug.html    one file per essay
 static/style.css         shared styles (themes, ledger, print)
 static/theme.js          theme toggle + KaTeX auto-render
 checks/*.py              scripts backing every numerical claim
+data/ledger.json         canonical proof-status register
+scripts/render_status.py regenerates/checks About's proof-status block
 verify.sh                all checks; exits non-zero on failure
 CONTEXT.md               authoring notes: spine, ledger, style guide
 SOURCES.md               Tier A citation ledger

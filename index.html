@@ -47,18 +47,22 @@
       <strong>Reading</strong>. Then a <strong>ledger</strong> — what this essay discharged, and what
       the final contradiction is still owed. The series is finished when the ledger is empty.</p>
 
-    <p>Two theorems are stated and not proved: Wiles's modularity theorem and Ribet's level-lowering
-      theorem. Part V describes the machinery of the first without proving it, and says so on every
-      page. <a href="about.html">About</a> sets out exactly which doors are opened and which are
-      pointed at.</p>
+    <p>Several load-bearing theorems are stated and not proved, including modularity, level lowering,
+      Mazur's isogeny theorem, Néron–Ogg–Shafarevich, Eichler–Shimura and Langlands–Tunnell. Part V
+      describes Wiles's machinery without proving it, and says so on every page.
+      <a href="about.html">About</a> derives the current proof boundary from the ledger data.</p>
 
     <!-- ===================== TABLE OF CONTENTS ===================== -->
 
     <section class="part">
       <p class="part-head">Part I · The old method, and why it stops</p>
-      <p class="part-intro">Fermat's descent, in full, for the two exponents it reaches. Then the
-        obvious generalisation, and the precise way it fails — which is the reason the remaining
-        twenty essays exist.</p>
+      <p class="part-intro">Fermat's descent in full for $n=4$, then the first case and an explicit
+        outline of the second case for $n=3$. The attempted generalisation fails in a precise way —
+        which is the reason the remaining essays exist.</p>
+      <p class="prereq"><span class="label">Prerequisites</span>
+        Essay 01 uses integers, gcds and congruences. From essay 02 onward: undergraduate linear
+        algebra through eigenvalues, groups, rings, fields and quotients; field extensions and the
+        specialised number systems are introduced as they are needed.</p>
       <ul class="toc">
         <li><a href="chapters/01-descent-and-n4.html">
           <span class="n">01</span>Descent, and the exponent four
@@ -66,7 +70,9 @@
         </a></li>
         <li><a href="chapters/02-unique-factorization-and-n3.html">
           <span class="n">02</span>Unique factorisation, and where it runs out
-          <span class="adds"><span class="proved">Proves:</span> Fermat for $n=3$ in the Eisenstein integers — then the failure of unique factorisation, class numbers, and Kummer's regular primes</span>
+          <span class="adds"><span class="proved">Proves:</span> the first case for $n=3$ and the failure
+            of unique factorisation; <span class="stated">outlines</span> the second case and states
+            Kummer's regular-prime criterion</span>
         </a></li>
         <li><span class="stub">
           <span class="n">03</span>The absolute Galois group<span class="soon">soon</span>
@@ -88,6 +94,9 @@
       <p class="part-intro">A cubic equation with a group law on its solutions. Counting those
         solutions modulo each prime produces a sequence of integers; the Galois group acting on its
         torsion produces a representation. Both come back later.</p>
+      <p class="prereq"><span class="label">Prerequisites</span>
+        Part I's group, field and representation vocabulary, plus coordinate algebra for polynomial
+        equations. No prior elliptic-curve theory or algebraic geometry is assumed.</p>
       <ul class="toc">
         <li><span class="stub">
           <span class="n">06</span>Elliptic curves, written correctly<span class="soon">soon</span>
@@ -117,6 +126,10 @@
       <p class="part-intro">A function on the upper half-plane, symmetric under a group of matrices.
         The space of such functions is finite-dimensional — computably so — and carries operators whose
         eigenvalues are its own Fourier coefficients.</p>
+      <p class="prereq"><span class="label">Prerequisites</span>
+        Complex analysis through holomorphic functions, power series and contour integration; group
+        actions; linear algebra through commuting operators and eigenvectors. The spectral theorem is
+        recalled where essay 14 uses it.</p>
       <ul class="toc">
         <li><span class="stub">
           <span class="n">11</span>The modular group and its quotient<span class="soon">soon</span>
@@ -145,6 +158,9 @@
       <p class="part-head">Part IV · The two worlds are one</p>
       <p class="part-intro">Two constructions from unrelated fields emit the same kind of object and,
         on every example anyone checked, the same numbers. Wiles proved the coincidence is a theorem.</p>
+      <p class="prereq"><span class="label">Prerequisites</span>
+        Parts II and III, together with the Galois-representation vocabulary of essays 05 and 10.
+        $L$-functions are introduced here; prior analytic number theory is not assumed.</p>
       <ul class="toc">
         <li><span class="stub">
           <span class="n">16</span>The representation attached to a form<span class="soon">soon</span>
@@ -165,6 +181,10 @@
       <p class="part-head">Part V · Wiles's machine</p>
       <p class="part-intro">An anatomy, not a proof. These three essays describe the objects and the
         strategy of the 1995 paper; they do not prove it, and they say so on every page.</p>
+      <p class="prereq"><span class="label">Prerequisites</span>
+        Part IV and comfort with ideals, quotient rings and completions. New deformation-theory
+        language is introduced, but these essays ask for conceptual orientation rather than proof-level
+        command of the machinery.</p>
       <ul class="toc">
         <li><span class="stub">
           <span class="n">19</span>Deformations of a representation<span class="soon">soon</span>
@@ -185,6 +205,9 @@
       <p class="part-head">Part VI · The contradiction</p>
       <p class="part-intro">Assume a solution. Build a curve from it. Every property established in the
         previous twenty-one essays now applies at once, and they cannot all hold.</p>
+      <p class="prereq"><span class="label">Prerequisites</span>
+        Essays 01–18 supply the logical chain; essays 22–24 apply it to the Frey curve. Part V explains
+        why modularity is credible but is not a prerequisite for following the final deduction.</p>
       <ul class="toc">
         <li><a href="chapters/22-the-frey-curve.html">
           <span class="n">22</span>The Frey curve
@@ -200,7 +223,8 @@
         </span></li>
         <li><a href="chapters/25-ribet-and-the-end.html">
           <span class="n">25</span>Ribet, and the end
-          <span class="adds"><span class="stated">States</span> level lowering; then $\dim S_2(\Gamma_0(2)) = 0$ — computed — and the argument closes</span>
+          <span class="adds"><span class="stated">States</span> level lowering; computes the level-$2$
+            arithmetic conditional on essay 13's formula; assembles the conditional ending</span>
         </a></li>
       </ul>
     </section>

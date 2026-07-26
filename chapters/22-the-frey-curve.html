@@ -37,11 +37,13 @@
 
     <section class="rung">
       <h2><span class="num">Rung 1</span> What we already have</h2>
-      <p>From essays <a href="01-descent-and-n4.html">01</a> and
-        <a href="02-unique-factorization-and-n3.html">02</a>: Fermat's Last Theorem holds for $n = 4$
-        and $n = 3$, so any counterexample occurs at a prime exponent $p \geq 5$; and if a solution
-        exists at all, a primitive one does — divide out any common factor, since the equation is
-        homogeneous.</p>
+      <p>From essay <a href="01-descent-and-n4.html">01</a>: any counterexample gives one at exponent
+        $4$ or at an odd prime. Essay <a href="02-unique-factorization-and-n3.html">02</a> rules out
+        the first case for $n=3$ and outlines the second-case descent; until that outline is expanded,
+        excluding $p=3$ remains a declared classical input rather than a proof supplied by this
+        collection. After that exclusion, any counterexample occurs at a prime exponent $p\geq5$.
+        If a solution exists at all, a primitive one does — divide out any common factor, since the
+        equation is homogeneous.</p>
       <p>That is genuinely all this essay needs. The construction below is elementary: a cubic
         polynomial, its roots, and its discriminant. What is <em>not</em> elementary is the reason for
         performing it, and that reason lives in essays not yet written.</p>
@@ -73,7 +75,12 @@
       <p>$$ b^p \equiv 0 \pmod{32}. $$</p>
       <p>The condition looks like an extra hypothesis but is free, and it is available only because the
         exponent is at least $5$ — the first place in the whole argument where $p \geq 5$ does real
-        work rather than merely excluding known cases.</p>
+        work rather than merely excluding known cases. Essay 23 will spend it at the prime $2$: it
+        permits an integral change of variables to a minimal model whose discriminant is</p>
+      <p>$$ \Delta_{\min} \;=\; 2^{-8}(abc)^{2p}. $$</p>
+      <p>Thus the model displayed below has discriminant $2^4(abc)^{2p}$, while the minimal change of
+        variables removes a factor $2^{12}$. Naming that change now prevents the factor of $16$ below
+        from appearing to change silently in the reduction argument.</p>
 
       <h3>The curve</h3>
       <p>Write $A = a^p$ and $B = b^p$, so that $A + B = c^p$. Frey's construction is to take the three
@@ -163,10 +170,14 @@
         <em>Fermat's Last Theorem</em> gives Frey's curve in its introduction in the form used here,
         together with the normalisations $a^p \equiv -1 \pmod 4$ and $b^p \equiv 0 \pmod{32}$, and
         credits Hellegouarch for the earlier construction. It states there that the curve is semistable,
-        i.e. of square-free conductor — which is essay 23's job to establish.</p>
+        i.e. of square-free conductor. Its treatment of the Frey curve in §2.2 writes the integral
+        minimal model at $2$ explicitly and gives
+        $\Delta_{\min}=2^{-8}(abc)^{2p}$ — facts essay 23 will derive and use.</p>
       <p><strong>Weierstrass forms and discriminants.</strong> Silverman's <em>The Arithmetic of
         Elliptic Curves</em> is the standard reference for the $b$-invariants, the discriminant formula,
-        and the classification of reduction types. <span class="unverified">unverified</span></p>
+        and the classification of reduction types.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
       <p><strong>Check it yourself.</strong> Run <code>checks/frey_discriminant.py</code>. Better, do
         the $p = 1$ case by hand: expand $x(x-3)(x+5)$, compute $b_2 = 8$, $b_4 = -30$, $b_6 = 0$,
         $b_8 = -225$, and confirm that
@@ -182,8 +193,11 @@
           <h3>Discharged here</h3>
           <ul>
             <li>Normalisation of a hypothetical solution: $b$ even, $a^p \equiv -1 \bmod 4$, $b^p \equiv 0 \bmod 32$</li>
-            <li>The Frey curve $y^2 = x(x-a^p)(x+b^p)$ is an elliptic curve over $\mathbb{Q}$ <span class="lref">(L15)</span></li>
-            <li>Its discriminant is $16(abc)^{2p}$ — verified two independent ways</li>
+            <li data-proof-id="22-frey-construction">The Frey curve
+              $y^2 = x(x-a^p)(x+b^p)$ is an elliptic curve over $\mathbb{Q}$
+              <span class="lref">(L15)</span></li>
+            <li data-proof-id="22-frey-discriminant">Its displayed discriminant is
+              $16(abc)^{2p}$ — verified two independent ways</li>
           </ul>
         </div>
         <div class="col owed">

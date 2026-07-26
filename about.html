@@ -30,38 +30,105 @@
     <h2>What is proved, and what is not</h2>
 
     <p>A series like this can mislead in one specific way: by narrating a proof so smoothly that a
-      reader finishes believing they have seen one. Three registers are used here, and every essay
+      reader finishes believing they have seen one. Five registers are used here, and every essay
       declares which one it is in.</p>
 
-    <h3>Proved in full</h3>
-    <p>Fermat's Last Theorem for $n = 4$, via the stronger statement that $x^4+y^4=z^2$ has no
-      solution; the reduction of the general case to odd prime exponents; the first case of $n = 3$ in
-      the Eisenstein integers; the failure of unique factorisation; the construction of the Frey curve
-      from a hypothetical solution and the computation of its discriminant; its conductor and
-      semistability; the conductor of its mod $p$ Galois representation; and
-      $\dim S_2(\Gamma_0(2)) = 0$. Given the theorems below, the final contradiction is complete and
-      checkable.</p>
-    <p>One case is deliberately not complete, and is marked as such where it appears: the
-      <em>second</em> case of $n = 3$, where the ramified prime divides one of the terms, needs a
-      genuine descent rather than a congruence. Essay 02 gives its skeleton faithfully and compresses
-      the analysis of units inside it. Everything else in the list above is done line by line.</p>
+<!-- proof-register:start -->
+    <h3>Currently proved in full</h3>
+    <p class="scope-note">This list is generated from <code>data/ledger.json</code>. An item
+      appears here only when the register marks it as both available and proved.</p>
+      <ul class="scope-register">
+        <li data-proof-id="01-n4">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          $x^4+y^4=z^2$ has no solution in positive integers, and therefore Fermat's Last Theorem holds for $n=4$. <span class="scope-essays">(<a href="chapters/01-descent-and-n4.html">essay 01</a>)</span>
+        </li>
+        <li data-proof-id="01-exponent-reduction">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          A counterexample at any exponent $n\geq3$ would give one at exponent $4$ or at an odd prime exponent. <span class="scope-essays">(<a href="chapters/01-descent-and-n4.html">essay 01</a>)</span>
+        </li>
+        <li data-proof-id="02-n3-first-case">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          The first case of Fermat's Last Theorem for $n=3$ is ruled out in the Eisenstein integers. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+        </li>
+        <li data-proof-id="02-ufd-failure">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          Unique factorisation is shown to fail by an explicit double factorisation in $\mathbb{Z}[\sqrt{-5}]$. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+        </li>
+        <li data-proof-id="22-frey-construction">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          A normalised hypothetical Fermat solution produces the Frey curve $y^2=x(x-a^p)(x+b^p)$. <span class="scope-essays">(<a href="chapters/22-the-frey-curve.html">essay 22</a>)</span>
+        </li>
+        <li data-proof-id="22-frey-discriminant">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          The displayed Frey model has discriminant $16(abc)^{2p}$. <span class="scope-essays">(<a href="chapters/22-the-frey-curve.html">essay 22</a>)</span>
+        </li>
+      </ul>
 
-    <h3>Stated with hypotheses, not proved</h3>
-    <p>The modularity theorem (Wiles and Taylor, 1995, for semistable curves; Breuil, Conrad, Diamond
-      and Taylor, 2001, in general); Ribet's level-lowering theorem (1990); Mazur's isogeny theorem;
-      the Néron–Ogg–Shafarevich criterion; Eichler–Shimura; Langlands–Tunnell. Each is stated with its
-      hypotheses spelled out, so a reader can see precisely what is being assumed and check that the
-      Frey curve satisfies it.</p>
+    <h3>Present, but not proved in full</h3>
+      <ul class="scope-register">
+        <li data-proof-id="02-n3-second-case">
+          <span class="scope-mode scope-mode--outlined">Outlined</span>
+          The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+        </li>
+        <li data-proof-id="02-kummer">
+          <span class="scope-mode scope-mode--stated">Stated</span>
+          Kummer's regular-prime criterion and his theorem for regular prime exponents are stated. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+        </li>
+        <li data-proof-id="25-ribet">
+          <span class="scope-mode scope-mode--stated">Stated</span>
+          Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+        </li>
+        <li data-proof-id="25-level-two">
+          <span class="scope-mode scope-mode--conditional">Conditional</span>
+          The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+        </li>
+        <li data-proof-id="25-contradiction">
+          <span class="scope-mode scope-mode--conditional">Conditional</span>
+          The final contradiction is assembled conditionally on the explicit inputs assigned to essays 13, 18, 23 and 24, and the collection's full FLT conclusion also still owes the outlined second case for $n=3$. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+        </li>
+      </ul>
 
-    <h3>Described, not proved</h3>
-    <p>Part V. Wiles's proof of modularity is a long, technical paper, and three essays cannot prove
-      it. What they can do is say what the objects are — deformation rings, Hecke algebras — and what
-      the strategy is. Those essays carry a standing notice to that effect.</p>
+    <h3>Boundary for the unwritten essays</h3>
+      <ul class="scope-register">
+        <li data-proof-id="10-local-theorems">
+          <span class="scope-mode scope-mode--stated">To state</span>
+          Mazur's isogeny theorem and the Néron–Ogg–Shafarevich criterion will be stated with their hypotheses. <span class="scope-essays">(essay 10)</span>
+        </li>
+        <li data-proof-id="13-dimension-formula">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          The dimension formula for $S_2(\Gamma_0(N))$ will be derived from the index, elliptic-point counts and cusp count. <span class="scope-essays">(essay 13)</span>
+        </li>
+        <li data-proof-id="16-eichler-shimura">
+          <span class="scope-mode scope-mode--stated">To state</span>
+          Eichler–Shimura will be stated, not proved. <span class="scope-essays">(essay 16)</span>
+        </li>
+        <li data-proof-id="18-modularity">
+          <span class="scope-mode scope-mode--stated">To state</span>
+          The Modularity Theorem will be stated, not proved. <span class="scope-essays">(essay 18)</span>
+        </li>
+        <li data-proof-id="19-21-wiles">
+          <span class="scope-mode scope-mode--described">To describe</span>
+          Wiles's deformation-theoretic machinery will be described as an anatomy, not presented as a proof. <span class="scope-essays">(essay 19, essay 20, and essay 21)</span>
+        </li>
+        <li data-proof-id="21-langlands-tunnell">
+          <span class="scope-mode scope-mode--stated">To state</span>
+          Langlands–Tunnell will be stated, not proved. <span class="scope-essays">(essay 21)</span>
+        </li>
+        <li data-proof-id="23-frey-reduction">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          The Frey curve's minimal model, semistability and conductor will be established. <span class="scope-essays">(essay 23)</span>
+        </li>
+        <li data-proof-id="24-frey-representation">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          The conductor of the Frey curve's mod $p$ representation will be established, with the irreducibility threshold handled explicitly. <span class="scope-essays">(essay 24)</span>
+        </li>
+      </ul>
+<!-- proof-register:end -->
 
-    <p>So the honest description of this collection is: <strong>a complete and checkable derivation of
-      Fermat's Last Theorem from the modularity theorem, plus a guided tour of why modularity is
-      true.</strong> The first part you can verify yourself. The second you are asked to take on
-      trust, with the trust located precisely.</p>
+    <p>When the register is complete, the honest description of this collection will be:
+      <strong>a complete and checkable derivation of Fermat's Last Theorem from the modularity theorem,
+      plus a guided tour of why modularity is true.</strong> The current register above distinguishes
+      that target from what the written essays establish today.</p>
 
     <h2>The ledger</h2>
 
@@ -71,9 +138,10 @@
 
     <p>This is not decoration. The failure mode of a long expository chain is an essay that leans on
       something a <em>later</em> essay builds — a defect no careful reading catches, because each essay
-      is internally correct. The ledger makes that condition mechanical: a script checks that the owed
-      column carries forward correctly and that no essay uses a result before the essay that
-      establishes it. It caught one such gap while the series was still being planned.</p>
+      is internally correct. The current script checks that every written essay carries a ledger and
+      that its first rung does not link forward. Once the intervening essays exist, the stronger
+      carry-forward equality — previous debt minus the current discharge — must become a release gate.
+      The ledger already caught one dependency gap while the series was being planned.</p>
 
     <h2>Reading order</h2>
 
@@ -81,6 +149,15 @@
       descent and the closing contradiction — so that every construction in between had a stated
       destination to justify itself against. Read them in numerical order; that order is the
       dependency order, which is what the ledger enforces.</p>
+
+    <h2>Prerequisites</h2>
+
+    <p>The collection has one global floor: undergraduate linear and abstract algebra, plus a first
+      course in complex analysis. It assumes no algebraic number theory, prior Galois theory beyond
+      field extensions, algebraic geometry, elliptic curves or modular forms. The
+      <a href="index.html">contents page</a> now gives a more precise prerequisite band for each Part.
+      Those bands are a contract: if a later essay needs more, it must introduce or explicitly add
+      the missing prerequisite rather than leaving the reader to diagnose the gap.</p>
 
     <h2>Sources, and a limitation stated plainly</h2>
 
@@ -97,7 +174,9 @@
     <p><strong>Cited by topic only:</strong> textbooks not consulted directly — Silverman's
       <em>The Arithmetic of Elliptic Curves</em>, Diamond and Shurman's <em>A First Course in Modular
       Forms</em>, and the Cornell–Silverman–Stevens volume. These are named with the topic to look up
-      and no section number, and are marked <span class="unverified">unverified</span> where they
+      and no section number, and are marked
+      <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+        title="Source pointer not verified against a copy"></span> where they
       appear. A topic pointer degrades gracefully across editions; a fabricated section number simply
       sends the reader to the wrong page.</p>
 
@@ -125,11 +204,12 @@
     <h2>Status</h2>
 
     <p>Four of twenty-five essays are written: <strong>01</strong> and <strong>02</strong> (Fermat's
-      descent, $n = 4$ and $n = 3$, and the failure of unique factorisation), and <strong>22</strong>
-      and <strong>25</strong> (the Frey curve, and the closing contradiction). The remaining
-      twenty-one are listed on the <a href="index.html">contents page</a> with what each will add.
-      Parts II through V are unwritten, so the ledger does not yet close: essay 25 currently states
-      what it depends on rather than pointing back to established essays, and it says so.</p>
+      descent, $n = 4$, the first case and an outline of the second case for $n = 3$, and the failure
+      of unique factorisation), and <strong>22</strong> and <strong>25</strong> (the Frey curve, and the
+      conditional closing contradiction). The remaining twenty-one are listed on the
+      <a href="index.html">contents page</a> with what each will add. Parts II through V are unwritten,
+      so the ledger does not yet close: essay 25 currently states what it depends on rather than
+      pointing back to established essays, and it says so.</p>
 
     <p>This is the third in a series of collections built the same way, after
       <em>The Quantum Quartet</em> (four authors on early quantum mechanics) and <em>The Bridge</em>

@@ -68,22 +68,32 @@ The video also **confirms** two things the plan summary got loose (see Correctio
 hypotheses properly, and it does treat irreducibility as a theorem. Those corrections apply to the
 *summary*, not to the video.
 
-## What is proved and what is stated (hard fence, stated in `about.html`)
+## What is proved and what is stated (hard fence)
 
-- **Proved in full**: FLT for n = 4 and n = 3; the reduction to prime exponents p ≥ 5; the Frey curve
-  construction; its discriminant and conductor; its semistability; the conductor of its mod p
-  representation; dim S₂(Γ₀(2)) = 0; and the final contradiction given the black boxes below.
-- **Stated with hypotheses, not proved**: the Modularity Theorem (Wiles–Taylor 1995 semistable case;
-  Breuil–Conrad–Diamond–Taylor 2001 general case), Ribet's level-lowering theorem, Mazur's isogeny
-  theorem, Néron–Ogg–Shafarevich, Eichler–Shimura, Langlands–Tunnell.
-- **Sketched as anatomy, explicitly labelled**: Wiles's machinery (Part V). The reader learns what the
+`data/ledger.json` is the only source of truth for the public proof boundary. It records whether each
+claim is available or planned and whether its register is proved, stated, outlined, conditional or
+described. Every available record is tied to exactly one essay-ledger item by `data-proof-id`.
+`about.html` is generated from it; never edit the generated block to change scope.
+
+The non-negotiable target boundary is:
+
+- the Modularity Theorem, Ribet's level-lowering theorem, Mazur's isogeny theorem,
+  Néron–Ogg–Shafarevich, Eichler–Shimura and Langlands–Tunnell are **stated with hypotheses, not
+  proved**;
+- Wiles's machinery in Part V is **described as anatomy**, not proved. The reader learns what the
   objects are and what the strategy is. Three essays cannot prove a 109-page paper and must not
-  pretend to. **The video does not cover this material at all** — greps for deformation, universal
-  (deformation ring), Langlands, Tunnell, base change, R = T all come back genuinely empty, variants
-  included. Part V is entirely ours, which is also why it is the likeliest place to overreach.
+  pretend to;
+- the second case for $n=3$ remains **outlined** unless essay 02 is expanded into a genuine proof;
+- an item moves into the **proved** register only when its essay exists and supplies the promised
+  derivation.
 
-So: a complete, checkable derivation of *FLT from modularity*, plus a guided tour of why modularity is
-true. That framing goes in About verbatim.
+Part V is not in the video at all: greps for deformation, universal (deformation ring), Langlands,
+Tunnell, base change and $R=T$ all come back genuinely empty, variants included. It is entirely ours,
+which is also why it is the likeliest place to overreach.
+
+The completed target remains a checkable derivation of *FLT from modularity*, plus a guided tour of why
+modularity is true. Until the register closes, About presents that as a target rather than a current
+achievement.
 
 ## Reader
 
@@ -94,6 +104,11 @@ algebraic geometry, **no** modular forms.
 
 Consequence: the video's 18–38% stretch (vector spaces, linear transformations, eigenvalues) is *not
 written*. The spectral theorem is recalled in essay 14 where it earns its keep.
+
+The contents page carries a prerequisite band for every Part. Treat those bands as a contract, not
+marketing copy: if an essay needs vocabulary or technique beyond its band's floor, either introduce it
+in place or update the band before publication. Part VI explicitly marks Part V as explanatory rather
+than logically required.
 
 ## The four-rung template (every essay)
 
@@ -118,7 +133,7 @@ essay that discharges it.
 
 | # | Ledger line | Discharged in |
 |---|---|---|
-| L1 | FLT reduces to exponents p prime, p ≥ 5 | 01, 02 |
+| L1 | FLT reduces to exponents p prime, p ≥ 5 | 01; 02 proves the first case for n = 3 but still owes the second-case descent |
 | L2 | G_Q exists; Frobenius elements; traces of Frobenius determine a semisimple representation | 03, 05 |
 | L3 | Z_p and the p-adic valuation v_ℓ | 04 |
 | L4 | Elliptic curves over Q form a group; discriminant, reduction types, conductor | 06, 07, 08 |
@@ -209,7 +224,7 @@ if copies arrive.
 | # | Slug | Construction | Notes |
 |---|------|--------------|-------|
 | 01 | descent-and-n4 | Infinite descent; Pythagorean parametrization; **FLT for n = 4, proved** | Fermat's own method, in full. The gcd lemmas the video front-loads are stated here as tooling, where they are used. Fixes the exponent reduction: any n ≥ 3 has an odd prime factor or is divisible by 4. |
-| 02 | unique-factorization-and-n3 | **FLT for n = 3, proved** elementarily; then unique factorization as a *structure*: UFDs, the failure in Z[ζ₂₃], class numbers, regular primes, Kummer's partial result | The pivot of Part I. Video proves n = 3 by elementary number theory and introduces UFDs separately; we keep both and connect them — the naive generalization dies at p = 23, and *why* it dies is the first sign arithmetic needs structure. Completes L1. See Deviations #2. |
+| 02 | unique-factorization-and-n3 | **First case for n = 3 proved; second case outlined**; then unique factorization as a *structure*: UFDs, the failure in Z[ζ₂₃], class numbers, regular primes, Kummer's partial result | The pivot of Part I. The video proves n = 3 by elementary number theory and introduces UFDs separately; we keep both and connect them. Until the second-case descent is expanded, L1 remains open. See Deviations #2. |
 | 03 | galois-and-g-q | Field extensions and degree, the Galois correspondence, Q̄, **G_Q** as a profinite group, **Frobenius elements** at primes | Why G_Q resists direct study: not finite, no presentation. Motivates 05 instead of asserting it. |
 | 04 | p-adics-and-modules | The p-adic valuation v_ℓ, Z_p and Q_p, "small means highly divisible"; modules over a ring, free modules and rank | **Not in my first draft; the transcript forced it.** Needed for T_p(E) ≅ Z_p² (09), GL₂(Z_p) (10), the finite-at-p condition (24), and the valuation computation (23). Discharges L3. |
 | 05 | galois-representations | Continuous ρ : G_Q → GL₂(K); ramified/unramified primes; conductor of a representation; irreducibility; **traces of Frobenius determine a semisimple ρ** | The linearization move. The trace fact is load-bearing — it makes "these two representations are isomorphic" *checkable* in 18, so it lives here. Discharges L2. |
@@ -261,17 +276,23 @@ Not in the video at all. Opens with a standing banner: these three essays descri
 | 24 | the-frey-representation | ρ̄ = ρ̄_{Frey,p}: **irreducible** via Mazur's isogeny theorem (10), unramified outside 2 and p via **Néron–Ogg–Shafarevich** (10), finite at p, and **conductor exactly 2** | Discharges L17. Corrections #5 lives here: the *curve's* conductor is rad(abc); it is the *representation's* conductor that is 2. Level lowering exists to close exactly that gap. |
 | 25 | ribet-and-the-end | **Ribet's level-lowering theorem** (1990) with its hypotheses; applied: modular of level rad(abc) ⟹ modular of level 2, so a weight-2 newform of level 2 exists. But μ = 3, ν₂ = 1, ν₃ = 0, ν_∞ = 2 gives 1 + 3/12 − 1/4 − 0 − 1 = 0, so **dim S₂(Γ₀(2)) = 0**. No such form. Hence no such representation, no such curve, no such solution. ∎ | Discharges L18, L19; ledger empties. Closes with what the proof does *not* give: no effective bounds, no explanation of *why*, and the ABC-shaped questions still open. Note the slack — levels 1, 2, 3, 4 all give 0 — so the contradiction is not knife-edge. |
 
-## Sequencing notes (write order, by dependency)
+## Sequencing notes (writing order is not reading order)
 
 - **Write 01, 02, 22, 25 first.** The descent and the endgame are the two ends of the rope and are
   nearly independent of the middle. Having 25 drafted early keeps every construction essay honest
   about what it is *for* — the failure mode of expositions like this is beautiful machinery with no
   memory of the target.
-- **05 is the highest-dependency node.** 10, 16, 18, 19, 21, 24 all speak in the vocabulary of Galois
-  representations. Write it early and carefully; a wobble propagates everywhere.
-- **13 before 14.** The dimension formula is arithmetic/geometry, the Hecke theory operator algebra;
-  they are independent, and doing 13 first makes 25's punchline a *recall* rather than a new theorem
-  arriving at the moment of maximum drama.
+- **Next: 06, 07, 08, then a first pass at 23.** This gives the reader the concrete elliptic-curve
+  world and immediately spends essay 22's construction. Essay 23 may initially carry declared debts
+  to 04 and 18, but writing it now fixes the exact depth those earlier-numbered essays must supply.
+- **Then 13.** It is the only formula essay 25 evaluates. Discharging that debt early makes the
+  closing arithmetic self-contained and gives the middle of the book a visible payoff.
+- **Then 03, 04, 05, 09, 10, 24.** Essay 05 remains the highest-dependency node: 10, 16, 18, 19, 21
+  and 24 all speak its language. Write the abstract sequence to the minimum depth those consumers
+  demonstrably require, while still meeting the reading-order contract.
+- **Then complete 11–12 and 14–18.** Essay 13 is intentionally allowed to arrive early in writing
+  order, but it remains essay 13 in reading order. Finish the modular-forms bridge before removing
+  essay 23's modularity debt.
 - **Part V last.** It is the likeliest place to overreach and has no video support to lean on. If an
   essay starts growing lemmas, cut it back.
 - **`checks/` scripts get written with the essay, not after.** A numerical claim without its script is
@@ -331,13 +352,17 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
    Wiles's target mattered, not a consequence of it. The summary's ordering ("Ribet's theorem states…"
    after Wiles) inverts this.
 10. **The normalization is stronger than "b even".** DDT: aᵖ ≡ −1 (mod 4) and bᵖ ≡ 0 (mod 32). The
-    second is automatic once b is even and p ≥ 5, since then 2ᵖ | bᵖ — but state it, because the
-    mod-32 condition is what the reduction type at 2 actually uses.
+    second is automatic once b is even and p ≥ 5, since then 2ᵖ | bᵖ — but state and spend it. It
+    permits the integral minimal model at 2 with
+    $\Delta_{\min}=2^{-8}(abc)^{2p}$; without that bridge, essay 22's displayed discriminant appears
+    to change silently in essay 23.
 11. **Use *semistable* consistently**, one word.
 
 ## Tech stack (unchanged from books 1 and 2)
 
 - Plain HTML, one shared `static/style.css`, one small `static/theme.js`. No build step.
+- `data/ledger.json` is the canonical proof-status register. `scripts/render_status.py --write`
+  refreshes the committed About block; serving and deployment still require no build.
 - KaTeX from CDN with SRI hashes **copied byte-for-byte from book 2's chapters**.
 - Light/dark theme honouring `prefers-color-scheme`, toggle persisted in `localStorage`.
 - Relative links only; `.nojekyll`; GitHub Pages from repo root.
@@ -349,17 +374,21 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
 Port book 2's checks (count sync, link resolution, math-delimiter balance, prev/next contiguity,
 quotation scan, no tracked PDFs), then add:
 
-1. **Ledger chain** — each essay's *still owed* = previous owed − this essay's discharged; essay 25's
-   owed column empty.
-2. **No forward dependencies** — no essay's *What we already have* names an essay number ≥ its own.
-3. **No book section numbers** — grep Reading rungs for `§`, `Ch.` + digit, `p.` + digit; fail on a
+1. **Current ledger structure** — every written essay has discharged/owed columns, and no essay's
+   *What we already have* names an essay number ≥ its own.
+2. **Proof-register sync** — every available `data/ledger.json` item maps to exactly one essay-ledger
+   entry, and About's generated scope block matches the canonical data.
+3. **Full-chain release gate, once the middle exists** — each essay's *still owed* must equal the
+   previous debt minus its discharge, and essay 25's owed column must be empty. This is not honestly
+   checkable across the current jumps from 02 to 22 to 25, so the current script does not claim to.
+4. **No book section numbers** — grep Reading rungs for `§`, `Ch.` + digit, `p.` + digit; fail on a
    hit. LMFDB labels and paper theorem numbers are permitted (Tier A) and must not be caught by this
    check, so match on the Tier C author names specifically.
-4. **Every Tier A citation is logged** — extract LMFDB labels and paper theorem references from the
+5. **Every Tier A citation is logged** — extract LMFDB labels and paper theorem references from the
    essays and fail on any that is absent from `SOURCES.md`.
-5. **No transcript prose** — the transcript is git-ignored but present; check no essay shares long
+6. **No transcript prose** — the transcript is git-ignored but present; check no essay shares long
    n-grams with it.
-6. Run every script in `checks/` and fail on non-zero exit.
+7. Run every script in `checks/` and fail on non-zero exit.
 
 ## Status
 
