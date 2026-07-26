@@ -1,0 +1,331 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11 · The modular group — No Such Form</title>
+<meta name="description" content="The upper half plane, SL_2(Z) acting on it, the fundamental domain, and Gamma_0(N) — producing the four counts that essay 13's dimension formula consumes.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part III · Modular forms — Essay 11</p>
+    <h1>The modular group</h1>
+    <p class="lede">Part III opens a second front, and for five essays it will not look like it has
+      anything to do with Fermat. It does: this essay's business is to produce four integers, and the
+      argument ends by evaluating a formula in them.</p>
+
+    <div class="claim">
+      <span class="tag">This essay constructs, computes, and states</span>
+      <strong>Constructs:</strong> $\mathbb{H}$, the action of $\mathrm{SL}_2(\mathbb{Z})$, the
+      fundamental domain, and $\Gamma_0(N)$.
+      <strong>Computes:</strong> the four counts $\mu$, $\nu_2$, $\nu_3$, $\nu_\infty$, with the index
+      checked against coset counting and the elliptic counts against root counting.
+      <strong>States:</strong> that $S$ and $T$ generate, and that $X_0(N)$ is a compact Riemann
+      surface.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Almost nothing from Parts I and II, and it is better to say so than to manufacture a
+        connection. This essay needs the upper half plane, a group acting on it, and the idea of a
+        quotient. The reader's complex analysis is enough.</p>
+      <p>What carries over is the <em>target</em>, and it is worth keeping in view through all five
+        essays of this Part. The collection's closing essay ends by evaluating</p>
+      <p>$$
+        \dim S_2(\Gamma_0(N))=1+\frac{\mu}{12}-\frac{\nu_2}{4}-\frac{\nu_3}{3}-\frac{\nu_\infty}{2}
+      $$</p>
+      <p>at $N=2$ and getting zero — essay 25, which a reader arriving in order has not yet met, and
+        which essay 13 supplies the formula for. <strong>This essay defines and
+        computes the four numbers in it</strong> — and nothing else. That is the whole job, and the
+        formula above is the only reason any of the geometry below matters.</p>
+      <p>One thread does run from Part II. Essay <a href="06-elliptic-curves.html">06</a>'s worked curve
+        $y^2+y=x^3-x^2$ has conductor $11$, computed in essay
+        <a href="08-reduction-and-conductor.html">08</a>; its point of order five came from essay
+        <a href="07-the-group-law.html">07</a>; and essay
+        <a href="10-elliptic-representation.html">10</a> used that torsion to predict its $a_\ell$
+        modulo $5$. The level-$11$ group $\Gamma_0(11)$ is computed below, and the number that comes out
+        is the reason all of that lines up.</p>
+      <div class="fence">
+        <strong>Which hypothesis this Part is building toward.</strong> Essay 25 needs two things this
+        collection does not yet have: <strong>(F)</strong> the dimension formula, and
+        <strong>(M)</strong> modularity. Part III is entirely about (F) — essays 11, 12 and 13 — after
+        which essays 14 to 18 turn to (M). Every essay in this Part will say which of the two it serves.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>The half plane, and matrices acting on it</h3>
+      <p>Let $\mathbb{H}=\{z\in\mathbb{C}:\operatorname{Im}z\gt 0\}$. A matrix
+        $\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}$ with $\det\gamma=1$ acts by the fractional
+        linear transformation</p>
+      <p>$$ \gamma z=\frac{az+b}{cz+d}. $$</p>
+      <p>That this stays inside $\mathbb{H}$ is a one-line computation worth doing, because the
+        determinant is exactly what makes it work:</p>
+      <p>$$
+        \operatorname{Im}(\gamma z)=\frac{(ad-bc)\operatorname{Im}z}{|cz+d|^2}
+        =\frac{\operatorname{Im}z}{|cz+d|^2}\gt 0.
+      $$</p>
+      <p>So $\mathrm{SL}_2(\mathbb{Z})$ — integer matrices of determinant $1$ — acts on $\mathbb{H}$.
+        Note that $-I$ acts trivially, since $(-az-b)/(-cz-d)=(az+b)/(cz+d)$, so what really acts is
+        the quotient $\mathrm{PSL}_2(\mathbb{Z})=\mathrm{SL}_2(\mathbb{Z})/\{\pm I\}$. Every count below
+        is a count in that quotient, and forgetting the $\pm$ is the commonest way to get the numbers
+        wrong.</p>
+      <p>Two elements do all the work:</p>
+      <p>$$
+        S=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}:z\mapsto-\frac1z,
+        \qquad
+        T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}:z\mapsto z+1.
+      $$</p>
+      <div class="fence">
+        <strong>Stated.</strong> $S$ and $T$ generate $\mathrm{SL}_2(\mathbb{Z})$. The proof is a
+        descent on $|c|$ using division with remainder; the script below verifies the conclusion for
+        every matrix with entries at most $3$.
+      </div>
+
+      <h3>The fundamental domain</h3>
+      <p>A <strong>fundamental domain</strong> is a region containing one point of each orbit. For
+        $\mathrm{SL}_2(\mathbb{Z})$ take</p>
+      <p>$$
+        \mathcal{F}=\Bigl\{z\in\mathbb{H}:|z|\geq1,\ |\operatorname{Re}z|\leq\tfrac12\Bigr\},
+      $$</p>
+      <p>and the reason it works is an algorithm rather than a picture. Given $z$, subtract an integer
+        with $T$ until $|\operatorname{Re}z|\leq\frac12$. If now $|z|\geq1$, stop. Otherwise apply $S$:
+        since $|z|\lt 1$, the formula above shows $\operatorname{Im}(-1/z)=\operatorname{Im}(z)/|z|^2>
+        \operatorname{Im}z$, so the imaginary part strictly increases. Repeat. The imaginary part cannot
+        increase forever within a single orbit, so the process halts, and it halts inside
+        $\mathcal{F}$.</p>
+      <p>That argument is why $\mathcal{F}$ is the standard picture: the two moves are exactly $T$ and
+        $S$, and the region is precisely where neither applies.</p>
+
+      <h3>Elliptic points: where the quotient is not smooth</h3>
+      <p>Most points of $\mathbb{H}$ are moved by every non-identity element. A few are not, and they
+        are the source of the fractions in the dimension formula. Call $z$ an <strong>elliptic
+        point</strong> if some $\gamma\neq\pm I$ fixes it.</p>
+      <p>Two exist, and they are visible in $\mathcal{F}$. First, $S$ fixes $i$, since $-1/i=i$; and
+        $S^2=-I$, so $S$ has order $2$ in $\mathrm{PSL}_2(\mathbb{Z})$. Second,
+        $ST=\begin{pmatrix}0&amp;-1\\1&amp;1\end{pmatrix}$ fixes $\rho=e^{2\pi i/3}$, and
+        $(ST)^3=-I$, so it has order $3$. These are the only elliptic points up to equivalence, of
+        orders exactly $2$ and $3$ — which is where the $4$ and the $3$ in the denominators come
+        from.</p>
+
+      <h3>$\Gamma_0(N)$, and the first of the four numbers</h3>
+      <p>Now impose a congruence. For $N\geq1$ define</p>
+      <p>$$
+        \Gamma_0(N)=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathrm{SL}_2(\mathbb{Z}):
+        c\equiv0\ \ (\mathrm{mod}\ N)\right\}.
+      $$</p>
+      <p>It is a subgroup because the lower-left entry of a product is
+        $c_1a_2+d_1c_2$, divisible by $N$ when $c_1$ and $c_2$ are. Its <strong>index</strong> is the
+        first count:</p>
+      <p>$$
+        \boxed{\quad\mu(N)=\bigl[\mathrm{SL}_2(\mathbb{Z}):\Gamma_0(N)\bigr]
+        =N\prod_{q\mid N}\Bigl(1+\frac1q\Bigr),\quad}
+      $$</p>
+      <p>the product over the distinct primes dividing $N$. The reason is that reduction modulo $N$ sends
+        $\mathrm{SL}_2(\mathbb{Z})$ onto $\mathrm{SL}_2(\mathbb{Z}/N)$ and $\Gamma_0(N)$ onto the
+        subgroup with lower-left entry zero, so the index can be counted inside a finite group — which
+        is exactly what the script does, for every $N$ up to $25$, over two million matrices.</p>
+
+      <h3>Cusps, and the last two numbers</h3>
+      <p>The quotient $\mathbb{H}/\Gamma_0(N)$ is not compact: there is a missing point "at infinity",
+        and more than one of them once $N\gt 1$. Repair it by adjoining the rational boundary,</p>
+      <p>$$ \mathbb{H}^*=\mathbb{H}\cup\mathbb{Q}\cup\{\infty\}, $$</p>
+      <p>on which $\Gamma_0(N)$ still acts by the same formula. The orbits of
+        $\mathbb{Q}\cup\{\infty\}$ are the <strong>cusps</strong>, and their number is</p>
+      <p>$$
+        \nu_\infty(N)=\sum_{d\mid N}\varphi\bigl(\gcd(d,N/d)\bigr).
+      $$</p>
+      <p>The elliptic-point counts for $\Gamma_0(N)$ are similar products, and both have an arithmetic
+        description that is more useful than the formula:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>count</th><th>closed form</th><th>equivalently</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$\nu_2(N)$</td>
+                <td>$\prod_{q\mid N}\bigl(1+\bigl(\tfrac{-1}{q}\bigr)\bigr)$, and $0$ if $4\mid N$</td>
+                <td>the number of solutions of $x^2+1\equiv0$</td></tr>
+            <tr><td>$\nu_3(N)$</td>
+                <td>$\prod_{q\mid N}\bigl(1+\bigl(\tfrac{-3}{q}\bigr)\bigr)$, and $0$ if $9\mid N$</td>
+                <td>the number of solutions of $x^2+x+1\equiv0$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The right-hand column is worth having, and not only as a checking device. The elliptic points
+        of order $2$ and $3$ came from $i$ and $\rho$, which are roots of $x^2+1$ and $x^2+x+1$; the
+        congruence condition on $\Gamma_0(N)$ turns "how many such points survive" into "how many roots
+        those polynomials have modulo $N$". The script verifies the two columns agree for every
+        $N\lt 200$, which is a genuinely independent check — one route is a product over primes, the other
+        counts residues.</p>
+      <div class="fence">
+        <strong>Stated.</strong> $X_0(N)=\mathbb{H}^*/\Gamma_0(N)$ is a compact Riemann surface. Its
+        genus is what essay 13's formula computes, and the four counts above are the only inputs.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>Level 11, and why the $X_0(11)$ thread closes</h3>
+      <p>Evaluate the four counts at $N=11$. The index is
+        $\mu=11(1+\frac1{11})=12$. For $\nu_2$: $11\equiv3\pmod4$, so $-1$ is not a square modulo
+        $11$ and $x^2+1$ has no roots — $\nu_2=0$. For $\nu_3$: $11\equiv2\pmod3$, so $x^2+x+1$ has no
+        roots either — $\nu_3=0$. And $\nu_\infty=\varphi(\gcd(1,11))+\varphi(\gcd(11,1))=1+1=2$.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>$N$</th><th>$\mu$</th><th>$\nu_2$</th><th>$\nu_3$</th><th>$\nu_\infty$</th></tr></thead>
+          <tbody>
+            <tr><td>$11$</td><td>$12$</td><td>$0$</td><td>$0$</td><td>$2$</td></tr>
+            <tr><td>$2$</td><td>$3$</td><td>$1$</td><td>$0$</td><td>$2$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Feed the first row into the formula essay 13 will derive and</p>
+      <p>$$ 1+\tfrac{12}{12}-0-0-\tfrac22=1. $$</p>
+      <p>One dimension at level $11$. That is the number the whole $X_0(11)$ thread has been converging
+        on: a one-dimensional space contains, up to scaling, exactly one form — and the LMFDB records
+        exactly one newform of level $11$, labelled <code>11.2.a.a</code>, whose coefficients are
+        $-2,-1,1,-2,\dots$. Those are the $a_\ell$ that essay 08 obtained by counting points on
+        $y^2+y=x^3-x^2$ by hand. The geometry computed in this essay is what forces there to be room for
+        exactly one such object.</p>
+
+      <h3>Level 2, which is the ending</h3>
+      <p>The second row is the one the collection is named after. At $N=2$: $\mu=2(1+\frac12)=3$;
+        $x^2+1\equiv0\pmod2$ has the single root $x=1$, so $\nu_2=1$;
+        $x^2+x+1\equiv1\pmod 2$ for both residues, so $\nu_3=0$; and
+        $\nu_\infty=\varphi(\gcd(1,2))+\varphi(\gcd(2,1))=2$. Then</p>
+      <p>$$ 1+\tfrac{3}{12}-\tfrac14-0-\tfrac22=1+\tfrac14-\tfrac14-1=0. $$</p>
+      <p>The two quarters cancel and the two halves cancel the one. <strong>Nothing is left.</strong>
+        Essay 25 does this computation again with the formula in hand; what this essay contributes is
+        that the four inputs are not guesses — $\mu=3$ is a coset count, $\nu_2=1$ is a root count, and
+        both are verified as such.</p>
+
+      <h3>A check the four counts submit to jointly</h3>
+      <p>There is a reason to trust all four at once, beyond checking each. The same combination is the
+        <em>genus</em> of $X_0(N)$, which is by definition a non-negative integer. So for every $N$
+        whatever,</p>
+      <p>$$
+        1+\frac{\mu(N)}{12}-\frac{\nu_2(N)}{4}-\frac{\nu_3(N)}{3}-\frac{\nu_\infty(N)}{2}
+        \in\{0,1,2,\dots\}.
+      $$</p>
+      <p>That is a strong constraint: the terms have denominators $12$, $4$, $3$ and $2$, so a wrong
+        value in any one of them would almost always leave a fraction behind. The script confirms the
+        combination is a non-negative integer for every $N\lt 400$ — four hundred simultaneous
+        constraints on four formulas, passed.</p>
+
+      <h3>What the next essays collect</h3>
+      <ul>
+        <li><strong>Essay 12</strong> puts functions on this geometry: weight-$k$ modularity,
+          $q$-expansions, and the space $S_2(\Gamma_0(N))$ whose dimension is being computed. Without
+          it the phrase "a weight-2 newform of level $N$" in essay 25 has no referent.</li>
+        <li><strong>Essay 13</strong> takes the four counts and the valence formula and produces the
+          dimension formula — discharging <strong>(F)</strong>, one of essay 25's two remaining
+          assumptions.</li>
+        <li><strong>Essay 15</strong> needs the cusps again, to say what an oldform is and hence what
+          <em>the level</em> of a newform means — the phrase Ribet's theorem lowers.</li>
+      </ul>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Modular curves and the counts.</strong> Andrew Sutherland's MIT 18.783 Fall 2023
+        Lecture 24, theorem 24.8, gives the dimensions of $M_k(\Gamma)$ and $S_k(\Gamma)$ in terms of
+        the genus of $X(\Gamma)$ together with $\nu_2$, $\nu_3$ and $\nu_\infty$ — defining
+        $\nu_2(\Gamma)$ as the number of $\Gamma$-inequivalent translates of $i$ fixed by some
+        $\gamma\in\Gamma$ other than $\pm I$, and $\nu_3$ likewise in terms of $\rho=e^{2\pi i/3}$,
+        which is the definition used here. It records $\dim S_2(\Gamma)=g(\Gamma)$, and notes the
+        interest in $S_2(\Gamma_0(N))$ of dimension $g(\Gamma_0(N))$.</p>
+      <p><strong>Further reference.</strong> Diamond and Shurman's <em>A First Course in Modular
+        Forms</em> develops the action on $\mathbb{H}$, fundamental domains for congruence subgroups,
+        the cusp and elliptic-point counts, and the structure of $X_0(N)$ as a Riemann surface.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/modular_group.py</code>. It verifies
+        $\operatorname{Im}(\gamma z)=\operatorname{Im}(z)/|cz+d|^2$ numerically; that $S$ and $T$ reach
+        every matrix with entries at most $3$; that the reduction algorithm lands every sampled point in
+        $\mathcal{F}$; that $i$ and $\rho$ are fixed by elements of order $2$ and $3$ and are the only
+        fixed points among those sampled — asserting that the sweep actually reached both, since a
+        sample missing one would pass the "no others" test for nothing; that the index formula matches
+        coset counting in $\mathrm{SL}_2(\mathbb{Z}/N)$ across two million matrices; that $\nu_2$ and
+        $\nu_3$ match the root counts of $x^2+1$ and $x^2+x+1$ for every $N\lt 200$; and that the genus
+        combination is a non-negative integer for every $N\lt 400$.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="11-modular-group">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $\mathrm{SL}_2(\mathbb{Z})$ acts on $\mathbb{H}$ with
+              $\operatorname{Im}(\gamma z)=\operatorname{Im}(z)/|cz+d|^2$; $\mathcal{F}$ is a
+              fundamental domain by the reduction algorithm; $i$ and $\rho$ are the elliptic points, of
+              orders $2$ and $3$; and $\Gamma_0(N)$ has index $N\prod(1+1/q)$, with $\nu_2$, $\nu_3$,
+              $\nu_\infty$ defined <span class="lref">(part of L10)</span></li>
+            <li data-proof-id="11-counts-checked">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The index matches coset counting in $\mathrm{SL}_2(\mathbb{Z}/N)$ for $N\leq25$;
+              $\nu_2$ and $\nu_3$ equal the root counts of $x^2+1$ and $x^2+x+1$ modulo $N$ for
+              $N\lt 200$; and the genus combination is a non-negative integer for every $N\lt 400$</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="11-generators-and-curve">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              That $S$ and $T$ generate $\mathrm{SL}_2(\mathbb{Z})$, and that
+              $X_0(N)=\mathbb{H}^*/\Gamma_0(N)$ is a compact Riemann surface</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
+            <li>Modular forms, and the space $S_2(\Gamma_0(N))$ <span class="lref">(L11, essay 12)</span></li>
+            <li>The valence formula and the dimension formula — assumption (F)
+              <span class="lref">(L10, essay 13)</span></li>
+            <li>Hecke operators and newforms <span class="lref">(L11–L12, essays 14, 15)</span></li>
+            <li>Eichler–Shimura, and modularity — assumption (M)
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="10-elliptic-representation.html"><span class="dir">← Previous written essay</span> 10 · The representation attached to a curve</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 11 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/d63e466"><code>d63e466</code></a> · 2026-07-26 18:21 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

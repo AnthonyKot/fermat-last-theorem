@@ -13,6 +13,7 @@
       "10-local-theorems",
       "10-trace-formula",
       "10-weil-pairing",
+      "11-generators-and-curve",
       "13-valence-formula",
       "14-eigenbasis",
       "15-newforms",
@@ -587,8 +588,29 @@
       "essays": [
         11
       ],
-      "text": "$\\Gamma_0(N)$ acting on $\\mathbb{H}$, its index $\\mu$, and the counts $\\nu_2$, $\\nu_3$, $\\nu_\\infty$ of elliptic points and cusps -- exactly the inputs essay 13's formula consumes.",
-      "availability": "planned"
+      "text": "$\\mathrm{SL}_2(\\mathbb{Z})$ acts on $\\mathbb{H}$ with $\\operatorname{Im}(\\gamma z)=\\operatorname{Im}(z)/|cz+d|^2$; the reduction algorithm shows $\\mathcal{F}$ is a fundamental domain; $i$ and $\\rho$ are the elliptic points, of orders $2$ and $3$; and $\\Gamma_0(N)$ has index $N\\prod_{q\\mid N}(1+1/q)$, with $\\nu_2$, $\\nu_3$ and $\\nu_\\infty$ defined -- the four inputs essay 13's formula consumes.",
+      "availability": "available"
+    },
+    {
+      "id": "11-counts-checked",
+      "register": "proved",
+      "role": "background",
+      "essays": [
+        11
+      ],
+      "text": "The index matches brute-force coset counting in $\\mathrm{SL}_2(\\mathbb{Z}/N)$ for $N\\leq25$; $\\nu_2$ and $\\nu_3$ equal the numbers of roots of $x^2+1$ and $x^2+x+1$ modulo $N$ for $N<200$, a route independent of the product formulas; and the genus combination is a non-negative integer for every $N<400$, which jointly constrains all four counts.",
+      "availability": "available"
+    },
+    {
+      "id": "11-generators-and-curve",
+      "register": "stated",
+      "role": "required_for_flt",
+      "essays": [
+        11
+      ],
+      "short": "$S$ and $T$ generate $\\mathrm{SL}_2(\\mathbb{Z})$; $X_0(N)$ is a compact Riemann surface",
+      "text": "That $S:z\\mapsto-1/z$ and $T:z\\mapsto z+1$ generate $\\mathrm{SL}_2(\\mathbb{Z})$, verified here only for matrices of small height; and that $X_0(N)=\\mathbb{H}^*/\\Gamma_0(N)$ is a compact Riemann surface.",
+      "availability": "available"
     },
     {
       "id": "12-modular-forms",

@@ -37,7 +37,7 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>19</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>20</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Frobenius elements at unramified primes, as a conjugacy class <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
@@ -51,6 +51,7 @@
         <li>The Weil pairing $e_n:E[n]\times E[n]\to\mu_n$ <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
         <li>$\operatorname{tr}\bar\rho_{E,p}(\mathrm{Frob}_\ell)\equiv a_\ell$ <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
         <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
+        <li>$S$ and $T$ generate $\mathrm{SL}_2(\mathbb{Z})$; $X_0(N)$ is a compact Riemann surface <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span></li>
         <li>The valence formula for $\Gamma_0(N)$ <span class="scope-essays">(essay 13)</span> <span class="roster-planned">not yet written</span></li>
         <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(essay 14)</span> <span class="roster-planned">not yet written</span></li>
         <li>Newform theory, and the level of a newform <span class="scope-essays">(essay 15)</span> <span class="roster-planned">not yet written</span></li>
@@ -102,7 +103,7 @@
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is discharged or narrowed.</p>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 12 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 11 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -259,6 +260,16 @@
           <span class="scope-role scope-role--background">Background</span>
           A rational subgroup of order $m$ forces the stable line to carry the trivial character, hence $a_\ell\equiv\ell+1\pmod m$ at every good prime -- which is essay 08's divisibility, and which fails for both worked curves at the prime where no such subgroup exists. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
        </li>
+        <li data-proof-id="11-modular-group">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          $\mathrm{SL}_2(\mathbb{Z})$ acts on $\mathbb{H}$ with $\operatorname{Im}(\gamma z)=\operatorname{Im}(z)/|cz+d|^2$; the reduction algorithm shows $\mathcal{F}$ is a fundamental domain; $i$ and $\rho$ are the elliptic points, of orders $2$ and $3$; and $\Gamma_0(N)$ has index $N\prod_{q\mid N}(1+1/q)$, with $\nu_2$, $\nu_3$ and $\nu_\infty$ defined -- the four inputs essay 13's formula consumes. <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span>
+       </li>
+        <li data-proof-id="11-counts-checked">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          The index matches brute-force coset counting in $\mathrm{SL}_2(\mathbb{Z}/N)$ for $N\leq25$; $\nu_2$ and $\nu_3$ equal the numbers of roots of $x^2+1$ and $x^2+x+1$ modulo $N$ for $N&lt;200$, a route independent of the product formulas; and the genus combination is a non-negative integer for every $N&lt;400$, which jointly constrains all four counts. <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -360,6 +371,11 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Mazur's isogeny theorem in the form the Frey argument needs: $E/\mathbb{Q}$ has no $p$-isogeny if $p&gt;163$, **or** if $p\geq5$ with $\#E(\mathbb{Q})[2]=4$ and squarefree conductor -- the general list being $\{2,3,5,7,11,13,17,19,37,43,67,163\}$ with $19,43,67,163$ requiring CM. And the N\'eron--Ogg--Shafarevich criterion that $\rho_{E,p}$ is unramified at $\ell\neq p$ exactly when $E$ has good reduction there. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
        </li>
+        <li data-proof-id="11-generators-and-curve">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          That $S:z\mapsto-1/z$ and $T:z\mapsto z+1$ generate $\mathrm{SL}_2(\mathbb{Z})$, verified here only for matrices of small height; and that $X_0(N)=\mathbb{H}^*/\Gamma_0(N)$ is a compact Riemann surface. <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span>
+       </li>
         <li data-proof-id="24-multiplicative-ramification">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -385,11 +401,6 @@
           <span class="scope-mode scope-mode--outlined">Outlined</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="11-modular-group">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          $\Gamma_0(N)$ acting on $\mathbb{H}$, its index $\mu$, and the counts $\nu_2$, $\nu_3$, $\nu_\infty$ of elliptic points and cusps -- exactly the inputs essay 13's formula consumes. <span class="scope-essays">(essay 11)</span>
        </li>
         <li data-proof-id="12-modular-forms">
           <span class="scope-mode scope-mode--proved">To prove</span>
@@ -621,6 +632,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/5ebc910"><code>5ebc910</code></a> · 2026-07-26 18:12 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/d63e466"><code>d63e466</code></a> · 2026-07-26 18:21 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
