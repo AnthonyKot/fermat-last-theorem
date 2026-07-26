@@ -1,0 +1,414 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 · Reduction and the conductor — No Such Form</title>
+<meta name="description" content="Minimal integral models, reduction modulo a prime, good and multiplicative and additive reduction, the sequence a_ell, and why semistable means square-free conductor.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part II · Elliptic curves — Essay 08</p>
+    <h1>Reduction and the conductor</h1>
+    <p class="lede">Reduce a curve modulo each prime and count the points that survive. Most primes
+      give a smooth curve and an integer; finitely many give a singular one, and how it breaks is the
+      difference between the hypothesis Wiles could prove and the one he could not.</p>
+
+    <div class="claim">
+      <span class="tag">This essay proves, states, and computes</span>
+      <strong>Proves:</strong> the trichotomy of reduction types from the repeated root of the reduced
+      cubic, and that the bad primes are exactly the divisors of the minimal discriminant.
+      <strong>States:</strong> existence of a global minimal model, the Hasse bound, and the conductor
+      exponents — hence that a curve is semistable if and only if its conductor is square-free.
+      <strong>Computes:</strong> $a_\ell$ and the reduction type for two curves, one semistable and
+      one not.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Three earlier essays supply everything used here.</p>
+      <p>Essay <a href="06-elliptic-curves.html">06</a> gave the general integral Weierstrass
+        equation, its discriminant $\Delta$ built from the $b$-invariants, and the criterion that
+        $\Delta\neq0$ is exactly smoothness. It also carried the warning this essay finally
+        cashes: the curve $y^2+y=x^3-x^2$ has $\Delta=-11$, while a short integral equation for the
+        <em>same curve</em> has discriminant $6^{12}\cdot(-11)$. Two equations, one curve, twelve
+        spurious factors of $2$ and of $3$.</p>
+      <p>Essay <a href="07-the-group-law.html">07</a> made the rational points a group, and found on
+        that same curve a point $(0,0)$ of order exactly $5$. That point will leave a visible trace in
+        every count below.</p>
+      <p>Essay <a href="04-p-adics-and-modules.html">04</a> supplies the valuation $v_\ell$, with the
+        two properties used throughout: it adds on products, and it is the exponent of $\ell$ in a
+        factorisation. Every question in this essay is a question about $v_\ell(\Delta)$.</p>
+      <p>The task is to make “reduce the equation modulo $\ell$” well defined and to extract a number
+        from it. The first half of that is harder than it sounds, and essay 06 is the reason why:
+        reduction is an operation on <em>equations</em>, while we want an invariant of the
+        <em>curve</em>.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Choosing the equation: minimal models</h3>
+      <p>An elliptic curve over $\mathbb{Q}$ has infinitely many integral Weierstrass equations. If
+        one substitutes $x\mapsto u^2x$, $y\mapsto u^3y$ and clears denominators, the discriminant is
+        multiplied by $u^{12}$ — the mechanism behind essay 06's factor of $6^{12}$. Since the
+        discriminant can always be made worse, it makes sense to ask for it to be as good as
+        possible.</p>
+      <p>A <strong>global minimal model</strong> for $E$ is an integral Weierstrass equation defining
+        $E$ whose discriminant divides the discriminant of every integral Weierstrass equation for
+        $E$. Its discriminant is written $\Delta_{\min}(E)$ and is an invariant of the curve, not of
+        the equation.</p>
+      <div class="fence">
+        <strong>Stated, not proved.</strong> Every elliptic curve over $\mathbb{Q}$ has a global
+        minimal model. The proof is a descent on the discriminant, prime by prime, and needs a
+        criterion for when a model can be improved at a given prime; that machinery is standard and is
+        not developed here. Over general number fields the statement can fail, which is a sign that it
+        is a real theorem rather than a definition.
+      </div>
+      <p>Essay 06's example already exhibits the notion. The two models had discriminants $-11$ and
+        $6^{12}\cdot(-11)$; the first divides the second, and one can check no integral model does
+        better, so $\Delta_{\min}=-11$. <strong>From here on, reduction always means reduction of a
+        minimal model.</strong> Skip that clause and every conclusion below becomes a statement about
+        an accident of algebra.</p>
+
+      <h3>Reduction, and the primes where it goes wrong</h3>
+      <p>Fix a minimal model and a prime $\ell$. Reducing each coefficient modulo $\ell$ gives a cubic
+        equation over the finite field $\mathbb{F}_\ell$, written $\tilde{E}$. Two cases:</p>
+      <ul>
+        <li>$\tilde{E}$ is smooth. Then $E$ has <strong>good reduction</strong> at $\ell$, and
+          $\tilde{E}$ is an elliptic curve over $\mathbb{F}_\ell$ with a group law of its own.</li>
+        <li>$\tilde{E}$ is singular. Then $E$ has <strong>bad reduction</strong> at $\ell$.</li>
+      </ul>
+      <p>Essay 06's criterion decides which, immediately. Smoothness of $\tilde{E}$ is
+        $\tilde\Delta\neq0$ in $\mathbb{F}_\ell$, and $\tilde\Delta$ is the reduction of
+        $\Delta_{\min}$. So</p>
+      <p>$$
+        E\text{ has bad reduction at }\ell
+        \quad\Longleftrightarrow\quad
+        \ell\mid\Delta_{\min}(E)
+        \quad\Longleftrightarrow\quad
+        v_\ell\bigl(\Delta_{\min}(E)\bigr)\geq1.
+      $$</p>
+      <p>A non-zero integer has finitely many prime divisors, so <strong>bad reduction happens at
+        finitely many primes, and a single valuation computation finds all of them.</strong> This is
+        the sentence essay 23 will apply to the Frey curve.</p>
+
+      <h3>The integer attached to a good prime</h3>
+      <p>At a prime of good reduction, count. The group $\tilde{E}(\mathbb{F}_\ell)$ is finite —
+        at most $\ell$ values of $x$, at most two $y$ for each, plus the point at infinity — and one
+        expects roughly $\ell+1$ points, one for each $x$ plus infinity, since about half the relevant
+        values are squares. Define the <strong>trace of Frobenius</strong> as the deviation:</p>
+      <p>$$
+        a_\ell=\ell+1-\#\tilde{E}(\mathbb{F}_\ell).
+      $$</p>
+      <p>The name is not explained yet; it is earned in essay 10, where the same integer reappears as
+        the trace of a $2\times2$ matrix. For now it is a count, computable by hand for small
+        $\ell$.</p>
+      <p><strong>The Hasse bound, stated:</strong> $|a_\ell|\leq2\sqrt{\ell}$. So the deviation is
+        small compared with $\ell$, and the sequence $(a_\ell)$ is a genuinely delicate arithmetic
+        fingerprint of the curve rather than a coarse one. Part IV is about the discovery that this
+        fingerprint also belongs to something else entirely.</p>
+
+      <h3>How a curve goes bad: exactly three ways</h3>
+      <p>Now suppose $\ell$ is bad. The reduced cubic $\tilde{E}$ is singular, and its singularity is
+        highly constrained: a Weierstrass cubic has <strong>exactly one</strong> singular point, and
+        the point at infinity is never it. Translating that point to the origin and discarding terms
+        of degree three or more, the equation near it becomes a quadratic form in two variables. There
+        are two possibilities for such a form, and they are the classification.</p>
+      <ul>
+        <li><strong>Two distinct tangent directions</strong> — the quadratic form factors into two
+          different linear forms. The singularity is a <em>node</em>, a genuine self-crossing, and
+          $E$ has <strong>multiplicative reduction</strong> at $\ell$.</li>
+        <li><strong>One repeated tangent direction</strong> — the quadratic form is a perfect square.
+          The singularity is a <em>cusp</em>, and $E$ has <strong>additive reduction</strong> at
+          $\ell$.</li>
+      </ul>
+      <p>The two names come from the group that survives. Deleting the singular point leaves a set
+        $\tilde{E}^{\mathrm{ns}}(\mathbb{F}_\ell)$ of non-singular points which is still closed under
+        the chord-and-tangent rule of essay 07, because a line meeting the cubic at two non-singular
+        points cannot meet it at the singular one — the singular point absorbs at least two
+        intersections, and a cubic has only three. So a group remains, and it is:</p>
+      <ul>
+        <li>the multiplicative group of a field, in the node case, whence
+          <em>multiplicative</em>;</li>
+        <li>the additive group of $\mathbb{F}_\ell$, in the cusp case, whence <em>additive</em>.</li>
+      </ul>
+      <p>Counting that group gives the analogue of $a_\ell$. The singular point is rational and has
+        been removed, so the count is shifted by one relative to the good case:</p>
+      <p>$$
+        a_\ell=\ell-\#\tilde{E}^{\mathrm{ns}}(\mathbb{F}_\ell).
+      $$</p>
+      <p>The three possibilities are now forced. In the cusp case the group has $\ell$ elements, so
+        $a_\ell=0$. In the node case it has $\ell-1$ elements when the two tangent slopes lie in
+        $\mathbb{F}_\ell$, and $\ell+1$ when they are conjugate over a quadratic extension. Hence</p>
+      <p>$$
+        a_\ell=
+        \begin{cases}
+          \phantom{+}0,&\text{additive (cusp)},\\
+          +1,&\text{split multiplicative (node, rational tangents)},\\
+          -1,&\text{non-split multiplicative (node, conjugate tangents)}.
+        \end{cases}
+      $$</p>
+      <p>So $a_\ell$ is defined at every prime, and at the bad ones it is one of three values that
+        <em>names the reduction type</em>. A single sequence of integers now carries the local
+        behaviour of the curve everywhere.</p>
+
+      <h3>Semistable, and the conductor</h3>
+      <p>One of the three cases is worse than the others. Additive reduction is unstable: it can be
+        destroyed by passing to a finite extension of $\mathbb{Q}$, whereas good and multiplicative
+        reduction cannot. That asymmetry gets a name.</p>
+      <p>$$
+        \boxed{\quad E\text{ is }\textbf{semistable}
+        \quad\Longleftrightarrow\quad
+        E\text{ has no additive reduction at any prime.}\quad}
+      $$</p>
+      <p>Equivalently, every bad prime is a node. This is the hypothesis of the modularity theorem
+        that essay 18 states and that Wiles proved, so the whole Fermat argument depends on being able
+        to <em>check</em> it. The rest of this section is how.</p>
+      <p>The <strong>conductor</strong> $N_E$ packages the local information into one positive
+        integer,</p>
+      <p>$$ N_E=\prod_{\ell}\ell^{f_\ell}, $$</p>
+      <p>where the exponent $f_\ell$ measures how bad the reduction at $\ell$ is.</p>
+      <div class="fence">
+        <strong>Stated, not proved.</strong> The exponents are
+        $f_\ell=0$ at good primes, $f_\ell=1$ at primes of multiplicative reduction, and
+        $f_\ell\geq2$ at primes of additive reduction, where $f_\ell=2$ exactly when $\ell>3$. The
+        primes $2$ and $3$ need separate treatment and permit larger exponents. Computing $f_\ell$ in
+        general is done by an algorithm, and we do not develop it.
+      </div>
+      <p>Grant those exponents and the criterion we need drops out, because square-freeness is a
+        statement about exponents and nothing else:</p>
+      <p>$$
+        \boxed{\quad
+        E\text{ semistable}
+        \quad\Longleftrightarrow\quad
+        N_E\text{ is square-free.}\quad}
+      $$</p>
+      <p>In one direction, no additive primes means every exponent is $0$ or $1$, so $N_E$ is a
+        product of distinct primes. In the other, an additive prime contributes $f_\ell\geq2$ and
+        makes $N_E$ divisible by $\ell^2$. Moreover, for a semistable curve the bad primes are exactly
+        the divisors of $\Delta_{\min}$ and each contributes exponent one, so</p>
+      <p>$$
+        E\text{ semistable}\quad\Longrightarrow\quad
+        N_E=\prod_{\ell\mid\Delta_{\min}(E)}\ell=\operatorname{rad}\bigl(\Delta_{\min}(E)\bigr).
+      $$</p>
+      <p>This is the payoff. A hypothesis about behaviour over every finite extension of $\mathbb{Q}$
+        has become a computation on one integer: factor $\Delta_{\min}$, check each of its primes is a
+        node, and read off the conductor as the product of the distinct primes. Essay 23 does exactly
+        this for the Frey curve. For an additive curve the identity fails — the conductor is strictly
+        larger than the radical — and the next Rung shows a curve where it does.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>A semistable curve: conductor 11</h3>
+      <p>Take essay 06's curve, in its minimal model,</p>
+      <p>$$ E:\quad y^2+y=x^3-x^2,\qquad \Delta_{\min}=-11. $$</p>
+      <p>Since $-11$ has the single prime factor $11$, the curve has good reduction at every prime but
+        $11$. Counting points at the small good primes gives</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>$\ell$</th><th>$\#\tilde{E}(\mathbb{F}_\ell)$</th><th>$a_\ell$</th><th>$2\sqrt{\ell}$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$2$</td><td>$5$</td><td>$-2$</td><td>$2.83$</td></tr>
+            <tr><td>$3$</td><td>$5$</td><td>$-1$</td><td>$3.46$</td></tr>
+            <tr><td>$5$</td><td>$5$</td><td>$1$</td><td>$4.47$</td></tr>
+            <tr><td>$7$</td><td>$10$</td><td>$-2$</td><td>$5.29$</td></tr>
+            <tr><td>$13$</td><td>$10$</td><td>$4$</td><td>$7.21$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The Hasse bound holds in each row, with room to spare. And every count is divisible by $5$ —
+        which is essay 07's order-five point making itself felt: reduction at a good prime is
+        injective on torsion of order coprime to $\ell$, so the five-element subgroup found there
+        survives into $\tilde{E}(\mathbb{F}_\ell)$ and divides its order. At $\ell=5$ the count is
+        exactly $5$.</p>
+      <p>Now the bad prime. Over $\mathbb{F}_{11}$ the singular point is found by setting both
+        partial derivatives of $F=y^2+y-x^3+x^2$ to zero:</p>
+      <p>$$
+        F_y=2y+1=0\ \Rightarrow\ y=5,
+        \qquad
+        F_x=-3x^2+2x=0\ \Rightarrow\ x=0\text{ or }x=8.
+      $$</p>
+      <p>Of these only $(8,5)$ satisfies the equation itself: there $y^2+y=30\equiv8$ and
+        $x^3-x^2=448\equiv8$, while $x=0$ gives $0\neq8$. So $(8,5)$ is the unique singular point.
+        Translate it to the origin by $x=8+X$, $y=5+Y$; over $\mathbb{F}_{11}$ the equation becomes
+        exactly</p>
+      <p>$$ Y^2=X^2+X^3. $$</p>
+      <p>The quadratic part is $Y^2-X^2=(Y-X)(Y+X)$: two distinct tangent lines, both with slopes in
+        $\mathbb{F}_{11}$. A node with rational tangents, so the reduction is <strong>split
+        multiplicative</strong>, and the surviving group should have $11-1=10$ elements. Counting
+        confirms it: the reduced curve has $10$ affine points, one of them the node, plus the point at
+        infinity. Hence</p>
+      <p>$$ a_{11}=11-10=1, $$</p>
+      <p>the $+1$ that split multiplicative reduction predicts. Two independent routes — the tangent
+        slopes and the point count — agree.</p>
+      <p>So $E$ has no additive prime: it is <strong>semistable</strong>, and</p>
+      <p>$$ N_E=\operatorname{rad}(-11)=11, $$</p>
+      <p>which is square-free, as the criterion demands. The number $11$ is worth remembering. It is
+        the conductor of this curve, and in essay 18 it will turn out to be the <em>level</em> of a
+        modular form with the same sequence $-2,-1,1,-2,\dots$ of coefficients.</p>
+
+      <h3>A curve that is not semistable: conductor 36</h3>
+      <p>For contrast take</p>
+      <p>$$ E':\quad y^2=x^3+1,\qquad \Delta_{\min}=-432=-2^4\cdot3^3, $$</p>
+      <p>which is already minimal. Bad at $2$ and $3$ only. Reduce modulo $3$ and the cubic
+        collapses:</p>
+      <p>$$ x^3+1\equiv(x+1)^3 \pmod 3, $$</p>
+      <p>a triple root at $x=-1$. A triple root leaves the quadratic part a perfect square, so the
+        singularity is a cusp and the reduction is <strong>additive</strong>. Counting agrees:
+        $\tilde{E'}(\mathbb{F}_3)$ has four points, one of them singular, so
+        $\#\tilde{E'}^{\mathrm{ns}}=3$ and $a_3=3-3=0$. The same happens at $2$, where
+        $a_2=0$.</p>
+      <p>So $E'$ is <em>not</em> semistable, and the criterion says its conductor cannot be
+        square-free. It is not: $N_{E'}=36=2^2\cdot3^2$, with exponent $2$ at each bad prime, as the
+        stated rule predicts for additive reduction. Note what fails here —</p>
+      <p>$$ \operatorname{rad}(\Delta_{\min})=\operatorname{rad}(-432)=6\neq36=N_{E'}. $$</p>
+      <p>The radical of the discriminant is <em>not</em> the conductor in general. It is the conductor
+        precisely for semistable curves, which is why semistability is the hypothesis that makes the
+        conductor computable by factoring one integer.</p>
+
+      <h3>What the chain now needs</h3>
+      <p>Essay 09 turns to the torsion subgroup, whose order-five example above was a first glimpse,
+        and essay 10 builds the representation in which $a_\ell$ becomes an actual matrix trace and
+        the good primes become the unramified ones. Essay 23 then computes
+        $v_\ell(\Delta_{\min})$ for the Frey curve at every bad prime, shows each one is a node, and
+        concludes semistability with conductor $\operatorname{rad}(abc)$ — the exact hypothesis essay
+        18's theorem requires. That computation is the one place in the whole Fermat argument where a
+        reader can check Wiles's hypothesis personally, and this essay is what makes it checkable.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Minimal models.</strong> Andrew Sutherland's MIT 18.783 Fall 2023 Lecture 24,
+        definition 24.29, defines a global minimal model as an integral Weierstrass equation whose
+        discriminant divides that of every integral model, and the discussion immediately before it
+        explains why a short equation may be bad at $2$ when a general one is not — the point essay 06
+        made by calculation.</p>
+      <p><strong>Reduction types.</strong> The same lecture's §24.7 works through the reduced singular
+        cubic, distinguishes the double-root and triple-root cases, and derives the three values of
+        $a_\ell$ at bad primes from the order of the group of non-singular points. Its definition
+        24.28 gives $a_\ell=\ell+1-\#\tilde{E}(\mathbb{F}_\ell)$ at good primes.</p>
+      <p><strong>Semistability and the conductor.</strong> Definition 24.30 of that lecture defines a
+        semistable curve as one with no additive reduction at any prime; definition 24.31 gives the
+        conductor of a semistable curve as the product of the primes dividing the minimal
+        discriminant; and the discussion following it records that the conductor is square-free
+        exactly for semistable curves, with the exponent bounds at multiplicative and additive primes
+        and the special treatment of $2$ and $3$.</p>
+      <p><strong>The two worked curves.</strong> In the LMFDB the semistable curve is
+        <code>11.a3</code>, of conductor $11$; the additive one is <code>36.a4</code>, of conductor
+        $36=2^2\cdot3^2$ with minimal discriminant $-432$ and conductor exponent $2$ at each bad
+        prime.</p>
+      <p><strong>Further reference.</strong> Silverman's <em>The Arithmetic of Elliptic Curves</em>
+        treats minimal models, the classification of reduction types, and Tate's algorithm for the
+        conductor exponent.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/reduction_and_conductor.py</code>. With
+        no elliptic-curve library it computes discriminants from the $b$-invariants, confirms that the
+        bad primes are exactly the divisors of $\Delta_{\min}$, reproduces every row of the table
+        above, checks the Hasse bound at all good primes below $200$, verifies that $5$ divides every
+        point count, locates the node at $(8,5)$ and verifies the translated equation
+        $Y^2=X^2+X^3$ exhaustively over $\mathbb{F}_{11}$, and confirms that both bad primes of
+        $y^2=x^3+1$ are additive with $a_\ell=0$.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="08-bad-primes">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Bad reduction at $\ell$ holds exactly when $\ell\mid\Delta_{\min}$, so there are
+              finitely many bad primes and one valuation computation finds them all
+              <span class="lref">(part of L4)</span></li>
+            <li data-proof-id="08-reduction-types">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The trichotomy good / multiplicative / additive from the tangent directions at the
+              unique singular point, with $a_\ell\in\{0,\pm1\}$ at bad primes naming the type
+              <span class="lref">(rest of L4)</span></li>
+            <li data-proof-id="08-semistable-radical">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Given the conductor exponents: $N_E$ is square-free exactly when $E$ is semistable, and
+              then $N_E=\operatorname{rad}(\Delta_{\min})$ <span class="lref">(L5)</span></li>
+            <li data-proof-id="08-worked-conductors">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              $y^2+y=x^3-x^2$ is semistable of conductor $11$, split multiplicative at $11$ with
+              $a_{11}=1$; $y^2=x^3+1$ is additive at $2$ and $3$ and is not semistable</li>
+          </ul>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
+          <ul>
+            <li data-proof-id="08-minimal-model">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Every elliptic curve over $\mathbb{Q}$ has a global minimal model, so
+              $\Delta_{\min}$ is an invariant of the curve</li>
+            <li data-proof-id="08-conductor-exponents">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The conductor exponents: $f_\ell=1$ at multiplicative primes, $f_\ell\geq2$ at additive
+              primes with equality for $\ell>3$, and larger exponents permitted at $2$ and $3$</li>
+            <li data-proof-id="08-hasse">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The Hasse bound $|a_\ell|\leq2\sqrt{\ell}$</li>
+            <li data-proof-id="08-torsion-injects">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Reduction at a good prime is injective on torsion of order coprime to $\ell$, which is
+              why $5$ divides every point count above</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essays 03, 05)</span></li>
+            <li>$E[n]$, the Tate module <span class="lref">(L6, essay 09)</span></li>
+            <li>$\bar\rho_{E,p}$, Mazur, Néron–Ogg–Shafarevich <span class="lref">(L7–L9, essay 10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 13–15)</span></li>
+            <li>Eichler–Shimura, modularity <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>The Frey curve and its representation <span class="lref">(L15–L17, essays 22–24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="07-the-group-law.html"><span class="dir">← Previous written essay</span> 07 · The group law</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 08 · Original prose; no source text reproduced.</p>
+  </div>
+</footer>

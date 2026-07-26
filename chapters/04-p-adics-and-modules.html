@@ -1,0 +1,371 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 · A new pair of sunglasses: the p-adics — No Such Form</title>
+<meta name="description" content="The valuation v_ell, the ring of ell-adic integers, and free modules of rank two: the language in which every Galois representation in this collection will be written.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part I · The old method, and why it stops — Essay 04</p>
+    <h1>A new pair of sunglasses: the $p$-adics</h1>
+    <p class="lede">Essays 01 and 02 already counted how many times a prime divided things. Give that
+      counting function a name, decide that a number is <em>small</em> when the count is large, and a
+      second notion of distance appears on the rational numbers — the one every representation in
+      this collection is written in.</p>
+
+    <div class="claim">
+      <span class="tag">This essay proves, defines, and states</span>
+      <strong>Proves:</strong> that $v_\ell$ is additive on products and ultrametric on sums, that
+      every $\ell$-adic integer has a unique digit expansion, and that a matrix over
+      $\mathbb{Z}_\ell$ is invertible there exactly when its determinant is a unit.
+      <strong>Defines:</strong> $\mathbb{Z}_\ell$, $\mathbb{Q}_\ell$, modules, free modules of finite
+      rank. <strong>States:</strong> that $\mathbb{Q}_\ell$ is the completion of $\mathbb{Q}$ for
+      $|\cdot|_\ell$.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>This essay stands on
+        <a href="01-descent-and-n4.html">01</a> and <a href="02-unique-factorization-and-n3.html">02</a>
+        alone. It does not use the Galois theory of essay 03, and a reader who wants the number systems
+        before the symmetry groups can take these two essays in either order.</p>
+      <p>What it does use is a habit both earlier essays already have. In essay 01 the descent turned
+        on a step of this shape: $a$, $b$ and $a^2+b^2$ are pairwise coprime and their product is a
+        square, therefore each factor is separately a square. In essay 02 the whole first case for
+        $n=3$ came down to counting factors of $\lambda$ — the cubes were $\pm1$ modulo $\lambda^4$,
+        and the contradiction was that $3$ carries only two factors of $\lambda$ when four were
+        needed.</p>
+      <p>Both arguments are exponent bookkeeping. Neither essay gave the bookkeeping a name, and
+        that is the omission this essay repairs. Naming it does more than tidy up: it turns a
+        collection of divisibility tricks into a <em>number system</em>, and that number system is
+        where $\mathrm{GL}_2$ will act.</p>
+      <p>We also need one piece of vocabulary the reader may not have met, since it is not quite in
+        the standard first course: a module. It appears in Rung 2's second half.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>The valuation, and a second notion of size</h3>
+      <p>Fix a prime $\ell$. Every non-zero rational number $x$ can be written $x=\ell^{e}\cdot u$
+        where $u$ is a ratio of integers with neither numerator nor denominator divisible by
+        $\ell$, and the exponent $e$ is determined by $x$. Define the
+        <strong>$\ell$-adic valuation</strong></p>
+      <p>$$ v_\ell(x)=e,\qquad v_\ell(0)=+\infty. $$</p>
+      <p>So $v_2(12)=2$, $v_3(12)=1$, and $v_3(1/9)=-2$. Two properties follow immediately from
+        unique factorisation in $\mathbb{Z}$:</p>
+      <p>$$
+        v_\ell(xy)=v_\ell(x)+v_\ell(y),\qquad
+        v_\ell(x+y)\geq\min\bigl(v_\ell(x),v_\ell(y)\bigr).
+      $$</p>
+      <p>The first is a restatement of the fact that exponents add. For the second, write
+        $x=\ell^{a}u$ and $y=\ell^{b}w$ with $a\leq b$; then
+        $x+y=\ell^{a}(u+\ell^{b-a}w)$, and the bracket is a rational number with no $\ell$ in its
+        denominator, so its valuation is at least $0$. Note the strengthening we get for free: if
+        $a<b$, the bracket is $u$ plus something divisible by $\ell$, hence has valuation exactly
+        $0$, so</p>
+      <p>$$ v_\ell(x)\neq v_\ell(y)\quad\Longrightarrow\quad v_\ell(x+y)=\min\bigl(v_\ell(x),v_\ell(y)\bigr). $$</p>
+      <p>Now invert the scale. Define the <strong>$\ell$-adic absolute value</strong></p>
+      <p>$$ |x|_\ell=\ell^{-v_\ell(x)},\qquad |0|_\ell=0. $$</p>
+      <p>The minus sign in the exponent is the entire idea: <strong>a number is $\ell$-adically small
+        when it is divisible by a high power of $\ell$.</strong> Thus $|81|_3=1/81$ is tiny, while
+        $|1/81|_3=81$ is large. The two displayed properties become</p>
+      <p>$$
+        |xy|_\ell=|x|_\ell\,|y|_\ell,\qquad
+        |x+y|_\ell\leq\max\bigl(|x|_\ell,|y|_\ell\bigr).
+      $$</p>
+      <p>The second is called the <strong>ultrametric</strong> inequality, and it is strictly stronger
+        than the triangle inequality it replaces. An absolute value satisfying it is called
+        <em>non-archimedean</em>. It has consequences that are worth absorbing now, because they are
+        why the word “continuous” will later be doing real work:</p>
+      <ul>
+        <li>Every point of a ball is its centre. If $|y-x|_\ell<r$ then the balls of radius $r$ about
+          $x$ and about $y$ contain exactly the same points.</li>
+        <li>Two balls are therefore either disjoint or nested — never partially overlapping.</li>
+        <li>Every open ball is also closed. The space is <em>totally disconnected</em>: it falls apart
+          into pieces at every scale.</li>
+      </ul>
+      <p>A geometry made of grains rather than of intervals. It is the natural home of congruence
+        conditions, which is exactly what essays 01 and 02 were manipulating by hand.</p>
+
+      <h3>Completing $\mathbb{Q}$ in the new metric</h3>
+      <p>Setting $d(x,y)=|x-y|_\ell$ makes $\mathbb{Q}$ a metric space, and it is not complete: one can
+        write down Cauchy sequences of rationals with no rational limit, just as $\sqrt2$ is missing
+        from $\mathbb{Q}$ in the ordinary metric. Filling in the gaps gives the field
+        $\mathbb{Q}_\ell$ of <strong>$\ell$-adic numbers</strong>, in which $|\cdot|_\ell$ extends and
+        every Cauchy sequence converges.</p>
+      <div class="fence">
+        <strong>Stated, not proved.</strong> The completion exists, is a field, carries a unique
+        extension of $|\cdot|_\ell$, and contains $\mathbb{Q}$ as a dense subfield. The construction
+        is the standard one — equivalence classes of Cauchy sequences — and nothing later in this
+        collection depends on its details, only on the resulting objects.
+      </div>
+      <p>Inside $\mathbb{Q}_\ell$ sit the elements of non-negative valuation, the
+        <strong>$\ell$-adic integers</strong></p>
+      <p>$$ \mathbb{Z}_\ell=\{x\in\mathbb{Q}_\ell:v_\ell(x)\geq0\}=\{x:|x|_\ell\leq1\}. $$</p>
+      <p>This is a ring: valuations add on products and do not decrease on sums, so non-negativity is
+        preserved by both operations. Its units are the elements of valuation exactly $0$, since
+        $v_\ell(x)+v_\ell(1/x)=0$ forces both to vanish. Hence every non-unit is divisible by $\ell$,
+        and $\mathbb{Z}_\ell$ has exactly one maximal ideal, $\ell\mathbb{Z}_\ell$. A ring this simple
+        — one maximal ideal, every element a unit times a power of $\ell$ — is far easier to work over
+        than $\mathbb{Z}$.</p>
+
+      <h3>The same ring, built by congruences</h3>
+      <p>There is a second description of $\mathbb{Z}_\ell$ that never mentions limits, and it is the
+        one to keep in mind. Consider sequences</p>
+      <p>$$ a_1,a_2,a_3,\dots,\qquad a_n\in\mathbb{Z}/\ell^{n}\mathbb{Z}, $$</p>
+      <p>that are <em>compatible</em>: each $a_{n+1}$ reduces to $a_n$ modulo $\ell^{n}$. Such a
+        sequence is a decision, made consistently at every precision, about what a number is modulo
+        every power of $\ell$. These sequences form a ring under componentwise operations, called the
+        <strong>inverse limit</strong>, and it is isomorphic to $\mathbb{Z}_\ell$:</p>
+      <p>$$
+        \mathbb{Z}_\ell\;\cong\;\varprojlim_n\ \mathbb{Z}/\ell^{n}\mathbb{Z}.
+      $$</p>
+      <p>Read the two constructions as answering the same question differently. The metric version
+        says an $\ell$-adic integer is a limit; the congruence version says it is a compatible family
+        of congruences. The second is what makes $\mathbb{Z}_\ell$ usable in arithmetic, and the
+        shape of the definition — an object assembled from finite pieces at every level — is the same
+        shape essay 03 needs for a profinite group.</p>
+      <p>The congruence picture gives coordinates. Write each $a_n$ as its representative in
+        $[0,\ell^{n})$. Compatibility means $a_{n+1}=a_n+\ell^{n}b_n$ for a unique digit
+        $b_n\in\{0,1,\dots,\ell-1\}$, so the sequence is determined by the digits, and conversely any
+        digit string determines a compatible sequence. Therefore</p>
+      <p>$$
+        \mathbb{Z}_\ell
+        =\Bigl\{\,b_0+b_1\ell+b_2\ell^2+\cdots\;:\;b_i\in\{0,\dots,\ell-1\}\,\Bigr\},
+      $$</p>
+      <p>with each element having exactly one such expansion. These are ordinary base-$\ell$
+        numerals extended infinitely to the <em>left</em> instead of to the right. The series
+        converges because $|b_i\ell^i|_\ell\leq\ell^{-i}\to0$: in this metric, high powers of $\ell$
+        are the negligible ones.</p>
+
+      <h3>Modules, and what “rank two” means</h3>
+      <p>A <strong>module</strong> over a commutative ring $R$ is an abelian group $M$ with a
+        multiplication $R\times M\to M$ obeying the vector-space axioms. The definition is the
+        vector-space definition with the word “field” weakened to “ring”, and that single weakening
+        is the reason a new word is needed: over a ring, elements can fail to be invertible, so
+        familiar facts stop holding. Over $\mathbb{Z}$, for instance, $\mathbb{Z}/2$ is a module with
+        no basis at all.</p>
+      <p>$M$ is <strong>free of rank $n$</strong> if it has a basis of $n$ elements, that is, if
+        $M\cong R^n$ with every element uniquely a combination $r_1e_1+\cdots+r_ne_n$. For
+        $R=\mathbb{Z}_\ell$ the rank is well defined, because reducing modulo the maximal ideal turns
+        a rank-$n$ free module into an $n$-dimensional vector space over the field
+        $\mathbb{Z}_\ell/\ell\mathbb{Z}_\ell\cong\mathbb{F}_\ell$, and dimension over a field is well
+        defined.</p>
+      <p>This is the vocabulary the later essays need, and the reason to insist on it is that
+        “two-dimensional” would be the wrong phrase. Essay 09 builds an object that is free of rank
+        $2$ <em>over $\mathbb{Z}_\ell$</em> — not a vector space over a field — and essay 10 makes the
+        Galois group act on it. Choosing a basis then turns that action into $2\times2$ matrices with
+        entries in $\mathbb{Z}_\ell$. The group of invertible such matrices is
+        $\mathrm{GL}_2(\mathbb{Z}_\ell)$, and invertibility there is a stronger requirement than
+        invertibility over the field $\mathbb{Q}_\ell$:</p>
+      <p>$$
+        M\in\mathrm{GL}_2(\mathbb{Z}_\ell)
+        \quad\Longleftrightarrow\quad
+        v_\ell(\det M)=0.
+      $$</p>
+      <p>The proof is the adjugate. For $M=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}$ we have
+        $M^{-1}=(\det M)^{-1}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}$, and the adjugate on the
+        right always has entries in $\mathbb{Z}_\ell$. So $M^{-1}$ is integral exactly when
+        $1/\det M$ is, which happens exactly when $\det M$ is a unit.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>Negative and fractional, written as digits</h3>
+      <p>Work in $\mathbb{Z}_3$ and compute the digits of $-1$. We need $a_n\equiv-1$ modulo $3^n$:
+        $a_1=2$, $a_2=8$, $a_3=26$, and in general $a_n=3^n-1$. Differencing gives every digit equal
+        to $2$:</p>
+      <p>$$ -1=2+2\cdot3+2\cdot3^2+2\cdot3^3+\cdots $$</p>
+      <p>Which is believable from the other side: the partial sums are $2,8,26,80,\dots$, marching
+        away in the ordinary metric but converging to $-1$ in this one, since
+        $|{-1}-(3^n-1)|_3=|3^n|_3=3^{-n}\to0$.</p>
+      <p>Now a fraction. Since $3$ is odd, $2$ is a unit in $\mathbb{Z}_3$, so $\tfrac12$ and
+        $-\tfrac12$ are $3$-adic integers even though they are not integers. Solving
+        $2a_n\equiv-1$ modulo $3^n$ gives $a_1=1$, $a_2=4$, $a_3=13$, so</p>
+      <p>$$
+        -\tfrac12=1+1\cdot3+1\cdot3^2+\cdots,
+        \qquad
+        \tfrac12=2+1\cdot3+1\cdot3^2+\cdots.
+      $$</p>
+      <p>The first is the geometric series $\sum_{i\geq0}3^i$, whose value “ought to be”
+        $1/(1-3)=-\tfrac12$ — and in $\mathbb{Q}_3$ it genuinely converges to exactly that, because
+        the ratio $3$ has $|3|_3<1$. A divergent series in one metric is a convergent one in
+        another.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>$x$</th><th>$v_3(x)$</th><th>$|x|_3$</th><th>digits in $\mathbb{Z}_3$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$1$</td><td>$0$</td><td>$1$</td><td>$1,0,0,0,\dots$</td></tr>
+            <tr><td>$-1$</td><td>$0$</td><td>$1$</td><td>$2,2,2,2,\dots$</td></tr>
+            <tr><td>$\tfrac12$</td><td>$0$</td><td>$1$</td><td>$2,1,1,1,\dots$</td></tr>
+            <tr><td>$-\tfrac12$</td><td>$0$</td><td>$1$</td><td>$1,1,1,1,\dots$</td></tr>
+            <tr><td>$9$</td><td>$2$</td><td>$\tfrac19$</td><td>$0,0,1,0,\dots$</td></tr>
+            <tr><td>$\tfrac13$</td><td>$-1$</td><td>$3$</td><td>not in $\mathbb{Z}_3$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The last row is the point of the whole scale. The rational $\tfrac13$ is perfectly ordinary,
+        but it is $3$-adically <em>large</em>, and it is excluded from $\mathbb{Z}_3$ for the same
+        reason $\tfrac12$ is included: only the prime under consideration matters.</p>
+
+      <h3>Essay 01's descent step, restated</h3>
+      <p>Here is the payoff for the earlier essays. That recurring step — pairwise coprime factors
+        whose product is a square must each be squares — is a statement about valuations and nothing
+        else. If $xyz=w^2$ then for every prime $\ell$</p>
+      <p>$$ v_\ell(x)+v_\ell(y)+v_\ell(z)=2v_\ell(w), $$</p>
+      <p>an even number. Pairwise coprimality says that for each $\ell$ at most one of the three
+        terms on the left is non-zero. A single term equal to an even number is even, so every
+        $v_\ell(x)$ is even, and a positive integer all of whose valuations are even is a square.</p>
+      <p>The same sentence handles cubes, and any exponent, with $2$ replaced throughout. Essay 01
+        proved this by hand each time it was needed. What the valuation supplies is not a new theorem
+        but the observation that these were all one theorem, and that the hypothesis doing the work
+        is <em>coprimality separates the primes</em>.</p>
+
+      <h3>Where each piece is spent</h3>
+      <p>Three separate debts are settled here, and it is worth naming which essay collects each.</p>
+      <ul>
+        <li><strong>The valuation $v_\ell$</strong> is the tool of essay 23. The Frey curve's
+          discriminant is a gigantic product, and the only way to determine its reduction type at
+          each bad prime is to compute $v_\ell$ of that discriminant. That computation is elementary,
+          and it is the one place where a reader can personally verify that the hypothesis of Wiles's
+          theorem is met.</li>
+        <li><strong>The ring $\mathbb{Z}_\ell$ and free modules of rank $2$</strong> are the target of
+          essays 09 and 10. Rank $2$ over $\mathbb{Z}_\ell$ is precisely why the representations in
+          this collection are $2\times2$ rather than some other size, and $\mathrm{GL}_2$ appears
+          because a rank-$2$ free module has a basis.</li>
+        <li><strong>The inverse limit</strong> is the shape of essay 03's absolute Galois group and of
+          essay 05's continuity condition. Both are objects assembled from compatible finite data,
+          and neither is a mysterious construction once $\mathbb{Z}_\ell$ has been built twice.</li>
+      </ul>
+      <p>Essay 08, immediately after the next Part's first two essays, is where $v_\ell$ first gets
+        used in anger: the reduction type of an elliptic curve at a prime is read off from the
+        valuation of a discriminant.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Absolute values and the non-archimedean condition.</strong> Andrew Sutherland's MIT
+        18.785 Fall 2021 Lecture 8, §8.1, lists the absolute-value axioms and the strengthened
+        inequality that defines the non-archimedean case, together with the corresponding metric and
+        ultrametric conditions, and collects the ball properties recorded above.</p>
+      <p><strong>Completions.</strong> The same notes' definition 8.1 fixes Cauchy sequences and
+        completeness, and definition 8.3 constructs the completion of a metric space and extends the
+        absolute value to it.</p>
+      <p><strong>Inverse limits and $\mathbb{Z}_\ell$ twice over.</strong> Definitions 8.7 through 8.9
+        of those notes build directed sets, inverse systems and the inverse limit; proposition 8.11
+        identifies the valuation ring of a completion with an inverse limit of quotients; and example
+        8.13 states both descriptions of $\mathbb{Z}_p$ — the valuation ring inside $\mathbb{Q}_p$
+        and $\varprojlim\mathbb{Z}/p^n\mathbb{Z}$ — as two definitions of the same ring.</p>
+      <p><strong>Digit expansions.</strong> Definition 8.16 and proposition 8.17 of the same lecture
+        establish that every $p$-adic integer has a unique digit expansion and that every digit
+        string occurs.</p>
+      <p><strong>Modules.</strong> Any standard graduate algebra text develops modules, free modules
+        and rank over a commutative ring; the facts used here are that a free module of finite rank
+        has a well-defined rank and that $\mathbb{Z}_\ell$ is a local ring with residue field
+        $\mathbb{F}_\ell$.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/p_adic.py</code>. It computes $v_\ell$
+        and $|\cdot|_\ell$ with exact rational arithmetic, tests additivity and the ultrametric
+        inequality — including the equality case — over several thousand pairs and five primes,
+        recomputes every digit string in the table above from the congruence definition, confirms that
+        the truncated digit strings agree with the number modulo $\ell^n$, and verifies the
+        determinant criterion for $\mathrm{GL}_2(\mathbb{Z}_3)$ against the adjugate on every
+        $2\times2$ matrix with entries below $9$.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="04-valuation">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $v_\ell$ is additive on products and ultrametric on sums, with equality when the
+              valuations differ; $|\cdot|_\ell$ is multiplicative and non-archimedean
+              <span class="lref">(L3)</span></li>
+            <li data-proof-id="04-p-adic-integers">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $\mathbb{Z}_\ell$ is a ring whose units are the elements of valuation $0$, with a single
+              maximal ideal $\ell\mathbb{Z}_\ell$, and every element has a unique digit expansion
+              <span class="lref">(L3)</span></li>
+            <li data-proof-id="04-free-modules">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Free modules of rank $n$ over $\mathbb{Z}_\ell$ have well-defined rank, and
+              $M\in\mathrm{GL}_2(\mathbb{Z}_\ell)$ if and only if $v_\ell(\det M)=0$</li>
+            <li data-proof-id="04-descent-restated">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Essay 01's coprime-factors-are-powers step, in one valuation argument for every
+              exponent</li>
+          </ul>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
+          <ul>
+            <li data-proof-id="04-completion">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              $\mathbb{Q}_\ell$ exists as the completion of $\mathbb{Q}$ for $|\cdot|_\ell$, is a
+              field, and contains $\mathbb{Q}$ densely</li>
+            <li data-proof-id="04-inverse-limit">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The identification $\mathbb{Z}_\ell\cong\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$ of the
+              two constructions</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essays 03, 05)</span></li>
+            <li>Elliptic curves, the group law, reduction and the conductor
+              <span class="lref">(L4–L5, essays 06–08)</span></li>
+            <li>$E[n]$, the Tate module <span class="lref">(L6, essay 09)</span></li>
+            <li>$\bar\rho_{E,p}$, Mazur, Néron–Ogg–Shafarevich <span class="lref">(L7–L9, essay 10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 13–15)</span></li>
+            <li>Eichler–Shimura, modularity <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>The Frey curve and its representation <span class="lref">(L15–L17, essays 22–24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="02-unique-factorization-and-n3.html"><span class="dir">← Previous written essay</span> 02 · Unique factorisation, and where it runs out</a>
+      <a class="next" href="06-elliptic-curves.html"><span class="dir">Next written essay →</span> 06 · Elliptic curves, written correctly</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 04 · Original prose; no source text reproduced.</p>
+  </div>
+</footer>

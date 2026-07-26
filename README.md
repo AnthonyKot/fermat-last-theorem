@@ -24,21 +24,25 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Six essays are written — the two ends of the rope,
-plus the first two elliptic-curve constructions:
+Scaffold and the full 25-essay map are complete. Eight essays are written — the two ends of the rope,
+the valuation, and the elliptic-curve bridge as far as the conductor:
 
 | # | Essay | What it delivers |
 |---|-------|------------------|
 | 01 | Descent, and the exponent four | $x^4+y^4=z^2$ has no solution, proved in full; reduction to odd prime exponents |
 | 02 | Unique factorisation, and where it runs out | $n=3$ first case in the Eisenstein integers; failure of unique factorisation; Kummer's regular primes |
+| 04 | A new pair of sunglasses: the $p$-adics | $v_\ell$ and the ultrametric inequality; $\mathbb{Z}_\ell$ built twice; free modules and $\mathrm{GL}_2(\mathbb{Z}_\ell)$ |
 | 06 | Elliptic curves, written correctly | General Weierstrass form, smoothness and discriminant; why integral models at $2$ and $3$ matter |
 | 07 | The group law | Chord-and-tangent addition and an order-five example; associativity and complex uniformization stated |
+| 08 | Reduction and the conductor | Good, multiplicative and additive reduction; $a_\ell$; semistable ⟺ square-free conductor |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
-has to justify itself. Essays 03–05, 08–21, 23 and 24 are stubbed on the contents page, and essay 25 states
-plainly that it is conditional until they exist.
+has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
+arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
+valuation to link back to rather than a declared debt. Essays 03, 05, 09–21, 23 and 24 are stubbed on
+the contents page, and essay 25 states plainly that it is conditional until they exist.
 
 ## Verification
 
@@ -67,6 +71,14 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
   - `weierstrass_models.py` — the two essay-06 discriminants and the change-of-coordinates identity,
     checked coefficient by coefficient.
   - `group_law.py` — exact general-Weierstrass addition on essay 07's order-five subgroup.
+  - `p_adic.py` — $v_\ell$ and $|\cdot|_\ell$ in exact rational arithmetic: additivity, the ultrametric
+    inequality and its equality case over thousands of pairs, every digit string recomputed from
+    congruences, and the $\mathrm{GL}_2(\mathbb{Z}_3)$ determinant criterion checked against the
+    adjugate exhaustively.
+  - `reduction_and_conductor.py` — point counts over $\mathbb{F}_\ell$ with no elliptic-curve library:
+    bad primes from the discriminant, $a_\ell$ against the LMFDB newform coefficients, the Hasse bound,
+    and both reduction types located two independent ways — by point count and by the tangent
+    directions at the singular point.
 - Plus the ported checks: computed count sync, link resolution, math-delimiter balance, prev/next
   contiguity, a scan forbidding section numbers for textbooks not owned, a check that every precise
   citation is logged in `SOURCES.md`, and an n-gram check against the reference transcript.

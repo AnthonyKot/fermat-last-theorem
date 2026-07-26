@@ -304,9 +304,10 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   nearly independent of the middle. Having 25 drafted early keeps every construction essay honest
   about what it is *for* — the failure mode of expositions like this is beautiful machinery with no
   memory of the target.
-- **Essays 06 and 07 are written; next write 08, then a first pass at 23.** This gives the reader the concrete elliptic-curve
-  world and immediately spends essay 22's construction. Essay 23 may initially carry declared debts
-  to 04 and 18, but writing it now fixes the exact depth those earlier-numbered essays must supply.
+- **Essays 04, 06, 07 and 08 are written; next write 23.** Essay 04 was pulled forward out of numeric
+  order precisely so that 08 could link back to it rather than declare a debt, and 08 then spends
+  essay 22's construction. Essay 23 now needs no forward reference except modularity itself, which it
+  imports from 18 as a declared assumption.
 - **Then 13.** It is the only formula essay 25 evaluates. Discharging that debt early makes the
   closing arithmetic self-contained and gives the middle of the book a visible payoff.
 - **Then 03, 04, 05, 09, 10, 24.** Essay 05 remains the highest-dependency node: 10, 16, 18, 19, 21
@@ -423,11 +424,18 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 06, 07, 22, 25 — the two ends of the rope and the start of the elliptic-curve bridge.
-**Unwritten:** 03–05, 08–21, 23, 24.
+**Written:** 01, 02, 04, 06, 07, 08, 22, 25 — the two ends of the rope, the valuation, and the
+elliptic-curve bridge as far as the conductor.
+**Unwritten:** 03, 05, 09–21, 23, 24.
+
+**L3, L4 and L5 are now discharged.** Essay 04 supplies $v_\ell$, $\mathbb{Z}_\ell$ and free modules;
+essay 08 supplies reduction types, the conductor, and semistable ⟺ square-free conductor. Essay 23's
+valuation argument is therefore unblocked and is the natural next essay: it needs only 04, 08 and 22,
+all written, plus a declared import of modularity from 18.
 
 **Check scripts, all passing:** `dim_s2_gamma0.py`, `frey_discriminant.py`,
-`group_law.py`, `kummer_regular_primes.py`, `weierstrass_models.py`.
+`group_law.py`, `kummer_regular_primes.py`, `p_adic.py`, `reduction_and_conductor.py`,
+`weierstrass_models.py`.
 
 ### Open items for the next pass
 
@@ -439,6 +447,20 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
    before drafting 19–21.
 3. **Essay 02's second case** is an outline, and `about.html` says so. Either complete it or leave the
    fence — but do not quietly upgrade the claim.
-4. When 03–05, 08–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become back-references and its
-   ledger must close. `verify.sh`'s forward-dependency check will enforce the direction; the closing
-   itself needs a human look.
+4. When 03, 05, 09–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become
+   back-references and its ledger must close. `verify.sh`'s forward-dependency check will enforce the
+   direction; the closing itself needs a human look.
+5. **Sutherland's 18.783 Fall 2023 Lecture 24 covers far more of Parts III–IV than expected**, and is
+   fetched and logged. It is titled *Modular forms and L-functions*, not anything about reduction —
+   the minimal-model and conductor material sits at its end, in §24.7 and definitions 24.29–24.31.
+   Numbered items usable later, all in that one lecture: **theorem 24.8** gives
+   $\dim M_k(\Gamma)$ and $\dim S_k(\Gamma)$ with $\dim S_2(\Gamma)=g(\Gamma)$ (**essay 13** — note it
+   is the genus form, so essay 13 still owes the arithmetic route to the genus); definition 24.5,
+   24.6 and theorem 24.11, corollaries 24.12–24.13, theorem 24.14, corollary 24.15 and remark 24.16
+   cover modular forms, cusp forms and Hecke operators including the $\gcd(n,N)=1$ restriction
+   (**essays 12, 14**, and remark 24.16 confirms Corrections #4); definition 24.24, theorem 24.25 and
+   theorem 24.27 give the $L$-function of a cusp form, its continuation and functional equation, and
+   the newform Euler product, with definition 24.28 the elliptic-curve $L$-function (**essay 17**);
+   theorem 24.1 is Taylor–Wiles for semistable curves and theorem 24.33 is BCDT (**essay 18**);
+   theorem 24.37 is Eichler–Shimura in the Carayol form (**essay 16**). Read these before drafting
+   Part III, and log each in `SOURCES.md` as it is used.

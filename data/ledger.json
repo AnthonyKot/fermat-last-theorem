@@ -4,6 +4,8 @@
     "accepted_assumption_ids": [
       "06-weierstrass-definition",
       "07-associativity",
+      "08-minimal-model",
+      "08-conductor-exponents",
       "10-local-theorems",
       "16-eichler-shimura",
       "18-modularity",
@@ -60,6 +62,54 @@
       "text": "Kummer's regular-prime criterion and his theorem for regular prime exponents are stated."
     },
     {
+      "id": "04-valuation",
+      "register": "proved",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [4],
+      "text": "The valuation $v_\\ell$ is additive on products and ultrametric on sums, with equality when the valuations differ, and $|\\cdot|_\\ell$ is multiplicative and non-archimedean."
+    },
+    {
+      "id": "04-p-adic-integers",
+      "register": "proved",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [4],
+      "text": "$\\mathbb{Z}_\\ell$ is a ring whose units are the elements of valuation $0$, with the single maximal ideal $\\ell\\mathbb{Z}_\\ell$, and every element has a unique digit expansion."
+    },
+    {
+      "id": "04-free-modules",
+      "register": "proved",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [4],
+      "text": "Free modules over $\\mathbb{Z}_\\ell$ have well-defined rank, and a matrix lies in $\\mathrm{GL}_2(\\mathbb{Z}_\\ell)$ exactly when its determinant has valuation $0$."
+    },
+    {
+      "id": "04-descent-restated",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [4],
+      "text": "Essay 01's step that coprime factors of a perfect power are themselves powers is proved once, for every exponent, as a statement about valuations."
+    },
+    {
+      "id": "04-completion",
+      "register": "stated",
+      "availability": "available",
+      "role": "background",
+      "essays": [4],
+      "text": "$\\mathbb{Q}_\\ell$ exists as the completion of $\\mathbb{Q}$ for $|\\cdot|_\\ell$, is a field, and contains $\\mathbb{Q}$ as a dense subfield."
+    },
+    {
+      "id": "04-inverse-limit",
+      "register": "stated",
+      "availability": "available",
+      "role": "background",
+      "essays": [4],
+      "text": "The metric and congruence constructions agree: $\\mathbb{Z}_\\ell\\cong\\varprojlim\\mathbb{Z}/\\ell^n\\mathbb{Z}$."
+    },
+    {
       "id": "06-weierstrass-definition",
       "register": "stated",
       "availability": "available",
@@ -106,6 +156,70 @@
       "role": "background",
       "essays": [7],
       "text": "Complex uniformization $E(\\mathbb{C})\\cong\\mathbb{C}/\\Lambda$ is stated, not proved."
+    },
+    {
+      "id": "08-bad-primes",
+      "register": "proved",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [8],
+      "text": "Bad reduction at $\\ell$ holds exactly when $\\ell$ divides $\\Delta_{\\min}$, so there are finitely many bad primes and one valuation computation finds them all."
+    },
+    {
+      "id": "08-reduction-types",
+      "register": "proved",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [8],
+      "text": "The trichotomy good / multiplicative / additive follows from the tangent directions at the unique singular point of the reduced cubic, and $a_\\ell\\in\\{0,\\pm1\\}$ at a bad prime names the type."
+    },
+    {
+      "id": "08-semistable-radical",
+      "register": "proved",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [8],
+      "text": "Given the conductor exponents, $N_E$ is square-free exactly when $E$ is semistable, and a semistable curve has $N_E=\\operatorname{rad}(\\Delta_{\\min})$."
+    },
+    {
+      "id": "08-worked-conductors",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [8],
+      "text": "$y^2+y=x^3-x^2$ is semistable of conductor $11$, split multiplicative at $11$ with $a_{11}=1$; $y^2=x^3+1$ is additive at $2$ and $3$, so it is not semistable."
+    },
+    {
+      "id": "08-minimal-model",
+      "register": "stated",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [8],
+      "text": "Every elliptic curve over $\\mathbb{Q}$ has a global minimal model, so $\\Delta_{\\min}$ is an invariant of the curve rather than of an equation."
+    },
+    {
+      "id": "08-conductor-exponents",
+      "register": "stated",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [8],
+      "text": "The conductor exponents: $f_\\ell=1$ at multiplicative primes and $f_\\ell\\geq2$ at additive primes, with equality for $\\ell>3$ and larger exponents permitted at $2$ and $3$."
+    },
+    {
+      "id": "08-hasse",
+      "register": "stated",
+      "availability": "available",
+      "role": "background",
+      "essays": [8],
+      "text": "The Hasse bound $|a_\\ell|\\leq2\\sqrt{\\ell}$."
+    },
+    {
+      "id": "08-torsion-injects",
+      "register": "stated",
+      "availability": "available",
+      "role": "background",
+      "essays": [8],
+      "text": "Reduction at a good prime is injective on torsion of order coprime to $\\ell$, which is why $5$ divides every point count of the conductor-$11$ curve."
     },
     {
       "id": "22-frey-construction",
