@@ -37,7 +37,7 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>20</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>21</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Frobenius elements at unramified primes, as a conjugacy class <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
@@ -52,7 +52,8 @@
         <li>$\operatorname{tr}\bar\rho_{E,p}(\mathrm{Frob}_\ell)\equiv a_\ell$ <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
         <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
         <li>$S$ and $T$ generate $\mathrm{SL}_2(\mathbb{Z})$; $X_0(N)$ is a compact Riemann surface <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span></li>
-        <li>The valence formula for $\Gamma_0(N)$ <span class="scope-essays">(essay 13)</span> <span class="roster-planned">not yet written</span></li>
+        <li>A genus-$g$ compact Riemann surface has a $g$-dimensional space of holomorphic differentials <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span></li>
+        <li>Riemann--Hurwitz, and the ramification structure of $X_0(N)\to X(1)$ <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span></li>
         <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(essay 14)</span> <span class="roster-planned">not yet written</span></li>
         <li>Newform theory, and the level of a newform <span class="scope-essays">(essay 15)</span> <span class="roster-planned">not yet written</span></li>
         <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
@@ -106,7 +107,7 @@
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is discharged or narrowed.</p>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 10 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 7 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -283,6 +284,16 @@
           <span class="scope-role scope-role--background">Background</span>
           $E_4^3-E_6^2=1728\Delta$ verified as exact power series; and $(\eta(z)\eta(11z))^2$ is normalised with $a_1=1$, has multiplicative coefficients, and matches essay 08's hand-counted $a_\ell$ at every prime below forty -- including the bad prime $11$, where essay 08 used a different formula entirely. <span class="scope-essays">(<a href="chapters/12-modular-forms.html">essay 12</a>)</span>
        </li>
+        <li data-proof-id="13-dimension-formula">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span> <span class="scope-dep">conditional on: A genus-$g$ compact Riemann surface has a $g$-dimensional space of holomorphic differentials, Riemann--Hurwitz, and the ramification structure of $X_0(N)\to X(1)$</span>
+          $d(\gamma z)=dz/(cz+d)^2$, so weight two is exactly the weight at which $f(z)\,dz$ is invariant and $S_2(\Gamma_0(N))$ is the space of holomorphic differentials on $X_0(N)$; Riemann--Hurwitz applied to the degree-$\mu$ covering $X_0(N)\to X(1)$, ramified only above $i$, $\rho$ and the cusp, then gives $\dim S_2(\Gamma_0(N))=1+\frac{\mu}{12}-\frac{\nu_2}{4}-\frac{\nu_3}{3}-\frac{\nu_\infty}{2}$ -- the formula essay 25 evaluates at $N=2$, previously assumption (F). <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span>
+       </li>
+        <li data-proof-id="13-worked-levels">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          The ramification data at $N=2$ (one point above $i$ with $e=2$, one above $\rho$ with $e=3$, two cusps of widths summing to $3$) gives $g=0$, and at $N=11$ (six above $i$, four above $\rho$, cusp widths $1$ and $11$) gives $g=1$; the levels below $400$ where the dimension vanishes are exactly $1$--$10$, $12$, $13$, $16$, $18$, $25$; and $\nu_\infty$ enters the genus as a ramification count, separately from the vanishing conditions at the cusps, of which exactly one is redundant at weight two by the residue relation -- $\dim M_2-\dim S_2=\nu_\infty-1$, against $\nu_\infty$ for $k\geq4$. Substituting $k=2$ into the $k&gt;2$ dimension formula returns $g-1$, not $g$, so the weight-two case is genuinely separate and not a vanishing coefficient. <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -322,6 +333,11 @@
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--background">Background</span>
           Full rational $E[2]$ forces $4\mid\#\tilde E(\mathbb{F}_\ell)$, and with Hasse this pins $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$, $a_{17}\in\{\pm2,\pm6\}$. Each makes $a_\ell^2-4\ell$ a non-square modulo $p$, proving irreducibility when the witness prime has good reduction -- so $\bar\rho$ is irreducible for $p=5$ unless $21\mid abc$ and for $p=7$ unless $85\mid abc$. Derived here, not sourced; no further uniform witness exists below 400. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
+       </li>
+        <li data-proof-id="25-level-two">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span> <span class="scope-dep">conditional on: A genus-$g$ compact Riemann surface has a $g$-dimensional space of holomorphic differentials, Riemann--Hurwitz, and the ramification structure of $X_0(N)\to X(1)$</span>
+          The level-$2$ arithmetic is computed, and the formula it evaluates is derived in essay 13 rather than quoted, so the closing computation is no longer conditional on a formula owed elsewhere. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
        </li>
       </ul>
 
@@ -389,6 +405,16 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           That $S:z\mapsto-1/z$ and $T:z\mapsto z+1$ generate $\mathrm{SL}_2(\mathbb{Z})$, verified here only for matrices of small height; and that $X_0(N)=\mathbb{H}^*/\Gamma_0(N)$ is a compact Riemann surface. <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span>
        </li>
+        <li data-proof-id="13-genus-is-dimension">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          That the space of holomorphic differentials on a compact Riemann surface of genus $g$ has dimension $g$. Combined with the identification of weight-two forms with invariant differentials, which is derived here, this gives $\dim S_2(\Gamma_0(N))=g(X_0(N))$. <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span>
+       </li>
+        <li data-proof-id="13-riemann-hurwitz">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Riemann--Hurwitz for a covering of compact Riemann surfaces, together with the fact that $X_0(N)\to X(1)$ is ramified only above the two elliptic points and the cusp, with indices dividing $2$ above $i$, dividing $3$ above $\rho$, and unconstrained above the cusp. Substituted into by hand here; the consistency of the resulting counts is checked for every $N&lt;400$. <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span>
+       </li>
         <li data-proof-id="24-multiplicative-ramification">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -414,16 +440,6 @@
           <span class="scope-mode scope-mode--outlined">Outlined</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="13-dimension-formula">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The dimension formula for $S_2(\Gamma_0(N))$ will be derived from the index, elliptic-point counts and cusp count. <span class="scope-essays">(essay 13)</span>
-       </li>
-        <li data-proof-id="13-valence-formula">
-          <span class="scope-mode scope-mode--stated">To assume</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The valence formula, that the weighted count of zeros and poles of a weight-$k$ form equals $k\mu/12$. Imported: its proof is a contour integral around the fundamental domain and would cost an essay of its own. Essay 13 derives the dimension formula from it. <span class="scope-essays">(essay 13)</span>
        </li>
         <li data-proof-id="14-eigenbasis">
           <span class="scope-mode scope-mode--stated">To assume</span>
@@ -453,12 +469,7 @@
         <li data-proof-id="25-contradiction">
           <span class="scope-mode scope-mode--conditional">Conditional</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The final contradiction is assembled conditionally on exactly three inputs -- modularity (essay 18), the dimension formula (essay 13) and Ribet's theorem, stated here -- and the collection's full FLT conclusion additionally on essay 02's outlined second case for $n=3$. Nothing else is external: the irreducibility threshold and the conductor of $\bar\rho$ are both settled in essay 24. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
-       </li>
-        <li data-proof-id="25-level-two">
-          <span class="scope-mode scope-mode--conditional">Conditional</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+          The final contradiction is assembled conditionally on exactly three inputs -- modularity (essay 18), Ribet's theorem, stated here, and finiteness at $p$ (essay 24) -- and the collection's full FLT conclusion additionally on essay 02's outlined second case for $n=3$. Nothing else is external: the irreducibility threshold and the conductor of $\bar\rho$ are settled in essay 24, and the dimension formula, once assumption (F), is derived in essay 13. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
        </li>
       </ul>
 
@@ -645,6 +656,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/07be53e"><code>07be53e</code></a> · 2026-07-26 18:49 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/cccbb4c"><code>cccbb4c</code></a> · 2026-07-26 19:09 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

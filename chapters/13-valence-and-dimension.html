@@ -1,0 +1,313 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13 · The dimension formula — No Such Form</title>
+<meta name="description" content="Why weight two is the weight of differentials, and how Riemann-Hurwitz turns essay 11's four counts into dim S_2(Gamma_0(N)) — discharging the formula the closing argument evaluates.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part III · Modular forms — Essay 13</p>
+    <h1>The dimension formula</h1>
+    <p class="lede">Two facts do all the work: weight two is the weight at which a form becomes a
+      differential, and a covering of the sphere has a genus determined by where it ramifies. Put them
+      together and the four counts of essay 11 become the number the argument ends on.</p>
+
+    <div class="claim">
+      <span class="tag">This essay derives, and imports two things</span>
+      <strong>Derives:</strong>
+      $\dim S_2(\Gamma_0(N))=1+\frac{\mu}{12}-\frac{\nu_2}{4}-\frac{\nu_3}{3}-\frac{\nu_\infty}{2}$
+      from Riemann–Hurwitz, and evaluates it at $N=2$ and $N=11$ with the ramification written out.
+      <strong>Imports:</strong> that $\dim S_2(\Gamma_0(N))$ is the genus of $X_0(N)$, and
+      Riemann–Hurwitz together with the ramification structure of $X_0(N)\to X(1)$.
+      <strong>Discharges:</strong> assumption <strong>(F)</strong>.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="11-the-modular-group.html">11</a> produced the four counts — the index $\mu$, the
+        elliptic-point counts $\nu_2$ and $\nu_3$, and the cusp count $\nu_\infty$ — and stated that
+        $X_0(N)=\mathbb{H}^*/\Gamma_0(N)$ is a compact Riemann surface. Essay
+        <a href="12-modular-forms.html">12</a> defined $S_2(\Gamma_0(N))$, the space whose dimension is
+        wanted, and left a warning: $\nu_\infty$ enters the dimension theory twice, and only one of the
+        two appearances is the $-\nu_\infty/2$ in the formula. This essay is where that gets sorted.</p>
+      <div class="fence">
+        <strong>This essay discharges (F).</strong> Essay 25 assumes two things: <strong>(M)</strong>
+        modularity, and <strong>(F)</strong> the dimension formula. After this essay, (F) is no longer an
+        assumption of the collection — it is a derivation resting on the two imports named above. That
+        leaves (M) as the single deep input on the modular side.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Why weight two, finally</h3>
+      <p>Essay 12 defined weight-$k$ forms for every even $k$ and said the Fermat argument wants
+        $k=2$ without saying why. Here is the reason, and it is a one-line differentiation.</p>
+      <p>A form of weight $k$ satisfies $f(\gamma z)=(cz+d)^kf(z)$. Differentiate the action:</p>
+      <p>$$
+        \frac{d(\gamma z)}{dz}=\frac{d}{dz}\frac{az+b}{cz+d}
+        =\frac{a(cz+d)-c(az+b)}{(cz+d)^2}=\frac{ad-bc}{(cz+d)^2}=\frac{1}{(cz+d)^2},
+      $$</p>
+      <p>the determinant collapsing the numerator exactly as it did in essay 11. So</p>
+      <p>$$
+        f(\gamma z)\,d(\gamma z)=(cz+d)^kf(z)\cdot\frac{dz}{(cz+d)^2}
+        =(cz+d)^{k-2}f(z)\,dz.
+      $$</p>
+      <p>The factor $(cz+d)^{k-2}$ is $1$ for every $\gamma$ precisely when $k=2$, and for any other
+        weight it genuinely varies with $\gamma$. So</p>
+      <p>$$
+        \boxed{\quad k=2\iff f(z)\,dz\text{ is invariant under }\Gamma_0(N).\quad}
+      $$</p>
+      <p>An invariant differential on $\mathbb{H}$ descends to a differential on the quotient. And the
+        cusp condition from essay 12 — $a_0=0$ at every cusp — is exactly what makes it
+        <em>holomorphic</em> there rather than having a pole. Weight two is not a convention: it is the
+        weight at which modular forms <em>are</em> differential forms on $X_0(N)$.</p>
+      <div class="fence">
+        <strong>Imported.</strong> The space of holomorphic differentials on a compact Riemann surface of
+        genus $g$ has dimension $g$. Combined with the identification above,
+        $$\dim S_2(\Gamma_0(N))=g\bigl(X_0(N)\bigr).$$
+        This is the one place the collection needs Riemann surface theory, and it is why the answer will
+        be a genus rather than a count of conditions.
+      </div>
+
+      <h3>A covering of the sphere</h3>
+      <p>The inclusion $\Gamma_0(N)\subseteq\mathrm{SL}_2(\mathbb{Z})$ gives a map of quotients</p>
+      <p>$$ \pi:X_0(N)\longrightarrow X(1)=\mathbb{H}^*/\mathrm{SL}_2(\mathbb{Z}), $$</p>
+      <p>and two things about it are already known. Its degree is the index
+        $\mu=[\mathrm{SL}_2(\mathbb{Z}):\Gamma_0(N)]$ from essay 11 — a generic point has $\mu$
+        preimages, one per coset. And the target is a sphere: $X(1)$ has genus $0$, being parametrised by
+        a single coordinate.</p>
+      <div class="fence">
+        <strong>Imported: Riemann–Hurwitz, and where this map ramifies.</strong> For a degree-$\mu$
+        covering of compact Riemann surfaces,
+        $$2g_{X_0(N)}-2=\mu\bigl(2g_{X(1)}-2\bigr)+\sum_P(e_P-1),$$
+        the sum over points with ramification index $e_P$. For $\pi$ the ramification occurs only above
+        the three special points of $X(1)$ — the elliptic points $i$ and $\rho$ and the cusp — with
+        indices dividing $2$ above $i$, dividing $3$ above $\rho$, and unconstrained above the cusp.
+      </div>
+      <p>That last clause is where essay 11's counts acquire their meaning, and it is worth being exact
+        about. Above $i$ each preimage has $e=1$ or $e=2$; the ones with $e=1$ are precisely the elliptic
+        points of order $2$ of $\Gamma_0(N)$, of which there are $\nu_2$. The indices sum to $\mu$, so</p>
+      <p>$$ \nu_2\cdot1+r_2\cdot2=\mu,\qquad r_2=\frac{\mu-\nu_2}{2} $$</p>
+      <p>points ramify above $i$. Likewise $r_3=(\mu-\nu_3)/3$ points ramify above $\rho$ with $e=3$.
+        Above the cusp there are $\nu_\infty$ preimages, whose indices — the <em>cusp widths</em> — sum
+        to $\mu$.</p>
+      <p>Both of those divisions must come out whole, which is a real constraint on the four counts and
+        not a formality: the script checks $\mu\equiv\nu_2\ (2)$ and $\mu\equiv\nu_3\ (3)$ for every
+        $N\lt400$.</p>
+
+      <h3>The computation</h3>
+      <p>Substitute. With $g_{X(1)}=0$ the first term is $-2\mu$, and the ramification sum has three
+        pieces: $r_2$ points contributing $e-1=1$ each, $r_3$ points contributing $2$ each, and the
+        cusps contributing $\sum(e_i-1)=\mu-\nu_\infty$.</p>
+      <p>$$
+        \begin{aligned}
+        2g-2
+        &=-2\mu+\frac{\mu-\nu_2}{2}+2\cdot\frac{\mu-\nu_3}{3}+\bigl(\mu-\nu_\infty\bigr)\\[.5ex]
+        &=\mu\Bigl(-2+\tfrac12+\tfrac23+1\Bigr)-\frac{\nu_2}{2}-\frac{2\nu_3}{3}-\nu_\infty\\[.5ex]
+        &=\frac{\mu}{6}-\frac{\nu_2}{2}-\frac{2\nu_3}{3}-\nu_\infty,
+        \end{aligned}
+      $$</p>
+      <p>because $-2+\tfrac12+\tfrac23+1=\tfrac16$. Halve and add one:</p>
+      <p>$$
+        \boxed{\quad
+        \dim S_2\bigl(\Gamma_0(N)\bigr)=g\bigl(X_0(N)\bigr)
+        =1+\frac{\mu}{12}-\frac{\nu_2}{4}-\frac{\nu_3}{3}-\frac{\nu_\infty}{2}.\quad}
+      $$</p>
+      <p>That is assumption (F), now derived. The $12$ in the denominator is $2\times6$, and the $6$ came
+        from four rational numbers adding to $\tfrac16$ — which is the whole reason the formula looks the
+        way it does.</p>
+
+      <h3>Settling essay 12's warning</h3>
+      <p>Now the point essay 12 flagged and deliberately did not resolve. In the formula above,
+        $\nu_\infty$ appears because <strong>the cusps are where the covering ramifies</strong> — it is a
+        ramification count, arriving through Riemann–Hurwitz. It has nothing to do with the fact that
+        holomorphy at the cusps imposes $\nu_\infty$ conditions on a $q$-expansion.</p>
+      <p>That second effect is real and enters elsewhere. For $k\gt2$ the standard dimension formulas
+        give</p>
+      <p>$$ \dim M_k-\dim S_k=\nu_\infty, $$</p>
+      <p>which is exactly one condition per cusp, independently imposed — the vanishing conditions
+        counted honestly. The cusp term of $\dim S_k$ carries coefficient $\tfrac k2-1$, so at $k=2$ that
+        coefficient is zero.</p>
+      <p>It is tempting to stop there and say "so at weight two the conditions are free, which is why
+        $\dim S_2=g$." That is not right, and the arithmetic says so. Substitute $k=2$ into the $k\gt2$
+        formula and it returns</p>
+      <p>$$ (2-1)(g-1)+0+0+0\cdot\nu_\infty=g-1, $$</p>
+      <p>one <em>less</em> than the truth, at every level. Weight two is not a case the general formula
+        covers with a vanishing term; it is a case the general formula misses, and $\dim S_2=g$ has to be
+        stated separately. The reason for the discrepancy is worth naming, because it is the same fact
+        that made this essay work. At weight two $f(z)\,dz$ is a differential, and the sum of the residues
+        of a meromorphic differential on a compact surface is zero. So the $\nu_\infty$ vanishing
+        conditions are <strong>not independent</strong> — they satisfy exactly one linear relation, and
+        only $\nu_\infty-1$ of them bite:</p>
+      <p>$$ \dim M_2-\dim S_2=\nu_\infty-1, $$</p>
+      <p>which the script confirms at every level it checks. At $N=11$: $\dim M_2=2$, $\dim S_2=1$,
+        differing by $1=\nu_\infty-1$, while at weight four $\dim M_4=4$ and $\dim S_4=2$ differ by
+        $2=\nu_\infty$. That missing condition is the $+1$ that turns $g-1$ into $g$.</p>
+      <p>So $\nu_\infty$ appears twice, for two reasons that are not the same reason, and neither is the
+        other's explanation: once as ramification in the genus, and once as vanishing conditions of which
+        one is redundant at weight two and none is at weight four.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>Level 2, with the ramification written out</h3>
+      <p>Essay 11 computed $\mu=3$, $\nu_2=1$, $\nu_3=0$, $\nu_\infty=2$. So the covering
+        $X_0(2)\to X(1)$ has degree $3$, and above each special point:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>above</th><th>preimages</th><th>indices</th><th>$\sum(e-1)$</th></tr></thead>
+          <tbody>
+            <tr><td>$i$</td><td>$\nu_2=1$ unramified, $r_2=\frac{3-1}{2}=1$ ramified</td><td>$1,2$</td><td>$1$</td></tr>
+            <tr><td>$\rho$</td><td>$\nu_3=0$ unramified, $r_3=\frac{3-0}{3}=1$ ramified</td><td>$3$</td><td>$2$</td></tr>
+            <tr><td>the cusp</td><td>$\nu_\infty=2$ cusps</td><td>$1,2$</td><td>$1$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Every row's indices sum to $3=\mu$, as they must. Then</p>
+      <p>$$ 2g-2=-6+1+2+1=-2,\qquad g=0, $$</p>
+      <p>and therefore</p>
+      <p>$$ \dim S_2\bigl(\Gamma_0(2)\bigr)=0. $$</p>
+      <p><strong>That is the ending.</strong> Not a formula evaluated to zero but a genus computed from a
+        degree-three covering of the sphere ramified at three points. There is no weight-2 cusp form of
+        level 2 because a surface with that ramification data is a sphere, and a sphere carries no
+        holomorphic differentials.</p>
+
+      <h3>Level 11, and the form essay 12 wrote down</h3>
+      <p>With $\mu=12$, $\nu_2=\nu_3=0$, $\nu_\infty=2$: six points ramify above $i$, four above $\rho$,
+        and the two cusps have widths summing to $12$ — they are $1$ and $11$. So</p>
+      <p>$$ 2g-2=-24+6\cdot1+4\cdot2+(12-2)=-24+6+8+10=0,\qquad g=1. $$</p>
+      <p>A torus, one holomorphic differential, $\dim S_2(\Gamma_0(11))=1$. Essay 12 exhibited that
+        differential as $(\eta(z)\eta(11z))^2$ and matched its coefficients to essay 08's point counts.
+        The genus computation is why there was exactly one thing to find.</p>
+
+      <h3>How much room the ending has</h3>
+      <p>A contradiction that arrives at zero invites the worry that it only just arrives. It does not.
+        The formula gives $\dim S_2(\Gamma_0(N))=0$ for</p>
+      <p>$$ N=1,\dots,10,\ 12,\ 13,\ 16,\ 18,\ 25, $$</p>
+      <p>and for no other $N$ below $400$ — the classical list of genus-zero levels, which the script
+        reproduces. Level $2$ sits comfortably inside it. Had essay 24's conductor computation returned
+        $3$, or $4$, or $5$, the argument would have closed identically. What matters is not the value
+        $2$ but that level lowering drives the level into a range where the spaces are empty for the
+        unglamorous reason that a sphere has no differentials.</p>
+
+      <h3>What remains on the modular side</h3>
+      <p>With (F) discharged, essay 25's assumptions are down to <strong>(M)</strong>, modularity, plus
+        Ribet's theorem stated there and finiteness at $p$ from essay 24. Essays 14 and 15 build the
+        vocabulary (M) is phrased in — Hecke operators, and what <em>the level</em> of a newform means —
+        and essays 16 to 18 state (M) itself.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>The dimension in terms of the genus and the counts.</strong> Andrew Sutherland's MIT
+        18.783 Fall 2023 Lecture 24, theorem 24.8, gives $\dim M_k(\Gamma)$ and $\dim S_k(\Gamma)$ for a
+        congruence subgroup in terms of $g(X(\Gamma))$, $\nu_2$, $\nu_3$ and $\nu_\infty$, and records
+        the case used here: $\dim S_2(\Gamma)=g(\Gamma)$. Its remark 24.9 notes the relationship between
+        $S_2(\Gamma_0(N))$ and the regular differentials on $X_0(N)$, whose dimensions coincide — which
+        is the identification this essay derives from $d(\gamma z)=dz/(cz+d)^2$.</p>
+      <p><strong>Further reference.</strong> Diamond and Shurman's <em>A First Course in Modular
+        Forms</em> derives the genus of $X_0(N)$ from the ramification of $X_0(N)\to X(1)$ and treats
+        the valence formula and the isomorphism between weight-two cusp forms and holomorphic
+        differentials.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/dimension_formula.py</code>. It verifies
+        numerically that $d(\gamma z)/dz=1/(cz+d)^2$ over every matrix with entries at most $3$, and that
+        the surviving factor $(cz+d)^{k-2}$ is trivial only at $k=2$; that $\mu-\nu_2$ is even and
+        $\mu-\nu_3$ divisible by $3$ for every $N\lt400$, so the ramification counts are whole; that
+        $-2+\frac12+\frac23+1=\frac16$ exactly, in rational arithmetic; that the Riemann–Hurwitz
+        computation reproduces the closed formula for every $N\lt400$; the explicit ramification data at
+        $N=2$ and $N=11$; and that the vanishing levels are exactly the classical genus-zero list.
+        The two-appearances claim is pinned separately in <code>checks/modular_forms.py</code>, which
+        asserts both halves: that substituting $k=2$ into the $k\gt2$ formula returns $g-1$ rather than
+        $g$, and that $\dim M_2-\dim S_2=\nu_\infty-1$ while $\dim M_k-\dim S_k=\nu_\infty$ for
+        $k\geq4$.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="13-dimension-formula">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              <span class="ledger-dep">conditional on the two imports opposite</span>
+              $d(\gamma z)=dz/(cz+d)^2$, so weight two is exactly the weight at which $f(z)dz$ is
+              invariant; and Riemann–Hurwitz on $X_0(N)\to X(1)$ gives
+              $\dim S_2(\Gamma_0(N))=1+\frac{\mu}{12}-\frac{\nu_2}{4}-\frac{\nu_3}{3}-\frac{\nu_\infty}{2}$
+              — assumption <strong>(F)</strong>, discharged <span class="lref">(L10)</span></li>
+            <li data-proof-id="13-worked-levels">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The ramification data at $N=2$ gives $g=0$ and at $N=11$ gives $g=1$; the vanishing levels
+              below $400$ are exactly $1$–$10$, $12$, $13$, $16$, $18$, $25$; and $\nu_\infty$ enters the
+              genus as a ramification count, separately from the vanishing conditions, of which one is
+              redundant at weight two — $\dim M_2-\dim S_2=\nu_\infty-1$, against $\nu_\infty$ for
+              $k\geq4$</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="13-genus-is-dimension">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              That a compact Riemann surface of genus $g$ has a $g$-dimensional space of holomorphic
+              differentials, so $\dim S_2(\Gamma_0(N))=g(X_0(N))$</li>
+            <li data-proof-id="13-riemann-hurwitz">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Riemann–Hurwitz, together with the ramification structure of $X_0(N)\to X(1)$: ramified
+              only above $i$, $\rho$ and the cusp, with indices dividing $2$, dividing $3$, and
+              unconstrained respectively</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
+            <li>Hecke operators, and why the coefficients are multiplicative
+              <span class="lref">(L11, essay 14)</span></li>
+            <li>Newforms, and the meaning of <em>the level</em> <span class="lref">(L12, essay 15)</span></li>
+            <li>Eichler–Shimura, and modularity — assumption (M)
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Ribet's level-lowering theorem <span class="lref">(L18, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="12-modular-forms.html"><span class="dir">← Previous written essay</span> 12 · Modular forms</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 13 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/cccbb4c"><code>cccbb4c</code></a> · 2026-07-26 19:09 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

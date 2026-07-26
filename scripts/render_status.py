@@ -381,6 +381,19 @@ def load_register() -> tuple[list[dict], dict]:
             "accepted assumptions must equal the required stated records; "
             f"missing={missing}, extra={extra}"
         )
+
+    # The check above runs register -> page. Without the reverse direction a record
+    # that is deleted from the register leaves its ledger entry standing on the page,
+    # still telling readers something is assumed after it stopped being assumed --
+    # which is how essay 25 went on claiming FLT for n = 5 and n = 7 as an import
+    # for three commits after essay 24 closed that threshold.
+    for path in sorted((ROOT / "chapters").glob("*.html")):
+        for orphan in re.findall(r'data-proof-id="([^"]+)"', path.read_text(encoding="utf-8")):
+            if orphan not in ids:
+                raise ValueError(
+                    f"{path.name} carries a ledger item for {orphan}, "
+                    "which is not in the register"
+                )
     return items, policy, revisions
 
 

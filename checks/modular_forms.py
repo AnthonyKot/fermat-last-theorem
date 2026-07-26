@@ -165,9 +165,14 @@ assert f11[11] == 1
 
 # The cusp count appears twice in the dimension theory, for unrelated reasons, and
 # essay 12 briefly attributed the genus formula's -nu_inf/2 to the wrong one. The
-# vanishing conditions at cusps enter dim S_k with coefficient (k/2 - 1), which is
-# ZERO at weight 2 -- so at weight 2 the cusps impose no net condition and
-# dim S_2 = g. The constraint count is visible instead as dim M_k - dim S_k.
+# vanishing conditions at cusps are the OTHER appearance, visible as dim M_k - dim S_k.
+#
+# Weight 2 is degenerate, but NOT because the (k/2 - 1) coefficient vanishes there:
+# substituting k = 2 into the k > 2 formula returns g - 1, one short at every level.
+# dim S_2 = g is a separate statement, and the missing +1 is the residue relation --
+# for a weight-2 form f(z) dz is a differential, residues on a compact surface sum to
+# zero, so only nu_inf - 1 of the nu_inf vanishing conditions are independent. Both
+# halves of that are asserted below; essay 13 spells it out.
 from dim_s2_gamma0 import mu as _mu, nu2 as _nu2, nu3 as _nu3, nu_inf as _nu_inf  # noqa: E402
 from fractions import Fraction as _F  # noqa: E402
 
@@ -182,18 +187,28 @@ def dim_M(k, N):
     return (k - 1) * (_genus(N) - 1) + (k // 4) * _nu2(N) + (k // 3) * _nu3(N) + (k // 2) * _nu_inf(N)
 
 
-def dim_S(k, N):
-    if k == 2:
-        return _genus(N)
+def dim_S_general(k, N):
+    """The k > 2 formula, evaluated at any k so that k = 2 can be compared with it."""
     return (k - 1) * (_genus(N) - 1) + (k // 4) * _nu2(N) + (k // 3) * _nu3(N) + (k // 2 - 1) * _nu_inf(N)
 
 
-assert 2 // 2 - 1 == 0                       # the weight-2 cusp coefficient
-for N in (1, 2, 3, 11, 15, 25):
-    assert dim_S(2, N) == _genus(N)           # so dim S_2 is exactly the genus
+def dim_S(k, N):
+    if k == 2:
+        return _genus(N)                      # a separate statement, not a substitution
+    return dim_S_general(k, N)
+
+
+assert 2 // 2 - 1 == 0                        # the cusp coefficient does vanish at k = 2
+for N in (1, 2, 3, 11, 15, 25, 37, 101):
+    # ...but that is NOT why dim S_2 = g: the k > 2 formula is short by exactly one at k = 2
+    assert dim_S_general(2, N) == _genus(N) - 1, (N, dim_S_general(2, N), _genus(N))
+    assert dim_S(2, N) == _genus(N)
+    # the missing condition is the residue relation: only nu_inf - 1 conditions are independent
+    assert dim_M(2, N) - dim_S(2, N) == _nu_inf(N) - 1, (N, dim_M(2, N), _nu_inf(N))
     for k in (4, 6, 8):
+        # while at higher weight all nu_inf of them are
         assert dim_M(k, N) - dim_S(k, N) == _nu_inf(N), (N, k)
-assert (dim_M(4, 11), dim_S(4, 11), dim_S(2, 11)) == (4, 2, 1)   # the essay's example
+assert (dim_M(4, 11), dim_S(4, 11), dim_M(2, 11), dim_S(2, 11)) == (4, 2, 2, 1)  # essay 13's numbers
 
 # ===================== multiplicativity, previewing essay 14 ===============
 

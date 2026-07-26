@@ -14,7 +14,8 @@
       "10-trace-formula",
       "10-weil-pairing",
       "11-generators-and-curve",
-      "13-valence-formula",
+      "13-genus-is-dimension",
+      "13-riemann-hurwitz",
       "14-eigenbasis",
       "15-newforms",
       "16-eichler-shimura",
@@ -579,7 +580,7 @@
         10
       ],
       "text": "Mazur's isogeny theorem in the form the Frey argument needs: $E/\\mathbb{Q}$ has no $p$-isogeny if $p>163$, **or** if $p\\geq5$ with $\\#E(\\mathbb{Q})[2]=4$ and squarefree conductor -- the general list being $\\{2,3,5,7,11,13,17,19,37,43,67,163\\}$ with $19,43,67,163$ requiring CM. And the N\\'eron--Ogg--Shafarevich criterion that $\\rho_{E,p}$ is unramified at $\\ell\\neq p$ exactly when $E$ has good reduction there.",
-      "short": "Mazur's isogeny theorem, and N\u00e9ron\u2013Ogg\u2013Shafarevich"
+      "short": "Mazur's isogeny theorem, and Néron–Ogg–Shafarevich"
     },
     {
       "id": "11-modular-group",
@@ -646,23 +647,48 @@
     {
       "id": "13-dimension-formula",
       "register": "proved",
-      "availability": "planned",
+      "availability": "available",
       "role": "required_for_flt",
       "essays": [
         13
       ],
-      "text": "The dimension formula for $S_2(\\Gamma_0(N))$ will be derived from the index, elliptic-point counts and cusp count."
+      "text": "$d(\\gamma z)=dz/(cz+d)^2$, so weight two is exactly the weight at which $f(z)\\,dz$ is invariant and $S_2(\\Gamma_0(N))$ is the space of holomorphic differentials on $X_0(N)$; Riemann--Hurwitz applied to the degree-$\\mu$ covering $X_0(N)\\to X(1)$, ramified only above $i$, $\\rho$ and the cusp, then gives $\\dim S_2(\\Gamma_0(N))=1+\\frac{\\mu}{12}-\\frac{\\nu_2}{4}-\\frac{\\nu_3}{3}-\\frac{\\nu_\\infty}{2}$ -- the formula essay 25 evaluates at $N=2$, previously assumption (F).",
+      "depends_on": [
+        "13-genus-is-dimension",
+        "13-riemann-hurwitz"
+      ]
     },
     {
-      "id": "13-valence-formula",
+      "id": "13-genus-is-dimension",
       "register": "stated",
+      "availability": "available",
       "role": "required_for_flt",
       "essays": [
         13
       ],
-      "short": "The valence formula for $\\Gamma_0(N)$",
-      "text": "The valence formula, that the weighted count of zeros and poles of a weight-$k$ form equals $k\\mu/12$. Imported: its proof is a contour integral around the fundamental domain and would cost an essay of its own. Essay 13 derives the dimension formula from it.",
-      "availability": "planned"
+      "short": "A genus-$g$ compact Riemann surface has a $g$-dimensional space of holomorphic differentials",
+      "text": "That the space of holomorphic differentials on a compact Riemann surface of genus $g$ has dimension $g$. Combined with the identification of weight-two forms with invariant differentials, which is derived here, this gives $\\dim S_2(\\Gamma_0(N))=g(X_0(N))$."
+    },
+    {
+      "id": "13-riemann-hurwitz",
+      "register": "stated",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [
+        13
+      ],
+      "short": "Riemann--Hurwitz, and the ramification structure of $X_0(N)\\to X(1)$",
+      "text": "Riemann--Hurwitz for a covering of compact Riemann surfaces, together with the fact that $X_0(N)\\to X(1)$ is ramified only above the two elliptic points and the cusp, with indices dividing $2$ above $i$, dividing $3$ above $\\rho$, and unconstrained above the cusp. Substituted into by hand here; the consistency of the resulting counts is checked for every $N<400$."
+    },
+    {
+      "id": "13-worked-levels",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        13
+      ],
+      "text": "The ramification data at $N=2$ (one point above $i$ with $e=2$, one above $\\rho$ with $e=3$, two cusps of widths summing to $3$) gives $g=0$, and at $N=11$ (six above $i$, four above $\\rho$, cusp widths $1$ and $11$) gives $g=1$; the levels below $400$ where the dimension vanishes are exactly $1$--$10$, $12$, $13$, $16$, $18$, $25$; and $\\nu_\\infty$ enters the genus as a ramification count, separately from the vanishing conditions at the cusps, of which exactly one is redundant at weight two by the residue relation -- $\\dim M_2-\\dim S_2=\\nu_\\infty-1$, against $\\nu_\\infty$ for $k\\geq4$. Substituting $k=2$ into the $k>2$ dimension formula returns $g-1$, not $g$, so the weight-two case is genuinely separate and not a vanishing coefficient."
     },
     {
       "id": "14-eigenbasis",
@@ -704,8 +730,8 @@
       "essays": [
         16
       ],
-      "text": "Eichler\u2013Shimura will be stated, not proved.",
-      "short": "Eichler\u2013Shimura"
+      "text": "Eichler–Shimura will be stated, not proved.",
+      "short": "Eichler–Shimura"
     },
     {
       "id": "17-l-functions",
@@ -748,8 +774,8 @@
       "essays": [
         21
       ],
-      "text": "Langlands\u2013Tunnell will be stated, not proved.",
-      "short": "Langlands\u2013Tunnell"
+      "text": "Langlands–Tunnell will be stated, not proved.",
+      "short": "Langlands–Tunnell"
     },
     {
       "id": "22-frey-construction",
@@ -867,17 +893,21 @@
       "essays": [
         25
       ],
-      "text": "The final contradiction is assembled conditionally on exactly three inputs -- modularity (essay 18), the dimension formula (essay 13) and Ribet's theorem, stated here -- and the collection's full FLT conclusion additionally on essay 02's outlined second case for $n=3$. Nothing else is external: the irreducibility threshold and the conductor of $\\bar\\rho$ are both settled in essay 24."
+      "text": "The final contradiction is assembled conditionally on exactly three inputs -- modularity (essay 18), Ribet's theorem, stated here, and finiteness at $p$ (essay 24) -- and the collection's full FLT conclusion additionally on essay 02's outlined second case for $n=3$. Nothing else is external: the irreducibility threshold and the conductor of $\\bar\\rho$ are settled in essay 24, and the dimension formula, once assumption (F), is derived in essay 13."
     },
     {
       "id": "25-level-two",
-      "register": "conditional",
+      "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
       "essays": [
         25
       ],
-      "text": "The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13."
+      "text": "The level-$2$ arithmetic is computed, and the formula it evaluates is derived in essay 13 rather than quoted, so the closing computation is no longer conditional on a formula owed elsewhere.",
+      "depends_on": [
+        "13-genus-is-dimension",
+        "13-riemann-hurwitz"
+      ]
     },
     {
       "id": "25-ribet",

@@ -235,7 +235,7 @@ may use a line before the essay that makes it available.
 | L7 | ρ̄_{E,p} : G_Q → GL₂(F_p) exists, tr ρ̄(Frob_ℓ) ≡ a_ℓ | 10 |
 | L8 | Mazur's isogeny theorem ⟹ irreducibility of ρ̄_{E,p} for **p > 7**, E semistable | 10 (stated) |
 | L9 | Néron–Ogg–Shafarevich: unramified at ℓ ⟺ good reduction at ℓ | 10 (stated) |
-| L10 | dim S₂(Γ₀(N)) from the valence formula, index, and ν₂, ν₃, ν_∞ | 13 |
+| L10 | dim S₂(Γ₀(N)) from Riemann–Hurwitz, the index, and ν₂, ν₃, ν_∞ — **discharged, essay 13** | 13 |
 | L11 | Hecke eigenbasis exists; eigenvalues = Fourier coefficients | 14 |
 | L12 | Newforms; the level of a newform | 15 |
 | L13 | Eichler–Shimura: weight-2 newform → ρ_{f,p} | 16 (stated) |
@@ -340,7 +340,7 @@ if copies arrive.
 |---|------|--------------|-------|
 | 11 | the-modular-group | ℍ, SL₂(Z) by fractional linear transformations, the fundamental domain, Γ₀(N), index, cusps, elliptic points | Geometry first, functions second. The counts defined here are exactly what 13 plugs in. |
 | 12 | modular-forms | Weight-k modularity, holomorphy at the cusps, q-expansions, Eisenstein series, cusp forms, the decomposition M_k = ⟨E_k⟩ ⊕ S_k | Concrete: write actual q-expansions. |
-| 13 | valence-and-dimension | The **valence formula** (weighted zeros/poles = k/12), then **dim S₂(Γ₀(N)) = 1 + μ/12 − ν₂/4 − ν₃/3 − ν_∞/2** | Discharges L10. Arithmetic route, not Riemann–Hurwitz (finding #3). Built 12 essays early and **without mentioning level 2** — the reader must not see the ending from here. Check: tabulate the formula for many N. |
+| 13 | valence-and-dimension | **WRITTEN 2026-07-26.** Weight 2 is the differential weight because d(γz) = dz/(cz+d)²; then **Riemann–Hurwitz** on X₀(N) → X(1) gives **dim S₂(Γ₀(N)) = 1 + μ/12 − ν₂/4 − ν₃/3 − ν_∞/2** | Discharges L10, i.e. assumption (F) — essay 25 drops from four named inputs to three. **The valence formula is not used**; see the deviation note below. Imports `13-genus-is-dimension` and `13-riemann-hurwitz`. Does mention level 2, deliberately: the slack argument (15 vanishing levels below 400) is what shows the ending is not knife-edge. |
 | 14 | hecke-operators | T_n on S_k(Γ₀(N)); they commute; self-adjoint under the Petersson product; **spectral theorem ⟹ simultaneous eigenbasis**; a₁ = 1 ⟹ eigenvalues *are* the Fourier coefficients; multiplicativity | Where the prerequisite spectral theorem is cashed. Be precise: clean simultaneous diagonalizability needs gcd(n, N) = 1, and the clean statement needs 15 (Corrections #4). Discharges L11. |
 | 15 | newforms-and-level | Oldforms, degeneracy maps, Atkin–Lehner, **newforms** as the honest basis, the level | Discharges L12. Without this, "the level" in Ribet's theorem is undefined. |
 
@@ -448,15 +448,26 @@ it. The cusp count enters the dimension theory **twice, for unrelated reasons**:
 
 - inside the **genus** of $X_0(N)$, where $-\nu_\infty/2$ is a Riemann–Hurwitz ramification term for the
   covering $X_0(N)\to X(1)$ — nothing to do with conditions on functions;
-- as the **vanishing conditions** at cusps, entering $\dim S_k$ with coefficient $\tfrac k2-1$, which is
-  **zero at weight 2**.
+- as the **vanishing conditions** at cusps, which for $k>2$ cost one dimension per cusp.
 
-So at weight 2 the cusps impose no net condition and $\dim S_2(\Gamma_0(N))=g$ exactly. The
-constraint-counting effect is real but appears as $\dim M_k-\dim S_k=\nu_\infty$ for $k\geq4$ — pinned
-in `checks/modular_forms.py`, which asserts the weight-2 coefficient is zero, that $\dim S_2=g$ for
-several $N$, and the $M_k-S_k$ identity at $k=4,6,8$. **Essay 13 must derive the genus term as
-ramification and say plainly that the weight-2 case is the degenerate one**, or the two effects will get
-conflated again.
+**CLOSED by essay 13, 2026-07-26 — and the first repair was itself half wrong.** The repair said "the
+cusp coefficient $\tfrac k2-1$ is zero at weight 2, which is why $\dim S_2=g$." Checking Sutherland's
+theorem 24.8 against the PDF text killed that: the theorem gives $\dim S_k$ **only for $k>2$** and
+states $\dim S_2(\Gamma)=g(\Gamma)$ on a separate line, because substituting $k=2$ into the $k>2$
+formula returns $g-1$ — one short, at every level. Weight 2 is not a case the general formula covers
+with a vanishing term; it is a case the general formula **misses**.
+
+The missing $+1$ is the **residue relation**: at weight 2, $f(z)\,dz$ is a differential, residues of a
+meromorphic differential on a compact surface sum to zero, so the $\nu_\infty$ vanishing conditions
+satisfy exactly one linear relation and only $\nu_\infty-1$ of them are independent. Hence
+$\dim M_2-\dim S_2=\nu_\infty-1$ against $\nu_\infty$ for $k\geq4$. Both halves are asserted in
+`checks/modular_forms.py` (that $k=2$ in the $k>2$ formula gives $g-1$, and both difference identities)
+and spelled out in essay 13.
+
+**Lesson, and it is the third instance of the same one.** The causal sentence was wrong twice before a
+script pinned it. Errors keep clustering in the sentences that explain *why*, never in the ones that
+compute — the computations have checks. **Rule: when an essay explains why a term appears, the
+explanation gets its own assertion, or it does not ship.**
 
 ### Two decisions taken in advance (Part III scope control)
 
@@ -469,13 +480,17 @@ tenth of it is how a five-essay Part becomes nine.
    (`14-hecke-coefficients`). The apparatus behind existence — Petersson inner product,
    self-adjointness, multiplicity one — is a course, is never evaluated by the closing argument, and is
    imported as `14-eigenbasis` for $\gcd(n,N)=1$. Do not write the course.
-2. **Essay 13 imports the valence formula and proves the dimension formula from it.** Valence follows
-   from a contour integral around the fundamental domain: provable at this level, genuinely beautiful,
-   and a whole essay. Part III is already the riskiest stretch, so it is imported
-   (`13-valence-formula`) and 13 derives $\dim S_2(\Gamma_0(N))$ from it and essay 11's counts. The
-   evidence for the result is not the proof anyway: `checks/dim_s2_gamma0.py` verifies it across every
-   level below 400, against the classical genus-zero list and against LMFDB at level 11. That is a
-   deliberate decision and it cost one allowlist entry, not a discovery made halfway through drafting.
+2. ~~**Essay 13 imports the valence formula and proves the dimension formula from it.**~~
+   **DEVIATED FROM, 2026-07-26, when essay 13 was written.** The pre-registered plan was to import the
+   valence formula (`13-valence-formula`) and derive the dimension formula from it, on the grounds that
+   the contour integral around the fundamental domain is a whole essay. That import turned out not to be
+   needed. Riemann--Hurwitz applied to $X_0(N)\to X(1)$, degree $\mu$, gives the closed formula
+   directly, because the coefficients collapse: $-2+\frac12+\frac23+1=\frac16$. So essay 13 imports
+   two *different* things instead — `13-genus-is-dimension` (a genus-$g$ compact Riemann surface has a
+   $g$-dimensional space of holomorphic differentials) and `13-riemann-hurwitz` (the formula plus the
+   ramification structure of the covering) — and derives the genus itself. One allowlist entry became
+   two, which is the honest accounting: the derivation is longer than one import deep. Recorded here
+   rather than quietly, because the whole point of pre-registering was that deviations show up.
 
 ### Part III is where this collection would die
 
@@ -582,8 +597,13 @@ quotation scan, no tracked PDFs), then add:
 1. **Current ledger structure** — every written essay has proved/assumed/owed columns; every
    registered item is in the column dictated by its mode and carries canonical mode/role badges; and
    no essay's *What we already have* names an essay number ≥ its own.
-2. **Proof-register sync** — every available `data/ledger.json` item maps to exactly one essay-ledger
-   entry, and About's generated scope block matches the canonical data.
+2. **Proof-register sync, in both directions** — every available `data/ledger.json` item maps to
+   exactly one essay-ledger entry, and About's generated scope block matches the canonical data.
+   **The reverse direction was missing until 2026-07-26**, and the omission cost something real: when
+   `25-small-exponents` was deleted from the register (essay 24 closed the p ≥ 5 threshold), its
+   ledger entry stayed on essay 25's page for three commits, still telling readers that FLT for n = 5
+   and n = 7 was an assumed import. Register → page cannot catch that; only page → register can. Now
+   every `data-proof-id` in `chapters/` must name a record that exists.
 3. **Full-chain release gate, once the middle exists** — each essay's *still owed* must equal the
    previous debt minus its proofs and declared imports, and essay 25's owed column must be empty. This is not honestly
    checkable across the current jumps from 02 to 22 to 25, so the current script does not claim to.

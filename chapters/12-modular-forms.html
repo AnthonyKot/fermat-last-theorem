@@ -46,12 +46,12 @@
         $T$ is why a form has a $q$-expansion at all, and the cusp count $\nu_\infty$ is exactly the
         number of conditions in the phrase "holomorphic at the cusps".</p>
       <div class="fence">
-        <strong>Which hypothesis this essay serves.</strong> Essay 25 assumes <strong>(F)</strong>, the
-        dimension formula for $S_2(\Gamma_0(N))$, and <strong>(M)</strong>, modularity. Essay 11
-        computed the four numbers that go into (F); this essay defines the <em>space</em> whose
-        dimension the formula measures. Without it, "$\dim S_2(\Gamma_0(2))=0$" is an assertion about
-        an undefined object, and so is the phrase "a weight-2 newform of level $N$" that Ribet's theorem
-        turns on.
+        <strong>Which hypothesis this essay serves.</strong> The closing argument evaluates a dimension
+        formula for $S_2(\Gamma_0(N))$ — once assumption <strong>(F)</strong>, and derived in the next
+        essay. Essay 11 computed the four numbers that go into
+        it; this essay defines the <em>space</em> whose dimension it measures. Without that, "$\dim
+        S_2(\Gamma_0(2))=0$" is an assertion about an undefined object, and so is the phrase "a weight-2
+        newform of level $N$" that Ribet's theorem turns on.
       </div>
       <p>The $X_0(11)$ thread reaches its point in this essay. Essay
         <a href="06-elliptic-curves.html">06</a> introduced $y^2+y=x^3-x^2$; essay
@@ -106,15 +106,14 @@
       <ul>
         <li>once inside the <em>genus</em> of $X_0(N)$, where $-\nu_\infty/2$ is a ramification term
           from the covering $X_0(N)\to X(1)$ — nothing to do with imposing conditions on functions;</li>
-        <li>once as the vanishing conditions just described, which enter with coefficient
-          $\tfrac k2-1$. <strong>At weight $2$ that coefficient is zero.</strong></li>
+        <li>once as the vanishing conditions just described, which for $k\gt2$ cost one dimension per
+          cusp and at $k=2$ cost one <em>fewer</em> than that.</li>
       </ul>
-      <p>So at the weight this collection cares about, the cusps impose no <em>net</em> condition at all
-        beyond what the genus already accounts for, and $\dim S_2(\Gamma_0(N))$ turns out to equal the
-        genus exactly. The constraint-counting effect is real but shows up elsewhere: for $k\geq4$ one
-        gets $\dim M_k-\dim S_k=\nu_\infty$, which <em>is</em> one condition per cusp. At $N=11$, for
-        instance, $\dim M_4=4$ and $\dim S_4=2$, differing by $\nu_\infty=2$; while
-        $\dim S_2=1=g$.</p>
+      <p>The constraint-counting effect is real and is visible as $\dim M_k-\dim S_k$: for $k\geq4$ that
+        difference is $\nu_\infty$, one condition per cusp, while at $k=2$ it is only $\nu_\infty-1$.
+        At $N=11$, $\dim M_4=4$ and $\dim S_4=2$ differ by $\nu_\infty=2$; but $\dim M_2=2$ and
+        $\dim S_2=1$ differ by $1$. Essay <a href="13-valence-and-dimension.html">13</a> says where that
+        missing condition goes, and it is not that the weight-2 coefficient happens to vanish.</p>
       <p>Write $M_k(\Gamma_0(N))$ for the weight-$k$ forms. It is a complex vector space, since the
         conditions are linear.</p>
 
@@ -205,9 +204,9 @@
 
       <h3>What the next essays collect</h3>
       <ul>
-        <li><strong>Essay 13</strong> computes $\dim S_k(\Gamma_0(N))$ from essay 11's four counts,
-          discharging assumption <strong>(F)</strong>. The space is now defined, so the dimension has
-          something to be the dimension of.</li>
+        <li><strong>Essay 13</strong> derives $\dim S_2(\Gamma_0(N))$ from essay 11's four counts, read
+          as ramification data for $X_0(N)\to X(1)$, discharging assumption <strong>(F)</strong>. The
+          space is now defined, so the dimension has something to be the dimension of.</li>
         <li><strong>Essay 14</strong> explains the multiplicativity above, and shows that for a
           normalised eigenform the Hecke eigenvalues <em>are</em> these coefficients.</li>
         <li><strong>Essay 15</strong> separates forms genuinely of level $N$ from those inherited from
@@ -280,8 +279,6 @@
           <h3>Still owed</h3>
           <ul>
             <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
-            <li>The valence formula and the dimension formula — assumption (F)
-              <span class="lref">(L10, essay 13)</span></li>
             <li>Hecke operators, and why the coefficients are multiplicative
               <span class="lref">(L11, essay 14)</span></li>
             <li>Newforms, and the meaning of <em>the level</em> <span class="lref">(L12, essay 15)</span></li>
@@ -295,7 +292,7 @@
 
     <nav class="chapter-nav">
       <a href="11-the-modular-group.html"><span class="dir">← Previous written essay</span> 11 · The modular group</a>
-      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+      <a class="next" href="13-valence-and-dimension.html"><span class="dir">Next written essay →</span> 13 · The dimension formula</a>
     </nav>
   </div>
 </main>
@@ -303,6 +300,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 12 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/07be53e"><code>07be53e</code></a> · 2026-07-26 18:49 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/cccbb4c"><code>cccbb4c</code></a> · 2026-07-26 19:09 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
