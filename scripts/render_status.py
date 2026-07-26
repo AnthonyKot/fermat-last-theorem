@@ -596,7 +596,7 @@ def trajectory(upto: str = "HEAD") -> list[str]:
     """Every commit where either counter moved, oldest first.
 
     The counts have moved for three different reasons -- essays landing, a
-    re-granulation of the register, and assumptions being narrowed or discharged --
+    re-granulation of the register, and assumptions being narrowed or retired --
     and reading them one snapshot at a time made ordinary movement look like
     error. Computed from git rather than recorded by hand, so it cannot drift.
     """
@@ -624,7 +624,7 @@ def trajectory(upto: str = "HEAD") -> list[str]:
     lines += ["        </tbody></table>",
               '        <p class="scope-note">Computed from the register at each commit, not recorded by'
               " hand. Owed falls as essays land and rises when the register is made finer; assumed rises"
-              " when an essay names a new import and falls when one is discharged or narrowed.</p>",
+              " when an essay names a new import and falls when one is retired or narrowed.</p>",
               "      </details>"]
     return lines
 
