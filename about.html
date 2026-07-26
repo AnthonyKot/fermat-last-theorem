@@ -37,18 +37,22 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>9</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>13</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
+        <li>Traces of Frobenius determine a semisimple representation <span class="scope-essays">(essay 05)</span> <span class="roster-planned">not yet written</span></li>
         <li>A genus-one curve has a Weierstrass model, and $\Delta\neq0$ is smoothness <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span></li>
         <li>Associativity of the chord-and-tangent group law <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
         <li>Conductor exponent $f_\ell=1$ at a multiplicative prime <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
-        <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
-        <li>Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
         <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(essay 10)</span> <span class="roster-planned">not yet written</span></li>
+        <li>The valence formula for $\Gamma_0(N)$ <span class="scope-essays">(essay 13)</span> <span class="roster-planned">not yet written</span></li>
+        <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(essay 14)</span> <span class="roster-planned">not yet written</span></li>
+        <li>Newform theory, and the level of a newform <span class="scope-essays">(essay 15)</span> <span class="roster-planned">not yet written</span></li>
         <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
         <li>The Modularity Theorem, semistable case <span class="scope-essays">(essay 18)</span> <span class="roster-planned">not yet written</span></li>
         <li>The Modularity Theorem applied to the Frey curve, from essay 18 <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span></li>
+        <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
+        <li>Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
       </ul>
       <p class="scope-headline">The exposition additionally assumes <strong>9</strong> background results.</p>
       <p class="scope-note">Stated for orientation, and deliberately kept off the chain. Doubting any of them leaves the closing argument intact.</p>
@@ -57,29 +61,29 @@
         <li>$\mathbb{Q}_\ell$ exists as the completion of $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span></li>
         <li>$\mathbb{Z}_\ell\cong\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$ <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span></li>
         <li>Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
-        <li>Global minimal models exist over $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>Conductor exponents at additive primes <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>The Hasse bound $|a_\ell|\leq2\sqrt{\ell}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>Global minimal models exist over $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>Torsion injects under good reduction <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
       </ul>
       <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
-      <p class="scope-note"><strong>Not yet settled:</strong> 8 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 19 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
     <p class="scope-note">This list is generated from <code>data/ledger.json</code>. An item
      appears here only when it is both available and marked proved.</p>
       <ul class="scope-register">
-        <li data-proof-id="01-n4">
-          <span class="scope-mode scope-mode--proved">Proved</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          $x^4+y^4=z^2$ has no solution in positive integers, and therefore Fermat's Last Theorem holds for $n=4$. <span class="scope-essays">(<a href="chapters/01-descent-and-n4.html">essay 01</a>)</span>
-       </li>
         <li data-proof-id="01-exponent-reduction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           A counterexample at any exponent $n\geq3$ would give one at exponent $4$ or at an odd prime exponent. <span class="scope-essays">(<a href="chapters/01-descent-and-n4.html">essay 01</a>)</span>
+       </li>
+        <li data-proof-id="01-n4">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          $x^4+y^4=z^2$ has no solution in positive integers, and therefore Fermat's Last Theorem holds for $n=4$. <span class="scope-essays">(<a href="chapters/01-descent-and-n4.html">essay 01</a>)</span>
        </li>
         <li data-proof-id="02-n3-first-case">
           <span class="scope-mode scope-mode--proved">Proved</span>
@@ -91,15 +95,10 @@
           <span class="scope-role scope-role--background">Background</span>
           Unique factorisation is shown to fail by an explicit double factorisation in $\mathbb{Z}[\sqrt{-5}]$. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
        </li>
-        <li data-proof-id="04-valuation">
+        <li data-proof-id="04-descent-restated">
           <span class="scope-mode scope-mode--proved">Proved</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The valuation $v_\ell$ is additive on products and ultrametric on sums, with equality when the valuations differ, and $|\cdot|_\ell$ is multiplicative and non-archimedean. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
-       </li>
-        <li data-proof-id="04-p-adic-integers">
-          <span class="scope-mode scope-mode--proved">Proved</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          On the valuation-ring side: $\mathbb{Z}_\ell$ is a ring whose units are the elements of valuation $0$, so it has the single maximal ideal $\ell\mathbb{Z}_\ell$. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Essay 01's step that coprime factors of a perfect power are themselves powers is proved once, for every exponent, as a statement about valuations. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
        </li>
         <li data-proof-id="04-digit-expansion">
           <span class="scope-mode scope-mode--proved">Proved</span>
@@ -111,10 +110,15 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Free modules over $\mathbb{Z}_\ell$ have well-defined rank, and a matrix lies in $\mathrm{GL}_2(\mathbb{Z}_\ell)$ exactly when its determinant has valuation $0$. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
        </li>
-        <li data-proof-id="04-descent-restated">
+        <li data-proof-id="04-p-adic-integers">
           <span class="scope-mode scope-mode--proved">Proved</span>
-          <span class="scope-role scope-role--background">Background</span>
-          Essay 01's step that coprime factors of a perfect power are themselves powers is proved once, for every exponent, as a statement about valuations. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          On the valuation-ring side: $\mathbb{Z}_\ell$ is a ring whose units are the elements of valuation $0$, so it has the single maximal ideal $\ell\mathbb{Z}_\ell$. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
+       </li>
+        <li data-proof-id="04-valuation">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The valuation $v_\ell$ is additive on products and ultrametric on sums, with equality when the valuations differ, and $|\cdot|_\ell$ is multiplicative and non-archimedean. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
        </li>
         <li data-proof-id="06-integral-model-example">
           <span class="scope-mode scope-mode--proved">Proved</span>
@@ -197,6 +201,11 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           At a prime of multiplicative reduction the conductor exponent is $f_\ell=1$. This is the only conductor exponent the Fermat argument uses, because the Frey curve is semistable. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
        </li>
+        <li data-proof-id="23-modularity-applied">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Essay 18's Modularity Theorem for semistable curves is applied to $E$, giving a weight-2 newform of level $\operatorname{rad}(abc)$ with the same Galois representation. <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span>
+       </li>
         <li data-proof-id="25-ribet">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -206,11 +215,6 @@
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The Frey-curve route needs $\bar\rho$ irreducible, which Mazur's isogeny theorem supplies only outside a finite exceptional set containing $5$ and $7$. The exponents $5$ and $7$ are therefore handled by classical work outside this collection — Dirichlet and Legendre in 1825, Lamé in 1839 — and that dependency is recorded here rather than left implicit. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
-       </li>
-        <li data-proof-id="23-modularity-applied">
-          <span class="scope-mode scope-mode--stated">Assumed</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          Essay 18's Modularity Theorem for semistable curves is applied to $E$, giving a weight-2 newform of level $\operatorname{rad}(abc)$ with the same Galois representation. <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span>
        </li>
       </ul>
 
@@ -223,25 +227,70 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
        </li>
-        <li data-proof-id="25-level-two">
-          <span class="scope-mode scope-mode--conditional">Conditional</span>
+        <li data-proof-id="03-g-q">
+          <span class="scope-mode scope-mode--proved">To prove</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+          $\overline{\mathbb{Q}}$ and $G_{\mathbb{Q}}=\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})$ as a profinite group, with decomposition groups and Frobenius elements at unramified primes, defined up to conjugacy. <span class="scope-essays">(essay 03)</span>
        </li>
-        <li data-proof-id="25-contradiction">
-          <span class="scope-mode scope-mode--conditional">Conditional</span>
+        <li data-proof-id="05-galois-representations">
+          <span class="scope-mode scope-mode--proved">To prove</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The final contradiction is assembled conditionally on the explicit inputs assigned to essays 13, 18, 23 and 24, and the collection's full FLT conclusion also still owes the outlined second case for $n=3$. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+          Continuous $\rho:G_{\mathbb{Q}}\to\mathrm{GL}_2(K)$; ramified and unramified primes; the conductor of a representation; irreducibility. <span class="scope-essays">(essay 05)</span>
+       </li>
+        <li data-proof-id="05-traces-determine">
+          <span class="scope-mode scope-mode--stated">To assume</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          A semisimple two-dimensional representation is determined up to isomorphism by the traces of Frobenius at almost all primes. This is what makes "these two representations agree" a checkable claim in essays 18 and 25. <span class="scope-essays">(essay 05)</span>
+       </li>
+        <li data-proof-id="09-frey-full-2-torsion">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Frey curve has full rational $2$-torsion: $x(x-a^p)(x+b^p)$ has three rational roots, so $E[2]\subset E(\mathbb{Q})$. This is the extra structure that may sharpen Mazur's threshold from $p&gt;7$ to $p\geq5$. <span class="scope-essays">(essay 09)</span>
+       </li>
+        <li data-proof-id="09-torsion-structure">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero, and the Tate module $T_\ell(E)=\varprojlim E[\ell^n]$ is free of rank $2$ over $\mathbb{Z}_\ell$ -- which is why the representations are $2\times2$. <span class="scope-essays">(essay 09)</span>
        </li>
         <li data-proof-id="10-local-theorems">
           <span class="scope-mode scope-mode--stated">To assume</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Mazur's isogeny theorem and the Néron–Ogg–Shafarevich criterion will be stated with their hypotheses. <span class="scope-essays">(essay 10)</span>
        </li>
+        <li data-proof-id="11-modular-group">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          $\Gamma_0(N)$ acting on $\mathbb{H}$, its index $\mu$, and the counts $\nu_2$, $\nu_3$, $\nu_\infty$ of elliptic points and cusps -- exactly the inputs essay 13's formula consumes. <span class="scope-essays">(essay 11)</span>
+       </li>
+        <li data-proof-id="12-modular-forms">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Weight-$k$ modularity, holomorphy at the cusps, $q$-expansions, and the space $S_2(\Gamma_0(N))$ of weight-2 cusp forms -- without which the phrase "a weight-2 newform of level $N$" is undefined. <span class="scope-essays">(essay 12)</span>
+       </li>
         <li data-proof-id="13-dimension-formula">
           <span class="scope-mode scope-mode--proved">To prove</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The dimension formula for $S_2(\Gamma_0(N))$ will be derived from the index, elliptic-point counts and cusp count. <span class="scope-essays">(essay 13)</span>
+       </li>
+        <li data-proof-id="13-valence-formula">
+          <span class="scope-mode scope-mode--stated">To assume</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The valence formula, that the weighted count of zeros and poles of a weight-$k$ form equals $k\mu/12$. Imported: its proof is a contour integral around the fundamental domain and would cost an essay of its own. Essay 13 derives the dimension formula from it. <span class="scope-essays">(essay 13)</span>
+       </li>
+        <li data-proof-id="14-eigenbasis">
+          <span class="scope-mode scope-mode--stated">To assume</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Hecke operators $T_n$ with $\gcd(n,N)=1$ are simultaneously diagonalisable on $S_2(\Gamma_0(N))$. Imported: the Petersson inner product and self-adjointness are a course, and the chain needs only the conclusion. <span class="scope-essays">(essay 14)</span>
+       </li>
+        <li data-proof-id="14-hecke-coefficients">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          For a normalised eigenform, $a_1=1$ forces the Hecke eigenvalues to be the Fourier coefficients, and the coefficients are multiplicative -- the step that makes $a_\ell(f)$ mean anything. <span class="scope-essays">(essay 14)</span>
+       </li>
+        <li data-proof-id="15-newforms">
+          <span class="scope-mode scope-mode--stated">To assume</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The decomposition of $S_2(\Gamma_0(N))$ into old and new subspaces, and the well-definedness of the level of a newform. Imported: Atkin--Lehner theory. Without it "the level" in Ribet's theorem is undefined. <span class="scope-essays">(essay 15)</span>
        </li>
         <li data-proof-id="16-eichler-shimura">
           <span class="scope-mode scope-mode--stated">To assume</span>
@@ -257,6 +306,16 @@
           <span class="scope-mode scope-mode--proved">To prove</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The conductor of the Frey curve's mod $p$ representation will be established, with the irreducibility threshold handled explicitly. <span class="scope-essays">(essay 24)</span>
+       </li>
+        <li data-proof-id="25-contradiction">
+          <span class="scope-mode scope-mode--conditional">Conditional</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The final contradiction is assembled conditionally on the explicit inputs assigned to essays 13, 18, 23 and 24, and the collection's full FLT conclusion also still owes the outlined second case for $n=3$. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+       </li>
+        <li data-proof-id="25-level-two">
+          <span class="scope-mode scope-mode--conditional">Conditional</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
        </li>
       </ul>
 
@@ -284,11 +343,6 @@
           <span class="scope-role scope-role--background">Background</span>
           Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ is stated, not proved. <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span>
        </li>
-        <li data-proof-id="08-minimal-model">
-          <span class="scope-mode scope-mode--stated">Assumed</span>
-          <span class="scope-role scope-role--background">Background</span>
-          Every elliptic curve over $\mathbb{Q}$ has a global minimal model. The FLT chain does not need this in general: essay 23 exhibits the Frey curve's minimal model and must prove that model minimal. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
-       </li>
         <li data-proof-id="08-conductor-additive">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--background">Background</span>
@@ -299,10 +353,20 @@
           <span class="scope-role scope-role--background">Background</span>
           The Hasse bound $|a_\ell|\leq2\sqrt{\ell}$. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
        </li>
+        <li data-proof-id="08-minimal-model">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Every elliptic curve over $\mathbb{Q}$ has a global minimal model. The FLT chain does not need this in general: essay 23 exhibits the Frey curve's minimal model and must prove that model minimal. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
+       </li>
         <li data-proof-id="08-torsion-injects">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--background">Background</span>
           Reduction at a good prime is injective on torsion of order coprime to $\ell$, which is why $5$ divides every point count of the conductor-$11$ curve. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
+       </li>
+        <li data-proof-id="17-l-functions">
+          <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--background">Background</span>
+          $L(E,s)$ and $L(f,s)$ as Euler products, and the analytic continuation and functional equation. Motivating rather than load-bearing: modularity is stated representation-theoretically, so the chain never evaluates an $L$-function. <span class="scope-essays">(essay 17)</span>
        </li>
         <li data-proof-id="19-21-wiles">
           <span class="scope-mode scope-mode--described">To describe</span>
@@ -433,6 +497,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/fd15e6c"><code>fd15e6c</code></a> · 2026-07-26 15:54 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/f232d58"><code>f232d58</code></a> · 2026-07-26 16:07 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

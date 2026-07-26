@@ -342,12 +342,21 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   nearly independent of the middle. Having 25 drafted early keeps every construction essay honest
   about what it is *for* — the failure mode of expositions like this is beautiful machinery with no
   memory of the target.
-- **Essays 04, 06, 07, 08 and 23 are written; next write 24, then 09–10.** Essay 23 proved its own
-  minimal model rather than importing the general existence theorem, which is why the chain's
-  assumption set did not grow when it landed. Essay 24 is the natural successor: it has the mechanism
-  it needs (Serre's optimal level, from Lecture 25 §25.4) and the arithmetic 23 hands it, namely
-  v_ell(Delta_min) = 2p·v_ell(abc) at odd primes versus the subtracted 8 at 2. Essays 09 and 10 then
-  supply the representation language 24 currently has to gesture at.
+- **Writing order from here: 09 → 03 → 05 → 10 → 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
+  then 17, 19–21 and 02's second case.** This replaces an earlier note that put 24 next, which was
+  wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
+  until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
+- **Essay 09 comes first, and it earns its place twice.** It needs only 04, 06 and 07, all written.
+  And it is where the Frey curve's **full rational 2-torsion** is established — $x(x-a^p)(x+b^p)$ has
+  three rational roots, so $E[2]\subset E(\mathbb{Q})$ — which is exactly the extra structure that may
+  sharpen Mazur's threshold from $p>7$ to $p\geq5$. That is registered as
+  `09-frey-full-2-torsion` so the connection is structural rather than a remark.
+- **A late Part IV is about meaning, not the ledger.** Essay 25's input (A) says a weight-2 newform of
+  level $\operatorname{rad}(abc)$ has the same Galois representation. That assumption is allowlisted,
+  but the *sentence* is a string of undefined terms until 12, 15 and 16 exist. An allowlisted
+  assumption still needs its vocabulary built; do not treat 14–18 as optional because the register
+  already accounts for them.
+
 - **Then 13.** It is the only formula essay 25 evaluates. Discharging that debt early makes the
   closing arithmetic self-contained and gives the middle of the book a visible payoff.
 - **Then 03, 04, 05, 09, 10, 24.** Essay 05 remains the highest-dependency node: 10, 16, 18, 19, 21
@@ -358,6 +367,38 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   essay 23's modularity debt.
 - **Part V last.** It is the likeliest place to overreach and has no video support to lean on. If an
   essay starts growing lemmas, cut it back.
+### Two decisions taken in advance (Part III scope control)
+
+Both were settled before drafting, because writing the course version and then finding the chain used a
+tenth of it is how a five-essay Part becomes nine.
+
+1. **Essay 14 proves the coefficient step and imports the eigenbasis.** The chain needs exactly one
+   thing from Hecke theory: that $a_\ell(f)$ is meaningful, i.e. that for a normalised eigenform the
+   eigenvalues *are* the Fourier coefficients. That is short and illuminating, so it is proved
+   (`14-hecke-coefficients`). The apparatus behind existence — Petersson inner product,
+   self-adjointness, multiplicity one — is a course, is never evaluated by the closing argument, and is
+   imported as `14-eigenbasis` for $\gcd(n,N)=1$. Do not write the course.
+2. **Essay 13 imports the valence formula and proves the dimension formula from it.** Valence follows
+   from a contour integral around the fundamental domain: provable at this level, genuinely beautiful,
+   and a whole essay. Part III is already the riskiest stretch, so it is imported
+   (`13-valence-formula`) and 13 derives $\dim S_2(\Gamma_0(N))$ from it and essay 11's counts. The
+   evidence for the result is not the proof anyway: `checks/dim_s2_gamma0.py` verifies it across every
+   level below 400, against the classical genus-zero list and against LMFDB at level 11. That is a
+   deliberate decision and it cost one allowlist entry, not a discovery made halfway through drafting.
+
+### Part III is where this collection would die
+
+Five essays of real analysis with no visible Fermat content, and the reader must hold on until 16 pays
+it off. Two standing rules, not suggestions:
+
+- **Keep the $X_0(11)$ thread running through every Part III essay.** The pieces already point at each
+  other: $\dim S_2(\Gamma_0(11))=1$ from `checks/dim_s2_gamma0.py`, the newform `11.2.a.a`, the curve
+  `11.a3`, its $a_\ell$ computed by hand in essay 08, and its $5$-torsion from essay 07. One concrete
+  object the reader already knows, reappearing in each essay, is worth more than any amount of
+  motivation in the abstract.
+- **Put the payoff sentence in every Part III essay, not only at the end of the Part.** Each essay says
+  which line of Ribet's hypotheses it is building toward.
+
 - **`checks/` scripts get written with the essay, not after.** A numerical claim without its script is
   unverified, and this book has no other verification for numbers.
 
