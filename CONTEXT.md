@@ -351,7 +351,7 @@ if copies arrive.
 | # | Slug | Construction | Notes |
 |---|------|--------------|-------|
 | 16 | modular-representation *(written)* | **Eichler–Shimura**: a weight-2 newform of level N gives ρ_{f,λ} with characteristic polynomial X² − a_ℓ(f)X + ℓ at Frob_ℓ, via J₀(N) | Registers L13 as an accepted import. Exposes the Jacobian/Hecke construction without pretending to prove two-dimensionality or the Eichler–Shimura relation. The level-11 curve/form Frobenius packets are computed independently and matched as modularity clue 1 of 4. |
-| 17 | two-l-functions | L(E, s) as an Euler product in the a_ℓ; L(f, s) from the coefficient sequence, its Euler product resting on multiplicativity (14); analytic continuation and functional equation | Merges the plan's two L-function threads. The video's framing — the Riemann zeta Euler product works because of unique factorization, and Hecke coefficients are multiplicative the same way — is a good one and connects back to 02. |
+| 17 | two-l-functions *(written)* | L(E, s) as an Euler product in the a_ℓ; L(f, s) from the coefficient sequence, with the good-prime Euler factors derived from essay 14's recurrence; analytic continuation and the functional equation imported separately | Registers `17-euler-products` as proved background and `17-functional-equation` as a stated background import, neither load-bearing for FLT. Keeps the bad-prime newform factor outside the good-prime derivation. The level-11 local polynomials match as modularity clue 2 of 4; a finite check is explicitly only evidence. |
 | 18 | modularity-theorem | The clues assembled (a_ℓ ↔ Fourier coefficients, conductor ↔ level), Taniyama–Shimura–Weil, then the **Modularity Theorem**: semistable (Wiles–Taylor 1995), general (BCDT 2001) | Registers L14 as an accepted import. Check: the conductor-11 curve against the level-11 newform's q-expansion, both computed independently and compared — the most convincing paragraph in the book for a 20-line script. |
 
 ### PART V — WILES'S MACHINE (anatomy, 3)
@@ -416,8 +416,8 @@ the comparison, not to a self-referential string in the artifact. For a narrow d
   $G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}/\ell^n)$ is determined at a finite level, while $\rho$
   itself need not be. *Finite level on each layer, not finite overall.* Essay 05 states it in that
   form and points at the single-layer case as the reason $\bar\rho$ is easier.
-- **Writing order from here: then 11 → 12 → 13, then 14 → 15 → 16 → 18,
-  then 17, 19–21 and 02's second case.** This replaces an earlier note that put 24 next, which was
+- **Writing order from here: then 11 → 12 → 13, then 14 → 15 → 16 → 17 → 18,
+  then 19–21 and 02's second case.** Essays through 17 are now written. This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
   until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
 - **Essay 09 comes first, and it earns its place twice.** It needs only 04, 06 and 07, all written.
@@ -627,9 +627,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 22, 23, 24, 25 — the two ends of the rope, the valuation, the
-elliptic-curve bridge through the representation, and the semistability check.
-**Unwritten:** 13–21 — the rest of Part III, then Part IV and Part V.
+**Written:** 01–17 and 22–25 — twenty-one essays, including the complete modular-forms run and the
+two $L$-function bridge, plus the two ends of the rope.
+**Unwritten:** 18–21 — the Modularity Theorem and the three-essay anatomy of Wiles's machine.
 
 ⚠ **Essay 10 was written before 03 and 05, and it is the first essay whose declared debts are its own
 vocabulary rather than peripheral.** It uses $G_{\mathbb{Q}}$ only as a group of field automorphisms,

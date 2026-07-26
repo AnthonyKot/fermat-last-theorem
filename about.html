@@ -63,7 +63,7 @@
         <li>$\bar\rho_{E,p}$ is finite at $p$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
         <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
       </ul>
-      <p class="scope-headline">The exposition additionally assumes <strong>10</strong> background results.</p>
+      <p class="scope-headline">The exposition additionally assumes <strong>11</strong> background results.</p>
       <p class="scope-note">Stated for orientation, and deliberately kept off the chain. Doubting any of them leaves the closing argument intact.</p>
       <ul class="scope-roster">
         <li>Kummer's regular-prime criterion <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span></li>
@@ -75,6 +75,7 @@
         <li>Global minimal models exist over $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>Torsion injects under good reduction <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>That $\Delta$ and $(\eta(z)\eta(11z))^2$ are modular of the stated weight and level <span class="scope-essays">(<a href="chapters/12-modular-forms.html">essay 12</a>)</span></li>
+        <li>Analytic continuation and the newform functional equation <span class="scope-essays">(<a href="chapters/17-two-l-functions.html">essay 17</a>)</span></li>
         <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
       </ul>
       <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
@@ -315,6 +316,11 @@
           <span class="scope-role scope-role--background">Background</span>
           For the level-$11$ eta product and $E:y^2+y=x^3-x^2$, independent exact $q$-expansion and point-count computations give the same $a_\ell$ and therefore the same polynomial $X^2-a_\ell X+\ell$ at every tested good prime. <span class="scope-essays">(<a href="chapters/16-modular-representation.html">essay 16</a>)</span>
        </li>
+        <li data-proof-id="17-euler-products">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          The good-prime recurrence and multiplicativity from essay 14 give the local generating function $(1-a_\ell T+\ell T^2)^{-1}$ and assemble the good-prime part of the Euler product for a normalized weight-$2$ newform. The elliptic-curve Euler product is defined from the reduction types in essay 08. <span class="scope-essays">(<a href="chapters/17-two-l-functions.html">essay 17</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -538,10 +544,10 @@
           <span class="scope-role scope-role--background">Background</span>
           That $\Delta$ and $(\eta(z)\eta(11z))^2$ satisfy the transformation law for weights $12$ and $2$ at levels $1$ and $11$. Their $q$-expansions are computed here; the transformation law itself is not verified. <span class="scope-essays">(<a href="chapters/12-modular-forms.html">essay 12</a>)</span>
        </li>
-        <li data-proof-id="17-l-functions">
-          <span class="scope-mode scope-mode--proved">To prove</span>
+        <li data-proof-id="17-functional-equation">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--background">Background</span>
-          $L(E,s)$ and $L(f,s)$ as Euler products, and the analytic continuation and functional equation. Motivating rather than load-bearing: modularity is stated representation-theoretically, so the chain never evaluates an $L$-function. <span class="scope-essays">(essay 17)</span>
+          Hecke's theorem gives entire analytic continuation of $L(f,s)$ and the weight-$2$ functional equation $\Lambda(f,s)=w_f\Lambda(f,2-s)$. Analytic continuation of $L(E,s)$ is not asserted independently: it transfers only after modularity identifies $L(E,s)$ with a newform $L$-function. <span class="scope-essays">(<a href="chapters/17-two-l-functions.html">essay 17</a>)</span>
        </li>
         <li data-proof-id="19-21-wiles">
           <span class="scope-mode scope-mode--described">To describe</span>
@@ -650,7 +656,7 @@
 
     <h2>Status</h2>
 
-    <!-- about-essay-count:start --><p><strong>Twenty of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/15-newforms-and-level.html">15</a>, <a href="chapters/16-modular-representation.html">16</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The five unwritten essays are 17, 18, 19, 20 and 21. The canonical proof register currently records 3 required items still owed, so the chain does not yet close. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
+    <!-- about-essay-count:start --><p><strong>Twenty-one of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/15-newforms-and-level.html">15</a>, <a href="chapters/16-modular-representation.html">16</a>, <a href="chapters/17-two-l-functions.html">17</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The four unwritten essays are 18, 19, 20 and 21. The canonical proof register currently records 3 required items still owed, so the chain does not yet close. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
 
     <p>This is the third in a series of collections built the same way, after
       <em>The Quantum Quartet</em> (four authors on early quantum mechanics) and <em>The Bridge</em>

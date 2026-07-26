@@ -767,14 +767,25 @@
       "text": "For the level-$11$ eta product and $E:y^2+y=x^3-x^2$, independent exact $q$-expansion and point-count computations give the same $a_\\ell$ and therefore the same polynomial $X^2-a_\\ell X+\\ell$ at every tested good prime."
     },
     {
-      "id": "17-l-functions",
+      "id": "17-euler-products",
       "register": "proved",
+      "availability": "available",
       "role": "background",
       "essays": [
         17
       ],
-      "text": "$L(E,s)$ and $L(f,s)$ as Euler products, and the analytic continuation and functional equation. Motivating rather than load-bearing: modularity is stated representation-theoretically, so the chain never evaluates an $L$-function.",
-      "availability": "planned"
+      "text": "The good-prime recurrence and multiplicativity from essay 14 give the local generating function $(1-a_\\ell T+\\ell T^2)^{-1}$ and assemble the good-prime part of the Euler product for a normalized weight-$2$ newform. The elliptic-curve Euler product is defined from the reduction types in essay 08."
+    },
+    {
+      "id": "17-functional-equation",
+      "register": "stated",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        17
+      ],
+      "text": "Hecke's theorem gives entire analytic continuation of $L(f,s)$ and the weight-$2$ functional equation $\\Lambda(f,s)=w_f\\Lambda(f,2-s)$. Analytic continuation of $L(E,s)$ is not asserted independently: it transfers only after modularity identifies $L(E,s)$ with a newform $L$-function.",
+      "short": "Analytic continuation and the newform functional equation"
     },
     {
       "id": "18-modularity",
