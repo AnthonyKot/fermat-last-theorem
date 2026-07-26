@@ -5,6 +5,7 @@
       "05-traces-determine",
       "06-weierstrass-definition",
       "07-associativity",
+      "07-uniformization",
       "08-conductor-multiplicative",
       "10-local-theorems",
       "13-valence-formula",
@@ -12,10 +13,8 @@
       "15-newforms",
       "16-eichler-shimura",
       "18-modularity",
-      "23-modularity-applied",
       "25-ribet",
-      "25-small-exponents",
-      "09-torsion-general"
+      "25-small-exponents"
     ]
   },
   "proof_register": [
@@ -239,7 +238,7 @@
       "id": "07-uniformization",
       "register": "stated",
       "availability": "available",
-      "role": "background",
+      "role": "required_for_flt",
       "essays": [
         7
       ],
@@ -363,14 +362,16 @@
     },
     {
       "id": "09-torsion-general",
-      "register": "stated",
+      "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
       "essays": [
         9
       ],
-      "short": "$E[n]\\cong(\\mathbb{Z}/n)^2$ in characteristic zero",
-      "text": "That $E[n]\\cong(\\mathbb{Z}/n)^2$ for every $n$, derived on the complex torus from essay 07's uniformization. The $n=2$ and $n=3$ cases are verified independently by the division polynomials, so this import is used only for general $n$."
+      "text": "$E[n]\\cong(\\mathbb{Z}/n)^2$ in characteristic zero, proved on the complex torus: $\\frac1n\\Lambda/\\Lambda$ is an $n\\times n$ grid because a lattice has two generators. Conditional on essay 07's uniformization, and on nothing else; the $n=2$ and $n=3$ cases are checked independently by the division polynomials.",
+      "depends_on": [
+        "07-uniformization"
+      ]
     },
     {
       "id": "09-torsion-structure",
@@ -563,14 +564,16 @@
     },
     {
       "id": "23-modularity-applied",
-      "register": "stated",
+      "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
       "essays": [
         23
       ],
-      "short": "The Modularity Theorem applied to the Frey curve, from essay 18",
-      "text": "Essay 18's Modularity Theorem for semistable curves is applied to $E$, giving a weight-2 newform of level $\\operatorname{rad}(abc)$ with the same Galois representation."
+      "text": "$E$ is modular of level $\\operatorname{rad}(abc)$, by applying essay 18's Modularity Theorem to the semistability proved in this essay. Conditional on that theorem, and on nothing else.",
+      "depends_on": [
+        "18-modularity"
+      ]
     },
     {
       "id": "23-normalisation-spent",

@@ -177,6 +177,14 @@ def load_register() -> tuple[list[dict], dict]:
         # reader who sees only a number can do nothing but trust it.
         if item["register"] == "stated" and not item.get("short"):
             raise ValueError(f"{item['id']} is a stated record and needs a 'short' label for the roster")
+        # A third state: proved, but conditional on an assumption made elsewhere.
+        # Without this, such a record has to masquerade as an assumption, which
+        # double-counts the roster and puts two entries under one root import.
+        if "depends_on" in item:
+            if item["register"] != "proved":
+                raise ValueError(f"{item['id']}: depends_on is only for proved records")
+            if not item["depends_on"]:
+                raise ValueError(f"{item['id']}: depends_on must be non-empty")
         if not item["essays"] or not all(isinstance(n, int) and 1 <= n <= 25 for n in item["essays"]):
             raise ValueError(f"invalid essay list for {item['id']}")
         if item["availability"] == "available":
@@ -239,6 +247,19 @@ def load_register() -> tuple[list[dict], dict]:
             if expected_role not in item_match.group(0):
                 raise ValueError(f"{item['id']} is missing its canonical role badge")
 
+    for item in items:
+        for dep in item.get("depends_on", []):
+            if dep not in ids:
+                raise ValueError(f"{item['id']} depends on unknown record {dep}")
+            upstream = next(x for x in items if x["id"] == dep)
+            if upstream["register"] != "stated":
+                raise ValueError(f"{item['id']} depends on {dep}, which is not an assumption")
+            # the root import must carry at least the role of everything hanging off it
+            if item["role"] == "required_for_flt" and upstream["role"] != "required_for_flt":
+                raise ValueError(
+                    f"{item['id']} is on the FLT chain but depends on {dep}, which is only background"
+                )
+
     unknown_accepted = set(accepted) - ids
     if unknown_accepted:
         raise ValueError(f"completion policy names unknown items: {sorted(unknown_accepted)}")
@@ -274,7 +295,19 @@ def essay_refs(numbers: list[int]) -> str:
     return ", ".join(refs[:-1]) + ", and " + refs[-1]
 
 
-def render_items(items: list[dict]) -> list[str]:
+def dep_note(item: dict, items: list[dict]) -> str:
+    """Name the upstream assumption a conditional proof rests on."""
+    deps = item.get("depends_on")
+    if not deps:
+        return ""
+    by_id = {x["id"]: x for x in items}
+    names = ", ".join(
+        html.escape(by_id[d].get("short", d), quote=False) for d in deps
+    )
+    return f' <span class="scope-dep">conditional on: {names}</span>'
+
+
+def render_items(items: list[dict], allitems: list[dict] | None = None) -> list[str]:
     lines = ['      <ul class="scope-register">']
     for item in items:
         register = item["register"]
@@ -288,7 +321,8 @@ def render_items(items: list[dict]) -> list[str]:
                 f'        <li data-proof-id="{item["id"]}">',
                 f'          <span class="scope-mode scope-mode--{register}">{label}</span>',
                 f'          <span class="scope-role scope-role--{item["role"]}">'
-                f'{ROLE_LABELS[item["role"]]}</span>',
+                f'{ROLE_LABELS[item["role"]]}</span>'
+                + (dep_note(item, allitems) if allitems else ""),
                 f"          {text} <span class=\"scope-essays\">({refs})</span>",
                 "       </li>",
             ]
@@ -310,7 +344,7 @@ def render_roster(items: list[dict]) -> list[str]:
     return lines
 
 
-def render_block(items: list[dict], policy: dict) -> str:
+def render_block(items: list[dict], policy: dict) -> str:  # noqa: C901
     accepted_ids = set(policy["accepted_assumption_ids"])
     proved = [
         item
@@ -378,7 +412,7 @@ def render_block(items: list[dict], policy: dict) -> str:
         "   <h3>Proved in the written essays</h3>",
         '    <p class="scope-note">This list is generated from <code>data/ledger.json</code>. An item',
         "     appears here only when it is both available and marked proved.</p>",
-        *render_items(proved),
+        *render_items(proved, items),
         "",
         "   <h3>Explicitly assumed, not proved here</h3>",
         '    <p class="scope-note">These available inputs are named in the completion policy. They',

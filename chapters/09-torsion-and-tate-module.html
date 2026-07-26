@@ -34,8 +34,8 @@
       <em>full rational</em> $2$-torsion while the conductor-$11$ curve has none; that
       $E[3]$ for $y^2=x^3+1$ has nine points of which three are rational; and that
       $T_\ell(E)$ is free of rank $2$ over $\mathbb{Z}_\ell$.
-      <strong>Assumes:</strong> $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero, via essay 07's
-      complex uniformization.
+      <strong>Proves conditionally:</strong> $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero — a
+      complete argument on the torus, resting on essay 07's uniformization and nothing further.
     </div>
 
     <section class="rung">
@@ -125,11 +125,12 @@
         torsion points have algebraic coordinates, $E[n]\subset E(\overline{\mathbb{Q}})\subset
         E(\mathbb{C})$, and we may read the structure off the torus:</p>
       <div class="fence">
-        <strong>Assumed, resting on essay 07's uniformization.</strong> For an elliptic curve over a
-        field of characteristic zero, $E[n]\cong(\mathbb{Z}/n)^2$ for every $n\geq1$. The argument
-        above is complete <em>given</em> $E(\mathbb{C})\cong\mathbb{C}/\Lambda$, which essay 07 stated
-        without proof. So this is one import deep, not two, and the $n=2$ and $n=3$ cases were
-        verified independently by the polynomials above.
+        <strong>Proved, conditional on essay 07's uniformization.</strong> For an elliptic curve over a
+        field of characteristic zero, $E[n]\cong(\mathbb{Z}/n)^2$ for every $n\geq1$. The argument above
+        is <em>complete</em> given $E(\mathbb{C})\cong\mathbb{C}/\Lambda$, which essay 07 states
+        without proof — so this adds no new assumption to the collection, it spends one already on the
+        books. The ledger records it that way: a proof with a named dependency, not a second import
+        sharing one root. And $n=2$, $n=3$ are verified independently by the polynomials above.
       </div>
 
       <h3>The Tate module</h3>
@@ -234,7 +235,10 @@
           rational subgroup is what makes a representation reducible, and Mazur's isogeny theorem is a
           statement about which rational subgroups can exist. The $2$-torsion is the extra structure
           the Frey curve has beyond being semistable, and whether it sharpens Mazur's threshold from
-          $p\gt7$ to $p\geq5$ is the one question this collection has left open.</li>
+          $p\gt7$ to $p\geq5$ is one of this collection's open questions. It is not the only one: essay
+          02 still owes the second-case descent for $n=3$, and the exponents $n=5$ and $n=7$ lie outside
+          the Frey route altogether and are carried as an assumed classical input.
+          <a href="../about.html">About</a> keeps the running count; no essay should claim to.</li>
         <li><strong>Essay 08's loose end</strong> is now tied: the $5$ dividing every point count was
           the rational part of $E[5]$, injecting into the reduction at each good prime.</li>
       </ul>
@@ -285,6 +289,13 @@
               <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
               The Frey curve has full rational $2$-torsion, $E[2]\subset E(\mathbb{Q})$, while the
               conductor-$11$ curve has $E(\mathbb{Q})[2]=\{O\}$</li>
+            <li data-proof-id="09-torsion-general">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              <span class="ledger-dep">conditional on essay 07's uniformization</span>
+              $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero, from the $n\times n$ grid
+              $\tfrac1n\Lambda/\Lambda$ on the torus. The only assumption it rests on is essay 07's,
+              already counted there — it adds no new trust obligation</li>
             <li data-proof-id="09-worked-three-torsion">
               <span class="ledger-mode ledger-mode--proved">Proved</span>
               <span class="ledger-role ledger-role--background">Background</span>
@@ -295,11 +306,8 @@
         <div class="col assumed-here">
           <h3>Assumed here</h3>
           <ul>
-            <li data-proof-id="09-torsion-general">
-              <span class="ledger-mode ledger-mode--stated">Assumed</span>
-              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero. Derived from essay 07's complex
-              uniformization, which is itself imported — so this rests on one import, not two</li>
+            <li><strong>Nothing new.</strong> The structure theorem proved opposite is conditional on essay 07's complex uniformization. It appears on the roster once, against the essay
+              that states it, and this essay adds no second trust obligation.</li>
           </ul>
         </div>
         <div class="col owed">
@@ -329,6 +337,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 09 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/a8d7365"><code>a8d7365</code></a> · 2026-07-26 16:24 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/3b81be6"><code>3b81be6</code></a> · 2026-07-26 16:33 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

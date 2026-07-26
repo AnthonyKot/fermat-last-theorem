@@ -126,6 +126,29 @@ missing essay, not the missing proof. Word owed-column lines accordingly, and ne
 already-available accepted assumption as owed: `25-small-exponents` is external classical work, so
 nothing can ever discharge it, and filing it as owed would keep the release gate from closing for ever.
 
+### The third state: proved, conditional on an assumption made elsewhere
+
+The schema originally had only *proved* and *assumed*, and results of the form "this follows from a
+theorem imported in an earlier essay" had nowhere to sit. Filed as assumed they broke the column's own
+definition — they *are* discharged by something, namely the upstream import — and they inflated the
+roster, putting two entries under one root. Two records had drifted into exactly that state:
+`09-torsion-general` (from essay 07's uniformization) and `23-modularity-applied` (from essay 18's
+Modularity Theorem).
+
+Both are now `register: proved` with a **`depends_on`** naming the upstream assumption. Consequences,
+all enforced by `render_status.py`:
+
+- `depends_on` may appear only on a proved record, and every id in it must exist and be an assumption;
+- **the root import must carry at least the role of everything hanging off it.** A chain-required proof
+  may not depend on a background assumption. That check immediately caught a real leak:
+  `07-uniformization` was `background` while the chain-required `09-torsion-general` derived from it, so
+  the chain rested on something the roster never listed. Uniformization is now `required_for_flt`;
+- the allowlist therefore counts **root imports only** — 13, not 15 — and About names each one.
+
+Expect this state to recur: every essay downstream of uniformization or modularity will want it. When it
+does, use `depends_on` rather than adding an assumption. It also makes narrowing cheap later: if
+uniformization is ever proved or demoted, everything hanging off it follows automatically.
+
 ⚠ **The owed column is free prose and the validator does not check it.** `render_status.py` pins every
 *registered* item to the right column, but a hand-written line in an owed list can drift out of date
 with nothing to catch it. Two such lines had already drifted in essay 23. When editing an owed column,

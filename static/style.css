@@ -363,3 +363,5 @@ img, svg { max-width: 100%; }
 .build-stamp a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .build-stamp a:hover { color: var(--accent); }
 @media print { .build-stamp { color: #555; } }
+.ledger-dep, .scope-dep { display: inline-block; font-size: .78rem; padding: .05rem .4rem;
+  border: 1px dashed var(--rule); border-radius: 3px; color: var(--muted); margin-right: .3rem; }
