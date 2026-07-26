@@ -103,7 +103,10 @@
       <p>and each of the three factors is divisible by $\lambda$ — the first by construction, and the
         others because $\alpha - \omega = (\alpha - 1) + \lambda$ and
         $\alpha - \omega^2 = (\alpha-1) + \lambda(1+\omega)$. That gives $\lambda^3$ immediately, and a
-        short check on the residues modulo $\lambda^2$ upgrades it to $\lambda^4$.</p>
+        fourth factor follows explicitly: after removing one $\lambda$ from each factor, the three
+        cofactors are $\mu$, $\mu+1$ and $\mu+1+\omega$, whose residues modulo $\lambda$ are
+        $t,t+1,t+2$ in $\mathbb F_3$. One is therefore divisible by $\lambda$. Hence
+        $\lambda^4\mid\alpha^3-1$.</p>
 
       <h3>The first case, in four lines</h3>
       <p>Write the equation symmetrically. Since we may move a term across and absorb a sign,
@@ -122,18 +125,20 @@
         $\pm 1$.</p>
 
       <h3>The second case: set up the descent</h3>
-      <p>The remaining case is the one in which $3$ divides one of the three rational integers. Start
-        with a non-zero primitive solution and write it, after permuting the three signed cubes, as</p>
+      <p>The remaining case is the one in which $3$ divides one of the three rational integers. Choose
+        a positive primitive solution $X^3+Y^3=Z^3$ with $Z$ least. Exactly one of $X,Y,Z$ is divisible
+        by $3$: at least one is, by the first-case argument, while two would force the third and
+        contradict primitivity. Move that one signed cube to the right, make it positive, and call the
+        resulting integers $x,y,z$. Then $0\lt z\leq Z$ and</p>
       <p>$$ x^3+y^3=z^3,\qquad 3\mid z,\qquad 3\nmid xy,\qquad \gcd(x,y)=1. $$</p>
-      <p>The signs cause no difficulty: the term divisible by $3$ is moved to the right and made
-        positive. The quadratic factor $x^2-xy+y^2$ is positive, so $x+y$ is then positive as well.</p>
+      <p>The quadratic factor $x^2-xy+y^2$ is positive, so $x+y$ is positive as well.</p>
       <p>Because $x+y\equiv0\pmod3$, write $x+y=3A$. The other factor is</p>
       <p>$$ x^2-xy+y^2=(x+y)^2-3xy=3(3A^2-xy). $$</p>
       <p>The expression in parentheses is not divisible by $3$, since $3\nmid xy$. Thus
         $v_3(x^2-xy+y^2)=1$. Moreover</p>
       <p>$$ \gcd(x+y,x^2-xy+y^2)=3: $$</p>
       <p>any common divisor divides $3xy$, while $\gcd(x+y,xy)=1$. Dividing both factors by their common
-        $3$, we therefore have coprime integers $A,B$ with $3\nmid B$ and</p>
+        $3$, put $B=(x^2-xy+y^2)/3$. We therefore have coprime integers $A,B$ with $3\nmid B$ and</p>
       <p>$$ z^3=(x+y)(x^2-xy+y^2)=9AB. $$</p>
       <p>Unique factorisation in $\mathbb Z$ now fixes every exponent. Away from $3$, both $A$ and $B$
         are cubes; at $3$, the exponent in $9A$ must be a multiple of $3$. Hence for positive integers
@@ -148,7 +153,9 @@
         $\mathbb Z[\omega]$ other than $\lambda$ cannot divide both $\alpha$ and its conjugate:
         their difference is $\omega\lambda y$, and then the prime would divide both $x$ and $y$.
         Nor can it divide both $\alpha$ and $x+y$, because their difference is $-\lambda y$ and the
-        same conclusion follows. Thus the three factors in</p>
+        same conclusion follows. This really contradicts integer coprimality: a Bézout identity
+        $ux+vy=1$ in $\mathbb Z$ is the same identity in $\mathbb Z[\omega]$, so no Eisenstein prime
+        divides both $x$ and $y$. Thus the three factors in</p>
       <p>$$ z^3=(x+y)(x+\omega y)(x+\omega^2y), $$</p>
       <p>every prime away from $\lambda$ occurring in $\alpha$ must consequently occur to an exponent
         divisible by $3$. Since $\mathbb Z[\omega]$ is a unique-factorisation domain and
@@ -181,15 +188,18 @@
         non-zero Fermat solution</p>
       <p>$$ a^3=b^3+c^3. $$</p>
       <p>After moving negative terms, this is a solution in positive integers. It is strictly smaller.
-        Indeed $s=N(\gamma)=m^2-mn+n^2$, and this positive quadratic form is at least each of
+        Taking norms in $x+\omega y=\lambda\gamma^3$ and using the boxed equality above gives</p>
+      <p>$$ 3s^3=N(x+\omega y)=N(\lambda)N(\gamma)^3=3N(\gamma)^3, $$</p>
+      <p>so $s=N(\gamma)=m^2-mn+n^2$. This positive quadratic form is at least each of
         $|m|$, $|n|$ and $|m-n|$: for example
         $4s=(2m-n)^2+3n^2\geq3m^2$, which proves the claim for $|m|\geq2$, and the cases
         $|m|\leq1$ are immediate; the other two follow by symmetry. Therefore</p>
-      <p>$$ |a|^3,\ |b|^3,\ |c|^3\leq s\lt 3rs=z. $$</p>
-      <p>Choose at the start a positive primitive solution with $z$ least. The construction has just
-        produced another positive solution whose largest term is smaller than $z$, a contradiction.
-        The second case is impossible. Together with the congruence argument above, this proves
-        Fermat's Last Theorem for $n=3$. $\blacksquare$</p>
+      <p>$$ |a|^3,\ |b|^3,\ |c|^3\leq s\lt 3rs=z\leq Z. $$</p>
+      <p>In particular $|a|,|b|,|c|\lt z\leq Z$. The construction has produced another positive
+        primitive solution — the pairwise coprimality above passes to $a,b,c$ — whose right-hand term
+        is smaller than the minimal choice $Z$, a contradiction. The second case is impossible.
+        Together with the congruence argument above, this proves Fermat's Last Theorem for $n=3$.
+        $\blacksquare$</p>
 
       <h3>Now do it for every prime — and watch it fail</h3>
       <p>The obvious plan is to repeat this in $\mathbb{Z}[\zeta_p]$ for each odd prime, factoring
@@ -285,6 +295,12 @@
         Proofs development</a> both formalise the full exponent-$3$ theorem by infinite descent. They
         take different presentations of the descent, which is useful independent confirmation of the
         completed case rather than a source for the prose above.</p>
+      <p><strong>An independent UFD descent.</strong> Chapter 13 of
+        <a href="https://people.maths.ox.ac.uk/greenbj/papers/ANT-web.pdf">Ben Green's Oxford
+        algebraic-number-theory notes</a> proves the same exponent-$3$ theorem in
+        $\mathbb Z[\omega]$. Its proof makes the pairwise-coprimality calculation and the unit
+        obstruction explicit, but descends through a strengthened Eisenstein-integer equation rather
+        than through the rational coefficient product used above.</p>
       <p><strong>Kummer's criterion.</strong> The same survey states the criterion in the form used
         here: regularity is equivalent to $p$ dividing the numerator of no $B_{2i}$ for
         $1 \leq i \leq (p-3)/2$, obtained by splitting the class number into two factors and finding a
