@@ -102,9 +102,25 @@ PY
 
 echo "== ledger: every essay carries one, and no forward dependencies =="
 python3 - <<'PY' || fail=1
-import re, os, glob, sys
+import re, os, glob, sys, json
 prob = 0
 essays = sorted(glob.glob("chapters/*.html"))
+
+# An essay counts as SETTLED once it exists and every required record assigned to
+# it is resolved -- proved and available, or an accepted assumption and available.
+reg = json.load(open("data/ledger.json"))
+accepted = set(reg["completion_policy"]["accepted_assumption_ids"])
+written = {int(os.path.basename(p)[:2]) for p in essays}
+outstanding = set()
+for item in reg["proof_register"]:
+    if item["role"] != "required_for_flt":
+        continue
+    resolved = item["availability"] == "available" and (
+        item["register"] == "proved" or item["id"] in accepted
+    )
+    if not resolved:
+        outstanding.update(item["essays"])
+SETTLED = written - outstanding
 for f in essays:
     n = int(os.path.basename(f)[:2])
     t = open(f).read()
@@ -118,6 +134,21 @@ for f in essays:
     )
     if any(column not in led for column in expected_columns):
         print(f"  {os.path.basename(f)}: ledger missing a proved/imported/owed column"); prob += 1
+    # backwards debt: the owed column must not name an essay that is at or
+    # before this one AND has nothing left outstanding. An earlier-numbered
+    # essay may legitimately be named if it is unwritten, or if it still carries
+    # an unresolved required item (essay 02's outlined second case, for
+    # instance). Nine essays had drifted here, because the owed column is prose
+    # the validator did not read.
+    if 'class="col owed"' in led:
+        owed = led.split('class="col owed"', 1)[1].split("</div>", 1)[0]
+        for ref in re.findall(r'essays? ((?:\d\d(?:[,\s]+(?:and\s+)?)?)+)', owed):
+            for num in re.findall(r'\d\d', ref):
+                k = int(num)
+                if k <= n and k in SETTLED:
+                    print(f"  {os.path.basename(f)}: owed column names essay {num}, "
+                          f"which is at/before {n:02d} and has nothing outstanding")
+                    prob += 1
     # forward dependency: "What we already have" must not cite a later essay
     m = re.search(r'Rung 1</span>\s*What we already have(.*?)</section>', t, re.S)
     if m:

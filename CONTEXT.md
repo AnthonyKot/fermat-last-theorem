@@ -371,9 +371,21 @@ Not in the video at all. Opens with a standing banner: these three essays descri
 | 24 | the-frey-representation | ρ̄ = ρ̄_{Frey,p}: **irreducible** via Mazur's isogeny theorem (10), unramified outside 2 and p via **Néron–Ogg–Shafarevich** (10), finite at p, and **conductor exactly 2** | Discharges L17. Corrections #5 lives here: the *curve's* conductor is rad(abc); it is the *representation's* conductor that is 2. Level lowering exists to close exactly that gap. |
 | 25 | ribet-and-the-end | **Ribet's level-lowering theorem** (1990) with its hypotheses; applied: modular of level rad(abc) ⟹ modular of level 2, so a weight-2 newform of level 2 exists. But μ = 3, ν₂ = 1, ν₃ = 0, ν_∞ = 2 gives 1 + 3/12 − 1/4 − 0 − 1 = 0, so **dim S₂(Γ₀(2)) = 0**. No such form. Hence no such representation, no such curve, no such solution. ∎ | Imports L18 and proves the L19 computation once essay 13 supplies its formula; the required debt then empties without disguising Ribet as proved. Closes with what the proof does *not* give: no effective bounds, no explanation of *why*, and the ABC-shaped questions still open. Note the slack — levels 1, 2, 3, 4 all give 0 — so the contradiction is not knife-edge. |
 
-**Part I is complete** (01–05), and so is Part II (06–10). The collection now has an unbroken
-reading path from Fermat's descent to the representation attached to a curve, with no forward
-references anywhere in essays 01–10. Everything remaining is Part III onward plus essay 24.
+**Parts I and II have all ten essays written, and Part I still carries one debt inside it.** Do not
+call either Part "complete": L1, the second case for $n=3$, lives in essay 02 and is `outlined`, not
+proved — and Part I is the one Part that claims to prove from scratch rather than import, so the word
+matters there most. Three options, and the choice should be deliberate rather than smuggled in by
+vocabulary: write the descent, reclassify L1 as a declared assumption with a citation, or say **"all
+five essays written, one debt outstanding"**. The third is free and true, and is what the site says.
+
+What *is* true and worth saying: essays 01–10 form an unbroken reading path with no forward references,
+verified by the two symmetric ledger checks rather than asserted.
+
+⚠ **The build stamp cannot detect a stale essay.** `render_status.py --write` rewrites every stamp on
+every run, so all pages always carry the same revision — that is by design, since the stamp answers
+"is this deploy current". It says nothing about whether a given essay's *content* was revisited when its
+neighbours changed. Nine essays had drifted with identical stamps. Use the ledger checks for that, not
+the stamp.
 
 ## Sequencing notes (writing order is not reading order)
 
@@ -628,11 +640,14 @@ essay 03. **Essay 10's stated trace formula: what can and cannot retire it.** Th
   $x^2-a_\ell x+\ell$ — which comes from $\#\tilde{E}(\mathbb{F}_\ell)=\deg(1-\phi)$ and the degree
   map being a quadratic form. That is essay **08**'s territory, not representation theory. Essay 05
   supplies ramification, conductors and continuity; none of it touches this.
-- **So the retrofit belongs to 08.** `08-torsion-injects` already exists as a background record and is
-  half of what is needed; the Frobenius endomorphism and the degree form are not in the collection at
-  all. Retiring `10-trace-formula` means adding them to essay 08 and promoting
-  `08-torsion-injects` to the chain — at which point the `depends_on` role rule applies, exactly as it
-  did for `07-uniformization`.
+- **So the retrofit belongs to 08, and it is essay-sized, not a cleanup item.** It needs
+  $\#\tilde{E}(\mathbb{F}_\ell)=\deg(1-\phi)$, the degree map as a quadratic form, and the
+  characteristic polynomial of the Frobenius endomorphism — a genuine section with its own worked
+  example, not a paragraph. `08-torsion-injects` already exists as a background record and is half of
+  what is needed; the Frobenius endomorphism and the degree form are not in the collection at all.
+  **Schedule it as a task in its own right**, after 24: retiring `10-trace-formula` means writing that
+  section and promoting `08-torsion-injects` to the chain, at which point the `depends_on` role rule
+  applies exactly as it did for `07-uniformization`.
 
 Essay 03 also supplies the reason traces are the right invariant at all: $\mathrm{Frob}_\ell$ is a
 *conjugacy class*, so only conjugation-invariant quantities can be read off it — which retro-justifies

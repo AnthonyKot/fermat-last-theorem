@@ -31,6 +31,29 @@ Tier definitions are in `CONTEXT.md`. Briefly: **A** = fetched this session, cit
 
 | 2026-07-26 | [Andrew Sutherland, MIT 18.783, Fall 2023, Lecture 25](https://math.mit.edu/classes/18.783/2023/LectureNotes25.pdf) (*Fermat's Last Theorem*, dated 12/12/2023) | §25.2, §25.4; conjecture 25.1; theorems 25.2, 25.4–25.8; corollary 25.3 | **Settles the irreducibility threshold.** $\bar\rho_{E,\ell}$ is irreducible iff $E$ admits no rational $\ell$-isogeny, and **Mazur's isogeny theorem gives this for $\ell\notin\{2,3,5,7,11,13,17,19,37,43,67,163\}$**, where $19,43,67,163$ need CM. The FLT argument may then take $\ell>163$ because FLT was already known for $\ell\leq163$. Chronology: Dirichlet and Legendre complete $n=5$ in **1825**, Lamé addresses $n=7$ in **1839**, Kummer 1847 for regular primes, computers to $4\times10^6$ by 1993; Euler's 1753 $n=3$ proof has a **fixable** error. $\Delta_{\min}(E_{a,b,c})=2^{-8}(abc)^{2\ell}$ assuming $\ell>3$; normalisation $a\equiv3\pmod4$, $b\equiv0\pmod2$; $E_{a,b,c}$ has no additive reduction anywhere, so it is semistable with squarefree conductor $\prod_{\ell\mid abc}\ell$. **Serre's optimal level**: $N(\bar\rho_{E,\ell})$ is the product of primes $p$ with $v_p(\Delta_{\min})\not\equiv0\bmod\ell$ — the mechanism that drops the Frey level to $2$. Theorem 25.2 is Ribet in the form needed; 25.4 Taylor–Wiles (semistable $\Rightarrow$ modular); 25.5 Langlands–Tunnell; **25.6 no semistable curve over $\mathbb{Q}$ admits a rational 15-isogeny**, proved via $X_0(15)$ having 8 rational points, 4 non-cuspidal, all of conductor $50=2\cdot5^2$; 25.7 the 3–5 trick; 25.8 the assembled proof. Serre's conjecture (25.1) proved by Khare–Wintenberger 2008 | 22, 24, 25, and Part V |
 
+**Notation trap: Sutherland's $\ell$ and $p$ are the reverse of ours.** In 18.783 Lecture 25, $\ell$ is
+the *residual* prime (the one the representation is mod, which for FLT is the Fermat exponent) and $p$
+ranges over auxiliary primes of reduction. This collection fixes the opposite in essay 04: $p$ is the
+Fermat exponent, $\ell$ is auxiliary. **Every quotation from that lecture must swap the letters.** It
+already caused one error: Serre's optimal-level recipe was written into essays 05 and 23 in the source's
+letters, inverting the convention both essays had just restated. In our letters it is
+$N(\bar\rho_{E,p})=\prod\ell$ over the $\ell$ with $v_\ell(\Delta_{\min})\not\equiv0\pmod p$.
+
+**Page-level evidence, so re-verification is one page read.** Four essays now cite Lecture 25 §25.3 and
+three cite §25.4, so the pointers are load-bearing and worth pinning precisely. Read directly from the
+PDF: **page 3** carries §25.3's opening, the $\ell$-torsion field, the representation on $E[\ell]$, and
+the decomposition-group construction — $p\mathcal{O}_K=\mathfrak{p}_1\cdots\mathfrak{p}_r$, transitivity,
+$D_\mathfrak{p}$, the isomorphism $\varphi:D_\mathfrak{p}\to\mathrm{Gal}(\mathbb{F}_\mathfrak{p}/\mathbb{F}_p)$,
+and $\mathrm{Frob}_\mathfrak{p}:=\varphi^{-1}(\pi_p)$; it explicitly defers the factorisation into
+distinct primes to its own Lecture 20. **Page 4** carries the conjugacy remark, the characteristic
+polynomial $\lambda^2-(\operatorname{tr}A_p)\lambda+\det A_p$ with $\operatorname{tr}\equiv a_p$ and
+$\det\equiv p$, the Tate module $T_\ell(E):=\varprojlim E[\ell^n]$ with multiplication-by-$\ell$
+connecting maps, and $\rho_{E,\ell}:G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$. **Pages 5–6**
+carry §25.4: oddness from complex conjugation on the torus, the definition of irreducible, Mazur's
+exceptional list with $19,43,67,163$ as the CM cases, and Serre's optimal level. So one long overview
+section really does carry all of it, and the decomposition-group material sits inside the
+elliptic-curves course because that lecture is an FLT overview drawing on the number-theory course.
+
 **One disagreement, resolved against the source.** Lecture 25 §25.2 displays
 $\Delta(E_{a,b,c})=-16(abc)^{2\ell}$. The sign is wrong: $\Delta=16\prod_{i<j}(e_i-e_j)^2$ for
 $y^2=f(x)$ with $f$ monic of degree three, and that product is a square. Checked three independent
