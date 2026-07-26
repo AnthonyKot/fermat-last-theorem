@@ -22,6 +22,9 @@ START = "<!-- proof-register:start -->"
 END = "<!-- proof-register:end -->"
 INDEX = ROOT / "index.html"
 COUNT_START = "<!-- essay-count:start -->"
+ASSUM_START = "<!-- assumption-count:start -->"
+ASSUM_END = "<!-- assumption-count:end -->"
+FINALE = ROOT / "chapters" / "25-ribet-and-the-end.html"
 COUNT_END = "<!-- essay-count:end -->"
 STAMP_START = "<!-- build-stamp:start -->"
 STAMP_END = "<!-- build-stamp:end -->"
@@ -64,6 +67,38 @@ def write_essay_count() -> bool:
         INDEX.write_text(new, encoding="utf-8")
         return True
     return False
+
+
+def write_assumption_count(policy: dict) -> bool:
+    """Put the live root-assumption total into the closing essay's fence.
+
+    Essay 25 briefly claimed its argument rested on three things "and nothing
+    else", with a fourth listed in the table directly below it. A count in the
+    closing essay is the claim most likely to rot, so it is generated.
+    """
+    n = len(policy["accepted_assumption_ids"])
+    body = (f'{ASSUM_START}<strong>The finished proof would rest on {n} assumed results in total</strong>'
+            f' — see <a href="../about.html">About</a> for the roster.{ASSUM_END}')
+    text = FINALE.read_text(encoding="utf-8")
+    pattern = re.compile(re.escape(ASSUM_START) + r".*?" + re.escape(ASSUM_END), re.S)
+    if not pattern.search(text):
+        raise ValueError("essay 25 is missing the assumption-count markers")
+    new = pattern.sub(lambda _m: body, text, count=1)
+    if new != text:
+        FINALE.write_text(new, encoding="utf-8")
+        return True
+    return False
+
+
+def check_assumption_count(policy: dict) -> str:
+    n = len(policy["accepted_assumption_ids"])
+    text = FINALE.read_text(encoding="utf-8")
+    m = re.search(re.escape(ASSUM_START) + r"<strong>The finished proof would rest on (\d+) assumed", text)
+    if not m:
+        raise ValueError("essay 25 has no generated assumption count; run --write")
+    if int(m.group(1)) != n:
+        raise ValueError(f"essay 25 says {m.group(1)} assumed results; the register has {n}")
+    return f"{n} in essay 25"
 
 
 def check_essay_count() -> str:
@@ -402,6 +437,63 @@ def render_items(items: list[dict], allitems: list[dict] | None = None) -> list[
     return lines
 
 
+def counts_at(sha: str) -> tuple[int, int] | None:
+    """(owed, accepted) computed from data/ledger.json as it stood at a commit."""
+    try:
+        blob = git("show", f"{sha}:data/ledger.json")
+    except Exception:  # noqa: BLE001
+        return None
+    try:
+        raw = json.loads(blob)
+    except json.JSONDecodeError:
+        return None
+    items = raw.get("proof_register") or []
+    accepted = set(raw.get("completion_policy", {}).get("accepted_assumption_ids") or [])
+    owed = sum(
+        1
+        for i in items
+        if i.get("role") == "required_for_flt" and not closes_required_debt(i, accepted)
+    )
+    return owed, len(accepted)
+
+
+def trajectory() -> list[str]:
+    """Every commit where either counter moved, oldest first.
+
+    The counts have moved for three different reasons -- essays landing, a
+    re-granulation of the register, and assumptions being narrowed or discharged --
+    and reading them one snapshot at a time made ordinary movement look like
+    error. Computed from git rather than recorded by hand, so it cannot drift.
+    """
+    shas = git("log", "--format=%h", "--", "data/ledger.json").split()
+    rows, prev = [], None
+    for sha in reversed(shas):
+        got = counts_at(sha)
+        if got is None or got == prev:
+            continue
+        subject = git("log", "-1", "--format=%s", sha)
+        rows.append((sha, got, subject))
+        prev = got
+    if not rows:
+        return []
+    lines = ['      <details class="scope-revisions">',
+             "        <summary>How the two counts have moved</summary>",
+             '        <table><thead><tr><th>commit</th><th>owed</th><th>assumed</th>'
+             "<th>what changed</th></tr></thead><tbody>"]
+    for sha, (owed, acc), subject in rows:
+        lines.append(
+            f'          <tr><td><a href="{REPO}/commit/{sha}"><code>{sha}</code></a></td>'
+            f"<td>{owed}</td><td>{acc}</td>"
+            f"<td>{html.escape(subject[:72], quote=False)}</td></tr>"
+        )
+    lines += ["        </tbody></table>",
+              '        <p class="scope-note">Computed from the register at each commit, not recorded by'
+              " hand. Owed falls as essays land and rises when the register is made finer; assumed rises"
+              " when an essay names a new import and falls when one is discharged or narrowed.</p>",
+              "      </details>"]
+    return lines
+
+
 def render_revisions(revisions: list[dict]) -> list[str]:
     """Log every change to what the counters count, so the series stays readable."""
     if not revisions:
@@ -504,6 +596,7 @@ def render_block(items: list[dict], policy: dict, revisions: list[dict]) -> str:
         "currently uses. That granularity has changed, so counts from different dates are not "
         "comparable; each change is logged below rather than applied silently.</p>",
         *render_revisions(revisions),
+        *trajectory(),
         '      <p class="scope-note"><strong>Not yet settled:</strong> '
         f'{n_owed_chain} required item{"" if n_owed_chain == 1 else "s"} remain'
         f'{"s" if n_owed_chain == 1 else ""} owed, listed below. Until that list is empty the'
@@ -560,6 +653,8 @@ def main() -> int:
             print("about.html already up to date")
         if write_essay_count():
             print("updated index.html's essay count")
+        if write_assumption_count(policy):
+            print("updated essay 25's assumption count")
         stamped = write_stamps()
         print(f"build stamp written to {stamped} page(s)" if stamped else "build stamp already current")
         return 0
@@ -573,6 +668,12 @@ def main() -> int:
         print(f"essay count: {exc}")
         return 1
     print(f"contents-page essay count agrees with the files on disk: {counted}")
+    try:
+        assumed = check_assumption_count(policy)
+    except ValueError as exc:
+        print(f"assumption count: {exc}")
+        return 1
+    print(f"closing essay's assumption total agrees with the register: {assumed}")
     try:
         stamp = check_stamps()
     except ValueError as exc:

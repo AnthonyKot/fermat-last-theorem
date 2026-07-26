@@ -56,7 +56,8 @@ This collection was written without a personal library of the standard textbooks
 net — a checked page reference — is unavailable. Two substitutes carry it instead, both executable:
 
 ```bash
-./verify.sh
+./verify.sh                     # everything local
+python3 scripts/check_live.py   # the PUBLISHED site, reading no local files
 ```
 
 - **Ledger checks.** Every essay must carry proved/assumed/owed columns, and no essay's "What we
@@ -143,7 +144,8 @@ static/style.css         shared styles (themes, ledger, print)
 static/theme.js          theme toggle + KaTeX auto-render
 checks/*.py              scripts backing every numerical claim
 data/ledger.json         canonical proof-status, role, debt and completion policy
-scripts/render_status.py regenerates/checks About's proof-status block
+scripts/render_status.py regenerates/checks About's block, the essay count and the trajectory
+scripts/check_live.py    fetches the published site and checks its build stamps
 verify.sh                all checks; exits non-zero on failure
 CONTEXT.md               authoring notes: spine, ledger, style guide
 SOURCES.md               Tier A citation ledger

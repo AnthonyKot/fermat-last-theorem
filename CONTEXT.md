@@ -381,6 +381,14 @@ five essays written, one debt outstanding"**. The third is free and true, and is
 What *is* true and worth saying: essays 01–10 form an unbroken reading path with no forward references,
 verified by the two symmetric ledger checks rather than asserted.
 
+⚠ **Never verify a deploy with a hand-rolled command.** Every ad-hoc `curl | grep` check in this
+project got disputed, and the dispute was always reasonable, because such a check is indistinguishable
+from one that read the working tree. Use **`python3 scripts/check_live.py`**. It fetches the github.io
+URLs, reads no local HTML, and asserts every page serves the same stamp and that the stamp is HEAD or
+HEAD's parent. It cannot be HEAD alone — committing the stamp changes the hash, so the generator records
+HEAD at generation time and that becomes the parent once committed. Add `--expect 25 "some text"` to
+assert specific served content.
+
 ⚠ **The build stamp cannot detect a stale essay.** `render_status.py --write` rewrites every stamp on
 every run, so all pages always carry the same revision — that is by design, since the stamp answers
 "is this deploy current". It says nothing about whether a given essay's *content* was revisited when its
