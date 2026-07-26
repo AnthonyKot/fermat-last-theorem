@@ -440,6 +440,24 @@ the stamp.
   essay 23's modularity debt.
 - **Part V last.** It is the likeliest place to overreach and has no video support to lean on. If an
   essay starts growing lemmas, cut it back.
+### ⚠ Essay 13 must separate the two appearances of $\nu_\infty$
+
+Essay 12 briefly claimed that "holomorphic at the cusps is $\nu_\infty$ conditions" is *why*
+$-\nu_\infty/2$ appears in the dimension formula. That is wrong, and essay 13 would have contradicted
+it. The cusp count enters the dimension theory **twice, for unrelated reasons**:
+
+- inside the **genus** of $X_0(N)$, where $-\nu_\infty/2$ is a Riemann–Hurwitz ramification term for the
+  covering $X_0(N)\to X(1)$ — nothing to do with conditions on functions;
+- as the **vanishing conditions** at cusps, entering $\dim S_k$ with coefficient $\tfrac k2-1$, which is
+  **zero at weight 2**.
+
+So at weight 2 the cusps impose no net condition and $\dim S_2(\Gamma_0(N))=g$ exactly. The
+constraint-counting effect is real but appears as $\dim M_k-\dim S_k=\nu_\infty$ for $k\geq4$ — pinned
+in `checks/modular_forms.py`, which asserts the weight-2 coefficient is zero, that $\dim S_2=g$ for
+several $N$, and the $M_k-S_k$ identity at $k=4,6,8$. **Essay 13 must derive the genus term as
+ramification and say plainly that the weight-2 case is the degenerate one**, or the two effects will get
+conflated again.
+
 ### Two decisions taken in advance (Part III scope control)
 
 Both were settled before drafting, because writing the course version and then finding the chain used a

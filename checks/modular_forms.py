@@ -161,6 +161,40 @@ assert checked >= 10, checked
 assert reduction(E11, 11)[0] == "split multiplicative"
 assert f11[11] == 1
 
+# ===================== where nu_infinity actually enters ====================
+
+# The cusp count appears twice in the dimension theory, for unrelated reasons, and
+# essay 12 briefly attributed the genus formula's -nu_inf/2 to the wrong one. The
+# vanishing conditions at cusps enter dim S_k with coefficient (k/2 - 1), which is
+# ZERO at weight 2 -- so at weight 2 the cusps impose no net condition and
+# dim S_2 = g. The constraint count is visible instead as dim M_k - dim S_k.
+from dim_s2_gamma0 import mu as _mu, nu2 as _nu2, nu3 as _nu3, nu_inf as _nu_inf  # noqa: E402
+from fractions import Fraction as _F  # noqa: E402
+
+
+def _genus(N):
+    g = 1 + _F(_mu(N), 12) - _F(_nu2(N), 4) - _F(_nu3(N), 3) - _F(_nu_inf(N), 2)
+    assert g.denominator == 1
+    return int(g)
+
+
+def dim_M(k, N):
+    return (k - 1) * (_genus(N) - 1) + (k // 4) * _nu2(N) + (k // 3) * _nu3(N) + (k // 2) * _nu_inf(N)
+
+
+def dim_S(k, N):
+    if k == 2:
+        return _genus(N)
+    return (k - 1) * (_genus(N) - 1) + (k // 4) * _nu2(N) + (k // 3) * _nu3(N) + (k // 2 - 1) * _nu_inf(N)
+
+
+assert 2 // 2 - 1 == 0                       # the weight-2 cusp coefficient
+for N in (1, 2, 3, 11, 15, 25):
+    assert dim_S(2, N) == _genus(N)           # so dim S_2 is exactly the genus
+    for k in (4, 6, 8):
+        assert dim_M(k, N) - dim_S(k, N) == _nu_inf(N), (N, k)
+assert (dim_M(4, 11), dim_S(4, 11), dim_S(2, 11)) == (4, 2, 1)   # the essay's example
+
 # ===================== multiplicativity, previewing essay 14 ===============
 
 for m in range(1, PREC):
