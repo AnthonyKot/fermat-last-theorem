@@ -413,8 +413,19 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
    - **Sutherland's route:** take ℓ > 163, legitimate because FLT was known for all exponents ≤ 163.
      Cheaper in machinery, much more expensive in imported results.
    Either way **p = 5 and p = 7 are outside the Frey argument**, since both are in Mazur's list. The
-   suggestion that full rational 2-torsion buys p ≥ 5 is **not supported** by either source checked;
-   do not write it without a Tier A citation that states it.
+   **live sub-question: does full rational 2-torsion sharpen this to p ≥ 5?** Plausible and probably
+   true. The Frey curve has E[2] ⊂ E(Q), so a reducible ρ̄_{E,p} yields a rational cyclic subgroup of
+   order 2p or 4p, hence a non-cuspidal rational point on X₀(2p) or X₀(4p); ruling those out for p ≥ 5
+   would close it. Note **X₀(10) has genus 0**, so the 2p level alone cannot settle p = 5 — the
+   argument has to live at 4p. **Four source attempts have failed to produce a Tier A statement:** DDT
+   gives only the semistable ℓ > 7, Sutherland's Lecture 25 puts 5 and 7 *inside* Mazur's list,
+   Freitas–Siksek is about totally real fields with only its abstract reachable, and the numdam page
+   carries no numbered statements. Search snippets do assert p ≥ 5, but a snippet is Tier B and
+   uncitable under our own rule — which is exactly the rule's purpose.
+   **So the dependency stays declared.** An *undeclared* dependency is the failure mode; a
+   conservatively *declared* one costs one line on About and can be deleted the moment a real citation
+   appears. Do not write p ≥ 5 before then. To close it: get Mazur 1978 itself, or any paper stating
+   the X₀(4p) argument over Q by theorem number.
    **Consequence, now recorded rather than implicit:** the collection depends on classical work it does
    not contain — Dirichlet and Legendre for n = 5 (1825), Lamé for n = 7 (1839). That is the register
    record `25-small-exponents`, which is why the chain's assumption count is 8 and not 7. Leaving it
