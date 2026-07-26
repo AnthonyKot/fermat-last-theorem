@@ -23,10 +23,14 @@ Two computations, both independent of any particular triple.
        p = 5:  l = 3, 7      p = 7:  l = 5, 17
 
    and no others below 400. A witness works when it is a prime of good reduction,
-   i.e. when it does not divide abc. So the argument covers p = 5 unless
-   21 | abc, and p = 7 unless 85 | abc. That is a narrowing of the classical
-   dependency, not its removal, and the script asserts the boundary rather than
-   overstating it.
+   i.e. when it does not divide abc, so this route alone covers p = 5 unless
+   21 | abc and p = 7 unless 85 | abc.
+
+   Those residual cases are now closed by citation rather than by this argument:
+   Mazur's isogeny theorem in its sharpened form gives no rational p-isogeny for
+   p >= 5 whenever #E(Q)[2] = 4 and the conductor is squarefree, both of which the
+   Frey curve satisfies. The computation is kept because it shows WHY the
+   2-torsion is what sharpens Mazur, which the citation alone does not.
 
 Run: python3 checks/frey_conductor.py
 """
@@ -149,4 +153,5 @@ for p in (5, 7):
 
 print("PASS frey_conductor: Serre's recipe yields exactly {2} for every exponent and")
 print("  valuation pattern tested; uniform E[2] witnesses are l=3,7 for p=5 and")
-print("  l=5,17 for p=7, so the classical dependency narrows to 21|abc and 85|abc.")
+print("  l=5,17 for p=7 -- the residual cases 21|abc and 85|abc being closed instead by")
+print("  Mazur's sharpened statement, which needs exactly #E(Q)[2]=4 and squarefree conductor.")

@@ -20,8 +20,7 @@
       "18-modularity",
       "24-finite-at-p",
       "24-multiplicative-ramification",
-      "25-ribet",
-      "25-small-exponents"
+      "25-ribet"
     ]
   },
   "register_revisions": [
@@ -578,7 +577,7 @@
       "essays": [
         10
       ],
-      "text": "Mazur's isogeny theorem -- no curve over $\\mathbb{Q}$ has a rational subgroup of prime order $\\ell$ outside $\\{2,3,5,7,11,13,17,19,37,43,67,163\\}$, collapsing to $\\ell\\leq7$ for semistable curves -- and the N\u00e9ron--Ogg--Shafarevich criterion that $\\rho_{E,p}$ is unramified at $\\ell\\neq p$ exactly when $E$ has good reduction there.",
+      "text": "Mazur's isogeny theorem in the form the Frey argument needs: $E/\\mathbb{Q}$ has no $p$-isogeny if $p>163$, **or** if $p\\geq5$ with $\\#E(\\mathbb{Q})[2]=4$ and squarefree conductor -- the general list being $\\{2,3,5,7,11,13,17,19,37,43,67,163\\}$ with $19,43,67,163$ requiring CM. And the N\\'eron--Ogg--Shafarevich criterion that $\\rho_{E,p}$ is unramified at $\\ell\\neq p$ exactly when $E$ has good reduction there.",
       "short": "Mazur's isogeny theorem, and N\u00e9ron\u2013Ogg\u2013Shafarevich"
     },
     {
@@ -847,17 +846,6 @@
       ],
       "text": "Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument.",
       "short": "Ribet's level-lowering theorem"
-    },
-    {
-      "id": "25-small-exponents",
-      "register": "stated",
-      "availability": "available",
-      "role": "required_for_flt",
-      "essays": [
-        25
-      ],
-      "short": "Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection",
-      "text": "The Frey-curve route needs $\\bar\\rho$ irreducible, which Mazur's isogeny theorem supplies only outside a finite exceptional set containing $5$ and $7$. The exponents $5$ and $7$ are therefore handled by classical work outside this collection \u2014 Dirichlet and Legendre in 1825, Lam\u00e9 in 1839 \u2014 and that dependency is recorded here rather than left implicit."
     }
   ]
 }

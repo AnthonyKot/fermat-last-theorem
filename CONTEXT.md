@@ -507,66 +507,22 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
    closing that gap is its whole function. *The video keeps these distinct.*
 6. **Irreducibility is a theorem, not an observation.** Ribet needs ρ̄ irreducible; Mazur's isogeny
    theorem supplies it. The summary lists "irreducible" as a property one notices.
-7. **The irreducibility threshold — SETTLED (2026-07-26).** Both the plan summary and the video say
-   p ≥ 5, and that is wrong. The correct shape is not a threshold at all: **Mazur's isogeny theorem
-   gives a finite exceptional list.** Sutherland's 18.783 Fall 2023 Lecture 25, §25.4, states that
-   ρ̄_{E,ℓ} is irreducible iff E admits no rational ℓ-isogeny, and that no elliptic curve over Q has
-   one for
-   ℓ ∉ {2, 3, 5, 7, 11, 13, 17, 19, 37, 43, 67, 163}, the last four requiring CM. Two routes close
-   the gap:
-   - **Semistable refinement (DDT p. 8):** for a semistable curve the list collapses to ℓ ≤ 7, so the
-     Frey representation is irreducible for **ℓ > 7** and the argument runs for p ≥ 11. *This is the
-     route the essays take* — tightest, and the Frey curve is semistable anyway.
-   - **Sutherland's route:** take ℓ > 163, legitimate because FLT was known for all exponents ≤ 163.
-     Cheaper in machinery, much more expensive in imported results.
-   Either way **p = 5 and p = 7 are outside the Frey argument**, since both are in Mazur's list. The
-   **live sub-question: does full rational 2-torsion sharpen this to p ≥ 5?** Plausible and probably
-   true. The Frey curve has E[2] ⊂ E(Q), so a reducible ρ̄_{E,p} yields a rational cyclic subgroup of
-   order 2p or 4p, hence a non-cuspidal rational point on X₀(2p) or X₀(4p); ruling those out for p ≥ 5
-   would close it. Note **X₀(10) has genus 0**, so the 2p level alone cannot settle p = 5 — the
-   argument has to live at 4p. **Four source attempts have failed to produce a Tier A statement:** DDT
-   gives only the semistable ℓ > 7, Sutherland's Lecture 25 puts 5 and 7 *inside* Mazur's list,
-   Freitas–Siksek is about totally real fields with only its abstract reachable, and the numdam page
-   carries no numbered statements. Search snippets do assert p ≥ 5, but a snippet is Tier B and
-   uncitable under our own rule — which is exactly the rule's purpose.
-   **Progress made, 2026-07-26 — a generic-case argument, derived here, not sourced.**
-   `checks/frey_irreducibility.py`. Reducibility of $\bar\rho_{E,p}$ forces the characteristic
-   polynomial of every Frobenius to split over $\mathbb{F}_p$, so with $\operatorname{tr}=a_\ell$ and
-   $\det=\ell$ it forces $a_\ell^2-4\ell$ to be a square mod $p$ at every good $\ell$. **One
-   non-square proves irreducibility.** And full rational $E[2]$ pins $a_\ell$ at small $\ell$: the
-   $2$-torsion is rational, so it injects into $E(\mathbb{F}_\ell)$ at good odd $\ell$, giving
-   $4\mid\#E(\mathbb{F}_\ell)$ and hence $a_\ell\equiv\ell+1\pmod4$; with Hasse that leaves
-   $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$. Three uniform witnesses follow:
+7. **The irreducibility threshold — CLOSED (2026-07-26), and the plan summary was right after all.**
+   The long story: the plan summary and the video said p ≥ 5; DDT p. 8–9 gives only the general
+   semistable statement ℓ > 7; Sutherland's Lecture 25 §25.4 puts 5 and 7 inside Mazur's exceptional
+   list. On that evidence the collection carried n = 5 and n = 7 as external classical inputs, and
+   essay 24 narrowed the dependency to 21 | abc and 85 | abc by an elementary argument of our own.
+   **Siksek's Sarajevo talk 1, slide 13, closes it.** Mazur's theorem has a sharpened form: no rational
+   p-isogeny when p satisfies *at least one* of p > 163, **or p ≥ 5 with #E(Q)[2] = 4 and squarefree
+   conductor**. All three hypotheses of the second clause were already proved in this collection for
+   independent reasons — p ≥ 5 in essay 22, full rational 2-torsion in essay 09, squarefree conductor
+   in essay 23 via essay 08's equivalence. So the Frey argument runs for **every** prime p ≥ 5.
+   `25-small-exponents` is deleted; Dirichlet, Legendre and Lamé are no longer needed.
+   **The elementary argument is kept** in essay 24 and in `checks/frey_conductor.py`, not as a fallback
+   but because it shows *why* the 2-torsion is what sharpens Mazur — which the citation does not.
+   Lesson for the next disputed pointer: three sources gave the weaker statement and a fourth gave the
+   sharp one. "Not found in three places" is not "does not exist".
 
-   | $p$ | witness $\ell$ | pinned value | $a_\ell^2-4\ell \bmod p$ | non-square? |
-   |---|---|---|---|---|
-   | 5 | 3 | $a_3=0$ | 3 | yes |
-   | 7 | 5 | $a_5^2=4$ | 5 | yes |
-   | 5 | 7 | $a_7^2\in\{0,16\}$ | 2 or 3 | both yes |
-
-   So **$\bar\rho_{E,5}$ and $\bar\rho_{E,7}$ are irreducible whenever the witness prime is good**,
-   by an elementary argument with no modular curves in it. Verified over 1000 Frey-shaped semistable
-   triples; every curve whose witness prime is bad is still settled by some other prime.
-   **What this is not.** It is not the uniform theorem. When the witness prime divides $abc$ it is bad,
-   and no finite set of witnesses can cover every $abc$. So this is the generic case plus computation.
-   Two consequences to handle if it is ever promoted to a shipped claim:
-   `08-hasse` and `08-torsion-injects` are currently `background`, and the `depends_on` role rule would
-   correctly refuse to let a chain result rest on them — they would need promoting, exactly as
-   `07-uniformization` did.
-
-   **Essay 24 narrowed it, and the narrowing is now shipped.** Enumerating *every* $a_\ell$ that full
-   rational $E[2]$ and Hasse permit — not sampling curves — the uniform witnesses are $\ell=3,7$ for
-   $p=5$ and $\ell=5,17$ for $p=7$, with none others below 400. A witness works when it does not divide
-   $abc$, so the classical dependency shrinks from *all of* $n=5,7$ to the residual cases
-   $21\mid abc$ and $85\mid abc$. `25-small-exponents` stays, with that scope.
-   **So the dependency stays declared.** An *undeclared* dependency is the failure mode; a
-   conservatively *declared* one costs one line on About and can be deleted the moment a real citation
-   appears. Do not write p ≥ 5 before then. To close it: get Mazur 1978 itself, or any paper stating
-   the X₀(4p) argument over Q by theorem number.
-   **Consequence, now recorded rather than implicit:** the collection depends on classical work it does
-   not contain — Dirichlet and Legendre for n = 5 (1825), Lamé for n = 7 (1839). That is the register
-   record `25-small-exponents`, which is why the chain's assumption count is 8 and not 7. Leaving it
-   out was the one genuinely hidden dependency in the collection.
 8. **Ribet lowers the level at primes ℓ ≠ p.** The condition at p (finite at p, weight 2) is separate
    and must be stated as such. *The video states the full hypotheses.*
 9. **Chronology.** **Frey 1986, following Hellegouarch** (DDT p. 8) — the summary's ~1984 is wrong.

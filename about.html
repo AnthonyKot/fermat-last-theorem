@@ -37,7 +37,7 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>20</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>19</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Frobenius elements at unramified primes, as a conjugacy class <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
@@ -59,7 +59,6 @@
         <li>Ramification at a multiplicative prime: unramified iff $p\mid v_\ell(\Delta_{\min})$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
         <li>$\bar\rho_{E,p}$ is finite at $p$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
         <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
-        <li>Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
       </ul>
       <p class="scope-headline">The exposition additionally assumes <strong>9</strong> background results.</p>
       <p class="scope-note">Stated for orientation, and deliberately kept off the chain. Doubting any of them leaves the closing argument intact.</p>
@@ -339,7 +338,7 @@
         <li data-proof-id="10-local-theorems">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          Mazur's isogeny theorem -- no curve over $\mathbb{Q}$ has a rational subgroup of prime order $\ell$ outside $\{2,3,5,7,11,13,17,19,37,43,67,163\}$, collapsing to $\ell\leq7$ for semistable curves -- and the Néron--Ogg--Shafarevich criterion that $\rho_{E,p}$ is unramified at $\ell\neq p$ exactly when $E$ has good reduction there. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+          Mazur's isogeny theorem in the form the Frey argument needs: $E/\mathbb{Q}$ has no $p$-isogeny if $p&gt;163$, **or** if $p\geq5$ with $\#E(\mathbb{Q})[2]=4$ and squarefree conductor -- the general list being $\{2,3,5,7,11,13,17,19,37,43,67,163\}$ with $19,43,67,163$ requiring CM. And the N\'eron--Ogg--Shafarevich criterion that $\rho_{E,p}$ is unramified at $\ell\neq p$ exactly when $E$ has good reduction there. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
        </li>
         <li data-proof-id="24-multiplicative-ramification">
           <span class="scope-mode scope-mode--stated">Assumed</span>
@@ -355,11 +354,6 @@
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
-       </li>
-        <li data-proof-id="25-small-exponents">
-          <span class="scope-mode scope-mode--stated">Assumed</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The Frey-curve route needs $\bar\rho$ irreducible, which Mazur's isogeny theorem supplies only outside a finite exceptional set containing $5$ and $7$. The exponents $5$ and $7$ are therefore handled by classical work outside this collection — Dirichlet and Legendre in 1825, Lamé in 1839 — and that dependency is recorded here rather than left implicit. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
        </li>
       </ul>
 
@@ -607,6 +601,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/863063c"><code>863063c</code></a> · 2026-07-26 17:50 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/c89c0cf"><code>c89c0cf</code></a> · 2026-07-26 18:00 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

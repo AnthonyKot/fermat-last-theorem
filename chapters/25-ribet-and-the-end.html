@@ -69,35 +69,17 @@
           $\mathrm{SL}_2(\mathbb{Z})$ and $\nu_2, \nu_3, \nu_\infty$ count elliptic points of order two
           and three and cusps. <span class="lref">essay 13</span></li>
       </ul>
-      <p>One caveat on (B), because it is the hypothesis most often stated loosely, and it is worth
-        stating exactly what the threshold is and where it comes from. The mod $p$ representation
-        $\bar\rho_{E,p}$ is irreducible precisely when $E$ admits no rational $p$-isogeny, and
-        <strong>Mazur's isogeny theorem does not give a threshold — it gives a finite exceptional
-        list</strong>:</p>
-      <p>$$ p\in\{2,3,5,7,11,13,17,19,37,43,67,163\}, $$</p>
-      <p>outside which no elliptic curve over $\mathbb{Q}$ has a rational $p$-isogeny at all. Four of
-        the exceptions — $19$, $43$, $67$ and $163$ — occur only for curves with complex multiplication;
-        $37$ does not, despite sitting among them. Two routes then close the gap, and they cost different
-        things.</p>
-      <ul>
-        <li>Use semistability. For a semistable curve the list collapses to $p \leq 7$, so the Frey
-          curve's representation is irreducible for $p \gt 7$ and the argument here runs for
-          $p \geq 11$. This is the route taken below.</li>
-        <li>Avoid the refinement, and simply take $p \gt 163$ — legitimate because Fermat's Last
-          Theorem was already known for every exponent up to $163$ long before Wiles. Cheaper in
-          machinery, far more expensive in imported results.</li>
-      </ul>
-      <p>Either way the exponents $p = 5$ and $p = 7$ fall outside the Frey-curve argument, because both
-        sit in Mazur's exceptional list. They are covered by classical work that this collection does
-        <em>not</em> contain: Dirichlet and Legendre completed $n=5$ in 1825, and Lamé addressed $n=7$
-        in 1839. Neither appears among the twenty-five essays, so <strong>that dependency is now
-        recorded in the ledger as an assumed input rather than left implicit</strong> — which is the
-        honest bookkeeping, since a reader entitled to ask what this proof rests on is entitled to be
-        told about two exponents handed off elsewhere.</p>
+      <p>One remark on (B), because it used to be the loosest point in the argument and no longer is.
+        Irreducibility comes from Mazur's isogeny theorem, and the form that applies is the sharpened
+        one: no rational $p$-isogeny exists when $p\geq5$, the curve has full rational $2$-torsion, and
+        its conductor is square-free. Essay <a href="24-the-frey-representation.html">24</a> checks all
+        three for the Frey curve — from essays 22, 09 and 23 respectively — so <strong>the argument runs
+        for every prime $p\geq5$</strong>, with no exceptional exponents and nothing handed to
+        nineteenth-century work. Earlier drafts of this collection carried $n=5$ and $n=7$ as external
+        classical inputs; that debt is discharged.</p>
       <p>The four inputs above close the modular argument. The collection's claim to a proof of the
-        full theorem has one further debt: essay 02 currently outlines rather than proves the
-        second-case descent for $n=3$. The classical cases $p=5$ and $p=7$ are likewise external to
-        the Frey-curve route and must be sourced precisely when essay 24 settles the threshold.</p>
+        full theorem now has exactly <strong>one</strong> further debt: essay 02 outlines rather than
+        proves the second-case descent for $n=3$. Nothing else is external.</p>
     </section>
 
     <section class="rung">
@@ -174,9 +156,9 @@
         <li>And $E$ was constructed from the solution by an explicit formula, so it would exist if the
           solution did. So <strong>the solution does not exist.</strong></li>
       </ul>
-      <p>The modular contradiction rules out the prime exponents to which its hypotheses apply. Once
-        the separately handled classical exponents $3$, $5$ and $7$ are supplied in full, essay 01's
-        reduction leaves no exponent $n\geq3$. Fermat's Last Theorem. In the current collection that
+      <p>The modular contradiction rules out the prime exponents to which its hypotheses apply. It applies to every prime $p\geq5$. Once
+        essay 02's second case for $n=3$ is supplied in full, essay 01's reduction leaves no exponent
+        $n\geq3$. Fermat's Last Theorem. In the current collection that
         last sentence is conditional, exactly as the ledger records. $\blacksquare$</p>
 
       <h3>How much room there was</h3>
@@ -280,8 +262,6 @@
               <span class="lref">(L14; essay 18)</span></li>
             <li><strong>(D)</strong> The dimension formula itself <span class="lref">(L10; essay 13)</span></li>
             <li>The second-case descent for $n=3$ <span class="lref">(L1; essay 02)</span></li>
-            <li>Fermat for $n=5$ when $21\mid abc$, and for $n=7$ when $85\mid abc$ — external
-              classical work, now narrowed to those residual cases</li>
             <li>What remains is the modular side alone: the unwritten essays 11–21</li>
           </ul>
         </div>
@@ -301,6 +281,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 25 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/863063c"><code>863063c</code></a> · 2026-07-26 17:50 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/c89c0cf"><code>c89c0cf</code></a> · 2026-07-26 18:00 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

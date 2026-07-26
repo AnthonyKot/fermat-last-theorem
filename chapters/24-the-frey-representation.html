@@ -88,10 +88,9 @@
           N(\bar\rho_{E,p})=\prod_{\substack{\ell\\ v_\ell(\Delta_{\min})\not\equiv0\ (p)}}\ell.
         $$
       </div>
-      <p>That is the whole mechanism, and it is worth saying what kind of statement it is: a
-        <em>local</em> fact about multiplicative reduction, imported here, which converts essay 23's
-        valuations into ramification data. Essay 23 did the work of computing those valuations; this
-        essay only has to read them modulo $p$.</p>
+      <p>That is the whole mechanism, and it is a <em>local</em> fact about multiplicative reduction,
+        imported here, which converts essay 23's valuations into ramification data. Essay 23 did the work
+        of computing those valuations; this essay only has to read them modulo $p$.</p>
 
       <h3>Reading the valuations modulo $p$</h3>
       <p>From essay 23, $\Delta_{\min}=2^{-8}(abc)^{2p}$. Take valuations.</p>
@@ -100,9 +99,12 @@
         v_\ell(\Delta_{\min})=2p\,v_\ell(abc)\;\equiv\;0\pmod p.
       $$</p>
       <p>A multiple of $p$, because $a$, $b$, $c$ enter as $p$-th powers. <strong>Every odd prime drops
-        out of the conductor.</strong> This is the first and only place in the collection where it
-        matters that the solution's terms are $p$-th powers rather than merely coprime integers —
-        essay 23's semistability argument never used it, and said so.</p>
+        out of the conductor.</strong> This is the first place the $p$-th power structure matters
+        <em>at the odd primes</em> — and that is where the enormous conductor collapses. Essay 23's
+        odd-prime paragraph explicitly did without it, needing only coprimality; but its prime-$2$
+        analysis did use it, since $v_2(\Delta_{\min})=2p\,v_2(b)-8\geq2p-8$ requires $B=b^p$, and
+        essay 23 called that the second place $p\geq5$ does real work. So this is not the first use of
+        the structure in the collection, only the first at odd primes.</p>
       <p><strong>At $2$</strong>, using $v_2(abc)=v_2(b)$ since $a$ and $c$ are odd:</p>
       <p>$$
         v_2(\Delta_{\min})=2p\,v_2(b)-8\;\equiv\;-8\pmod p.
@@ -125,17 +127,41 @@
         when $E$ has a rational subgroup of order $p$. Mazur's theorem forbids that on a semistable
         curve for $p\gt7$, and essay 23 supplied semistability. So</p>
       <p>$$ p\gt7\quad\Longrightarrow\quad\bar\rho\text{ is irreducible.} $$</p>
-      <p>That leaves $p=5$ and $p=7$, which sit inside Mazur's exceptional list. The collection has
-        until now handed those two exponents to classical results — Dirichlet and Legendre in 1825,
-        Lamé in 1839 — and recorded the dependency openly. The Frey curve has structure Mazur's general
-        theorem does not use, and it narrows that dependency considerably.</p>
-      <p>The lever is essay 09's full rational $2$-torsion, and it works through counting. Since
-        $E[2]\subset E(\mathbb{Q})$ and reduction is injective on $2$-torsion at an odd prime of good
-        reduction, $E[2]$ injects into $E(\mathbb{F}_\ell)$, so</p>
+      <p>That is the general semistable statement, and taken alone it leaves $p=5$ and $p=7$ inside
+        Mazur's exceptional list. But Mazur's theorem has a sharpened form, and its hypotheses are
+        exactly the three things this collection has already proved.</p>
+      <div class="fence">
+        <strong>Stated: Mazur's isogeny theorem, sharpened.</strong> $E/\mathbb{Q}$ admits no rational
+        $p$-isogeny if $p$ satisfies <em>at least one</em> of
+        <ul>
+          <li>$p&gt;163$; or</li>
+          <li>$p\geq5$, <strong>$\#E(\mathbb{Q})[2]=4$</strong>, and the conductor of $E$ is
+            <strong>square-free</strong>.</li>
+        </ul>
+        The second condition is the one that applies. The Frey curve has $p\geq5$ by essay 22's
+        normalisation; $\#E(\mathbb{Q})[2]=4$ is essay <a href="09-torsion-and-tate-module.html">09</a>'s
+        full rational $2$-torsion; and its conductor is square-free by essay
+        <a href="23-semistable-and-modular.html">23</a>, which is what semistability means by essay
+        <a href="08-reduction-and-conductor.html">08</a>. So $\bar\rho$ is irreducible for
+        <strong>every</strong> $p\geq5$, with no exceptional cases.
+      </div>
+      <p>That is worth pausing on, because it retires the collection's longest-standing external
+        dependency. Until now $n=5$ and $n=7$ were handed to Dirichlet, Legendre and Lamé, and the
+        ledger carried that as an assumed input. The three hypotheses above were already on the books —
+        proved in essays 09, 22 and 23 for their own reasons, with no thought of this theorem — so the
+        sharpened form costs nothing new and covers both exponents.</p>
+
+      <h3>The elementary route, for the cases that no longer need it</h3>
+      <p>Before that statement was found, the two exponents could be attacked with the same $2$-torsion
+        structure by hand, and the argument is worth keeping: it is short, it is checkable, and it
+        explains <em>why</em> the $2$-torsion is what sharpens Mazur rather than merely citing that it
+        does.</p>
+      <p>Since $E[2]\subset E(\mathbb{Q})$ and reduction is injective on $2$-torsion at an odd prime of
+        good reduction, $E[2]$ injects into $E(\mathbb{F}_\ell)$, so</p>
       <p>$$ 4\mid\#\tilde{E}(\mathbb{F}_\ell)=\ell+1-a_\ell,\qquad\text{i.e.}\qquad
         a_\ell\equiv\ell+1\pmod4. $$</p>
-      <p>Combine that with the Hasse bound $|a_\ell|\leq2\sqrt\ell$ from essay 08 and, at small $\ell$,
-        almost nothing is left:</p>
+      <p>With the Hasse bound $|a_\ell|\leq2\sqrt\ell$ from essay 08, almost nothing is left at small
+        $\ell$:</p>
       <div class="table-scroll">
         <table>
           <thead><tr><th>$\ell$</th><th>$a_\ell\bmod4$</th><th>Hasse range</th><th>forced values</th></tr></thead>
@@ -147,40 +173,28 @@
           </tbody>
         </table>
       </div>
-      <p>Now the other half. If $\bar\rho$ were reducible it would be conjugate to upper triangular by
-        essay 05, so the characteristic polynomial of every Frobenius would split over $\mathbb{F}_p$.
-        By essay 10 that polynomial is $x^2-a_\ell x+\ell$, so splitting requires</p>
-      <p>$$ a_\ell^2-4\ell\ \text{to be a square modulo }p. $$</p>
-      <p><strong>One non-square proves irreducibility.</strong> Check the forced values against that:</p>
+      <p>If $\bar\rho$ were reducible it would be upper triangular by essay 05, so every Frobenius
+        characteristic polynomial would split over $\mathbb{F}_p$. By essay 10 that polynomial is
+        $x^2-a_\ell x+\ell$, so splitting requires $a_\ell^2-4\ell$ to be a square modulo $p$.
+        <strong>One non-square proves irreducibility</strong>, and every forced value above is one:</p>
       <div class="table-scroll">
         <table>
-          <thead><tr><th>$p$</th><th>witness $\ell$</th><th>$a_\ell^2-4\ell\bmod p$</th><th>squares mod $p$</th><th>verdict</th></tr></thead>
+          <thead><tr><th>$p$</th><th>witness $\ell$</th><th>$a_\ell^2-4\ell\bmod p$</th><th>squares mod $p$</th></tr></thead>
           <tbody>
-            <tr><td>$5$</td><td>$3$</td><td>$3$</td><td>$\{0,1,4\}$</td><td>non-square</td></tr>
-            <tr><td>$5$</td><td>$7$</td><td>$2$ or $3$</td><td>$\{0,1,4\}$</td><td>non-square</td></tr>
-            <tr><td>$7$</td><td>$5$</td><td>$5$</td><td>$\{0,1,2,4\}$</td><td>non-square</td></tr>
-            <tr><td>$7$</td><td>$17$</td><td>$6$ or $3$</td><td>$\{0,1,2,4\}$</td><td>non-square</td></tr>
+            <tr><td>$5$</td><td>$3$</td><td>$3$</td><td>$\{0,1,4\}$</td></tr>
+            <tr><td>$5$</td><td>$7$</td><td>$2$ or $3$</td><td>$\{0,1,4\}$</td></tr>
+            <tr><td>$7$</td><td>$5$</td><td>$5$</td><td>$\{0,1,2,4\}$</td></tr>
+            <tr><td>$7$</td><td>$17$</td><td>$6$ or $3$</td><td>$\{0,1,2,4\}$</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Each row holds for <em>every</em> value the constraints permit, not for a sample — so each is a
-        proof, provided the witness prime is one of good reduction. For the Frey curve the bad primes
-        are exactly those dividing $abc$, together with $2$. Hence:</p>
-      <p>$$
-        \begin{aligned}
-        p=5:&\quad\bar\rho\text{ irreducible unless }3\mid abc\text{ and }7\mid abc,\\
-        p=7:&\quad\bar\rho\text{ irreducible unless }5\mid abc\text{ and }17\mid abc.
-        \end{aligned}
-      $$</p>
-      <div class="fence">
-        <strong>What this does and does not settle.</strong> It is a narrowing, not a removal. The
-        classical results are still needed for $n=5$ when $21\mid abc$, and for $n=7$ when
-        $85\mid abc$ — and the ledger still records that dependency, unchanged in kind. Searching every
-        prime below $400$ turns up no further uniform witness for either exponent, so this method does
-        not close the gap by itself; a uniform theorem would need rational points on a modular curve,
-        which this collection does not build. The argument above is ours, derived rather than cited, and
-        it is offered at exactly that strength.
-      </div>
+      <p>Each row holds for every value the constraints permit, not for a sample, so each is a proof
+        whenever the witness prime has good reduction — that is, whenever it does not divide $abc$. So
+        this route alone gives irreducibility at $p=5$ unless $21\mid abc$, and at $p=7$ unless
+        $85\mid abc$, and no further uniform witness exists below $400$. The sharpened Mazur statement
+        covers those residual cases too, which is why the collection now cites it; but the computation
+        above is what makes the mechanism visible, and it is the reason to expect such a statement to
+        exist.</p>
 
       <h3>Finite at $p$</h3>
       <div class="fence">
@@ -208,9 +222,12 @@
           </tbody>
         </table>
       </div>
-      <p>So the only genuinely deep inputs left in the whole chain are the two named theorems —
-        modularity in essay 18 and level lowering in essay 25 — plus the dimension formula that essay 13
-        owes. Everything local about the Frey curve is now computed.</p>
+      <p>Everything local about the Frey curve is now computed. Two of the remaining inputs stand out
+        by a criterion the ledger does not measure — modularity in essay 18 and level lowering in
+        essay 25 are the two whose proofs are research programmes rather than standard theory. That is a
+        judgement about depth, not a count: the register lists every assumption by name, and
+        <a href="../about.html">About</a> keeps the running total, which is larger and includes the two
+        this essay itself adds.</p>
 
       <h3>Why the gap Ribet crosses is the size it is</h3>
       <p>Set the two conductors side by side:</p>
@@ -323,6 +340,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 24 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/863063c"><code>863063c</code></a> · 2026-07-26 17:50 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/c89c0cf"><code>c89c0cf</code></a> · 2026-07-26 18:00 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

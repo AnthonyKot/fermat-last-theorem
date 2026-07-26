@@ -41,7 +41,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 | 10 | The representation attached to a curve | $\rho_{E,\ell}$ from the Tate module; $\det=\chi_\ell$ so every $\bar\rho$ is odd; reducible $\iff$ a rational subgroup |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
-| 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; small-exponent dependency narrowed |
+| 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; irreducibility for every $p\geq5$ |
 | 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
