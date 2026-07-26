@@ -32,10 +32,9 @@
     <div class="claim">
       <span class="tag">This essay proves an Euler-product calculation and imports an analytic theorem</span>
       <strong>Defines:</strong> $L(f,s)$ and $L(E,s)$, including every good and bad local factor.
-      <strong>Proves:</strong> the good-prime generating function and its assembly into the
-      good-prime part of the newform Euler product from essay 14's Hecke relations.
-      <strong>Imports:</strong> the bad-prime newform factors, analytic continuation and the
-      weight-two functional equation.
+      <strong>Proves:</strong> the good- and bad-prime generating functions and their assembly into
+      the newform Euler product from the Hecke relations already registered in essays 14 and 15.
+      <strong>Imports:</strong> analytic continuation and the weight-two functional equation.
       <strong>Boundary:</strong> none of this is required by the FLT contradiction, and continuation
       for $L(E,s)$ is not claimed before modularity.
     </div>
@@ -117,11 +116,26 @@
       $$</p>
 
       <h3>All primes</h3>
-      <p>If $m$ and $n$ are coprime, essay 14 also proved $a_{mn}=a_ma_n$. Unique factorisation now
-        turns the independent good-prime power choices in (8) into the corresponding coefficients.
-        To write the complete product, we combine that proved good-prime part with the bad-prime
-        factors supplied by newform theory. In the safe initial region
-        $\operatorname{Re}(s)\gt2$, the result is</p>
+      <p>At a bad prime $\ell\mid N$, the good recurrence (5) does not apply. But essay 15 made $f$
+        a full-Hecke eigenform, and remark 24.16 of the source registered with essays 14–15 gives
+        the separate bad-prime relation</p>
+      <p>$$
+        T_{\ell^r}=T_\ell^r.
+        \tag{9}
+      $$</p>
+      <p>Normalization identifies Hecke eigenvalues with coefficients, so (9) gives
+        $a_{\ell^r}=a_\ell^r$. Its local series is therefore geometric:</p>
+      <p>$$
+        \sum_{r\geq0}a_{\ell^r}T^r
+        =\sum_{r\geq0}(a_\ell T)^r
+        =\frac{1}{1-a_\ell T},
+        \qquad \ell\mid N.
+        \tag{10}
+      $$</p>
+      <p>Finally, if $m$ and $n$ are coprime, the Hecke relations give $a_{mn}=a_ma_n$. Unique
+        factorisation turns the independent prime-power choices in (8) and (10) into the
+        corresponding coefficient $a_n$. In the safe initial region
+        $\operatorname{Re}(s)\gt2$, the complete result is</p>
       <p>$$
         L(f,s)
         =
@@ -129,14 +143,13 @@
         \left(1-a_\ell\ell^{-s}+\ell^{1-2s}\right)^{-1}
         \prod_{\ell\mid N}
         \left(1-a_\ell\ell^{-s}\right)^{-1}.
-        \tag{9}
+        \tag{11}
       $$</p>
       <div class="fence">
-        <strong>The second product has a different source.</strong> Equation (8) was proved only for
-        $\ell\nmid N$. At $\ell\mid N$, the operator and its coefficient relations change. The
-        linear factor in (9) is a theorem of bad-prime newform theory, imported here from theorem
-        24.27 of the source below; it is <em>not</em> obtained by inserting a bad prime into (5).
-        When $a_\ell=0$, its factor is simply $1$.
+        <strong>The second product uses a different relation.</strong> Equation (8) was proved only
+        for $\ell\nmid N$. At $\ell\mid N$, the operator changes, and (10) comes from
+        $T_{\ell^r}=T_\ell^r$ — not from inserting a bad prime into (5). When $a_\ell=0$, its factor
+        is simply $1$. Theorem 24.27 of the source below records the resulting complete product.
       </div>
       <p>The distinction is visible in the polynomial itself. A good prime contributes a quadratic
         $1-a_\ell T+\ell T^2$; a prime dividing the exact level contributes the linear polynomial
@@ -156,7 +169,7 @@
           -1,&amp;\text{non-split multiplicative reduction},\\
           0,&amp;\text{additive reduction}.
         \end{cases}
-        \tag{10}
+        \tag{12}
       $$</p>
       <p>Here the Euler product is the definition. Write the reciprocal local factor as</p>
       <p>$$
@@ -168,15 +181,15 @@
             &amp;\text{multiplicative},\\[2mm]
           1,&amp;\text{additive}.
         \end{cases}
-        \tag{11}
+        \tag{13}
       $$</p>
       <p>Then</p>
       <p>$$
         L(E,s)=\prod_\ell L_\ell(E,s),
         \qquad \operatorname{Re}(s)\gt\frac32.
-        \tag{12}
+        \tag{14}
       $$</p>
-      <p>The conductor $N_E$ records precisely which primes are bad, hence where (11) stops having
+      <p>The conductor $N_E$ records precisely which primes are bad, hence where (13) stops having
         the good quadratic shape. Its exponent records more: multiplicative reduction contributes
         exponent one, while additive reduction contributes a larger local penalty. Thus the support
         of the conductor locates the changed factors, and its exponents remember their severity.</p>
@@ -187,7 +200,7 @@
         E:y^2+y=x^3-x^2,
         \qquad
         f_{11}(q)=q\prod_{n\geq1}(1-q^n)^2(1-q^{11n})^2.
-        \tag{13}
+        \tag{15}
       $$</p>
       <p>Essay 16 already displayed the point counts, so here we package their outputs. Put
         $T=\ell^{-s}$. The curve and newform give the same displayed local polynomial:</p>
@@ -229,26 +242,26 @@
       <p>$$
         \Lambda(f,s)
         =N^{s/2}(2\pi)^{-s}\Gamma(s)L(f,s).
-        \tag{14}
+        \tag{16}
       $$</p>
       <div class="fence">
         <strong>Imported: Hecke's analytic theorem.</strong> The function $L(f,s)$ extends
         holomorphically to all of $\mathbb C$, and for a sign $w_f\in\{+1,-1\}$,
         $$
           \Lambda(f,s)=w_f\Lambda(f,2-s).
-          \tag{15}
+          \tag{17}
         $$
         This is theorem 24.25 in the source below. Neither the coefficient recurrence nor the formal
         Euler-product calculation proves it.
       </div>
-      <p>There is an essential asymmetry. Modular-form theory gives (15) for $L(f,s)$. Starting only
-        from an elliptic curve and the local definition (12), analytic continuation to the whole
+      <p>There is an essential asymmetry. Modular-form theory gives (17) for $L(f,s)$. Starting only
+        from an elliptic curve and the local definition (14), analytic continuation to the whole
         plane and the expected functional equation were historically the Hasse–Weil conjecture.
         This essay does not assume them for $L(E,s)$.</p>
       <p>Once modularity supplies a newform $f$ whose local factors agree with those of $E$, one has</p>
       <p>$$
         L(E,s)=L(f,s)
-        \tag{16}
+        \tag{18}
       $$</p>
       <p>first where both Euler products converge. The right side's analytic continuation then
         provides the continuation of the left side, and its functional equation transfers as well.
@@ -263,9 +276,10 @@
       <p><strong>The two definitions and the analytic theorem.</strong> Andrew Sutherland's MIT
         18.783 <a href="https://math.mit.edu/classes/18.783/2023/LectureNotes24.pdf">Lecture 24</a>,
         pages 9–10, gives the zeta model in example 24.23, defines $L(f,s)$ in definition 24.24,
-        states analytic continuation and the functional equation in theorem 24.25, gives the newform
-        Euler product in theorem 24.27, and defines the elliptic-curve local factors in definition
-        24.28.</p>
+        states analytic continuation and the functional equation in theorem 24.25, records the
+        complete newform Euler product in theorem 24.27, and defines the elliptic-curve local factors
+        in definition 24.28. Remark 24.16 supplies the separate relation
+        $T_{\ell^r}=T_\ell^r$ used above at $\ell\mid N$.</p>
       <p><strong>The level-$11$ data.</strong> LMFDB records the
         <a href="https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/11/2/a/a/">newform
         <code>11.2.a.a</code></a> and the associated elliptic-curve
@@ -273,7 +287,7 @@
         <code>11.a</code></a>. The class page lists the good local polynomials in the table and the
         bad factor $1-T$ at $11$.</p>
       <p><strong>Check it yourself.</strong> Run <code>checks/two_l_functions.py</code>. It expands
-        (13) with exact integer coefficients, independently counts the curve at every good prime
+        (15) with exact integer coefficients, independently counts the curve at every good prime
         below $180$, reconstructs every coefficient $a_n$ for $n\lt180$ from the quadratic
         prime-power recurrence and the linear factor at $11$, and checks the table. It verifies this
         finite example, not analytic continuation, the general Euler-product theorem, or modularity.</p>
@@ -289,8 +303,9 @@
               <span class="ledger-mode ledger-mode--proved">Proved</span>
               <span class="ledger-role ledger-role--background">Background</span>
               The good-prime Hecke recurrence gives
-              $(1-a_\ell T+\ell T^2)^{-1}$, and multiplicativity assembles these local series into
-              the good-prime part of the newform Euler product; the elliptic-curve product is then
+              $(1-a_\ell T+\ell T^2)^{-1}$, the bad-prime relation
+              $T_{\ell^r}=T_\ell^r$ gives $(1-a_\ell T)^{-1}$, and multiplicativity assembles every
+              local series into the newform Euler product; the elliptic-curve product is then
               defined from essay 08's reduction types</li>
           </ul>
         </div>
@@ -308,8 +323,13 @@
         <div class="col owed">
           <h3>Still owed</h3>
           <ul>
-            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
-            <li>Modularity — assumption (M) <span class="lref">(L14, essay 18)</span></li>
+            <li data-ledger-line="L1">The exponent reduction, including both cases for $n=3$ <span class="lref">(L1, essay 02)</span></li>
+            <li data-ledger-line="L14">The Modularity Theorem, semistable case <span class="lref">(L14, essay 18)</span></li>
+            <li data-ledger-line="L15">The Frey-curve construction <span class="lref">(L15, essay 22)</span></li>
+            <li data-ledger-line="L16">Semistability and the conductor of the Frey curve <span class="lref">(L16, essay 23)</span></li>
+            <li data-ledger-line="L17">The conductor of the residual Frey representation <span class="lref">(L17, essay 24)</span></li>
+            <li data-ledger-line="L18">Ribet's level-lowering theorem <span class="lref">(L18, essay 25)</span></li>
+            <li data-ledger-line="L19">The vanishing of $S_2(\Gamma_0(2))$ <span class="lref">(L19, essay 25)</span></li>
             <li>The final contradiction remains conditional until its named inputs are settled
               <span class="lref">(essay 25)</span></li>
           </ul>
@@ -319,7 +339,7 @@
 
     <nav class="chapter-nav">
       <a href="16-modular-representation.html"><span class="dir">← Previous written essay</span> 16 · The representation attached to a form</a>
-      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+      <a class="next" href="18-modularity-theorem.html"><span class="dir">Next written essay →</span> 18 · The Modularity Theorem</a>
     </nav>
   </div>
 </main>

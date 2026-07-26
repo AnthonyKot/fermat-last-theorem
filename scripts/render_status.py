@@ -78,6 +78,91 @@ def owed_count(items: list[dict], policy: dict) -> int:
     )
 
 
+def ledger_lines() -> list[dict]:
+    raw = json.loads(DATA.read_text(encoding="utf-8"))
+    lines = raw.get("ledger_lines")
+    if not isinstance(lines, list):
+        raise ValueError("data/ledger.json must contain a ledger_lines list")
+    return lines
+
+
+def line_is_closed(line: dict, number: int, by_id: dict[str, dict], accepted: set[str]) -> bool:
+    return all(
+        item_id in by_id
+        and max(by_id[item_id]["essays"]) <= number
+        and closes_required_debt(by_id[item_id], accepted)
+        for item_id in line["record_ids"]
+    )
+
+
+def owed_column(source: str, number: int, items: list[dict], policy: dict) -> tuple[str, str]:
+    """Render the L-label roster while preserving genuinely unlabelled debts.
+
+    The prose lists used to drop labels silently.  The nineteen master lines now
+    point to their settling proof-register records, so the roster is a view of
+    data/ledger.json rather than a second store of proof state.
+    """
+    match = re.search(
+        r'        <div class="col owed">.*?^        </div>',
+        source,
+        re.S | re.M,
+    )
+    if not match:
+        raise ValueError(f"essay {number:02d} has no parseable owed column")
+    old = match.group(0)
+    old_items = re.findall(r"<li\b[^>]*>.*?</li>", old, re.S)
+    extras = [
+        item
+        for item in old_items
+        if "data-proof-id=" in item or not re.search(r"\bL\d+\b", item)
+    ]
+    by_id = {item["id"]: item for item in items}
+    accepted = set(policy["accepted_assumption_ids"])
+    owed = [
+        line
+        for line in ledger_lines()
+        if not line_is_closed(line, number, by_id, accepted)
+    ]
+    rendered = [
+        '        <div class="col owed">',
+        "          <h3>Still owed</h3>",
+        "          <ul>",
+    ]
+    for line in owed:
+        rendered.append(
+            f'            <li data-ledger-line="{line["label"]}">'
+            f'{html.escape(line["short"], quote=False)} '
+            f'<span class="lref">({line["label"]}, essay {line["target_essay"]:02d})</span></li>'
+        )
+    for item in extras:
+        compact = "            " + item
+        rendered.append(compact)
+    rendered.extend(["          </ul>", "        </div>"])
+    return old, "\n".join(rendered)
+
+
+def write_owed_columns(items: list[dict], policy: dict) -> int:
+    changed = 0
+    for path in essay_files():
+        source = path.read_text(encoding="utf-8")
+        old, new = owed_column(source, int(path.name[:2]), items, policy)
+        if old != new:
+            path.write_text(source.replace(old, new, 1), encoding="utf-8")
+            changed += 1
+    return changed
+
+
+def check_owed_columns(items: list[dict], policy: dict) -> int:
+    checked = 0
+    for path in essay_files():
+        source = path.read_text(encoding="utf-8")
+        old, new = owed_column(source, int(path.name[:2]), items, policy)
+        if old != new:
+            raise ValueError(f"{path.name} is not generated from ledger_lines")
+        checked += 1
+    return checked
+
+
 def write_essay_count() -> bool:
     """Generate the contents page's written-essay tally from the files on disk.
 
@@ -504,6 +589,35 @@ def load_register() -> tuple[list[dict], dict]:
             f"missing={missing}, extra={extra}"
         )
 
+    lines = raw.get("ledger_lines")
+    if not isinstance(lines, list):
+        raise ValueError("data/ledger.json must contain a ledger_lines list")
+    labels = [line.get("label") for line in lines]
+    expected_labels = [f"L{number}" for number in range(1, 20)]
+    if labels != expected_labels:
+        raise ValueError(f"ledger_lines must be ordered L1 through L19, got {labels}")
+    for line in lines:
+        missing = {"label", "short", "target_essay", "record_ids"} - line.keys()
+        if missing:
+            raise ValueError(f"{line.get('label', 'ledger line')} is missing {sorted(missing)}")
+        if not (
+            isinstance(line["target_essay"], int)
+            and 1 <= line["target_essay"] <= 25
+            and isinstance(line["record_ids"], list)
+            and line["record_ids"]
+        ):
+            raise ValueError(f"invalid target or record_ids for {line['label']}")
+        unknown = set(line["record_ids"]) - ids
+        if unknown:
+            raise ValueError(f"{line['label']} names unknown records: {sorted(unknown)}")
+        non_required = [
+            item_id
+            for item_id in line["record_ids"]
+            if next(item for item in items if item["id"] == item_id)["role"] != "required_for_flt"
+        ]
+        if non_required:
+            raise ValueError(f"{line['label']} names non-required records: {non_required}")
+
     # The check above runs register -> page. Without the reverse direction a record
     # that is deleted from the register leaves its ledger entry standing on the page,
     # still telling readers something is assumed after it stopped being assumed --
@@ -793,6 +907,12 @@ def main() -> int:
             print("updated about.html's essay count")
         if write_assumption_count(policy):
             print("updated essay 25's assumption count")
+        owed_columns = write_owed_columns(items, policy)
+        print(
+            f"owed L-label roster regenerated on {owed_columns} page(s)"
+            if owed_columns
+            else "owed L-label rosters already current"
+        )
         navigated = write_navigation()
         print(
             f"navigation regenerated on {navigated} page(s)"
@@ -844,6 +964,12 @@ def main() -> int:
         print(f"chapter navigation: {exc}")
         return 1
     print(f"chapter navigation is generated and current: {navigation}")
+    try:
+        owed_columns = check_owed_columns(items, policy)
+    except ValueError as exc:
+        print(f"owed L-label roster: {exc}")
+        return 1
+    print(f"owed L-label rosters are generated and current: {owed_columns}")
     try:
         footers = check_deployment_footers()
     except ValueError as exc:

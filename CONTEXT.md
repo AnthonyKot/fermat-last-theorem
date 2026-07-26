@@ -351,8 +351,8 @@ if copies arrive.
 | # | Slug | Construction | Notes |
 |---|------|--------------|-------|
 | 16 | modular-representation *(written)* | **Eichler–Shimura**: a weight-2 newform of level N gives ρ_{f,λ} with characteristic polynomial X² − a_ℓ(f)X + ℓ at Frob_ℓ, via J₀(N) | Registers L13 as an accepted import. Exposes the Jacobian/Hecke construction without pretending to prove two-dimensionality or the Eichler–Shimura relation. The level-11 curve/form Frobenius packets are computed independently and matched as modularity clue 1. |
-| 17 | two-l-functions *(written)* | L(E, s) as an Euler product in the a_ℓ; L(f, s) from the coefficient sequence, with the good-prime Euler factors derived from essay 14's recurrence; analytic continuation and the functional equation imported separately | Registers `17-euler-products` as proved background and `17-functional-equation` as a stated background import, neither load-bearing for FLT. Keeps the bad-prime newform factor outside the good-prime derivation. The level-11 local polynomials match as modularity clue 2; a finite check is explicitly only evidence. |
-| 18 | modularity-theorem | The clues assembled (a_ℓ ↔ Fourier coefficients, conductor ↔ level), Taniyama–Shimura–Weil, then the **Modularity Theorem**: semistable (Wiles–Taylor 1995), general (BCDT 2001) | Registers L14 as an accepted import. Check: the conductor-11 curve against the level-11 newform's q-expansion, both computed independently and compared — the most convincing paragraph in the book for a 20-line script. |
+| 17 | two-l-functions *(written)* | L(E, s) as an Euler product in the a_ℓ; L(f, s) from the coefficient sequence, with the good- and bad-prime Euler factors derived from their separate Hecke relations; analytic continuation and the functional equation imported separately | Registers `17-euler-products` as proved background and `17-functional-equation` as a stated background import, neither load-bearing for FLT. Never applies the good-prime recurrence at a bad prime. The level-11 local polynomials match as modularity clue 2; a finite check is explicitly only evidence. |
+| 18 | modularity-theorem *(written)* | The four clues assembled — Frobenius polynomials, Euler products, period lattices, and the two $j$-descriptions — followed by the **Modularity Theorem**: Wiles's 1995 semistable theorem and BCDT's 2001 general theorem | Registers L14 as an accepted import. States conductor = exact newform level and the equivalent local-factor, $L$-function, representation and modular-parametrization windows without deriving one from a finite table. Check: exact finite evidence for the conductor-11 curve, including $j=-4096/11$ and the bad factor $1-T$. |
 
 ### PART V — WILES'S MACHINE (anatomy, 3)
 
@@ -417,7 +417,7 @@ the comparison, not to a self-referential string in the artifact. For a narrow d
   itself need not be. *Finite level on each layer, not finite overall.* Essay 05 states it in that
   form and points at the single-layer case as the reason $\bar\rho$ is easier.
 - **Writing order from here: then 11 → 12 → 13, then 14 → 15 → 16 → 17 → 18,
-  then 19–21 and 02's second case.** Essays through 17 are now written. This replaces an earlier note that put 24 next, which was
+  then 19–21 and 02's second case.** Essays through 18 are now written. This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
   until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
 - **Essay 09 comes first, and it earns its place twice.** It needs only 04, 06 and 07, all written.
@@ -627,9 +627,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01–17 and 22–25 — twenty-one essays, including the complete modular-forms run and the
-two $L$-function bridge, plus the two ends of the rope.
-**Unwritten:** 18–21 — the Modularity Theorem and the three-essay anatomy of Wiles's machine.
+**Written:** 01–18 and 22–25 — twenty-two essays, including the complete modular-forms run and the
+Modularity Theorem, plus the two ends of the rope.
+**Unwritten:** 19–21 — the three-essay anatomy of Wiles's machine.
 
 ⚠ **Essay 10 was written before 03 and 05, and it is the first essay whose declared debts are its own
 vocabulary rather than peripheral.** It uses $G_{\mathbb{Q}}$ only as a group of field automorphisms,

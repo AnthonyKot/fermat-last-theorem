@@ -24,8 +24,8 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Twenty-one essays are written — the two ends of the
-rope, the elliptic-curve and modular-form bridges through their common Euler-product shape, and the
+Scaffold and the full 25-essay map are complete. Twenty-two essays are written — the two ends of the
+rope, the elliptic-curve and modular-form bridges through the Modularity Theorem, and the
 semistability check:
 
 | # | Essay | What it delivers |
@@ -46,7 +46,8 @@ semistability check:
 | 14 | Hecke operators | The $q$-coefficient formula; eigenvalues are Fourier coefficients; multiplicativity and the prime-power recurrence |
 | 15 | Newforms, and the meaning of the level | The level-$22$ oldspace and bad-prime $U_2$ computed; Atkin–Lehner–Li imported to define normalized newforms and exact level |
 | 16 | The representation attached to a form | The modular-Jacobian route from a weight-$2$ newform to $\rho_{f,\lambda}$; Eichler–Shimura imported; the level-$11$ Frobenius packets matched exactly |
-| 17 | Two $L$-functions, one shape | The good-prime newform Euler product derived from Hecke relations; curve factors defined by reduction type; analytic continuation and the functional equation imported off the FLT chain |
+| 17 | Two $L$-functions, one shape | The good and bad newform Euler factors derived from their separate Hecke relations; curve factors defined by reduction type; analytic continuation and the functional equation imported off the FLT chain |
+| 18 | The Modularity Theorem | Conductor equals exact newform level; local factors, $L$-functions and Galois representations match; semistable and general theorems stated precisely |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
 | 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; irreducibility for every $p\geq5$ |
@@ -55,10 +56,9 @@ semistability check:
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 18–21 are stubbed on
-the contents page. Of those, essay 18 carries the remaining modularity debt, while essays 19–21
-are an optional anatomy of Wiles's machinery. Essay 17 is the completed, motivating
-$L$-function bridge.
+valuation to link back to rather than a declared debt. Essays 19–21 are stubbed on
+the contents page as an optional anatomy of Wiles's machinery. Essay 18 now registers modularity as
+the accepted theorem that closes the continuity gap.
 Essay 25 states its remaining conditions explicitly.
 
 ## Verification
@@ -74,6 +74,8 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
 - **Ledger checks.** Every essay must carry proved/assumed/owed columns, and no essay's "What we
   already have" may cite an essay at or after its own number. Every registered item must appear in the
   column dictated by its canonical proof mode, with matching mode and FLT-chain/background badges.
+  Consecutive essays must carry forward the same set of owed L-labels; a label may disappear only
+  when the new essay's claim summary explicitly records its proof or accepted registration.
   Claim summaries that close a ledger line are tagged as `proved`, `mixed`, or `imported`; verification
   rejects the old ambiguous “Discharges” label and checks the tag against the canonical register.
 - **Proof-register sync.** `data/ledger.json` is the source of truth for the public account of what is
@@ -91,6 +93,12 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     cusp space and share all tested good eigenvalues; the bad-prime matrix
     $U_2=\left(\begin{smallmatrix}-2&1\\-2&0\end{smallmatrix}\right)$ is computed from exact
     $q$-series and has nonreal eigenvalues, while the level-$22$ newspace has dimension zero.
+  - `two_l_functions.py` — the level-$11$ eta product is expanded exactly; its good traces are
+    compared with independent point counts; the quadratic good-prime and linear bad-prime rules
+    reconstruct every coefficient below $180$.
+  - `modularity_theorem.py` — finite level-$11$ evidence: conductor and cusp-space dimension,
+    forty matching good-prime traces, the bad polynomial $1-T$, and $j(E)=-4096/11$. The script
+    explicitly does not claim to check modularity.
   - `frey_discriminant.py` — the discriminant identity, computed from root differences *and* from the
     Weierstrass $b$-invariants; the two routes share no algebra.
   - `kummer_regular_primes.py` — Bernoulli numbers and the irregular primes, asserted against the
@@ -132,9 +140,9 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     bad primes from the discriminant, $a_\ell$ against the LMFDB newform coefficients, the Hasse bound,
     and both reduction types located two independent ways — by point count and by the tangent
     directions at the singular point.
-- **Generated site facts.** The contents tally, About status, assumption total, and every chapter's
-  previous/next links are regenerated together. The footer contains stable source/deployment links,
-  not a guessed commit hash: a commit cannot truthfully contain its own hash.
+- **Generated site facts.** The contents tally, About status, assumption total, each chapter's owed
+  L-label roster, and every previous/next link are regenerated together. The footer contains stable
+  source/deployment links, not a guessed commit hash: a commit cannot truthfully contain its own hash.
 - **Published-artifact check.** `./verify.sh --live` cache-busts every public URL and requires every
   served HTML file plus `data/ledger.json` to equal this verified checkout byte for byte. It therefore
   catches local-only work, unpushed commits, failed builds, stale caches and partial deployments.

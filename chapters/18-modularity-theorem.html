@@ -1,0 +1,336 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>18 · The Modularity Theorem — No Such Form</title>
+<meta name="description" content="The Modularity Theorem identifies elliptic curves over the rationals with weight-two newforms, matching conductor to level, Frobenius traces, Galois representations, and L-functions.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part IV · The two worlds are one — Essay 18</p>
+    <h1>The Modularity Theorem</h1>
+    <p class="lede">An elliptic curve and a newform have now produced the same local polynomials,
+      Euler factors and Galois data. The Modularity Theorem says this is not a lucky analogy:
+      every elliptic curve over $\mathbb Q$ comes from a weight-two newform of exactly the curve's
+      conductor.</p>
+
+    <div class="claim">
+      <span class="tag">This essay states the bridge theorem; it does not prove it</span>
+      <strong>Assembles:</strong> four clues linking curves, modular forms, periods and $j$.
+      <strong>States:</strong> the semistable theorem needed for FLT and the later theorem for every
+      elliptic curve over $\mathbb Q$, with conductor equal to exact newform level.
+      <strong>Computes:</strong> finite level-$11$ evidence and the common invariant
+      $j=-4096/11$.
+      <strong>Ledger:</strong>
+      <span data-ledger-resolution="imported">Registers <strong>L14</strong> as an accepted
+        import.</span>
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> One correspondence, several windows</h2>
+      <p>The last two essays reached the same proposed bridge by different routes. Put their outputs
+        side by side:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>elliptic curve $E/\mathbb Q$</th><th>normalized weight-two newform $f$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>conductor $N_E$</td><td>exact level $N$</td></tr>
+            <tr><td>point-count trace $a_\ell(E)$</td><td>Fourier coefficient $a_\ell(f)$</td></tr>
+            <tr><td>Tate-module representation $\rho_{E,p}$</td><td>Eichler–Shimura representation $\rho_{f,\lambda}$</td></tr>
+            <tr><td>Euler product $L(E,s)$</td><td>Dirichlet series and Euler product $L(f,s)$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The assertion is not merely that a handful of numbers agree. It is that, for the right pair
+        $(E,f)$,</p>
+      <p>$$
+        N=N_E,\qquad
+        a_\ell(f)=a_\ell(E)\ \text{at every prime }\ell,
+        \qquad
+        L(f,s)=L(E,s).
+        \tag{1}
+      $$</p>
+      <p>At a good prime, equality of coefficients means equality of the Frobenius polynomials</p>
+      <p>$$
+        X^2-a_\ell X+\ell.
+        \tag{2}
+      $$</p>
+      <p>At a bad prime it means equality of the changed linear or trivial local factor as well.
+        Consequently (1) compares the whole Euler products, not just almost all convenient primes.</p>
+
+      <h3>What “modular” means</h3>
+      <p>An elliptic curve $E/\mathbb Q$ is called <strong>modular</strong> if it is linked to a
+        modular curve by a nonconstant morphism defined over $\mathbb Q$. In the exact-level form
+        relevant here, one can choose an elliptic curve $E_0$ in the isogeny class of $E$ and a map</p>
+      <p>$$
+        \pi:X_0(N_E)\longrightarrow E_0.
+        \tag{3}
+      $$</p>
+      <p>There is a distinguished optimal choice of $E_0$ through which the other parametrizations
+        factor. A different Weierstrass equation in the same isogeny class is a different model of
+        the arithmetic object; it is not a “choice” inside the specific Jacobian $J_0(N_E)$.</p>
+      <p>The geometric map (3), equality of the $L$-functions, and matching compatible Galois
+        representations are deep equivalent formulations. This essay imports that equivalence as
+        part of the theorem. It does not try to deduce one formulation from a finite coefficient
+        table.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> Why anyone expected the bridge</h2>
+
+      <h3>Clues 1 and 2: arithmetic at the primes</h3>
+      <p>Essay <a href="16-modular-representation.html">16</a> supplied
+        <strong>modularity clue 1</strong>: the curve and the newform produce the same-shaped
+        Frobenius polynomial (2). Essay <a href="17-two-l-functions.html">17</a> supplied
+        <strong>modularity clue 2</strong>: those local polynomials assemble into the same-shaped
+        Euler product.</p>
+      <p>The Hasse bound on the curve side and the weight-two Ramanujan–Petersson bound on the form
+        side sharpen the parallel:</p>
+      <p>$$
+        |a_\ell(E)|\leq2\sqrt{\ell},
+        \qquad
+        |a_\ell(f)|\leq2\sqrt{\ell}.
+        \tag{4}
+      $$</p>
+      <p>These are two readings of the same eigenvalue-size phenomenon once modularity is known.
+        They reinforce the existing clues; they are not a fifth numbered clue.</p>
+
+      <h3>Clue 3: a differential becomes a period lattice</h3>
+      <p>Weight two is the geometric weight. Essay 13 computed that if
+        $f\in S_2(\Gamma_0(N))$, then</p>
+      <p>$$
+        \omega_f=2\pi i\,f(z)\,dz
+        \tag{5}
+      $$</p>
+      <p>is an invariant holomorphic differential on $X_0(N)$. Integrate it along closed paths. For
+        a normalized newform with rational coefficients, the resulting periods select a rank-two
+        lattice $\Lambda_f\subset\mathbb C$ in the corresponding one-dimensional newform quotient.
+        The integral</p>
+      <p>$$
+        z\longmapsto
+        \int_{i\infty}^{z}\omega_f
+        \pmod{\Lambda_f}
+        \tag{6}
+      $$</p>
+      <p>then lands on a complex torus $\mathbb C/\Lambda_f$. Essay 07 imported the theorem that such
+        a torus is an elliptic curve. Algebraically, essay 16 placed the same construction inside the
+        quotient of the modular Jacobian $J_0(N)$ cut out by the Hecke eigensystem.</p>
+      <div class="fence">
+        <strong>Modularity clue 3: periods turn the form into a curve.</strong> Formula (6) explains
+        the architecture of a modular parametrization. The facts that the relevant period group is
+        a lattice, that the quotient descends to $\mathbb Q$, and that its conductor is exactly $N$
+        are imported geometry, not consequences proved by writing down the integral.
+      </div>
+      <p>At level $11$, essay 13 found $\dim S_2(\Gamma_0(11))=1$, hence
+        $g(X_0(11))=1$. Taking a cusp as origin identifies this genus-one modular curve with its
+        Jacobian $J_0(11)$, the $\Gamma_0(11)$-optimal member of isogeny class <code>11.a</code>.
+        The familiar equation $y^2+y=x^3-x^2$ is the member <code>11.a3</code>, not the optimal
+        member; an isogeny connects the two.</p>
+
+      <h3>Clue 4: the same coordinate on elliptic curves</h3>
+      <p>For a Weierstrass model, the elliptic invariant is</p>
+      <p>$$
+        j(E)=\frac{c_4^3}{\Delta}.
+        \tag{7}
+      $$</p>
+      <p>For a point $z$ in the upper half-plane, the modular function is</p>
+      <p>$$
+        j(z)=\frac{E_4(z)^3}{\Delta(z)}
+        =q^{-1}+744+196884q+\cdots.
+        \tag{8}
+      $$</p>
+      <p>The repeated letter is structural: if
+        $\Lambda=\omega_1(\mathbb Z+\tau\mathbb Z)$, complex uniformization gives</p>
+      <p>$$
+        j\!\left(\mathbb C/\Lambda\right)=j(\tau).
+        \tag{9}
+      $$</p>
+      <p>For $E:y^2+y=x^3-x^2$, the invariants already computed in essay 06 give
+        $b_2=-4$, $b_4=0$, hence $c_4=b_2^2-24b_4=16$, while $\Delta=-11$. Therefore</p>
+      <p>$$
+        j(E)=\frac{16^3}{-11}=-\frac{4096}{11}.
+        \tag{10}
+      $$</p>
+      <div class="fence">
+        <strong>Modularity clue 4: one $j$-invariant, two descriptions.</strong> The modular
+        $j$-function classifies complex lattice shapes, while $j(E)$ classifies complex elliptic
+        curves up to isomorphism. But every complex elliptic curve has a period parameter $\tau$.
+        Equation (9) alone therefore says nothing about whether a curve over $\mathbb Q$ is attached
+        arithmetically to a rational newform. It is a geometric clue, not the Modularity Theorem.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> The theorem</h2>
+      <div class="fence">
+        <strong>Imported: the Modularity Theorem.</strong> Let $E/\mathbb Q$ be an elliptic curve of
+        conductor $N_E$. There is a normalized weight-two newform
+        $$
+          f_E(q)=\sum_{n\geq1}a_nq^n
+          \in S_2(\Gamma_0(N_E))^{\mathrm{new}}
+          \tag{11}
+        $$
+        with integer coefficients whose local factor agrees with that of $E$ at every prime.
+        Equivalently, $L(E,s)=L(f_E,s)$, and the compatible Galois representations attached to the
+        two sides agree. Geometrically, the isogeny class of $E$ occurs as an elliptic quotient of
+        $J_0(N_E)$ and admits a modular parametrization.
+      </div>
+      <p>The word <em>exact</em> matters. The theorem does not merely place $f_E$ in some modular-form
+        space of a large divisible level. It places the newform at level $N_E$, the conductor that
+        measures the curve's bad reduction. This is the conductor–level bridge needed by level
+        lowering.</p>
+
+      <h3>The semistable theorem FLT consumes</h3>
+      <p>The full statement above is stronger than Fermat's Last Theorem needs. Wiles's 1995 paper
+        proves the following theorem:</p>
+      <blockquote>
+        <p>Every semistable elliptic curve over $\mathbb Q$ is modular.</p>
+      </blockquote>
+      <p>This is theorem 0.4 of the paper. The proof was completed through the corrected argument
+        developed with Richard Taylor. In 2001, Breuil, Conrad, Diamond and Taylor removed the
+        semistability restriction; their theorem A says that every elliptic curve over $\mathbb Q$
+        is modular.</p>
+      <p>The names mark a long history, not a single conjectural leap. Taniyama proposed the
+        connection in the 1950s; Shimura and Weil developed and sharpened it; many others built the
+        machinery that made the theorem provable. “Modularity Theorem” is now the standard name for
+        the result.</p>
+
+      <h3>The conductor-$11$ example, completed conceptually</h3>
+      <p>For the curve $E:y^2+y=x^3-x^2$ we have $N_E=11$. At level $11$, the cusp-form space has
+        dimension one and is generated by</p>
+      <p>$$
+        f_{11}(q)=q\prod_{n\geq1}(1-q^n)^2(1-q^{11n})^2.
+        \tag{12}
+      $$</p>
+      <p>Essays 16 and 17 checked many good traces and the bad polynomial $1-T$ at $11$. The theorem
+        now supplies what no finite script can: every local factor agrees, the complete
+        $L$-functions are equal, and the two compatible systems of representations describe the
+        same isogeny class.</p>
+      <p>The example is evidence before the theorem and an instance after it. It is never a proof of
+        the general statement, nor does agreement through any finite bound prove equality of the
+        infinite Euler products.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> What the Fermat chain actually takes</h2>
+      <p>Essay <a href="23-semistable-and-modular.html">23</a> begins with the Frey curve attached to
+        a hypothetical Fermat solution and proves that it is semistable, with</p>
+      <p>$$
+        N_E=\operatorname{rad}(abc).
+        \tag{13}
+      $$</p>
+      <p>Wiles's semistable theorem therefore supplies a normalized weight-two newform of exact level
+        $\operatorname{rad}(abc)$. Essay 16 attaches a residual representation to that form, while
+        essay 24 computes that the Frey representation has conductor $2$. Ribet's theorem in essay
+        25 lowers the newform level to $2$, where essay 13's dimension formula says no weight-two
+        cusp form exists.</p>
+      <p>The closing argument uses the representation window:</p>
+      <p>$$
+        \text{semistable Frey curve}
+        \xrightarrow{\text{modularity}}
+        \text{newform representation}
+        \xrightarrow{\text{level lowering}}
+        S_2(\Gamma_0(2)).
+        \tag{14}
+      $$</p>
+      <p>It does not need analytic continuation of either $L$-function, a numerical evaluation of a
+        special value, or the period map (6). Those views explain the breadth of modularity; the
+        Galois representation is the load-bearing view for FLT.</p>
+      <p>Essays 19–21 will look inside the proof strategy — deformation rings, Hecke algebras and
+        the modularity-lifting machine. They will describe why the imported theorem is plausible and
+        how its proof is organized, without pretending to reproduce Wiles's proof.</p>
+
+      <h3>Reading</h3>
+      <p><strong>The semistable theorem.</strong> Andrew Wiles,
+        <a href="https://wstein.org/edu/Fall2003/252/references/wiles-flt/Wiles-Modular_Elliptic_Curves_and_Fermats_Last_Theorem.pdf">“Modular
+        elliptic curves and Fermat's Last Theorem”</a>, states semistable modularity as theorem 0.4
+        and FLT as theorem 0.5.</p>
+      <p><strong>The general theorem and its equivalent forms.</strong> Breuil, Conrad, Diamond and
+        Taylor, <a href="https://www.math.u-psud.fr/~breuil/PUBLICATIONS/STW.pdf">“On the modularity
+        of elliptic curves over $\mathbb Q$”</a>, theorem A and conditions (1)–(6) in the
+        introduction, state the general result and the $L$-function, Galois-representation and
+        modular-parametrization formulations.</p>
+      <p><strong>A compact modern formulation.</strong> Andrew Sutherland's MIT 18.783
+        <a href="https://math.mit.edu/classes/18.783/2023/LectureNotes24.pdf">Lecture 24</a>,
+        definitions 24.31–24.32, theorem 24.33 and corollary 24.34 give conductor, modularity and the
+        transfer of analytic continuation; theorem 24.37 and the following discussion give the
+        newform-to-curve direction up to isogeny.</p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/modularity_theorem.py</code>. It
+        independently checks the conductor, the one-dimensional level-$11$ cusp space, every good
+        prime trace below $180$, the split-multiplicative factor at $11$, and
+        $j(E)=-4096/11$. It checks this finite example, not the Modularity Theorem, the equivalence
+        of its formulations, or the period construction.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="18-level11-modularity-evidence">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Exact computations give $N_E=11$, $\dim S_2(\Gamma_0(11))=1$,
+              $j(E)=-4096/11$, matching curve/newform traces at every tested good prime, and the
+              common bad polynomial $1-T$ at $11$; this is finite evidence, not modularity</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="18-modularity">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Every semistable elliptic curve over $\mathbb Q$ is modular: a curve of conductor
+              $N_E$ has an attached normalized weight-two newform of exact level $N_E$, with matching
+              local factors and Galois representations <span class="lref">(L14)</span></li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li data-ledger-line="L1">The exponent reduction, including both cases for $n=3$ <span class="lref">(L1, essay 02)</span></li>
+            <li data-ledger-line="L15">The Frey-curve construction <span class="lref">(L15, essay 22)</span></li>
+            <li data-ledger-line="L16">Semistability and the conductor of the Frey curve <span class="lref">(L16, essay 23)</span></li>
+            <li data-ledger-line="L17">The conductor of the residual Frey representation <span class="lref">(L17, essay 24)</span></li>
+            <li data-ledger-line="L18">Ribet's level-lowering theorem <span class="lref">(L18, essay 25)</span></li>
+            <li data-ledger-line="L19">The vanishing of $S_2(\Gamma_0(2))$ <span class="lref">(L19, essay 25)</span></li>
+            <li>The final contradiction remains conditional until its named inputs are settled
+              <span class="lref">(essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="17-two-l-functions.html"><span class="dir">← Previous written essay</span> 17 · Two $L$-functions, one shape</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 18 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp"><a href="https://github.com/AnthonyKot/fermat-last-theorem">Source</a> · <a href="https://github.com/AnthonyKot/fermat-last-theorem/deployments">deployment history</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

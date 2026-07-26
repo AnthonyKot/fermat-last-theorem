@@ -127,6 +127,7 @@ essays = sorted(glob.glob("chapters/*.html"))
 # it is resolved -- proved and available, or an accepted assumption and available.
 reg = json.load(open("data/ledger.json"))
 accepted = set(reg["completion_policy"]["accepted_assumption_ids"])
+by_id = {item["id"]: item for item in reg["proof_register"]}
 written = {int(os.path.basename(p)[:2]) for p in essays}
 outstanding = set()
 for item in reg["proof_register"]:
@@ -173,6 +174,83 @@ for f in essays:
             if int(ref) >= n:
                 print(f"  {os.path.basename(f)}: Rung 1 cites essay {ref} (>= own number {n:02d})")
                 prob += 1
+
+# L-label continuity is checked as a set, not by prose or count.  Each master
+# line names the proof-register records that settle it.  A line remains owed on
+# essay n until every named record is available, accepted/proved, and assigned
+# to an essay at or before n.  Thus a label can disappear only at the essay
+# carrying the corresponding proved-or-registered records.
+lines = reg.get("ledger_lines")
+if not isinstance(lines, list):
+    print("  data/ledger.json: missing ledger_lines list"); prob += 1
+    lines = []
+labels = [line.get("label") for line in lines]
+expected_labels = [f"L{i}" for i in range(1, 20)]
+if labels != expected_labels:
+    print(f"  ledger_lines labels are {labels}, expected {expected_labels}"); prob += 1
+for line in lines:
+    record_ids = line.get("record_ids")
+    if not isinstance(record_ids, list) or not record_ids:
+        print(f"  {line.get('label')}: record_ids must be a non-empty list"); prob += 1
+        continue
+    unknown = set(record_ids) - set(by_id)
+    if unknown:
+        print(f"  {line['label']}: unknown proof records {sorted(unknown)}"); prob += 1
+    wrong_role = [item_id for item_id in record_ids
+                  if item_id in by_id and by_id[item_id]["role"] != "required_for_flt"]
+    if wrong_role:
+        print(f"  {line['label']}: non-FLT proof records {wrong_role}"); prob += 1
+
+def closes_by(item, number):
+    return (
+        max(item["essays"]) <= number
+        and item["availability"] == "available"
+        and (item["register"] == "proved" or item["id"] in accepted)
+    )
+
+previous_number = None
+previous_expected = None
+for f in essays:
+    number = int(os.path.basename(f)[:2])
+    text = open(f).read()
+    owed = text.split('class="col owed"', 1)[1].split("</div>", 1)[0]
+    actual = set(re.findall(r'\bL\d+\b', owed))
+    expected = {
+        line["label"]
+        for line in lines
+        if not all(
+            item_id in by_id and closes_by(by_id[item_id], number)
+            for item_id in line["record_ids"]
+        )
+    }
+    if actual != expected:
+        print(
+            f"  {os.path.basename(f)}: owed L-labels differ from the registry; "
+            f"missing={sorted(expected-actual)}, extra={sorted(actual-expected)}"
+        )
+        prob += 1
+    if previous_expected is not None:
+        added = expected - previous_expected
+        if added:
+            print(
+                f"  {os.path.basename(f)}: owed L-labels reappeared after essay "
+                f"{previous_number:02d}: {sorted(added)}"
+            )
+            prob += 1
+        for label in previous_expected - expected:
+            line = next(entry for entry in lines if entry["label"] == label)
+            settling = [
+                item_id for item_id in line["record_ids"]
+                if item_id in by_id
+                and previous_number < max(by_id[item_id]["essays"]) <= number
+            ]
+            if not settling:
+                print(
+                    f"  {os.path.basename(f)}: dropped {label} without a corresponding "
+                    "proved-or-registered record in the intervening essay"
+                )
+                prob += 1
+    previous_number, previous_expected = number, expected
 print("  ledgers present, no forward dependencies" if not prob else f"  {prob} ledger problem(s)")
 sys.exit(1 if prob else 0)
 PY

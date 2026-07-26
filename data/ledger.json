@@ -25,6 +25,182 @@
       "25-ribet"
     ]
   },
+  "ledger_lines": [
+    {
+      "label": "L1",
+      "short": "The exponent reduction, including both cases for $n=3$",
+      "target_essay": 2,
+      "record_ids": [
+        "01-exponent-reduction",
+        "01-n4",
+        "02-n3-first-case",
+        "02-n3-second-case"
+      ]
+    },
+    {
+      "label": "L2",
+      "short": "$G_{\\mathbb Q}$, Frobenius, and traces determining semisimple representations",
+      "target_essay": 5,
+      "record_ids": [
+        "03-g-q",
+        "03-frobenius",
+        "05-traces-determine"
+      ]
+    },
+    {
+      "label": "L3",
+      "short": "$p$-adic valuations, integers, and free modules",
+      "target_essay": 4,
+      "record_ids": [
+        "04-valuation",
+        "04-p-adic-integers",
+        "04-free-modules"
+      ]
+    },
+    {
+      "label": "L4",
+      "short": "Elliptic curves, their group law, reduction types, and conductor",
+      "target_essay": 8,
+      "record_ids": [
+        "06-weierstrass-definition",
+        "07-chord-tangent",
+        "07-associativity",
+        "08-bad-primes",
+        "08-reduction-types"
+      ]
+    },
+    {
+      "label": "L5",
+      "short": "Semistability, multiplicative reduction, and square-free conductor",
+      "target_essay": 8,
+      "record_ids": [
+        "08-conductor-multiplicative",
+        "08-semistable-radical"
+      ]
+    },
+    {
+      "label": "L6",
+      "short": "Division points and the rank-two Tate module",
+      "target_essay": 9,
+      "record_ids": [
+        "09-torsion-general",
+        "09-torsion-structure"
+      ]
+    },
+    {
+      "label": "L7",
+      "short": "The elliptic-curve representation and its Frobenius trace",
+      "target_essay": 10,
+      "record_ids": [
+        "10-representation",
+        "10-trace-formula"
+      ]
+    },
+    {
+      "label": "L8",
+      "short": "Mazur's isogeny theorem and Frey-representation irreducibility",
+      "target_essay": 10,
+      "record_ids": [
+        "10-reducible-iff-subgroup",
+        "10-local-theorems"
+      ]
+    },
+    {
+      "label": "L9",
+      "short": "The Néron–Ogg–Shafarevich unramifiedness criterion",
+      "target_essay": 10,
+      "record_ids": [
+        "10-local-theorems"
+      ]
+    },
+    {
+      "label": "L10",
+      "short": "The dimension formula for $S_2(\\Gamma_0(N))$",
+      "target_essay": 13,
+      "record_ids": [
+        "13-dimension-formula",
+        "13-genus-is-dimension",
+        "13-riemann-hurwitz"
+      ]
+    },
+    {
+      "label": "L11",
+      "short": "Hecke eigenvectors, coefficients, and multiplicativity",
+      "target_essay": 14,
+      "record_ids": [
+        "14-eigenbasis",
+        "14-hecke-coefficients"
+      ]
+    },
+    {
+      "label": "L12",
+      "short": "Newform theory and exact level",
+      "target_essay": 15,
+      "record_ids": [
+        "15-newforms"
+      ]
+    },
+    {
+      "label": "L13",
+      "short": "The representation attached to a weight-two newform",
+      "target_essay": 16,
+      "record_ids": [
+        "16-eichler-shimura"
+      ]
+    },
+    {
+      "label": "L14",
+      "short": "The Modularity Theorem, semistable case",
+      "target_essay": 18,
+      "record_ids": [
+        "18-modularity"
+      ]
+    },
+    {
+      "label": "L15",
+      "short": "The Frey-curve construction",
+      "target_essay": 22,
+      "record_ids": [
+        "22-frey-construction",
+        "22-frey-discriminant"
+      ]
+    },
+    {
+      "label": "L16",
+      "short": "Semistability and the conductor of the Frey curve",
+      "target_essay": 23,
+      "record_ids": [
+        "23-frey-minimal-model",
+        "23-frey-reduction"
+      ]
+    },
+    {
+      "label": "L17",
+      "short": "The conductor of the residual Frey representation",
+      "target_essay": 24,
+      "record_ids": [
+        "24-frey-representation",
+        "24-multiplicative-ramification",
+        "24-finite-at-p"
+      ]
+    },
+    {
+      "label": "L18",
+      "short": "Ribet's level-lowering theorem",
+      "target_essay": 25,
+      "record_ids": [
+        "25-ribet"
+      ]
+    },
+    {
+      "label": "L19",
+      "short": "The vanishing of $S_2(\\Gamma_0(2))$",
+      "target_essay": 25,
+      "record_ids": [
+        "25-level-two"
+      ]
+    }
+  ],
   "register_revisions": [
     {
       "commit": "9a0cfc2",
@@ -774,7 +950,7 @@
       "essays": [
         17
       ],
-      "text": "The good-prime recurrence and multiplicativity from essay 14 give the local generating function $(1-a_\\ell T+\\ell T^2)^{-1}$ and assemble the good-prime part of the Euler product for a normalized weight-$2$ newform. The elliptic-curve Euler product is defined from the reduction types in essay 08."
+      "text": "The good-prime recurrence gives $(1-a_\\ell T+\\ell T^2)^{-1}$, the separately registered bad-prime relation $T_{\\ell^r}=T_\\ell^r$ gives $(1-a_\\ell T)^{-1}$, and multiplicativity assembles these local series into the complete Euler product for a normalized weight-$2$ newform. The elliptic-curve Euler product is defined from the reduction types in essay 08."
     },
     {
       "id": "17-functional-equation",
@@ -790,13 +966,23 @@
     {
       "id": "18-modularity",
       "register": "stated",
-      "availability": "planned",
+      "availability": "available",
       "role": "required_for_flt",
       "essays": [
         18
       ],
-      "text": "The Modularity Theorem will be stated, not proved.",
+      "text": "Every semistable elliptic curve over $\\mathbb Q$ is modular: a curve of conductor $N_E$ has an attached normalized weight-$2$ newform of exact level $N_E$, with matching local factors and Galois representations. This is the semistable theorem needed for FLT; the stronger theorem for every elliptic curve over $\\mathbb Q$ is also stated.",
       "short": "The Modularity Theorem, semistable case"
+    },
+    {
+      "id": "18-level11-modularity-evidence",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        18
+      ],
+      "text": "Exact computations give $N_E=11$, $\\dim S_2(\\Gamma_0(11))=1$, $j(E)=-4096/11$, matching curve/newform traces at every tested good prime, and the common bad polynomial $1-T$ at $11$. This is finite evidence, not a proof of modularity."
     },
     {
       "id": "19-21-wiles",
