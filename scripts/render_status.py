@@ -202,7 +202,7 @@ def render_items(items: list[dict]) -> list[str]:
                 f'          <span class="scope-role scope-role--{item["role"]}">'
                 f'{ROLE_LABELS[item["role"]]}</span>',
                 f"          {text} <span class=\"scope-essays\">({refs})</span>",
-                "        </li>",
+                "       </li>",
             ]
         )
     lines.append("      </ul>")
@@ -234,26 +234,54 @@ def render_block(items: list[dict], policy: dict) -> str:
         and not (item["availability"] == "available" and item["register"] == "proved")
     ]
 
+    # Two separate headline counts. "What the finished proof rests on" and "what
+    # the exposition rests on" are different claims: the Hasse bound or the
+    # existence of Q_ell do not weaken "FLT follows from modularity", while
+    # Mazur's isogeny theorem does. A single undifferentiated count buries that.
+    chain_assumed = [i for i in items if i["role"] == "required_for_flt" and i["register"] == "stated"]
+    bg_assumed = [i for i in items if i["role"] == "background" and i["register"] == "stated"]
+    n_owed_chain = len(owed)
+
     lines = [
         START,
-        "    <h3>Proved in the written essays</h3>",
+        '    <div class="scope-counts">',
+        '      <p class="scope-headline">The finished proof would rest on '
+        f'<strong>{len(chain_assumed)}</strong> assumed result'
+        f'{"" if len(chain_assumed) == 1 else "s"}.</p>',
+        '      <p class="scope-note">These are the results the FLT chain consumes and does not prove. '
+        "Each is named in the completion policy, which the validator pins to this register, so "
+        "adding one is a deliberate edit rather than a side effect. This is the only number against "
+        "which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is "
+        "defensible.</p>",
+        '      <p class="scope-headline">The exposition additionally assumes '
+        f'<strong>{len(bg_assumed)}</strong> background result'
+        f'{"" if len(bg_assumed) == 1 else "s"}.</p>',
+        '      <p class="scope-note">Stated for orientation, and deliberately kept off the chain.'
+        " Doubting any of them leaves the closing argument intact.</p>",
+        '      <p class="scope-note"><strong>Not yet settled:</strong> '
+        f'{n_owed_chain} required item{"" if n_owed_chain == 1 else "s"} remain'
+        f'{"s" if n_owed_chain == 1 else ""} owed, listed below. Until that list is empty the'
+        " collection is an argument in progress, not a completed derivation.</p>",
+        "   </div>",
+        "",
+        "   <h3>Proved in the written essays</h3>",
         '    <p class="scope-note">This list is generated from <code>data/ledger.json</code>. An item',
-        "      appears here only when it is both available and marked proved.</p>",
+        "     appears here only when it is both available and marked proved.</p>",
         *render_items(proved),
         "",
-        "    <h3>Explicitly assumed, not proved here</h3>",
+        "   <h3>Explicitly assumed, not proved here</h3>",
         '    <p class="scope-note">These available inputs are named in the completion policy. They',
-        "      close a dependency without being presented as proofs.</p>",
+        "     close a dependency without being presented as proofs.</p>",
         *render_items(imported),
         "",
-        "    <h3>Still owed by the FLT chain</h3>",
+        "   <h3>Still owed by the FLT chain</h3>",
         '    <p class="scope-note">An item remains here while its essay is unwritten, its treatment is',
-        "      only outlined or conditional, or it has not yet reached its declared imported state.</p>",
+        "     only outlined or conditional, or it has not yet reached its declared imported state.</p>",
         *render_items(owed),
         "",
-        "    <h3>Background outside the closing debt</h3>",
+        "   <h3>Background outside the closing debt</h3>",
         '    <p class="scope-note">These claims support orientation or historical context. Their proof',
-        "      status remains visible, but they do not determine whether the FLT chain closes.</p>",
+        "     status remains visible, but they do not determine whether the FLT chain closes.</p>",
         *render_items(background),
         END,
     ]

@@ -343,3 +343,11 @@ img, svg { max-width: 100%; }
   .rung > h2 .num { color: #000; background: none; border: 1px solid #000; }
   .ledger, .claim, .fence { border: 1px solid #000; break-inside: avoid; }
 }
+
+/* About: the two generated assumption counts */
+.scope-counts { margin: 1.4rem 0 1.8rem; padding: 1rem 1.15rem; border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent); border-radius: 6px; background: var(--surface); }
+.scope-counts .scope-headline { margin: .35rem 0 .2rem; font-size: 1.02rem; }
+.scope-counts .scope-headline strong { color: var(--accent); font-size: 1.15em; }
+.scope-counts .scope-note { margin: 0 0 .8rem; font-size: .92rem; color: var(--muted); }
+.scope-counts .scope-note:last-child { margin-bottom: 0; }
