@@ -504,6 +504,31 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
    Freitas–Siksek is about totally real fields with only its abstract reachable, and the numdam page
    carries no numbered statements. Search snippets do assert p ≥ 5, but a snippet is Tier B and
    uncitable under our own rule — which is exactly the rule's purpose.
+   **Progress made, 2026-07-26 — a generic-case argument, derived here, not sourced.**
+   `checks/frey_irreducibility.py`. Reducibility of $\bar\rho_{E,p}$ forces the characteristic
+   polynomial of every Frobenius to split over $\mathbb{F}_p$, so with $\operatorname{tr}=a_\ell$ and
+   $\det=\ell$ it forces $a_\ell^2-4\ell$ to be a square mod $p$ at every good $\ell$. **One
+   non-square proves irreducibility.** And full rational $E[2]$ pins $a_\ell$ at small $\ell$: the
+   $2$-torsion is rational, so it injects into $E(\mathbb{F}_\ell)$ at good odd $\ell$, giving
+   $4\mid\#E(\mathbb{F}_\ell)$ and hence $a_\ell\equiv\ell+1\pmod4$; with Hasse that leaves
+   $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$. Three uniform witnesses follow:
+
+   | $p$ | witness $\ell$ | pinned value | $a_\ell^2-4\ell \bmod p$ | non-square? |
+   |---|---|---|---|---|
+   | 5 | 3 | $a_3=0$ | 3 | yes |
+   | 7 | 5 | $a_5^2=4$ | 5 | yes |
+   | 5 | 7 | $a_7^2\in\{0,16\}$ | 2 or 3 | both yes |
+
+   So **$\bar\rho_{E,5}$ and $\bar\rho_{E,7}$ are irreducible whenever the witness prime is good**,
+   by an elementary argument with no modular curves in it. Verified over 1000 Frey-shaped semistable
+   triples; every curve whose witness prime is bad is still settled by some other prime.
+   **What this is not.** It is not the uniform theorem. When the witness prime divides $abc$ it is bad,
+   and no finite set of witnesses can cover every $abc$. So this is the generic case plus computation.
+   Two consequences to handle if it is ever promoted to a shipped claim:
+   `08-hasse` and `08-torsion-injects` are currently `background`, and the `depends_on` role rule would
+   correctly refuse to let a chain result rest on them — they would need promoting, exactly as
+   `07-uniformization` did.
+
    **So the dependency stays declared.** An *undeclared* dependency is the failure mode; a
    conservatively *declared* one costs one line on About and can be deleted the moment a real citation
    appears. Do not write p ≥ 5 before then. To close it: get Mazur 1978 itself, or any paper stating

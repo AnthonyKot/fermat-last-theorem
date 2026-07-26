@@ -188,6 +188,7 @@ assert radical(discriminant(*mini_32)) % 2 == 0  # 2 now in the conductor
 # and the 16-but-not-32 case cannot arise.
 assert all(2 * (5 * k) - 8 >= 2 for k in range(1, 10))
 
-print("  (aside) 16 | B gives good reduction at 2; 32 | B makes 2 multiplicative")
-print("PASS frey_semistable: minimal everywhere, multiplicative everywhere, conductor = rad(abc)")
+if __name__ == "__main__":
+    print("  (aside) 16 | B gives good reduction at 2; 32 | B makes 2 multiplicative")
+    print("PASS frey_semistable: minimal everywhere, multiplicative everywhere, conductor = rad(abc)")
 

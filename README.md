@@ -78,6 +78,11 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     inequality and its equality case over thousands of pairs, every digit string recomputed from
     congruences, and the $\mathrm{GL}_2(\mathbb{Z}_3)$ determinant criterion checked against the
     adjugate exhaustively.
+  - `frey_irreducibility.py` — progress on the collection's open question. Rational $E[2]$ forces
+    $4 \mid \#E(\mathbb{F}_\ell)$, which with Hasse pins $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$;
+    since reducibility would force $a_\ell^2-4\ell$ to be a square mod $p$, each pinned value is a
+    witness. Gives $\bar\rho_{E,5}$ and $\bar\rho_{E,7}$ irreducible whenever the witness prime is
+    good. Not the uniform theorem, and the script says so.
   - `mod_ell_representation.py` — the pairing identity $e(Mv,Mw)=e(v,w)^{\det M}$ over every invertible
     matrix for several moduli, the uniqueness of $-1$ as the root-of-unity-inverting exponent, and the
     reducibility congruence $a_\ell\equiv\ell+1$ tested on two curves at two primes each, passing in
