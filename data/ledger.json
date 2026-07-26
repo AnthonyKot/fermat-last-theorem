@@ -711,8 +711,8 @@
         14
       ],
       "short": "A simultaneous Hecke eigenbasis exists for $\\gcd(n,N)=1$",
-      "text": "The Hecke operators $T_n$ with $\\gcd(n,N)=1$ are simultaneously diagonalisable on $S_2(\\Gamma_0(N))$. Imported: the Petersson inner product and self-adjointness are a course, and the chain needs only the conclusion.",
-      "availability": "planned"
+      "text": "The Petersson product is positive definite, and the Hecke operators $T_n$ with $\\gcd(n,N)=1$ preserve $S_k(\\Gamma_0(N))$, commute and are self-adjoint. The spectral theorem therefore decomposes the space into simultaneous good-Hecke eigenspaces; at general level these eigenspaces need not yet be one-dimensional.",
+      "availability": "available"
     },
     {
       "id": "14-hecke-coefficients",
@@ -721,8 +721,8 @@
       "essays": [
         14
       ],
-      "text": "For a normalised eigenform, $a_1=1$ forces the Hecke eigenvalues to be the Fourier coefficients, and the coefficients are multiplicative -- the step that makes $a_\\ell(f)$ mean anything.",
-      "availability": "planned"
+      "text": "For $\\gcd(n,N)=1$, the coefficient formula $a_r(T_nf)=\\sum_{d\\mid(r,n)}d^{k-1}a_{rn/d^2}$ gives $a_1(T_nf)=a_n(f)$. Thus for a normalised simultaneous eigenform the good Hecke eigenvalues are its Fourier coefficients, which are multiplicative and satisfy the prime-power recurrence.",
+      "availability": "available"
     },
     {
       "id": "15-newforms",

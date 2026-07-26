@@ -36,6 +36,9 @@ MATH = re.compile(r'\$\$(.+?)\$\$|(?<!\$)\$([^$\n]+?)\$(?!\$)', re.S)
 bad = 0
 for f in sorted(glob.glob("*.html") + glob.glob("chapters/*.html")):
     t = open(f).read()
+    if not t.lstrip().lower().startswith("<!doctype html>"):
+        print(f"  MISSING DOCTYPE in {f}: KaTeX refuses to render in quirks mode")
+        bad += 1
     for m in MATH.finditer(t):
         body = m.group(1) or m.group(2)
         if "<" in body or ">" in body:

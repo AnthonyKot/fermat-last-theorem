@@ -1,0 +1,394 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>14 · Hecke operators — No Such Form</title>
+<meta name="description" content="Hecke operators turn a modular form's Fourier coefficients into eigenvalues. The q-expansion formula is derived, multiplicativity follows, and the prime-to-level boundary is made explicit.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part III · Modular forms — Essay 14</p>
+    <h1>Hecke operators</h1>
+    <p class="lede">A modular form begins as a function and becomes a sequence
+      $a_1,a_2,a_3,\ldots$. Hecke operators are the mechanism that makes the best of those sequences
+      arithmetic: their coefficients become eigenvalues, and multiplication of indices becomes
+      multiplication of numbers.</p>
+
+    <div class="claim">
+      <span class="tag">This essay proves one step and imports one machine</span>
+      <strong>Defines:</strong> the Hecke operators $T_n$ for indices coprime to the level.
+      <strong>Proves:</strong> their $q$-coefficient formula, that a normalised eigenform has
+      $\lambda_n=a_n$, and the resulting multiplicative and prime-power relations.
+      <strong>Imports:</strong> the Petersson inner product and self-adjointness, which together with
+      the spectral theorem give simultaneous eigenspaces.
+      <strong>Discharges:</strong> <strong>L11</strong>.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="12-modular-forms.html">12</a> changed the object of study. A cusp form is still
+        a holomorphic function on $\mathbb H$, but at the cusp it is a series</p>
+      <p>$$ f(z)=\sum_{r\geq1}a_rq^r,\qquad q=e^{2\pi iz}. $$</p>
+      <p>That essay exhibited two sequences with a property their definition never asked for.
+        Ramanujan's coefficients of $\Delta$ are multiplicative, and so are the coefficients of</p>
+      <p>$$
+        f_{11}(z)=\bigl(\eta(z)\eta(11z)\bigr)^2
+        =q-2q^2-q^3+2q^4+q^5+2q^6-2q^7+\cdots.
+      $$</p>
+      <p>For example $a_6=a_2a_3=2$ and $a_{10}=a_2a_5=-2$. Why should coefficients produced by
+        expanding an infinite product know that $6=2\cdot3$?</p>
+      <p>Essay <a href="13-valence-and-dimension.html">13</a> supplies the other half of the setup:
+        $S_k(\Gamma_0(N))$ is finite-dimensional, and in the case that has followed us through the
+        book,</p>
+      <p>$$ \dim S_2(\Gamma_0(11))=1. $$</p>
+      <p>Finite-dimensionality lets linear algebra enter. The aim is to build natural linear operators
+        on this space, find common eigenvectors, and discover that the corresponding eigenvalues have
+        been sitting in the $q$-expansion all along.</p>
+      <div class="fence">
+        <strong>The scope fence: only indices coprime to the level.</strong> At level $N\gt1$, the clean
+        operators in this essay are $T_n$ with $\gcd(n,N)=1$. At primes dividing $N$ the definition
+        changes, self-adjointness can fail, and the formulas change. Saying that every form behaves
+        perfectly under every $T_n$ would erase exactly the complication that newform theory exists to
+        solve. Essay 15 takes over at that boundary.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>An average over neighbouring lattices</h3>
+      <p>Essay <a href="07-the-group-law.html">07</a> wrote a complex elliptic curve as
+        $\mathbb C/\Lambda$. A sublattice $\Lambda'\subset\Lambda$ of index $n$ gives an isogeny
+        between the corresponding complex tori. The geometric Hecke operation sends a lattice to the
+        formal sum of all its index-$n$ sublattices:</p>
+      <p>$$ T_n[\Lambda]=\sum_{[\Lambda:\Lambda']=n}[\Lambda']. $$</p>
+      <p>So $T_n$ is an averaging operation over all degree-$n$ neighbours. This is the first reason it
+        belongs in the elliptic-curve story rather than being an arbitrary trick on power series:
+        modular forms and elliptic curves meet at the level of isogeny classes, and Hecke operators
+        already average over isogenies.</p>
+      <p>For a level-one form of weight $k$, writing the index-$n$ sublattices explicitly turns that
+        geometric operation into</p>
+      <p>$$
+        (T_nf)(z)
+        =n^{k-1}\sum_{\substack{ad=n\\a,d\gt0}}d^{-k}
+          \sum_{b=0}^{d-1}f\left(\frac{az+b}{d}\right).
+        \tag{1}
+      $$</p>
+      <p>For $\Gamma_0(N)$ the construction has to remember the level structure. When
+        $\gcd(n,N)=1$, it preserves $S_k(\Gamma_0(N))$ and has the same coefficient formula derived
+        below. That preservation statement is part of the standard Hecke construction; what this essay
+        computes is its effect on the sequence $(a_r)$.</p>
+
+      <h3>The prime calculation</h3>
+      <p>Take a prime $\ell\nmid N$. Formula (1) has just two kinds of terms:</p>
+      <p>$$
+        (T_\ell f)(z)=\ell^{k-1}f(\ell z)
+          +\frac1\ell\sum_{b=0}^{\ell-1}f\left(\frac{z+b}{\ell}\right).
+        \tag{2}
+      $$</p>
+      <p>The first term replaces $q^r$ by $q^{\ell r}$. In the second, a term $a_rq^r$ acquires the
+        factor $\zeta_\ell^{br}$, where $\zeta_\ell=e^{2\pi i/\ell}$. Averaging over $b$ uses the
+        root-of-unity filter</p>
+      <p>$$
+        \frac1\ell\sum_{b=0}^{\ell-1}\zeta_\ell^{br}
+        =
+        \begin{cases}
+          1,&amp;\ell\mid r,\\
+          0,&amp;\ell\nmid r.
+        \end{cases}
+      $$</p>
+      <p>Only coefficients whose index is divisible by $\ell$ survive. Reading the coefficient of
+        $q^r$ in (2) gives</p>
+      <p>$$
+        \boxed{\quad
+        a_r(T_\ell f)=a_{\ell r}(f)+\ell^{k-1}a_{r/\ell}(f),
+        \quad}
+        \tag{3}
+      $$</p>
+      <p>where $a_{r/\ell}=0$ when $\ell\nmid r$. The two terms remember the two directions in (2):
+        one pulls a high-index coefficient down; the other pushes a low-index coefficient up.</p>
+      <p>The same calculation for arbitrary $n$ yields the divisor-sum form</p>
+      <p>$$
+        \boxed{\quad
+        a_r(T_nf)=
+        \sum_{d\mid\gcd(r,n)}d^{k-1}a_{rn/d^2}(f),
+        \qquad \gcd(n,N)=1.
+        \quad}
+        \tag{4}
+      $$</p>
+      <p>There is no analysis left in (4). Once $f$ is known by its coefficients, $T_nf$ is computed by
+        divisors and integer arithmetic.</p>
+
+      <h3>Why the operators commute</h3>
+      <p>For coprime $m$ and $n$, apply (4) twice. Every divisor of
+        $\gcd(r,mn)$ splits uniquely as $d_1d_2$ with $d_1\mid\gcd(r,m)$ and
+        $d_2\mid\gcd(r,n)$. The two nested sums therefore become the single sum for $T_{mn}$:</p>
+      <p>$$ T_mT_n=T_{mn}=T_nT_m
+        \qquad\bigl(\gcd(m,n)=1,\ \gcd(mn,N)=1\bigr). $$</p>
+      <p>For powers of a good prime the corresponding relation is</p>
+      <p>$$
+        T_{\ell^{s+1}}
+        =T_\ell T_{\ell^s}-\ell^{k-1}T_{\ell^{s-1}}
+        \qquad(s\geq1).
+        \tag{5}
+      $$</p>
+      <p>Together these relations imply that all the good Hecke operators commute. A countable family
+        of commuting operators is waiting for the spectral theorem — but it still needs an inner
+        product with respect to which the operators are Hermitian.</p>
+
+      <h3>The imported analytic machine</h3>
+      <p>The required inner product is the <strong>Petersson inner product</strong>. For cusp forms
+        $f,g\in S_k(\Gamma_0(N))$,</p>
+      <p>$$
+        \langle f,g\rangle
+        =\int_{\Gamma_0(N)\backslash\mathbb H}
+          f(z)\overline{g(z)}\,y^{k-2}\,dx\,dy,
+        \qquad z=x+iy.
+      $$</p>
+      <p>The weight factors cancel the transformation of $y$ and the hyperbolic measure, while
+        vanishing at the cusps makes the integral converge. The result is a positive-definite Hermitian
+        form.</p>
+      <div class="fence">
+        <strong>Imported: Petersson self-adjointness.</strong> For every $n$ coprime to $N$, $T_n$
+        preserves $S_k(\Gamma_0(N))$ and is self-adjoint for the Petersson product:
+        $$\langle T_nf,g\rangle=\langle f,T_ng\rangle.$$
+        Proving this properly requires the double-coset theory this collection does not otherwise use.
+        We import it, rather than turning one rung of the FLT chain into a course in automorphic forms.
+      </div>
+      <p>Now cash the linear-algebra prerequisite. A Hermitian operator is diagonalisable with an
+        orthonormal eigenbasis. If another operator commutes with it, it preserves each eigenspace, so
+        it can be diagonalised inside those smaller spaces. Repeat. Since the ambient space is
+        finite-dimensional, the refinement stops, giving a decomposition into simultaneous
+        eigenspaces for every $T_n$ with $\gcd(n,N)=1$.</p>
+      <p>There is an important omission in that sentence: at level $N\gt1$, those common eigenspaces
+        need not be one-dimensional. The spectral theorem gives simultaneous eigenspaces; it does not
+        yet give a canonical normalised basis. That is the precise problem essay 15 solves.</p>
+
+      <h3>The eigenvalues were coefficients</h3>
+      <p>Suppose $f=\sum_{r\geq1}a_rq^r$ is a simultaneous eigenform for the good operators and
+        $a_1\neq0$. Rescale it so that $a_1=1$; this is what <strong>normalised</strong> means. If</p>
+      <p>$$ T_nf=\lambda_nf, $$</p>
+      <p>compare the coefficient of $q$. Formula (4) has only $d=1$ when $r=1$, so</p>
+      <p>$$
+        a_1(T_nf)=a_n(f),
+        \qquad
+        a_1(\lambda_nf)=\lambda_na_1=\lambda_n.
+      $$</p>
+      <p>Therefore</p>
+      <p>$$
+        \boxed{\quad\lambda_n=a_n
+        \qquad\text{for every }\gcd(n,N)=1.\quad}
+        \tag{6}
+      $$</p>
+      <p>This is the load-bearing conclusion. The notation $a_\ell(f)$ in Eichler–Shimura and the
+        Modularity Theorem is not just “the coefficient someone happened to print.” It is the
+        eigenvalue of a canonical geometric operator.</p>
+
+      <h3>Multiplicativity falls out</h3>
+      <p>Let $m$ and $n$ be coprime to each other and to $N$. Apply the coprime operator relation to a
+        normalised eigenform:</p>
+      <p>$$
+        a_{mn}f=T_{mn}f=T_mT_nf=T_m(a_nf)=a_na_mf.
+      $$</p>
+      <p>Since $f\neq0$,</p>
+      <p>$$
+        \boxed{\quad a_{mn}=a_ma_n
+        \qquad\bigl(\gcd(m,n)=1,\ \gcd(mn,N)=1\bigr).\quad}
+        \tag{7}
+      $$</p>
+      <p>And (5) gives, at a prime $\ell\nmid N$,</p>
+      <p>$$
+        \boxed{\quad
+        a_{\ell^{s+1}}
+        =a_\ell a_{\ell^s}-\ell^{k-1}a_{\ell^{s-1}}.
+        \quad}
+        \tag{8}
+      $$</p>
+      <p>Equations (7) and (8) say that every good coefficient is determined by the coefficients
+        $a_\ell$ at good primes. The infinite sequence has collapsed to prime-indexed data.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The level-11 form has nowhere else to go</h3>
+      <p>Return to $f_{11}$. Essay 13 proved that $S_2(\Gamma_0(11))$ is one-dimensional. Every good
+        $T_n$ preserves that line, so any nonzero vector on it is automatically an eigenvector. Since
+        $a_1(f_{11})=1$, equation (6) says that the eigenvalue of $T_n$ is exactly $a_n$ for every
+        $n$ coprime to $11$.</p>
+      <p>For $T_2$, formula (3) makes the first four coefficients visible:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>coefficient</th><th>from (3)</th><th>$-2f_{11}$</th></tr></thead>
+          <tbody>
+            <tr><td>$q^1$</td><td>$a_2=-2$</td><td>$-2a_1=-2$</td></tr>
+            <tr><td>$q^2$</td><td>$a_4+2a_1=2+2=4$</td><td>$-2a_2=4$</td></tr>
+            <tr><td>$q^3$</td><td>$a_6=2$</td><td>$-2a_3=2$</td></tr>
+            <tr><td>$q^4$</td><td>$a_8+2a_2=0-4=-4$</td><td>$-2a_4=-4$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Thus $T_2f_{11}=-2f_{11}$, with eigenvalue $-2=a_2$. Likewise $T_3f_{11}=-f_{11}$ and
+        $T_5f_{11}=f_{11}$. The multiplicativity observed in essay 12 is no longer an unexplained
+        pattern:</p>
+      <p>$$
+        a_6=a_2a_3=2,\qquad
+        a_{10}=a_2a_5=-2,\qquad
+        a_{15}=a_3a_5=-1.
+      $$</p>
+      <p>The prime-power recurrence is different from ordinary complete multiplicativity. At weight
+        two,</p>
+      <p>$$
+        a_4=a_2^2-2a_1=4-2=2,\qquad
+        a_8=a_2a_4-2a_2=-4+4=0.
+      $$</p>
+      <p>That correction term $\ell^{k-1}$ is what will become the quadratic term in an Euler factor
+        in essay 17.</p>
+
+      <h3>The first unmistakable clue</h3>
+      <p>Essay 08 attached numbers $a_\ell(E)=\ell+1-\#E(\mathbb F_\ell)$ to an elliptic curve.
+        Essay 10 made them traces of Frobenius. This essay has now attached numbers
+        $a_\ell(f)$ to a modular form as eigenvalues of Hecke operators. The constructions share no
+        ingredients:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>elliptic curve</th><th>modular form</th></tr></thead>
+          <tbody>
+            <tr><td>count points over $\mathbb F_\ell$</td><td>average over index-$\ell$ lattices</td></tr>
+            <tr><td>trace of Frobenius</td><td>eigenvalue of $T_\ell$</td></tr>
+            <tr><td>$a_\ell(E)$</td><td>$a_\ell(f)$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Yet for the conductor-$11$ curve and $f_{11}$, essay 12 computed that the two columns give the
+        same integers. Even the prime-power recurrence (8), at weight two, has the same shape as the
+        recurrence for Frobenius traces over $\mathbb F_{\ell^s}$. This does not prove modularity. It
+        is evidence that the two worlds are emitting the same arithmetic signal.</p>
+
+      <h3>Exactly where this essay stops</h3>
+      <p>Three limitations remain, and each becomes work for a later essay.</p>
+      <ul>
+        <li><strong>The bad primes.</strong> The formula used here is not the operator at
+          $\ell\mid N$. If one deliberately applies (3) at $\ell=11$ to $f_{11}$, the resulting series
+          is not $a_{11}f_{11}$. The verification script checks this failure rather than hiding it.</li>
+        <li><strong>Common eigenspaces can be larger than one dimension.</strong> At higher level,
+          lower-level forms can appear more than once. The good operators see the same eigenvalues on
+          those copies, so the spectral theorem alone cannot distinguish them.</li>
+        <li><strong>The level is not yet intrinsic.</strong> A function modular at level $M$ is also
+          modular at multiples of $M$. Calling $N$ “the level” therefore needs a minimality theory,
+          not merely membership in $S_k(\Gamma_0(N))$.</li>
+      </ul>
+      <p>Essay 15 resolves all three with oldforms, degeneracy maps, the new subspace, and the
+        bad-prime operators. Its normalised newforms are the one-dimensional eigenlines that essays
+        16–18 can attach representations and $L$-functions to.</p>
+
+      <h3>The downstream payload</h3>
+      <ul>
+        <li><strong>Essay 15</strong> turns the simultaneous good eigenspaces into canonical newforms
+          with an honest level.</li>
+        <li><strong>Essay 16</strong> attaches a Galois representation whose Frobenius trace is the
+          Hecke eigenvalue $a_\ell(f)$.</li>
+        <li><strong>Essay 17</strong> converts (7) and (8) into an Euler product.</li>
+        <li><strong>Essay 18</strong> can finally state modularity as the equality
+          $a_\ell(E)=a_\ell(f)$, conductor matching level.</li>
+      </ul>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>The coefficient calculation and eigenforms.</strong> Andrew Sutherland's MIT 18.783
+        Fall 2023 Lecture 24, theorem 24.11 and corollaries 24.12–24.15, gives the Hecke relations,
+        computes
+        $a_r(T_\ell f)=a_{\ell r}+\ell^{k-1}a_{r/\ell}$, and proves
+        $a_1(T_nf)=a_n(f)$. Remark 24.16 states the exact restriction used here: at level $N$ these
+        formulas hold for $n$ coprime to $N$, while the operators at primes dividing $N$ must be
+        modified.</p>
+      <p><strong>The imported eigenbasis mechanism.</strong> The same lecture defines the Petersson
+        product in definition 24.18, recalls simultaneous diagonalisation in lemma 24.19, and proves the
+        level-one eigenbasis statement in theorem 24.20. Its discussion immediately after that theorem
+        explains both failures at general level: only the prime-to-level operators are Hermitian, and
+        their simultaneous eigenspaces need not be one-dimensional. Theorem 24.21 is the newform
+        repair, reserved for essay 15.</p>
+      <p><strong>Further reference.</strong> Diamond and Shurman's <em>A First Course in Modular
+        Forms</em> develops Hecke operators through double cosets, the Petersson product, self-adjointness
+        and the newform decomposition.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/hecke_operators.py</code>. It implements
+        (4) with exact integer coefficients; verifies the full Hecke relation and its coprime special
+        case on arbitrary series in weights $2$, $4$ and $12$; checks that $\Delta$ and $f_{11}$ are
+        eigenforms for every tested good prime with eigenvalue $a_\ell$; checks multiplicativity and the
+        prime-power recurrence; and then deliberately misapplies the good-prime formula at $11$ and
+        confirms that it fails.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="14-hecke-coefficients">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              For $\gcd(n,N)=1$,
+              $a_r(T_nf)=\sum_{d\mid(r,n)}d^{k-1}a_{rn/d^2}$; hence for a normalised simultaneous
+              eigenform $\lambda_n=a_n$, the good coefficients are multiplicative, and
+              $a_{\ell^{s+1}}=a_\ell a_{\ell^s}-\ell^{k-1}a_{\ell^{s-1}}$
+              <span class="lref">(L11)</span></li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="14-eigenbasis">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The Petersson product is positive definite; the operators $T_n$ with $\gcd(n,N)=1$
+              preserve $S_k(\Gamma_0(N))$, commute and are self-adjoint; hence the space decomposes
+              into simultaneous good-Hecke eigenspaces, which need not yet be one-dimensional</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
+            <li>Newforms, bad-prime operators, and the meaning of <em>the level</em>
+              <span class="lref">(L12, essay 15)</span></li>
+            <li>Eichler–Shimura, and modularity — assumption (M)
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Ribet's level-lowering theorem <span class="lref">(L18, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="13-valence-and-dimension.html"><span class="dir">← Previous written essay</span> 13 · The dimension formula</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 14 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/7d85286"><code>7d85286</code></a> · 2026-07-26 20:12 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

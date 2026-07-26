@@ -1,3 +1,4 @@
+<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — No Such Form</title>
@@ -54,7 +55,7 @@
         <li>$S$ and $T$ generate $\mathrm{SL}_2(\mathbb{Z})$; $X_0(N)$ is a compact Riemann surface <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span></li>
         <li>A genus-$g$ compact Riemann surface has a $g$-dimensional space of holomorphic differentials <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span></li>
         <li>Riemann--Hurwitz, and the ramification structure of $X_0(N)\to X(1)$ <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span></li>
-        <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(essay 14)</span> <span class="roster-planned">not yet written</span></li>
+        <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(<a href="chapters/14-hecke-operators.html">essay 14</a>)</span></li>
         <li>Newform theory, and the level of a newform <span class="scope-essays">(essay 15)</span> <span class="roster-planned">not yet written</span></li>
         <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
         <li>The Modularity Theorem, semistable case <span class="scope-essays">(essay 18)</span> <span class="roster-planned">not yet written</span></li>
@@ -109,7 +110,7 @@
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is discharged or narrowed.</p>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 7 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 5 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -296,6 +297,11 @@
           <span class="scope-role scope-role--background">Background</span>
           The ramification data at $N=2$ (one point above $i$ with $e=2$, one above $\rho$ with $e=3$, two cusps of widths summing to $3$) gives $g=0$, and at $N=11$ (six above $i$, four above $\rho$, cusp widths $1$ and $11$) gives $g=1$; the levels below $400$ where the dimension vanishes are exactly $1$--$10$, $12$, $13$, $16$, $18$, $25$; and $\nu_\infty$ enters the genus as a ramification count, separately from the vanishing conditions at the cusps, of which exactly one is redundant at weight two by the residue relation -- $\dim M_2-\dim S_2=\nu_\infty-1$, against $\nu_\infty$ for $k\geq4$. Substituting $k=2$ into the $k&gt;2$ dimension formula returns $g-1$, not $g$, so the weight-two case is genuinely separate and not a vanishing coefficient. <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span>
        </li>
+        <li data-proof-id="14-hecke-coefficients">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          For $\gcd(n,N)=1$, the coefficient formula $a_r(T_nf)=\sum_{d\mid(r,n)}d^{k-1}a_{rn/d^2}$ gives $a_1(T_nf)=a_n(f)$. Thus for a normalised simultaneous eigenform the good Hecke eigenvalues are its Fourier coefficients, which are multiplicative and satisfy the prime-power recurrence. <span class="scope-essays">(<a href="chapters/14-hecke-operators.html">essay 14</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -417,6 +423,11 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Riemann--Hurwitz for a covering of compact Riemann surfaces, together with the fact that $X_0(N)\to X(1)$ is ramified only above the two elliptic points and the cusp, with indices dividing $2$ above $i$, dividing $3$ above $\rho$, and unconstrained above the cusp. Substituted into by hand here; the consistency of the resulting counts is checked for every $N&lt;400$. <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span>
        </li>
+        <li data-proof-id="14-eigenbasis">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Petersson product is positive definite, and the Hecke operators $T_n$ with $\gcd(n,N)=1$ preserve $S_k(\Gamma_0(N))$, commute and are self-adjoint. The spectral theorem therefore decomposes the space into simultaneous good-Hecke eigenspaces; at general level these eigenspaces need not yet be one-dimensional. <span class="scope-essays">(<a href="chapters/14-hecke-operators.html">essay 14</a>)</span>
+       </li>
         <li data-proof-id="24-multiplicative-ramification">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -442,16 +453,6 @@
           <span class="scope-mode scope-mode--outlined">Outlined</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="14-eigenbasis">
-          <span class="scope-mode scope-mode--stated">To assume</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The Hecke operators $T_n$ with $\gcd(n,N)=1$ are simultaneously diagonalisable on $S_2(\Gamma_0(N))$. Imported: the Petersson inner product and self-adjointness are a course, and the chain needs only the conclusion. <span class="scope-essays">(essay 14)</span>
-       </li>
-        <li data-proof-id="14-hecke-coefficients">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          For a normalised eigenform, $a_1=1$ forces the Hecke eigenvalues to be the Fourier coefficients, and the coefficients are multiplicative -- the step that makes $a_\ell(f)$ mean anything. <span class="scope-essays">(essay 14)</span>
        </li>
         <li data-proof-id="15-newforms">
           <span class="scope-mode scope-mode--stated">To assume</span>
@@ -658,6 +659,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/3c41a20"><code>3c41a20</code></a> · 2026-07-26 19:11 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/7d85286"><code>7d85286</code></a> · 2026-07-26 20:12 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
