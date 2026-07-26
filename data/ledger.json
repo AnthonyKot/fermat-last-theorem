@@ -748,13 +748,23 @@
     {
       "id": "16-eichler-shimura",
       "register": "stated",
-      "availability": "planned",
+      "availability": "available",
       "role": "required_for_flt",
       "essays": [
         16
       ],
-      "text": "Eichler–Shimura will be stated, not proved.",
+      "text": "A normalized weight-$2$ newform $f$ of level $N$ and a place $\\lambda\\mid p$ of its coefficient field give an irreducible two-dimensional representation $\\rho_{f,\\lambda}$, unramified at $\\ell\\nmid Np$, with characteristic polynomial $X^2-a_\\ell(f)X+\\ell$ at $\\mathrm{Frob}_\\ell$. Imported: the modular-Jacobian construction, two-dimensionality, irreducibility, the Eichler--Shimura relation and the stable-lattice reduction.",
       "short": "Eichler–Shimura"
+    },
+    {
+      "id": "16-level11-frobenius-packet",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        16
+      ],
+      "text": "For the level-$11$ eta product and $E:y^2+y=x^3-x^2$, independent exact $q$-expansion and point-count computations give the same $a_\\ell$ and therefore the same polynomial $X^2-a_\\ell X+\\ell$ at every tested good prime."
     },
     {
       "id": "17-l-functions",

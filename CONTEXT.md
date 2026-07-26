@@ -350,7 +350,7 @@ if copies arrive.
 
 | # | Slug | Construction | Notes |
 |---|------|--------------|-------|
-| 16 | modular-representation | **Eichler–Shimura**: a weight-2 newform of level N gives ρ_{f,p} with tr ρ_f(Frob_ℓ) = a_ℓ(f), via J₀(N) | States L13. Stated, not proved — say so. Both worlds now emit the same kind of object. |
+| 16 | modular-representation *(written)* | **Eichler–Shimura**: a weight-2 newform of level N gives ρ_{f,λ} with characteristic polynomial X² − a_ℓ(f)X + ℓ at Frob_ℓ, via J₀(N) | Registers L13 as an accepted import. Exposes the Jacobian/Hecke construction without pretending to prove two-dimensionality or the Eichler–Shimura relation. The level-11 curve/form Frobenius packets are computed independently and matched as modularity clue 1 of 4. |
 | 17 | two-l-functions | L(E, s) as an Euler product in the a_ℓ; L(f, s) from the coefficient sequence, its Euler product resting on multiplicativity (14); analytic continuation and functional equation | Merges the plan's two L-function threads. The video's framing — the Riemann zeta Euler product works because of unique factorization, and Hecke coefficients are multiplicative the same way — is a good one and connects back to 02. |
 | 18 | modularity-theorem | The clues assembled (a_ℓ ↔ Fourier coefficients, conductor ↔ level), Taniyama–Shimura–Weil, then the **Modularity Theorem**: semistable (Wiles–Taylor 1995), general (BCDT 2001) | Registers L14 as an accepted import. Check: the conductor-11 curve against the level-11 newform's q-expansion, both computed independently and compared — the most convincing paragraph in the book for a 20-line script. |
 

@@ -57,7 +57,7 @@
         <li>Riemann--Hurwitz, and the ramification structure of $X_0(N)\to X(1)$ <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span></li>
         <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(<a href="chapters/14-hecke-operators.html">essay 14</a>)</span></li>
         <li>Newform theory, and the level of a newform <span class="scope-essays">(<a href="chapters/15-newforms-and-level.html">essay 15</a>)</span></li>
-        <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
+        <li>Eichler–Shimura <span class="scope-essays">(<a href="chapters/16-modular-representation.html">essay 16</a>)</span></li>
         <li>The Modularity Theorem, semistable case <span class="scope-essays">(essay 18)</span> <span class="roster-planned">not yet written</span></li>
         <li>Ramification at a multiplicative prime: unramified iff $p\mid v_\ell(\Delta_{\min})$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
         <li>$\bar\rho_{E,p}$ is finite at $p$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
@@ -112,7 +112,7 @@
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is retired or narrowed.</p>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 4 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 3 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -309,6 +309,11 @@
           <span class="scope-role scope-role--background">Background</span>
           The two degeneracy images $f_{11}(q)$ and $f_{11}(q^2)$ span $S_2(\Gamma_0(22))$, share every good Hecke eigenvalue, and satisfy $[U_2]=\left(\begin{smallmatrix}-2&amp;1\\-2&amp;0\end{smallmatrix}\right)$; hence the whole level-$22$ space is old, the newspace is zero, and $U_2$ is not Hermitian. <span class="scope-essays">(<a href="chapters/15-newforms-and-level.html">essay 15</a>)</span>
        </li>
+        <li data-proof-id="16-level11-frobenius-packet">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          For the level-$11$ eta product and $E:y^2+y=x^3-x^2$, independent exact $q$-expansion and point-count computations give the same $a_\ell$ and therefore the same polynomial $X^2-a_\ell X+\ell$ at every tested good prime. <span class="scope-essays">(<a href="chapters/16-modular-representation.html">essay 16</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -440,6 +445,11 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Atkin--Lehner--Li theory preserves the old/new decomposition under the full Hecke algebra, turns a good-Hecke eigenvector in the newspace into a unique normalized full-Hecke eigenform, and assigns every eigensystem a unique primitive level. Imported: the bad-prime adjoint and multiplicity-one machinery. Without it "the level" in Ribet's theorem is undefined. <span class="scope-essays">(<a href="chapters/15-newforms-and-level.html">essay 15</a>)</span>
        </li>
+        <li data-proof-id="16-eichler-shimura">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          A normalized weight-$2$ newform $f$ of level $N$ and a place $\lambda\mid p$ of its coefficient field give an irreducible two-dimensional representation $\rho_{f,\lambda}$, unramified at $\ell\nmid Np$, with characteristic polynomial $X^2-a_\ell(f)X+\ell$ at $\mathrm{Frob}_\ell$. Imported: the modular-Jacobian construction, two-dimensionality, irreducibility, the Eichler--Shimura relation and the stable-lattice reduction. <span class="scope-essays">(<a href="chapters/16-modular-representation.html">essay 16</a>)</span>
+       </li>
         <li data-proof-id="24-multiplicative-ramification">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -465,11 +475,6 @@
           <span class="scope-mode scope-mode--outlined">Outlined</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="16-eichler-shimura">
-          <span class="scope-mode scope-mode--stated">To assume</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          Eichler–Shimura will be stated, not proved. <span class="scope-essays">(essay 16)</span>
        </li>
         <li data-proof-id="18-modularity">
           <span class="scope-mode scope-mode--stated">To assume</span>
@@ -644,7 +649,7 @@
 
     <h2>Status</h2>
 
-    <!-- about-essay-count:start --><p><strong>Nineteen of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/15-newforms-and-level.html">15</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The six unwritten essays are 16, 17, 18, 19, 20 and 21. The canonical proof register currently records 4 required items still owed, so the chain does not yet close. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
+    <!-- about-essay-count:start --><p><strong>Twenty of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/15-newforms-and-level.html">15</a>, <a href="chapters/16-modular-representation.html">16</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The five unwritten essays are 17, 18, 19, 20 and 21. The canonical proof register currently records 3 required items still owed, so the chain does not yet close. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
 
     <p>This is the third in a series of collections built the same way, after
       <em>The Quantum Quartet</em> (four authors on early quantum mechanics) and <em>The Bridge</em>

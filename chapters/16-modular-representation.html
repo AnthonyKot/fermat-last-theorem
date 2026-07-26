@@ -1,0 +1,442 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>16 · The representation attached to a form — No Such Form</title>
+<meta name="description" content="A weight-two newform cuts a two-dimensional Galois representation out of a modular Jacobian. Eichler–Shimura makes its Frobenius traces equal the form's Fourier coefficients.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part IV · The two worlds are one — Essay 16</p>
+    <h1>The representation attached to a form</h1>
+    <p class="lede">A newform begins as a holomorphic function. Its Hecke eigenvalues let us isolate
+      a two-dimensional piece of the Tate module of a modular Jacobian, and Galois acts on that piece
+      with exactly those eigenvalues as traces of Frobenius.</p>
+
+    <div class="claim">
+      <span class="tag">This essay exposes a construction and imports its hard theorem</span>
+      <strong>Defines:</strong> the coefficient field $K_f$, the modular Jacobian $J_0(N)$, the
+      $f$-isotypic Galois representation $\rho_{f,\lambda}$ and its residual semisimplification.
+      <strong>Computes:</strong> the common Frobenius polynomials of the level-$11$ newform and the
+      conductor-$11$ elliptic curve.
+      <strong>Imports:</strong> the Eichler–Shimura construction and relation, including
+      two-dimensionality, irreducibility and the good-prime characteristic polynomial.
+      <strong>Ledger:</strong>
+      <span data-ledger-resolution="imported">Registers <strong>L13</strong> as an accepted
+        import.</span>
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> The two outputs we want to compare</h2>
+      <p>Essay <a href="10-elliptic-representation.html">10</a> started with an elliptic curve
+        $E/\mathbb Q$ and obtained, for every prime $p$, a representation</p>
+      <p>$$
+        \rho_{E,p}:G_{\mathbb Q}\longrightarrow\operatorname{GL}_2(\mathbb Q_p).
+        \tag{1}
+      $$</p>
+      <p>At a good auxiliary prime $\ell\neq p$, it is unramified and satisfies</p>
+      <p>$$
+        \det\!\left(XI-\rho_{E,p}(\mathrm{Frob}_\ell)\right)
+        =X^2-a_\ell(E)X+\ell,
+        \qquad
+        a_\ell(E)=\ell+1-\#E(\mathbb F_\ell).
+        \tag{2}
+      $$</p>
+      <p>Essays <a href="14-hecke-operators.html">14</a> and
+        <a href="15-newforms-and-level.html">15</a> produced a very different object: a normalized
+        weight-$2$ newform</p>
+      <p>$$
+        f(q)=\sum_{n\geq1}a_n(f)q^n
+        \in S_2(\Gamma_0(N))^{\mathrm{new}}.
+        \tag{3}
+      $$</p>
+      <p>The coefficient $a_\ell(f)$ is the eigenvalue of $T_\ell$ when $\ell\nmid N$. The immediate
+        question is whether equation (3), which describes a complex function, can also produce a
+        representation of $G_{\mathbb Q}$.</p>
+      <p>It can. More strikingly, its good-prime polynomial has the same shape as (2):</p>
+      <p>$$
+        X^2-a_\ell(f)X+\ell.
+        \tag{4}
+      $$</p>
+      <p>The rest of this essay explains where the representation lives, why Hecke operators select
+        a two-dimensional piece, and exactly which step turns (4) from a suggestive pattern into a
+        theorem.</p>
+
+      <div class="fence">
+        <strong>Keep the direction straight.</strong> This essay starts with a newform and constructs
+        a Galois representation. It does <em>not</em> start with an arbitrary elliptic curve and prove
+        that a newform exists. That converse direction is the Modularity Theorem, reserved for
+        essay 18.
+      </div>
+
+      <h3>Two primes with different jobs</h3>
+      <p>The collection fixes the following notation:</p>
+      <ul>
+        <li>$p$ is the residual prime — later it is also the exponent in a hypothetical Fermat
+          solution;</li>
+        <li>$\ell$ is an auxiliary prime at which we inspect Frobenius.</li>
+      </ul>
+      <p>Thus every clean Frobenius formula below assumes $\ell\nmid Np$. Some sources reverse these
+        two letters. The mathematics is unchanged, but silently importing their notation would make
+        the exclusions wrong.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> How a function enters a Tate module</h2>
+
+      <h3>The coefficient field</h3>
+      <p>The coefficients of a normalized newform need not be rational. They generate a number
+        field</p>
+      <p>$$
+        K_f=\mathbb Q\bigl(a_1(f),a_2(f),a_3(f),\ldots\bigr).
+        \tag{5}
+      $$</p>
+      <p>To make a $p$-adic representation, choose a prime ideal
+        $\lambda\subseteq\mathcal O_{K_f}$ above $p$ and complete:</p>
+      <p>$$
+        K_{f,\lambda}.
+        \tag{6}
+      $$</p>
+      <p>If every coefficient is an integer, as for our level-$11$ example, then $K_f=\mathbb Q$ and
+        (6) is simply $\mathbb Q_p$. Keeping the general notation matters because most newforms do
+        not have rational coefficients.</p>
+
+      <h3>From the modular curve to its Jacobian</h3>
+      <p>Essay <a href="13-valence-and-dimension.html">13</a> treated $X_0(N)$ as a compact Riemann
+        surface. Its Jacobian is</p>
+      <p>$$
+        J_0(N)=\operatorname{Pic}^0(X_0(N)),
+        \tag{7}
+      $$</p>
+      <p>the group of degree-zero divisor classes on the curve. It is an abelian variety over
+        $\mathbb Q$ of dimension equal to the genus of $X_0(N)$. If that genus is $g$, its
+        $p$-adic Tate module</p>
+      <p>$$
+        V_p(J_0(N))=T_p(J_0(N))\otimes_{\mathbb Z_p}\mathbb Q_p
+        \tag{8}
+      $$</p>
+      <p>has dimension $2g$ and carries a continuous action of $G_{\mathbb Q}$. This is the same
+        construction used for an elliptic curve in essay 10, except that a Jacobian may have much
+        larger dimension.</p>
+
+      <h3>The second action on the same space</h3>
+      <p>Hecke operators do more than act on holomorphic functions. Each $T_n$ comes from a
+        correspondence between modular curves: one map remembers an elliptic curve with an extra
+        finite subgroup, while the other quotients by that subgroup. Pulling divisor classes one way
+        and pushing them the other makes $T_n$ act on $J_0(N)$ and therefore on (8).</p>
+      <p>The Galois and Hecke actions commute. So the same large vector space carries two compatible
+        kinds of symmetry:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>action</th><th>what it records</th></tr></thead>
+          <tbody>
+            <tr><td>$G_{\mathbb Q}$</td><td>how algebraic torsion points move</td></tr>
+            <tr><td>the Hecke algebra $\mathbb T$</td><td>how isogeny correspondences move divisor classes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>The newform selects one eigensystem</h3>
+      <p>A normalized newform defines an algebra homomorphism</p>
+      <p>$$
+        \theta_f:\mathbb T\longrightarrow\mathcal O_{K_f},
+        \qquad
+        T_n\longmapsto a_n(f).
+        \tag{9}
+      $$</p>
+      <p>We use (9) to keep only the part of (8) on which every Hecke operator acts through the
+        eigenvalues of $f$. Schematically,</p>
+      <p>$$
+        V_{f,\lambda}
+        =
+        V_p(J_0(N))
+        \otimes_{\mathbb T\otimes\mathbb Q_p,\ \theta_f}
+        K_{f,\lambda}.
+        \tag{10}
+      $$</p>
+      <p>The notation suppresses some bookkeeping at old factors and bad primes, but the operation is
+        familiar linear algebra: a commuting algebra acts on a large space, and an eigenvalue system
+        cuts out its corresponding component. Because the Galois action commutes with $\mathbb T$, it
+        survives on that component.</p>
+      <p>The deep assertion is that (10) is two-dimensional over $K_{f,\lambda}$. Hence it gives</p>
+      <p>$$
+        \rho_{f,\lambda}:G_{\mathbb Q}
+        \longrightarrow\operatorname{GL}_2(K_{f,\lambda}).
+        \tag{11}
+      $$</p>
+      <p>Nothing in the elementary $q$-series calculation of essay 14 proves that dimension. The
+        passage through the geometry and cohomology of the modular curve is essential.</p>
+
+      <h3>The imported theorem and relation</h3>
+      <div class="fence">
+        <strong>Imported: Eichler–Shimura in the weight-$2$ representation form.</strong> Let $f$ be
+        a normalized weight-$2$ newform of level $N$ with trivial character, let
+        $\lambda\mid p$ in $K_f$, and form (10). Then:
+        <ol>
+          <li>$V_{f,\lambda}$ is two-dimensional and $\rho_{f,\lambda}$ is continuous and
+            irreducible;</li>
+          <li>it is unramified at every prime $\ell\nmid Np$; and</li>
+          <li>at every such $\ell$,
+            $$
+              \det\!\left(XI-\rho_{f,\lambda}(\mathrm{Frob}_\ell)\right)
+              =X^2-a_\ell(f)X+\ell.
+              \tag{12}
+            $$</li>
+        </ol>
+        The construction through $J_0(N)$ and the relation between Frobenius and $T_\ell$ are often
+        grouped under “Eichler–Shimura” in weight $2$; the general $\ell$-adic representation theorem
+        is also associated with Deligne. This collection imports the existence, dimension,
+        irreducibility, unramifiedness and equation (12) together as
+        <code>16-eichler-shimura</code>.
+      </div>
+      <p>The load-bearing geometric identity behind (12) is the Eichler–Shimura relation. In the
+        present trivial-character setting, Frobenius on the relevant Tate module obeys</p>
+      <p>$$
+        \mathrm{Frob}_\ell^2
+        -T_\ell\mathrm{Frob}_\ell
+        +\ell=0.
+        \tag{13}
+      $$</p>
+      <p>Projecting to the $f$-component replaces $T_\ell$ by $a_\ell(f)$, turning (13) into the
+        polynomial (12). Thus</p>
+      <p>$$
+        \operatorname{tr}\rho_{f,\lambda}(\mathrm{Frob}_\ell)=a_\ell(f),
+        \qquad
+        \det\rho_{f,\lambda}(\mathrm{Frob}_\ell)=\ell.
+        \tag{14}
+      $$</p>
+      <p>These equalities are consequences of the imported characteristic polynomial, not a second
+        independent theorem proved here.</p>
+
+      <h3>Reduction modulo $\lambda$</h3>
+      <p>A continuous representation of the profinite group $G_{\mathbb Q}$ preserves a suitable
+        $\mathcal O_{K_f,\lambda}$-lattice. Reducing that lattice modulo $\lambda$ gives a residual
+        representation over the finite residue field
+        $k_\lambda=\mathcal O_{K_f}/\lambda$. Different stable lattices can give different raw
+        reductions, so the canonical object is the semisimplification</p>
+      <p>$$
+        \bar\rho_{f,\lambda}^{\,\mathrm{ss}}:
+        G_{\mathbb Q}\longrightarrow\operatorname{GL}_2(k_\lambda).
+        \tag{15}
+      $$</p>
+      <p>At $\ell\nmid Np$, equation (12) reduces coefficient by coefficient:</p>
+      <p>$$
+        \det\!\left(XI-\bar\rho_{f,\lambda}^{\,\mathrm{ss}}
+          (\mathrm{Frob}_\ell)\right)
+        \equiv X^2-a_\ell(f)X+\ell\pmod\lambda.
+        \tag{16}
+      $$</p>
+      <p>The $p$-adic representation in (11) is irreducible; its residual reduction in (15) need not
+        be. That distinction is crucial in essays 24 and 25, where irreducibility modulo $p$ is a
+        separate hypothesis rather than an automatic inheritance.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> Level $11$: the bridge in one dimension</h2>
+
+      <h3>The large Jacobian collapses to an elliptic curve</h3>
+      <p>For general $N$, $J_0(N)$ may be high-dimensional. At level $11$, essay 13 computed</p>
+      <p>$$
+        \dim S_2(\Gamma_0(11))=g(X_0(11))=1.
+        \tag{17}
+      $$</p>
+      <p>Therefore $J_0(11)$ is itself an elliptic curve. The unique normalized newform is</p>
+      <p>$$
+        f_{11}(q)
+        =\bigl(\eta(z)\eta(11z)\bigr)^2
+        =q-2q^2-q^3+2q^4+q^5+2q^6-2q^7+\cdots.
+        \tag{18}
+      $$</p>
+      <p>Its coefficients are integers, so $K_{f_{11}}=\mathbb Q$. The general construction (10)
+        has no extra eigenspaces to remove: up to the choice of the optimal curve in its isogeny
+        class, it is simply the Tate module of $J_0(11)$.</p>
+      <p>The integral-coefficient form of Eichler–Shimura, with Carayol's conductor refinement, says
+        that a weight-$2$ newform of level $N$ with integral coefficients gives an elliptic curve of
+        conductor $N$, determined up to isogeny. At $N=11$ this is the isogeny class
+        <code>11.a</code>. The familiar model used earlier in the collection,</p>
+      <p>$$
+        E:\quad y^2+y=x^3-x^2,
+        \tag{19}
+      $$</p>
+      <p>is the member <code>11.a3</code>; the $\Gamma_0(11)$-optimal representative is
+        <code>11.a2</code>. This distinction changes the chosen equation, not the good-prime
+        Frobenius polynomials shared by the isogeny class.</p>
+
+      <h3>The same numbers, computed by unrelated rules</h3>
+      <p>Essay <a href="08-reduction-and-conductor.html">08</a> counted points on (19). Essay
+        <a href="12-modular-forms.html">12</a> expanded the eta product (18). Put the results beside
+        each other:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>$\ell$</th>
+              <th>$\#E(\mathbb F_\ell)$</th>
+              <th>$a_\ell(E)=\ell+1-\#E(\mathbb F_\ell)$</th>
+              <th>$a_\ell(f_{11})$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>$2$</td><td>$5$</td><td>$-2$</td><td>$-2$</td></tr>
+            <tr><td>$3$</td><td>$5$</td><td>$-1$</td><td>$-1$</td></tr>
+            <tr><td>$5$</td><td>$5$</td><td>$1$</td><td>$1$</td></tr>
+            <tr><td>$7$</td><td>$10$</td><td>$-2$</td><td>$-2$</td></tr>
+            <tr><td>$13$</td><td>$10$</td><td>$4$</td><td>$4$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>For example, at $\ell=5$ both constructions give</p>
+      <p>$$ X^2-X+5, \tag{20} $$</p>
+      <p>while at $\ell=7$ both give</p>
+      <p>$$ X^2+2X+7. \tag{21} $$</p>
+      <p>One side obtained the middle coefficient by counting solutions to a cubic over a finite
+        field. The other extracted it from an infinite product of holomorphic functions. The
+        Eichler–Shimura relation says that they are readings of the same Frobenius action.</p>
+
+      <div class="fence">
+        <strong>Modularity clue 1 of 4: the same Frobenius polynomial.</strong> The curve and the
+        newform independently produce $X^2-a_\ell X+\ell$ at every good prime, and in the level-$11$
+        example their middle coefficients agree. This clue is already a theorem in the
+        newform-to-curve direction. It does not yet say that every elliptic curve occurs.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> What it buys, and where it stops</h2>
+
+      <h3>Both worlds now emit the same kind of object</h3>
+      <p>Before this essay, our two routes ended in different categories:</p>
+      <p>$$
+        E
+        \longmapsto \rho_{E,p},
+        \qquad
+        f
+        \longmapsto (a_1(f),a_2(f),a_3(f),\ldots).
+      $$</p>
+      <p>Now they end in the same category:</p>
+      <p>$$
+        E\longmapsto\rho_{E,p},
+        \qquad
+        f\longmapsto\rho_{f,\lambda}.
+        \tag{22}
+      $$</p>
+      <p>At almost every prime, both representations are identified by the same trace and determinant
+        data. Essay 05 imported the theorem that traces of Frobenius at almost all primes determine a
+        semisimple representation. Consequently, equality of the good coefficients is not merely a
+        long numerical coincidence: it is enough to compare the two semisimple Galois
+        representations.</p>
+
+      <h3>The level is already visible</h3>
+      <p>The representation $\rho_{f,\lambda}$ is unramified away from $Np$. Thus the exact newform
+        level from essay 15 already controls where the representation can ramify. This is the first
+        structural hint that a curve's conductor and a newform's level should be paired. Essay 17
+        will package the same local polynomials into Euler products; essay 18 will state the theorem
+        that makes conductor equal level for the form attached to a curve.</p>
+
+      <h3>What remains imported</h3>
+      <p>The diagram “modular curve → Jacobian → Tate module → eigenspace” explains the architecture,
+        but it is not a proof of the construction theorem. In particular, this essay has not proved:</p>
+      <ul>
+        <li>that the Hecke-isotypic quotient in (10) is exactly two-dimensional;</li>
+        <li>the Eichler–Shimura relation (13);</li>
+        <li>the irreducibility or precise ramification of $\rho_{f,\lambda}$;</li>
+        <li>independence of the residual semisimplification from the chosen stable lattice; or</li>
+        <li>the Modularity Theorem's converse direction.</li>
+      </ul>
+      <p>Those first four items are contained in the registered import on this page. The last remains
+        the named assumption of essay 18.</p>
+
+      <h3>Reading</h3>
+      <p><strong>The construction used here.</strong> CJ Dowd's Berkeley notes
+        <a href="https://math.berkeley.edu/~cjdowd/modulargalois.pdf"><em>Constructing
+        2-dimensional Galois representations associated to modular forms of weight 2</em></a>,
+        theorem 1.2 and §§1.3–1.4, construct the two-dimensional representation from
+        the Tate module of a modular Jacobian and its Hecke action. Theorems 2.1–2.2 give the
+        Eichler–Shimura relation and the polynomial
+        $X^2-a_\ell X+\varepsilon(\ell)\ell$; our $\Gamma_0(N)$ forms have trivial character
+        $\varepsilon=1$.</p>
+      <p><strong>The integral-coefficient special case.</strong> Andrew Sutherland's MIT 18.783
+        <a href="https://math.mit.edu/classes/18.783/2023/LectureNotes24.pdf">Lecture 24</a>,
+        theorem 24.37, states that a weight-$2$ newform of level $N$ with integral
+        coefficients yields an elliptic curve of conductor $N$, determined up to isogeny. The notes
+        distinguish the original Eichler–Shimura construction from Carayol's later conductor
+        refinement.</p>
+      <p><strong>Original provenance.</strong> Pierre Deligne's
+        <a href="https://publications.ias.edu/sites/default/files/5_FormesModulaires.pdf">“Formes
+        modulaires et représentations $\ell$-adiques”</a>, Séminaire Bourbaki 355 (1968/69),
+        develops the $\ell$-adic representation construction and begins with the model identity
+        $\det(1-\mathrm{Frob}_\ell X)=1-\tau(\ell)X+\ell^{11}X^2$ for $\Delta$.</p>
+      <p><strong>Check it yourself.</strong> Run
+        <code>checks/modular_representation.py</code>. It builds (18) with exact integer arithmetic,
+        counts points on (19) at every good prime below $47$, checks the equality of the two traces,
+        and reduces the common characteristic polynomial modulo $p=3,5,7$. It checks the displayed
+        example, not the imported theorem.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="16-level11-frobenius-packet">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              For the level-$11$ eta product and $E:y^2+y=x^3-x^2$, independent exact
+              $q$-expansion and point-count computations give the same $a_\ell$ and therefore the
+              same polynomial $X^2-a_\ell X+\ell$ at every tested good prime</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="16-eichler-shimura">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              A normalized weight-$2$ newform $f$ of level $N$ and a place $\lambda\mid p$ give an
+              irreducible two-dimensional representation $\rho_{f,\lambda}$, unramified at
+              $\ell\nmid Np$, with characteristic polynomial
+              $X^2-a_\ell(f)X+\ell$ at $\mathrm{Frob}_\ell$
+              <span class="lref">(L13)</span></li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
+            <li>Modularity — assumption (M) <span class="lref">(L14, essay 18)</span></li>
+            <li>Ribet's level-lowering theorem <span class="lref">(L18, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="15-newforms-and-level.html"><span class="dir">← Previous written essay</span> 15 · Newforms, and the meaning of the level</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 16 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp"><a href="https://github.com/AnthonyKot/fermat-last-theorem">Source</a> · <a href="https://github.com/AnthonyKot/fermat-last-theorem/deployments">deployment history</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

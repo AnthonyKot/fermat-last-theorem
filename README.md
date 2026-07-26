@@ -24,7 +24,7 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Nineteen essays are written — the two ends of the rope,
+Scaffold and the full 25-essay map are complete. Twenty essays are written — the two ends of the rope,
 the valuation, the elliptic-curve bridge as far as the conductor, and the semistability check:
 
 | # | Essay | What it delivers |
@@ -44,6 +44,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 | 13 | The dimension formula | Weight-two forms as differentials; Riemann–Hurwitz gives $\dim S_2(\Gamma_0(N))$ and the level-$2$ space vanishes |
 | 14 | Hecke operators | The $q$-coefficient formula; eigenvalues are Fourier coefficients; multiplicativity and the prime-power recurrence |
 | 15 | Newforms, and the meaning of the level | The level-$22$ oldspace and bad-prime $U_2$ computed; Atkin–Lehner–Li imported to define normalized newforms and exact level |
+| 16 | The representation attached to a form | The modular-Jacobian route from a weight-$2$ newform to $\rho_{f,\lambda}$; Eichler–Shimura imported; the level-$11$ Frobenius packets matched exactly |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
 | 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; irreducibility for every $p\geq5$ |
@@ -52,8 +53,10 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 16–21 are stubbed on
-the contents page, and essay 25 states plainly that it is conditional until they exist.
+valuation to link back to rather than a declared debt. Essays 17–21 are stubbed on
+the contents page. Of those, essay 18 carries the remaining modularity debt; essay 17 is the
+motivating $L$-function bridge and essays 19–21 are an optional anatomy of Wiles's machinery.
+Essay 25 states its remaining conditions explicitly.
 
 ## Verification
 
