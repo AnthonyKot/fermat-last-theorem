@@ -51,6 +51,19 @@
         13
       ],
       "note": "The depends_on state was added, so a proof conditional on an assumption made elsewhere is no longer filed as a second assumption. The assumption count therefore changed meaning: it now counts ROOT imports, not every record resting on one. A better metric, and a different one."
+    },
+    {
+      "commit": "449ffae",
+      "date": "2026-07-26",
+      "owed": [
+        10,
+        7
+      ],
+      "assumptions": [
+        20,
+        21
+      ],
+      "note": "Essay 13 derived the dimension formula instead of quoting it, which closed three owed items -- the formula itself, essay 25's level-2 computation, and the pre-registered valence-formula plan. The assumption count went UP, from 20 to 21, and that is the honest direction: 13-valence-formula was retired and replaced by the two imports the Riemann-Hurwitz derivation actually spends. Discharging an assumption by deriving it can cost more root imports than it saves, and the register is supposed to show that rather than hide it."
     }
   ],
   "proof_register": [

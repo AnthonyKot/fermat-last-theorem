@@ -83,6 +83,7 @@
         <ul>
           <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/9a0cfc2"><code>9a0cfc2</code></a> · 2026-07-26 · <strong>owed 8&nbsp;&rarr;&nbsp;19; assumed 9&nbsp;&rarr;&nbsp;13</strong><br>Eight essays had no register entry at all, so the owed count tracked only pre-declared debts and could not fall when an unregistered essay landed. Twelve records were added for essays 03, 05, 09, 11, 12, 13, 14, 15 and 17. The owed number stopped being a partial tally and became the whole remaining required work -- which is why it rose while five essays were shipping.</li>
           <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 · <strong>assumed 14&nbsp;&rarr;&nbsp;13</strong><br>The depends_on state was added, so a proof conditional on an assumption made elsewhere is no longer filed as a second assumption. The assumption count therefore changed meaning: it now counts ROOT imports, not every record resting on one. A better metric, and a different one.</li>
+          <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/449ffae"><code>449ffae</code></a> · 2026-07-26 · <strong>owed 10&nbsp;&rarr;&nbsp;7; assumed 20&nbsp;&rarr;&nbsp;21</strong><br>Essay 13 derived the dimension formula instead of quoting it, which closed three owed items -- the formula itself, essay 25's level-2 computation, and the pre-registered valence-formula plan. The assumption count went UP, from 20 to 21, and that is the honest direction: 13-valence-formula was retired and replaced by the two imports the Riemann-Hurwitz derivation actually spends. Discharging an assumption by deriving it can cost more root imports than it saves, and the register is supposed to show that rather than hide it.</li>
         </ul>
       </details>
       <details class="scope-revisions">
@@ -104,6 +105,7 @@
           <tr><td><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/5ae400b"><code>5ae400b</code></a></td><td>12</td><td>19</td><td>Close the p &gt;= 5 threshold by citation: Mazur's sharpened isogeny theore</td></tr>
           <tr><td><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/91fae54"><code>91fae54</code></a></td><td>11</td><td>20</td><td>Write essay 11: the modular group, and the four counts Part III exists t</td></tr>
           <tr><td><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/07be53e"><code>07be53e</code></a></td><td>10</td><td>20</td><td>Write essay 12: modular forms, and the level-11 form exhibited</td></tr>
+          <tr><td><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/449ffae"><code>449ffae</code></a></td><td>7</td><td>21</td><td>Write essay 13, discharging assumption (F)</td></tr>
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is discharged or narrowed.</p>
       </details>
@@ -656,6 +658,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/cccbb4c"><code>cccbb4c</code></a> · 2026-07-26 19:09 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/449ffae"><code>449ffae</code></a> · 2026-07-26 19:10 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
