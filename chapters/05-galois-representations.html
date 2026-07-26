@@ -1,0 +1,325 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05 · Galois representations — No Such Form</title>
+<meta name="description" content="Continuous rho from G_Q to GL_2, ramification and the conductor of a representation, irreducibility, and why traces of Frobenius are enough to identify a semisimple representation.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part I · The old method, and why it stops — Essay 05</p>
+    <h1>Galois representations</h1>
+    <p class="lede">$G_{\mathbb{Q}}$ cannot be written down, but a $2\times2$ matrix can. Turning the
+      one into the other loses information on purpose — and the surprise is how little is lost: two
+      such objects agree as soon as a sequence of integers does.</p>
+
+    <div class="claim">
+      <span class="tag">This essay defines, states, and verifies</span>
+      <strong>Defines:</strong> a continuous $\rho:G_{\mathbb{Q}}\to\mathrm{GL}_2(K)$, unramified
+      primes, irreducibility and semisimplicity.
+      <strong>States:</strong> inertia subgroups and the conductor $N(\rho)$; and that
+      <em>traces of Frobenius determine a semisimple representation</em>.
+      <strong>Verifies:</strong> the matrix fact underneath that theorem, and that its
+      semisimplicity hypothesis cannot be dropped.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>This essay has no forward debts, which has not been true for a while. Both its inputs are
+        written.</p>
+      <p>Essay <a href="03-galois-and-g-q.html">03</a> gives $G_{\mathbb{Q}}$ as
+        $\varprojlim\mathrm{Gal}(K/\mathbb{Q})$, its topology, and the definition of continuity that
+        goes with a non-discrete target: every layer determined at a finite level, not $\rho$ itself.
+        It gives Frobenius elements at unramified primes as <em>conjugacy classes</em>, and the
+        cyclotomic character with $\chi(\mathrm{Frob}_\ell)=\ell$.</p>
+      <p>Essay <a href="04-p-adics-and-modules.html">04</a> gives $\mathbb{Z}_\ell$ with its topology,
+        free modules of rank $2$, and the criterion that a matrix lies in
+        $\mathrm{GL}_2(\mathbb{Z}_\ell)$ exactly when its determinant is a unit. It also fixes the
+        convention in force here: $\ell$ is an auxiliary prime, $p$ is the Fermat exponent.</p>
+      <p>What is missing is the vocabulary in which the rest of the collection speaks. Essay 10 built a
+        representation before this essay existed and had to leave three words undefined —
+        <em>continuous</em>, <em>unramified</em>, <em>conductor</em>. This essay supplies them.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>The definition, and what continuity costs</h3>
+      <p>Let $K$ be a topological ring — for this collection $\mathbb{F}_\ell$, $\mathbb{Z}_\ell$ or
+        $\mathbb{Q}_\ell$. A <strong>two-dimensional Galois representation</strong> is a continuous
+        group homomorphism</p>
+      <p>$$
+        \rho:G_{\mathbb{Q}}\longrightarrow\mathrm{GL}_2(K).
+      $$</p>
+      <p>Essay 03 already sorted out what continuity means, and the two cases stay distinct here. For
+        $K=\mathbb{F}_\ell$, discrete and finite, $\rho$ has open kernel and factors through
+        $\mathrm{Gal}(K'/\mathbb{Q})$ for a single finite $K'$: the representation is a finite object in
+        disguise. For $K=\mathbb{Z}_\ell$ it is not, and typically has infinite image; what continuity
+        asks is that each reduction $G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}/\ell^n)$ be determined
+        at a finite level.</p>
+      <p>Say plainly what has been given up. $G_{\mathbb{Q}}$ is uncountable and unpresentable;
+        $\mathrm{GL}_2(\mathbb{F}_\ell)$ has $(\ell^2-1)(\ell^2-\ell)$ elements. Almost everything is
+        discarded. The bet of the whole subject is that what survives — where the representation is
+        ramified, what its traces are — is enough to answer arithmetic questions. The rest of this
+        essay is about what survives.</p>
+
+      <h3>Ramification: where the representation notices a prime</h3>
+      <p>Essay 03 built decomposition groups at <em>unramified</em> primes and stopped there. To speak
+        of an arbitrary prime, one more subgroup is needed.</p>
+      <div class="fence">
+        <strong>Stated: inertia, and the conductor.</strong> For each prime $\ell$ there is a
+        decomposition subgroup $D_\ell\subseteq G_{\mathbb{Q}}$ and inside it an <em>inertia
+        subgroup</em> $I_\ell$, with $D_\ell/I_\ell$ generated by $\mathrm{Frob}_\ell$. Say $\rho$ is
+        <strong>unramified at $\ell$</strong> when $\rho(I_\ell)=1$; then $\rho(\mathrm{Frob}_\ell)$ is
+        well defined up to conjugacy. There is a <strong>conductor</strong>
+        $$N(\rho)=\prod_\ell\ell^{\,n_\ell(\rho)},$$
+        defined by a formula in the higher ramification subgroups, with two properties this collection
+        uses: $n_\ell=0$ exactly when $\rho$ is unramified at $\ell$, and when the ramification is
+        <em>tame</em>,
+        $$n_\ell=\dim V-\dim V^{I_\ell},$$
+        the codimension of the subspace that inertia fixes. The general formula is not developed here.
+      </div>
+      <p>Two remarks make that less abstract than it looks. First, $\rho$ is unramified at all but
+        finitely many primes, so $N(\rho)$ is a genuine integer. Second, the conductor is a measure of
+        <em>how much of the representation a prime disturbs</em>: unramified means the prime is
+        invisible to $\rho$; $n_\ell=1$ means inertia fixes a line but not the plane; $n_\ell=2$ means it
+        fixes nothing.</p>
+      <p>That middle case is the one the endgame turns on. Essay 24 must show that
+        $\bar\rho_{\mathrm{Frey},p}$ has conductor exactly $2$ — meaning unramified at every odd prime,
+        and at $2$ disturbed just enough to fix a line and no more. The definition needed to state that
+        is now on the page.</p>
+
+      <h3>Irreducible, reducible, semisimple</h3>
+      <p>Call $\rho$ <strong>irreducible</strong> if no line in $K^2$ is preserved by every
+        $\rho(\sigma)$, and <strong>reducible</strong> otherwise. In two dimensions the picture is
+        completely concrete. A preserved line means a basis in which every matrix is upper
+        triangular,</p>
+      <p>$$
+        \rho(\sigma)=\begin{pmatrix}\psi_1(\sigma)&amp;*\\0&amp;\psi_2(\sigma)\end{pmatrix},
+      $$</p>
+      <p>and the diagonal entries are then one-dimensional representations — <em>characters</em>
+        $\psi_i:G_{\mathbb{Q}}\to K^\times$. So a reducible two-dimensional representation is two
+        characters plus a possibly non-zero corner.</p>
+      <p>$\rho$ is <strong>semisimple</strong> if it is a direct sum of irreducibles: in dimension two,
+        either irreducible, or a direct sum $\psi_1\oplus\psi_2$ of two characters — the reducible case
+        with the corner made zero. Every $\rho$ has a <strong>semisimplification</strong>: keep the
+        diagonal, discard the corner. That operation is not invertible, and the next section is about
+        exactly the information it destroys.</p>
+      <p>Two invariants survive any change of basis, because they are conjugation-invariant:
+        $\operatorname{tr}\rho(\sigma)$ and $\det\rho(\sigma)$. And this is where essay 03's remark
+        pays: $\mathrm{Frob}_\ell$ is only a conjugacy class, so trace and determinant are precisely the
+        quantities one is <em>allowed</em> to evaluate on it. Essay 10 wrote
+        $\operatorname{tr}\bar\rho(\mathrm{Frob}_\ell)$ and $\det\bar\rho(\mathrm{Frob}_\ell)$ for that
+        reason, and could not have written the matrix.</p>
+
+      <h3>Traces are enough</h3>
+      <p>Now the theorem that makes the whole collection's strategy viable.</p>
+      <div class="fence">
+        <strong>Stated.</strong> Let $\rho_1,\rho_2:G_{\mathbb{Q}}\to\mathrm{GL}_2(K)$ be continuous and
+        <em>semisimple</em>, both unramified outside a finite set $S$. If
+        $$\operatorname{tr}\rho_1(\mathrm{Frob}_\ell)=\operatorname{tr}\rho_2(\mathrm{Frob}_\ell)
+        \quad\text{for all }\ell\notin S,$$
+        then $\rho_1\cong\rho_2$. Two ingredients: the Frobenius classes are dense in
+        $G_{\mathbb{Q}}$, so knowing traces there fixes traces everywhere; and a semisimple
+        representation is determined by its trace function.
+      </div>
+      <p>Read what that buys. A representation is an uncountable amount of data. The theorem says that
+        for semisimple ones, <strong>a sequence of numbers indexed by primes determines it
+        completely</strong>. So the assertion "the representation coming from this elliptic curve is the
+        one coming from that modular form" — which is what modularity says in essay 18 — becomes the
+        assertion that two integer sequences agree. That is checkable, and essay 18 checks it.</p>
+      <p>The hypothesis is not decoration, and it is worth seeing why. Consider</p>
+      <p>$$
+        \begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}
+        \qquad\text{and}\qquad
+        \begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+      $$</p>
+      <p>Same trace, same determinant, same characteristic polynomial — and not conjugate, since one is
+        the identity and the other is not. The second is reducible but not semisimple: it fixes a line
+        and cannot be diagonalised. So traces cannot distinguish a representation from its
+        semisimplification, and any theorem claiming they could would be false. What the theorem
+        identifies is semisimplifications, which is all the Fermat argument ever needs.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The smallest interesting representations are quadratic fields</h3>
+      <p>A one-dimensional representation is a character
+        $\psi:G_{\mathbb{Q}}\to K^\times$, and the concrete ones are already familiar. Essay 03 computed
+        $\mathrm{Gal}(\mathbb{Q}(\zeta_5)/\mathbb{Q})\cong(\mathbb{Z}/5)^\times$, cyclic of order
+        $4$. Compose with the unique surjection to $\{\pm1\}$ — the Legendre symbol
+        $a\mapsto\left(\tfrac a5\right)$:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>$a$</th><th>$1$</th><th>$2$</th><th>$3$</th><th>$4$</th></tr></thead>
+          <tbody><tr><td>$\left(\tfrac a5\right)$</td><td>$+1$</td><td>$-1$</td><td>$-1$</td><td>$+1$</td></tr></tbody>
+        </table>
+      </div>
+      <p>Its kernel is $\{1,4\}=\{1,\sigma_{-1}\}$ — precisely the subgroup essay 03 showed fixes
+        $\mathbb{Q}(\sqrt5)$. So this character <em>is</em> that quadratic field, viewed as a
+        representation, and it is ramified only at $5$: its conductor is $5$. A character of
+        $G_{\mathbb{Q}}$ with values in $\{\pm1\}$ and a quadratic field are the same information.</p>
+
+      <h3>Identifying a curve's representation by counting points</h3>
+      <p>Here is the theorem doing work on an object this collection has already computed.</p>
+      <p>Essay 10 found that the conductor-$11$ curve $y^2+y=x^3-x^2$ has a rational subgroup of order
+        $5$ — essay 07's point $(0,0)$ — so $\bar\rho_{E,5}$ is reducible. Because those five points are
+        <em>rational</em>, $G_{\mathbb{Q}}$ fixes them one by one, so the stable line carries the
+        trivial character; and $\det=\chi$ from essay 10 forces the other diagonal entry. Hence the
+        semisimplification is</p>
+      <p>$$
+        \bar\rho_{E,5}^{\,\mathrm{ss}}\;\cong\;\mathbf{1}\oplus\bar\chi,
+      $$</p>
+      <p>whose trace at $\mathrm{Frob}_\ell$ is $1+\ell$ — using essay 03's
+        $\chi(\mathrm{Frob}_\ell)=\ell$. Essay 10 checked $a_\ell\equiv1+\ell\pmod 5$ at all $44$ good
+        primes below $200$. On its own that was a numerical coincidence with a plausible explanation.
+        With the theorem in hand it is an <strong>identification</strong>: any semisimple
+        $\bar\rho$ with those traces is isomorphic to $\mathbf{1}\oplus\bar\chi$, so that is what the
+        semisimplification is.</p>
+      <p>Notice that the theorem's hypothesis is doing real work rather than being satisfied by luck.
+        The conclusion is about the semisimplification only — the actual $\bar\rho_{E,5}$ might have a
+        non-zero corner, and no amount of point counting could detect it. The theorem is stated at
+        exactly the strength the evidence supports.</p>
+      <p>And the check is not vacuous: the same congruence fails at more than twenty primes for
+        $y^2=x^3+1$, which has no rational subgroup of order $5$.</p>
+
+      <h3>What the rest of the collection collects</h3>
+      <ul>
+        <li><strong>Essay 10 is now complete in one half.</strong> It built
+          $\rho_{E,\ell}:G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$ and called it continuous
+          before continuity was defined; the definition above is the one it needs, in the layer-wise
+          form. Its trace formula remains an import — that needs elliptic curves over finite fields, not
+          representation theory, so it belongs to a retrofit of essay 08 rather than to this
+          essay.</li>
+        <li><strong>Essay 16</strong> attaches a representation to a modular form. Its output is
+          described by traces, which is only useful because of the theorem above.</li>
+        <li><strong>Essay 18</strong> states modularity as an isomorphism of representations. The
+          theorem above is what turns that into the checkable claim that $a_\ell(E)=a_\ell(f)$ for all
+          $\ell$, and essay 18's worked example is that check at level $11$.</li>
+        <li><strong>Essay 24</strong> needs the conductor, defined above, and needs irreducibility,
+          which Mazur's theorem in essay 10 supplies. Its whole task is to evaluate
+          $N(\bar\rho_{\mathrm{Frey},p})$ and get $2$.</li>
+      </ul>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Galois representations, irreducibility, and oddness.</strong> Andrew Sutherland's MIT
+        18.783 Fall 2023 Lecture 25, §25.3, constructs $\rho_{E,\ell}$ and $\bar\rho_{E,\ell}$ and fixes
+        the notion of isomorphism used here, $\rho'(\sigma)=A\rho(\sigma)A^{-1}$; its §25.4 defines an
+        irreducible representation as one whose image fixes no one-dimensional subspace, equivalently
+        is not conjugate into the upper-triangular matrices, and defines what it means for a mod
+        $\ell$ representation to be modular by comparing
+        $\operatorname{tr}\bar\rho(\mathrm{Frob}_p)$ with $a_p$ — the comparison this essay's trace
+        theorem licenses.</p>
+      <p><strong>Serre's conductor recipe.</strong> The same lecture's §25.4 gives, for an irreducible
+        mod $\ell$ representation attached to a semistable curve, the optimal level as the product of
+        the primes $p$ with $v_p(\Delta_{\min})\not\equiv0\pmod\ell$ — a formula for the conductor in
+        the case essay 24 needs.</p>
+      <p><strong>Absolute values, inertia and the local picture.</strong> Andrew Sutherland's MIT 18.785
+        Fall 2021 Lecture 8, §8.2, treats valuation rings, uniformizers and completions, which is the
+        local setting in which inertia subgroups and the higher ramification filtration are defined.</p>
+      <p><strong>Further reference.</strong> A course in algebraic number theory constructs inertia
+        subgroups and the ramification filtration; the conductor of a representation and the theorem
+        that traces determine a semisimple representation are standard in the representation-theoretic
+        literature.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/representations.py</code>. It enumerates
+        $\mathrm{GL}_2(\mathbb{F}_\ell)$ for $\ell\leq7$ and confirms that the diagonalisable matrices
+        with a given characteristic polynomial form a single conjugacy class — the matrix fact under the
+        trace theorem — and that the identity and the Jordan block share a characteristic polynomial
+        without being conjugate, which is why the semisimplicity hypothesis cannot be dropped. It then
+        checks that the quadratic character of $(\mathbb{Z}/5)^\times$ is a homomorphism with kernel
+        $\{1,4\}$, and that $\mathbf{1}\oplus\bar\chi$ predicts the conductor-$11$ curve's $a_\ell$
+        modulo $5$ at every good prime while failing for a curve without a rational $5$-subgroup.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="05-galois-representations">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Continuous $\rho:G_{\mathbb{Q}}\to\mathrm{GL}_2(K)$ is defined, in the layer-wise form for
+              a non-discrete target; reducible means a stable line, hence two characters and a corner;
+              semisimple means the corner vanishes <span class="lref">(rest of L2)</span></li>
+            <li data-proof-id="05-semisimple-matrices">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Over $\mathbb{F}_\ell$, the diagonalisable matrices with a given characteristic
+              polynomial form one conjugacy class; the identity and the Jordan block show the
+              hypothesis is necessary</li>
+            <li data-proof-id="05-worked-characters">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The quadratic character of $(\mathbb{Z}/5)^\times$ has kernel $\{1,4\}$ and so <em>is</em>
+              $\mathbb{Q}(\sqrt5)$, of conductor $5$; and
+              $\mathbf{1}\oplus\bar\chi$ has trace $1+\ell$, identifying the conductor-$11$ curve's mod
+              $5$ semisimplification</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="05-traces-determine">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Continuous semisimple representations with equal traces of Frobenius outside a finite set
+              are isomorphic — via density of the Frobenius classes <span class="lref">(part of L2)</span></li>
+            <li data-proof-id="05-inertia-and-conductor">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Inertia subgroups $I_\ell$ with $D_\ell/I_\ell$ generated by $\mathrm{Frob}_\ell$; and the
+              conductor $N(\rho)$, with $n_\ell=0$ exactly when unramified and
+              $n_\ell=\dim V-\dim V^{I_\ell}$ in the tame case</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>Elliptic curves, reduction, torsion and the representation
+              <span class="lref">(L4–L7, essays 06–10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 11–15)</span></li>
+            <li>Eichler–Shimura, and the essays that state modularity
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>The Frey curve and its representation <span class="lref">(L15–L17, essays 22–24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="04-p-adics-and-modules.html"><span class="dir">← Previous written essay</span> 04 · A new pair of sunglasses: the $p$-adics</a>
+      <a class="next" href="06-elliptic-curves.html"><span class="dir">Next written essay →</span> 06 · Elliptic curves, written correctly</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 05 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/a237970"><code>a237970</code></a> · 2026-07-26 17:31 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

@@ -37,12 +37,13 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>17</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>18</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Frobenius elements at unramified primes, as a conjugacy class <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
         <li>$\Phi_n$ is irreducible over $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
-        <li>Traces of Frobenius determine a semisimple representation <span class="scope-essays">(essay 05)</span> <span class="roster-planned">not yet written</span></li>
+        <li>Traces of Frobenius determine a semisimple representation <span class="scope-essays">(<a href="chapters/05-galois-representations.html">essay 05</a>)</span></li>
+        <li>Inertia subgroups, and the conductor $N(\rho)$ <span class="scope-essays">(<a href="chapters/05-galois-representations.html">essay 05</a>)</span></li>
         <li>A genus-one curve has a Weierstrass model, and $\Delta\neq0$ is smoothness <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span></li>
         <li>Associativity of the chord-and-tangent group law <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
         <li>Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
@@ -80,7 +81,7 @@
           <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 · <strong>assumed 14&nbsp;&rarr;&nbsp;13</strong><br>The depends_on state was added, so a proof conditional on an assumption made elsewhere is no longer filed as a second assumption. The assumption count therefore changed meaning: it now counts ROOT imports, not every record resting on one. A better metric, and a different one.</li>
         </ul>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 15 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 13 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -146,6 +147,21 @@
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The valuation $v_\ell$ is additive on products and ultrametric on sums, with equality when the valuations differ, and $|\cdot|_\ell$ is multiplicative and non-archimedean. <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span>
+       </li>
+        <li data-proof-id="05-galois-representations">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Continuous $\rho:G_{\mathbb{Q}}\to\mathrm{GL}_2(K)$ is defined, in the layer-wise form required by a non-discrete target; reducible means a Galois-stable line, hence two characters and a corner, and semisimple means the corner vanishes. <span class="scope-essays">(<a href="chapters/05-galois-representations.html">essay 05</a>)</span>
+       </li>
+        <li data-proof-id="05-semisimple-matrices">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Over $\mathbb{F}_\ell$ the diagonalisable matrices with a given characteristic polynomial form a single conjugacy class, verified exhaustively; and the identity and the Jordan block share a characteristic polynomial without being conjugate, so the semisimplicity hypothesis of the trace theorem cannot be dropped. <span class="scope-essays">(<a href="chapters/05-galois-representations.html">essay 05</a>)</span>
+       </li>
+        <li data-proof-id="05-worked-characters">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          The quadratic character of $(\mathbb{Z}/5)^\times$ has kernel $\{1,4\}$, the subgroup essay 03 showed fixes $\mathbb{Q}(\sqrt5)$, so it is that field as a representation, of conductor $5$; and $\mathbf{1}\oplus\bar\chi$ has trace $1+\ell$, which identifies the conductor-$11$ curve's mod $5$ semisimplification. <span class="scope-essays">(<a href="chapters/05-galois-representations.html">essay 05</a>)</span>
        </li>
         <li data-proof-id="06-integral-model-example">
           <span class="scope-mode scope-mode--proved">Proved</span>
@@ -268,6 +284,16 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Irreducibility of the cyclotomic polynomial, giving $[\mathbb{Q}(\zeta_n):\mathbb{Q}]=\varphi(n)$ and ensuring every $\sigma_a$ occurs. <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span>
        </li>
+        <li data-proof-id="05-traces-determine">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          A semisimple two-dimensional representation is determined up to isomorphism by the traces of Frobenius at almost all primes. This is what makes "these two representations agree" a checkable claim in essays 18 and 25. <span class="scope-essays">(<a href="chapters/05-galois-representations.html">essay 05</a>)</span>
+       </li>
+        <li data-proof-id="05-inertia-and-conductor">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Inertia subgroups $I_\ell\subseteq D_\ell\subseteq G_{\mathbb{Q}}$ with $D_\ell/I_\ell$ generated by $\mathrm{Frob}_\ell$; and the conductor $N(\rho)=\prod\ell^{n_\ell}$, with $n_\ell=0$ exactly when $\rho$ is unramified at $\ell$ and $n_\ell=\dim V-\dim V^{I_\ell}$ when the ramification is tame. The general formula in the higher ramification groups is not developed. <span class="scope-essays">(<a href="chapters/05-galois-representations.html">essay 05</a>)</span>
+       </li>
         <li data-proof-id="06-weierstrass-definition">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -323,16 +349,6 @@
           <span class="scope-mode scope-mode--outlined">Outlined</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="05-galois-representations">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          Continuous $\rho:G_{\mathbb{Q}}\to\mathrm{GL}_2(K)$; ramified and unramified primes; the conductor of a representation; irreducibility. <span class="scope-essays">(essay 05)</span>
-       </li>
-        <li data-proof-id="05-traces-determine">
-          <span class="scope-mode scope-mode--stated">To assume</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          A semisimple two-dimensional representation is determined up to isomorphism by the traces of Frobenius at almost all primes. This is what makes "these two representations agree" a checkable claim in essays 18 and 25. <span class="scope-essays">(essay 05)</span>
        </li>
         <li data-proof-id="11-modular-group">
           <span class="scope-mode scope-mode--proved">To prove</span>
@@ -574,6 +590,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/1190dbc"><code>1190dbc</code></a> · 2026-07-26 17:25 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/a237970"><code>a237970</code></a> · 2026-07-26 17:31 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

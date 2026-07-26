@@ -371,6 +371,10 @@ Not in the video at all. Opens with a standing banner: these three essays descri
 | 24 | the-frey-representation | ρ̄ = ρ̄_{Frey,p}: **irreducible** via Mazur's isogeny theorem (10), unramified outside 2 and p via **Néron–Ogg–Shafarevich** (10), finite at p, and **conductor exactly 2** | Discharges L17. Corrections #5 lives here: the *curve's* conductor is rad(abc); it is the *representation's* conductor that is 2. Level lowering exists to close exactly that gap. |
 | 25 | ribet-and-the-end | **Ribet's level-lowering theorem** (1990) with its hypotheses; applied: modular of level rad(abc) ⟹ modular of level 2, so a weight-2 newform of level 2 exists. But μ = 3, ν₂ = 1, ν₃ = 0, ν_∞ = 2 gives 1 + 3/12 − 1/4 − 0 − 1 = 0, so **dim S₂(Γ₀(2)) = 0**. No such form. Hence no such representation, no such curve, no such solution. ∎ | Imports L18 and proves the L19 computation once essay 13 supplies its formula; the required debt then empties without disguising Ribet as proved. Closes with what the proof does *not* give: no effective bounds, no explanation of *why*, and the ABC-shaped questions still open. Note the slack — levels 1, 2, 3, 4 all give 0 — so the contradiction is not knife-edge. |
 
+**Part I is complete** (01–05), and so is Part II (06–10). The collection now has an unbroken
+reading path from Fermat's descent to the representation attached to a curve, with no forward
+references anywhere in essays 01–10. Everything remaining is Part III onward plus essay 24.
+
 ## Sequencing notes (writing order is not reading order)
 
 - **Write 01, 02, 22, 25 first.** The descent and the endgame are the two ends of the rope and are
@@ -382,16 +386,16 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   Weil pairing and the resulting oddness of $\bar\rho$ therefore move to **essay 10**, where they are
   also what supplies Ribet's "odd" hypothesis. Essay 09 keeps $E[2]$, $E[3]$, $E[n]\cong(\mathbb{Z}/n)^2$
   and the Tate module, and it stays one idea.
-- ⚠ **Essay 05 must inherit the corrected continuity definition.** Essay 03 originally said a
+- ✅ **Essay 05 inherited the corrected continuity definition** (done). Essay 03 originally said a
   continuous map out of $G_{\mathbb{Q}}$ is one determined at a finite level. That is true only for a
   **discrete** target, so it holds for $\bar\rho\to\mathrm{GL}_2(\mathbb{F}_\ell)$ and is **false**
   for $\rho_{E,\ell}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$ — which is continuous with open, hence
   infinite, image for a non-CM curve, so it factors through no finite quotient. The corrected statement
   uses both towers: $\rho$ is continuous exactly when every layer
   $G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}/\ell^n)$ is determined at a finite level, while $\rho$
-  itself need not be. *Finite level on each layer, not finite overall.* Essay 05 defines continuous
-  $\rho$ and must use that form.
-- **Writing order from here: 05 → 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
+  itself need not be. *Finite level on each layer, not finite overall.* Essay 05 states it in that
+  form and points at the single-layer case as the reason $\bar\rho$ is easier.
+- **Writing order from here: 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
   then 17, 19–21 and 02's second case.** This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
   until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
@@ -602,9 +606,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 03, 04, 06, 07, 08, 09, 10, 22, 23, 25 — the two ends of the rope, the valuation, the
+**Written:** 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 22, 23, 25 — the two ends of the rope, the valuation, the
 elliptic-curve bridge through the representation, and the semistability check.
-**Unwritten:** 05, 11–21, 24.
+**Unwritten:** 11–21, 24.
 
 ⚠ **Essay 10 was written before 03 and 05, and it is the first essay whose declared debts are its own
 vocabulary rather than peripheral.** It uses $G_{\mathbb{Q}}$ only as a group of field automorphisms,

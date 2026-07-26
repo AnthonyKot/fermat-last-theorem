@@ -24,7 +24,7 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Twelve essays are written — the two ends of the rope,
+Scaffold and the full 25-essay map are complete. Thirteen essays are written — the two ends of the rope,
 the valuation, the elliptic-curve bridge as far as the conductor, and the semistability check:
 
 | # | Essay | What it delivers |
@@ -33,6 +33,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 | 02 | Unique factorisation, and where it runs out | $n=3$ first case in the Eisenstein integers; failure of unique factorisation; Kummer's regular primes |
 | 03 | The absolute Galois group | $G_{\mathbb{Q}}$ as an inverse limit of finite Galois groups; $\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong(\mathbb{Z}/n)^\times$ with $\mathrm{Frob}_\ell=\sigma_\ell$ |
 | 04 | A new pair of sunglasses: the $p$-adics | $v_\ell$ and the ultrametric inequality; $\mathbb{Z}_\ell$ built twice; free modules and $\mathrm{GL}_2(\mathbb{Z}_\ell)$ |
+| 05 | Galois representations | Continuous $\rho$ into $\mathrm{GL}_2(K)$, reducibility and semisimplicity; the conductor stated; traces of Frobenius identify a semisimple $\rho$ |
 | 06 | Elliptic curves, written correctly | General Weierstrass form, smoothness and discriminant; why integral models at $2$ and $3$ matter |
 | 07 | The group law | Chord-and-tangent addition and an order-five example; associativity and complex uniformization stated |
 | 08 | Reduction and the conductor | Good, multiplicative and additive reduction; $a_\ell$; semistable ⟺ square-free conductor |
@@ -45,7 +46,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 05, 11–21 and 24 are stubbed on
+valuation to link back to rather than a declared debt. Essays 11–21 and 24 are stubbed on
 the contents page, and essay 25 states plainly that it is conditional until they exist.
 
 ## Verification
@@ -79,6 +80,10 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     inequality and its equality case over thousands of pairs, every digit string recomputed from
     congruences, and the $\mathrm{GL}_2(\mathbb{Z}_3)$ determinant criterion checked against the
     adjugate exhaustively.
+  - `representations.py` — $\mathrm{GL}_2(\mathbb{F}_\ell)$ enumerated for $\ell\leq7$: the
+    diagonalisable matrices with a given characteristic polynomial form one conjugacy class, and the
+    identity versus the Jordan block shows why the trace theorem needs semisimplicity. Also identifies
+    the conductor-$11$ curve's mod $5$ semisimplification as $\mathbf{1}\oplus\bar\chi$.
   - `galois.py` — cyclotomic polynomials built from scratch, $\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})$
     as a multiplication table, and the Frobenius claim tested the only way it can be: the least $d$ with
     $x^{\ell^d}=x$ in $\mathbb{F}_\ell[x]/\Phi_n$ equals the multiplicative order of $\ell$ mod $n$.
