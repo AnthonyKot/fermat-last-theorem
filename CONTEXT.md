@@ -382,6 +382,15 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   Weil pairing and the resulting oddness of $\bar\rho$ therefore move to **essay 10**, where they are
   also what supplies Ribet's "odd" hypothesis. Essay 09 keeps $E[2]$, $E[3]$, $E[n]\cong(\mathbb{Z}/n)^2$
   and the Tate module, and it stays one idea.
+- ⚠ **Essay 05 must inherit the corrected continuity definition.** Essay 03 originally said a
+  continuous map out of $G_{\mathbb{Q}}$ is one determined at a finite level. That is true only for a
+  **discrete** target, so it holds for $\bar\rho\to\mathrm{GL}_2(\mathbb{F}_\ell)$ and is **false**
+  for $\rho_{E,\ell}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$ — which is continuous with open, hence
+  infinite, image for a non-CM curve, so it factors through no finite quotient. The corrected statement
+  uses both towers: $\rho$ is continuous exactly when every layer
+  $G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}/\ell^n)$ is determined at a finite level, while $\rho$
+  itself need not be. *Finite level on each layer, not finite overall.* Essay 05 defines continuous
+  $\rho$ and must use that form.
 - **Writing order from here: 05 → 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
   then 17, 19–21 and 02's second case.** This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
@@ -601,17 +610,29 @@ elliptic-curve bridge through the representation, and the semistability check.
 vocabulary rather than peripheral.** It uses $G_{\mathbb{Q}}$ only as a group of field automorphisms,
 which needs no machinery and carries the construction, the determinant and the oddness. But
 `10-trace-formula` had to be *stated* rather than derived, because $\mathrm{Frob}_\ell$ is built in
-essay 03. **When 03 and 05 land, revisit essay 10**: the trace formula should become a derivation, and
-`10-trace-formula` should move from the allowlist to a `depends_on` proof or disappear. Do not leave it
-as a permanent import out of inertia — it is only an import because of writing order.
+essay 03. **Essay 10's stated trace formula: what can and cannot retire it.** The record
+`10-trace-formula` bundles two claims, and they have different fates. Do not write an instruction to
+"convert it when 05 lands" — an instruction that cannot be satisfied fails the same way as none.
 
-**03 has landed and paid half of that.** The determinant half of the trace formula is now a computation:
-essay 03 proves $\chi(\mathrm{Frob}_\ell)=\ell$ in the cyclotomic family, which is what essay 10
-asserted as $\det\bar\rho(\mathrm{Frob}_\ell)\equiv\ell$. The trace half still needs essay 05's
-ramification vocabulary. Essay 03 also supplies the reason traces are the right invariant at all:
-$\mathrm{Frob}_\ell$ is a *conjugacy class*, so only conjugation-invariant quantities can be read off
-it — which retro-justifies essay 10's phrasing and is the hook essay 05 needs for
-`05-traces-determine`.
+- **The determinant half is done.** Essay 03 proves $\chi(\mathrm{Frob}_\ell)=\ell$ in the
+  cyclotomic family, which is exactly what essay 10 asserted as
+  $\det\bar\rho(\mathrm{Frob}_\ell)\equiv\ell$ once $\det\rho=\chi$ was derived there.
+- **The trace half is not essay 05's business at all.** Deriving
+  $\operatorname{tr}\bar\rho_{E,p}(\mathrm{Frob}_\ell)\equiv a_\ell$ needs two facts about elliptic
+  curves over finite fields: that reduction $E[p]\to\tilde{E}[p]$ is injective at a good prime for
+  $p\neq\ell$, and that the Frobenius *endomorphism* of $\tilde{E}$ satisfies
+  $x^2-a_\ell x+\ell$ — which comes from $\#\tilde{E}(\mathbb{F}_\ell)=\deg(1-\phi)$ and the degree
+  map being a quadratic form. That is essay **08**'s territory, not representation theory. Essay 05
+  supplies ramification, conductors and continuity; none of it touches this.
+- **So the retrofit belongs to 08.** `08-torsion-injects` already exists as a background record and is
+  half of what is needed; the Frobenius endomorphism and the degree form are not in the collection at
+  all. Retiring `10-trace-formula` means adding them to essay 08 and promoting
+  `08-torsion-injects` to the chain — at which point the `depends_on` role rule applies, exactly as it
+  did for `07-uniformization`.
+
+Essay 03 also supplies the reason traces are the right invariant at all: $\mathrm{Frob}_\ell$ is a
+*conjugacy class*, so only conjugation-invariant quantities can be read off it — which retro-justifies
+essay 10's phrasing and is the hook essay 05 needs for `05-traces-determine`.
 
 **L3, L4 and L5 are now discharged.** Essay 04 supplies $v_\ell$, $\mathbb{Z}_\ell$ and free modules;
 essay 08 supplies reduction types, the conductor, and semistable ⟺ square-free conductor. Essay 23's

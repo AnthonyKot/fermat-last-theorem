@@ -118,7 +118,7 @@
       "essays": [
         3
       ],
-      "text": "Restriction to finite Galois subextensions is compatible and determines an element, so $G_{\\mathbb{Q}}\\cong\\varprojlim\\mathrm{Gal}(K/\\mathbb{Q})$ is profinite; its topology makes continuity mean factoring through a finite level.",
+      "text": "Restriction to finite Galois subextensions is compatible and determines an element, so $G_{\\mathbb{Q}}\\cong\\varprojlim\\mathrm{Gal}(K/\\mathbb{Q})$ is profinite. Continuity into a non-discrete target such as $\\mathrm{GL}_2(\\mathbb{Z}_\\ell)$ means every layer $G_{\\mathbb{Q}}\\to\\mathrm{GL}_2(\\mathbb{Z}/\\ell^n)$ is determined at a finite level -- not that $\\rho$ factors through a finite quotient, which for a non-CM curve it does not.",
       "availability": "available"
     },
     {
