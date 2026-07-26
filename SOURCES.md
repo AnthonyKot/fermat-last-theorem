@@ -33,6 +33,28 @@ Tier definitions are in `CONTEXT.md`. Briefly: **A** = fetched this session, cit
 | 2026-07-26 | [Andrew Sutherland, MIT 18.783, Fall 2023, Lecture 25](https://math.mit.edu/classes/18.783/2023/LectureNotes25.pdf) (*Fermat's Last Theorem*, dated 12/12/2023) | §25.2, §25.4; conjecture 25.1; theorems 25.2, 25.4–25.8; corollary 25.3 | **Settles the irreducibility threshold.** $\bar\rho_{E,\ell}$ is irreducible iff $E$ admits no rational $\ell$-isogeny, and **Mazur's isogeny theorem gives this for $\ell\notin\{2,3,5,7,11,13,17,19,37,43,67,163\}$**, where $19,43,67,163$ need CM. The FLT argument may then take $\ell>163$ because FLT was already known for $\ell\leq163$. Chronology: Dirichlet and Legendre complete $n=5$ in **1825**, Lamé addresses $n=7$ in **1839**, Kummer 1847 for regular primes, computers to $4\times10^6$ by 1993; Euler's 1753 $n=3$ proof has a **fixable** error. $\Delta_{\min}(E_{a,b,c})=2^{-8}(abc)^{2\ell}$ assuming $\ell>3$; normalisation $a\equiv3\pmod4$, $b\equiv0\pmod2$; $E_{a,b,c}$ has no additive reduction anywhere, so it is semistable with squarefree conductor $\prod_{\ell\mid abc}\ell$. **Serre's optimal level**: $N(\bar\rho_{E,\ell})$ is the product of primes $p$ with $v_p(\Delta_{\min})\not\equiv0\bmod\ell$ — the mechanism that drops the Frey level to $2$. Theorem 25.2 is Ribet in the form needed; 25.4 Taylor–Wiles (semistable $\Rightarrow$ modular); 25.5 Langlands–Tunnell; **25.6 no semistable curve over $\mathbb{Q}$ admits a rational 15-isogeny**, proved via $X_0(15)$ having 8 rational points, 4 non-cuspidal, all of conductor $50=2\cdot5^2$; 25.7 the 3–5 trick; 25.8 the assembled proof. Serre's conjecture (25.1) proved by Khare–Wintenberger 2008 | 22, 24, 25, and Part V |
 | 2026-07-26 | [Samir Siksek, *Modularity, Level Lowering, Frey Curves and Fermat's Last Theorem*](https://samirsiksek.github.io/siksek.github.io/sarajevo/talk1.pdf) (Sarajevo lectures, talk 1, dated 11 July 2016) | slides 4, 8, 11–15 | **Settles the threshold.** Slide 13, Theorem (Mazur): $E/\mathbb{Q}$ has no $p$-isogenies if $p$ satisfies *at least one* of — $p>163$, **or $p\geq5$ and $\#E(\mathbb{Q})[2]=4$ and the conductor of $E$ is squarefree**. Hence "by Mazur, for $p\geq5$, the Frey curve does not have $p$-isogenies". Slide 11: the normalisation $\gcd(a,b,c)=1$, $2\mid b$, $a^p\equiv-1\pmod4$, and for $Y^2=X(X-u)(X-v)$ the identity $\Delta=16u^2v^2(u-v)^2$, giving $\Delta=+16a^{2p}b^{2p}c^{2p}$ — a **third independent confirmation of the positive sign**. Slide 12: $\Delta_{\min}=a^{2p}b^{2p}c^{2p}/2^8$ and $N=\prod_{\ell\mid abc}\ell$. Slide 8, Ribet (simplified): for $p\geq3$, $E$ with no $p$-isogenies and modular, there is a newform of level $N_p=N/\prod_{q\|N,\;p\mid\mathrm{ord}_q(\Delta)}q$; slide 14 evaluates $N_p=2$. Slide 4: **there are no newforms at levels 1–10, 12, 13, 16, 18, 22, 25, 28, 60** — note this is a statement about *newforms*, wider than $\dim S_2(\Gamma_0(N))=0$, since 22, 28 and 60 have positive genus | 09, 22, 23, 24, 25 |
 
+**Why Lecture 24 carries both modular forms and elliptic-curve reduction — it is not a mis-numbering.**
+Three essays cite Lecture 24 for what look like two unrelated subjects: essay 11 for theorem 24.8, the
+dimensions of $M_k(\Gamma)$ and $S_k(\Gamma)$; essays 06 and 08 for definitions 24.28–24.31 and §24.7,
+covering minimal models, reduction types and the conductor. Both are correct, and the PDF settles it: the
+footer on the page carrying §24.6, §24.7 and definition 24.29 reads *18.783 Fall 2023, Lecture #24, Page
+10*, while theorem 24.8 sits on page 3 of the same file. The map of that one lecture, titled *Modular
+forms and L-functions*:
+
+| pages | contents | cited by |
+|---|---|---|
+| 1–3 | Taylor–Wiles (24.1) and BCDT (24.2); modular and cusp forms (24.3, 24.5, 24.6); **theorem 24.8**, the dimension formulas, with $\dim S_2(\Gamma)=g(\Gamma)$ | 11, 13, 18 |
+| 3–6 | Hecke operators (24.2–24.4): theorem 24.11, corollaries 24.12–24.13, theorem 24.14, corollary 24.15, remark 24.16 | 14 |
+| 9–10 | $L$-functions of cusp forms and of elliptic curves: definition 24.24, theorems 24.25, 24.27, **definition 24.28** | 17 |
+| 10–12 | **§24.7, definitions 24.29–24.30**: minimal models, the three reduction types, semistable | 06, 08 |
+| 13–14 | **definition 24.31** the conductor; theorem 24.33 modularity; theorem 24.37 Eichler–Shimura | 08, 16, 18 |
+
+The reason the two subjects share a lecture is structural rather than accidental: §24.6 defines the
+$L$-function of an elliptic curve by an Euler product whose bad-prime factors depend on the reduction
+type, so §24.7 has to supply reduction types, minimal models and the conductor immediately afterwards.
+Reduction theory appears inside a modular-forms lecture **because the $L$-function needs it**. Do not
+"fix" these pointers.
+
 **Notation trap: Sutherland's $\ell$ and $p$ are the reverse of ours.** In 18.783 Lecture 25, $\ell$ is
 the *residual* prime (the one the representation is mod, which for FLT is the Fermat exponent) and $p$
 ranges over auxiliary primes of reduction. This collection fixes the opposite in essay 04: $p$ is the
