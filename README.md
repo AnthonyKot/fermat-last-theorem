@@ -24,7 +24,7 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Eighteen essays are written — the two ends of the rope,
+Scaffold and the full 25-essay map are complete. Nineteen essays are written — the two ends of the rope,
 the valuation, the elliptic-curve bridge as far as the conductor, and the semistability check:
 
 | # | Essay | What it delivers |
@@ -43,6 +43,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 | 12 | Modular forms | $q$-expansions and cusp forms; $E_4^3-E_6^2=1728\Delta$; the level-$11$ form exhibited and matched to essay 08's point counts |
 | 13 | The dimension formula | Weight-two forms as differentials; Riemann–Hurwitz gives $\dim S_2(\Gamma_0(N))$ and the level-$2$ space vanishes |
 | 14 | Hecke operators | The $q$-coefficient formula; eigenvalues are Fourier coefficients; multiplicativity and the prime-power recurrence |
+| 15 | Newforms, and the meaning of the level | The level-$22$ oldspace and bad-prime $U_2$ computed; Atkin–Lehner–Li imported to define normalized newforms and exact level |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
 | 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; irreducibility for every $p\geq5$ |
@@ -51,7 +52,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 15–21 are stubbed on
+valuation to link back to rather than a declared debt. Essays 16–21 are stubbed on
 the contents page, and essay 25 states plainly that it is conditional until they exist.
 
 ## Verification
@@ -78,6 +79,10 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
   - `hecke_operators.py` — the exact Hecke coefficient formula and operator relations on arbitrary
     series; the level-one $\Delta$ and level-$11$ eta product as eigenforms at good primes; and a
     deliberate failure check when the prime-to-level formula is misapplied at $11$.
+  - `newforms_and_level.py` — the two degeneracy copies of the level-$11$ form span the level-$22$
+    cusp space and share all tested good eigenvalues; the bad-prime matrix
+    $U_2=\left(\begin{smallmatrix}-2&1\\-2&0\end{smallmatrix}\right)$ is computed from exact
+    $q$-series and has nonreal eigenvalues, while the level-$22$ newspace has dimension zero.
   - `frey_discriminant.py` — the discriminant identity, computed from root differences *and* from the
     Weierstrass $b$-invariants; the two routes share no algebra.
   - `kummer_regular_primes.py` — Bernoulli numbers and the irregular primes, asserted against the

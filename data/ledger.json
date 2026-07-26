@@ -732,8 +732,18 @@
         15
       ],
       "short": "Newform theory, and the level of a newform",
-      "text": "The decomposition of $S_2(\\Gamma_0(N))$ into old and new subspaces, and the well-definedness of the level of a newform. Imported: Atkin--Lehner theory. Without it \"the level\" in Ribet's theorem is undefined.",
-      "availability": "planned"
+      "text": "Atkin--Lehner--Li theory preserves the old/new decomposition under the full Hecke algebra, turns a good-Hecke eigenvector in the newspace into a unique normalized full-Hecke eigenform, and assigns every eigensystem a unique primitive level. Imported: the bad-prime adjoint and multiplicity-one machinery. Without it \"the level\" in Ribet's theorem is undefined.",
+      "availability": "available"
+    },
+    {
+      "id": "15-level22-oldspace",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        15
+      ],
+      "text": "The two degeneracy images $f_{11}(q)$ and $f_{11}(q^2)$ span $S_2(\\Gamma_0(22))$, share every good Hecke eigenvalue, and satisfy $[U_2]=\\left(\\begin{smallmatrix}-2&1\\\\-2&0\\end{smallmatrix}\\right)$; hence the whole level-$22$ space is old, the newspace is zero, and $U_2$ is not Hermitian."
     },
     {
       "id": "16-eichler-shimura",

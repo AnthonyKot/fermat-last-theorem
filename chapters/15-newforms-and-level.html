@@ -1,0 +1,378 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15 · Newforms, and the meaning of the level — No Such Form</title>
+<meta name="description" content="Degeneracy maps reveal why good Hecke operators cannot distinguish lower-level copies. Newform theory separates old from new and makes the level of a normalized eigenform intrinsic.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part III · Modular forms — Essay 15</p>
+    <h1>Newforms, and the meaning of the level</h1>
+    <p class="lede">A modular form can be viewed at every multiple of its original level. Newform
+      theory removes those inherited copies, isolates what is genuinely born at each level, and turns
+      “the level of a form” from a choice of address into an invariant.</p>
+
+    <div class="claim">
+      <span class="tag">This essay computes one obstruction and imports its repair</span>
+      <strong>Defines:</strong> degeneracy maps, oldspaces, newspaces, bad-prime operators and
+      normalized newforms.
+      <strong>Proves:</strong> at level $22$, the two copies $f_{11}(z)$ and $f_{11}(2z)$ form one
+      two-dimensional good-Hecke eigenspace; $U_2$ acts on it by an explicitly non-Hermitian matrix;
+      and the whole space is old.
+      <strong>Imports:</strong> the Atkin–Lehner–Li newform theorem, including uniqueness and the
+      full-Hecke eigenform statement.
+      <strong>Discharges:</strong> <strong>L12</strong>.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="14-hecke-operators.html">14</a> left us with a finite-dimensional space
+        $S_k(\Gamma_0(N))$ and a commuting family of Hermitian operators</p>
+      <p>$$ T_n,\qquad \gcd(n,N)=1. $$</p>
+      <p>The spectral theorem decomposes the space into simultaneous eigenspaces for those
+        <em>good</em> operators. For a normalized vector in such an eigenspace, the eigenvalue of
+        $T_n$ is its Fourier coefficient $a_n$. That was enough to explain multiplicativity, but not
+        enough to produce the objects needed by modularity and level lowering.</p>
+      <p>The difficulty begins with a simple containment. If $M\mid N$, then</p>
+      <p>$$ \Gamma_0(N)\subseteq\Gamma_0(M). $$</p>
+      <p>Consequently a form of level $M$ is automatically a form of level $N$. Merely writing</p>
+      <p>$$ f\in S_k(\Gamma_0(N)) $$</p>
+      <p>does not say that $N$ is the first or smallest level at which $f$ occurs. It gives an ambient
+        room, not a birthplace.</p>
+      <p>There are two linked failures:</p>
+      <ul>
+        <li>a lower-level eigenform can enter a higher-level space in several independent ways, and
+          all good Hecke operators give those copies the same eigenvalues;</li>
+        <li>at a prime $p\mid N$, the operator is no longer Essay 14's Hermitian $T_p$.</li>
+      </ul>
+      <div class="fence">
+        <strong>The boundary from essay 14 remains in force.</strong> Nothing below deduces the
+        bad-prime behavior from simultaneous diagonalization. We define the bad-prime operator and
+        compute it directly. The theorem that then organizes all primes is a second, separately named
+        import: Atkin–Lehner–Li theory.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Two ways to raise the level</h3>
+      <p>Let $M\mid N$ and let $d\mid N/M$. The corresponding
+        <strong>degeneracy map</strong> sends</p>
+      <p>$$
+        V_d:S_k(\Gamma_0(M))\longrightarrow S_k(\Gamma_0(N)),
+        \qquad (V_df)(z)=f(dz).
+        \tag{1}
+      $$</p>
+      <p>On a $q$-expansion it is almost embarrassingly concrete:</p>
+      <p>$$
+        f(q)=\sum_{n\geq1}a_nq^n
+        \quad\Longrightarrow\quad
+        V_df(q)=f(q^d)=\sum_{n\geq1}a_nq^{dn}.
+        \tag{2}
+      $$</p>
+      <p>The case $d=1$ simply regards the same function at the larger level. The other divisors create
+        shifted copies. Their span, over every proper divisor $M$ of $N$, is the
+        <strong>oldspace</strong>:</p>
+      <p>$$
+        S_k(\Gamma_0(N))^{\mathrm{old}}
+        =
+        \sum_{\substack{M\mid N\\M\lt N}}
+        \ \sum_{d\mid N/M}V_dS_k(\Gamma_0(M)).
+        \tag{3}
+      $$</p>
+      <p>The Petersson orthogonal complement is the <strong>newspace</strong>:</p>
+      <p>$$
+        S_k(\Gamma_0(N))^{\mathrm{new}}
+        =
+        \left(S_k(\Gamma_0(N))^{\mathrm{old}}\right)^\perp.
+        \tag{4}
+      $$</p>
+      <p>“Old” and “new” are not judgments about importance. They record provenance: did this
+        eigensystem already exist at a proper divisor of $N$, or does it first occur here?</p>
+
+      <h3>The level-$11$ form moves to level $22$</h3>
+      <p>Bring back the form that has followed us through Part III:</p>
+      <p>$$
+        f=f_{11}(q)
+        =\bigl(\eta(z)\eta(11z)\bigr)^2
+        =q-2q^2-q^3+2q^4+q^5+\cdots.
+        \tag{5}
+      $$</p>
+      <p>Essay <a href="13-valence-and-dimension.html">13</a> computed
+        $\dim S_2(\Gamma_0(11))=1$. Raise the level from $11$ to $22$. Since $22/11=2$, equations
+        (1)–(2) give two copies:</p>
+      <p>$$
+        f(q)=q-2q^2-q^3+2q^4+\cdots,
+        \qquad
+        V_2f(q)=f(q^2)=q^2-2q^4-q^6+\cdots.
+        \tag{6}
+      $$</p>
+      <p>They are linearly independent: the first has coefficient $1$ at $q$, while the second has
+        coefficient $0$ there and coefficient $1$ at $q^2$. The same dimension formula gives</p>
+      <p>$$
+        \dim S_2(\Gamma_0(22))
+        =1+\frac{36}{12}-\frac04-\frac03-\frac42
+        =2.
+        \tag{7}
+      $$</p>
+      <p>Thus these two vectors are not merely part of the level-$22$ space. They are all of it:</p>
+      <p>$$
+        S_2(\Gamma_0(22))
+        =\operatorname{span}\{f,V_2f\}
+        =S_2(\Gamma_0(22))^{\mathrm{old}},
+        \qquad
+        S_2(\Gamma_0(22))^{\mathrm{new}}=0.
+        \tag{8}
+      $$</p>
+      <p>This is the first example where “there are cusp forms at level $N$” and “there is a newform
+        of level $N$” give different answers. The former is true at $22$; the latter is false.</p>
+
+      <h3>Why the good operators cannot separate the copies</h3>
+      <p>For every $n$ coprime to $N$, the good Hecke operator commutes with each degeneracy map:</p>
+      <p>$$ T_nV_d=V_dT_n. \tag{9} $$</p>
+      <p>If $T_nf=a_nf$, then</p>
+      <p>$$
+        T_n(V_2f)=V_2(T_nf)=a_nV_2f.
+        \tag{10}
+      $$</p>
+      <p>So at level $22$, both $f$ and $V_2f$ have the same eigenvalue $a_n$ for every
+        $\gcd(n,22)=1$. The common good-Hecke eigenspace is two-dimensional. This is not a rare
+        technical nuisance; it is the mechanism that creates oldforms. The spectral theorem did its
+        job correctly. The data supplied to it simply cannot distinguish the two copies.</p>
+
+      <h3>The missing operator at the bad prime</h3>
+      <p>At $p\mid N$, write the operator as $U_p$ to keep its different formula visible:</p>
+      <p>$$
+        U_p\left(\sum_{n\geq1}b_nq^n\right)
+        =\sum_{n\geq1}b_{pn}q^n.
+        \tag{11}
+      $$</p>
+      <p>At level $22$, the new bad prime is $2$. Equation (11) immediately gives</p>
+      <p>$$ U_2(V_2f)=f. \tag{12} $$</p>
+      <p>At level $11$, however, $2$ was a good prime. Essay 14's coefficient formula says</p>
+      <p>$$
+        T_2f=U_2f+2V_2f=a_2f=-2f,
+      $$</p>
+      <p>so, now viewing every term at level $22$,</p>
+      <p>$$ U_2f=-2f-2V_2f. \tag{13} $$</p>
+      <p>In the ordered basis $(f,V_2f)$, equations (12)–(13) give</p>
+      <p>$$
+        [U_2]=
+        \begin{pmatrix}
+          -2&amp;1\\
+          -2&amp;0
+        \end{pmatrix},
+        \qquad
+        \det(XI-[U_2])=X^2+2X+2.
+        \tag{14}
+      $$</p>
+      <p>Its eigenvalues are $-1\pm i$. A Hermitian operator has real eigenvalues, so $U_2$ is not
+        Hermitian for the Petersson product. This one matrix closes the tempting but invalid shortcut:
+        the bad-prime operators do <em>not</em> inherit essay 14's spectral-theorem argument.</p>
+
+      <h3>The imported repair: Atkin–Lehner–Li</h3>
+      <div class="fence">
+        <strong>Imported: the newform theorem.</strong> For the spaces used here, Atkin–Lehner–Li
+        theory proves that:
+        <ol>
+          <li>the oldspace and newspace are preserved by the full Hecke algebra, including the
+            operators at primes dividing $N$;</li>
+          <li>a simultaneous good-Hecke eigenvector in the newspace is automatically an eigenvector
+            for every Hecke operator;</li>
+          <li>after normalizing $a_1=1$, the resulting newforms form a unique orthogonal basis of the
+            newspace; and</li>
+          <li>every eigensystem at level $N$ comes from a unique normalized newform at a unique divisor
+            $M\mid N$, together with its degeneracy copies $V_df$ for $d\mid N/M$.</li>
+        </ol>
+        This is not proved by the preceding $U_2$ calculation. Its proof controls adjoints at bad
+        primes using Fricke–Atkin–Lehner operators and proves the multiplicity-one statement that good
+        eigenvalues determine a primitive form. Both are substantial inputs, and both are included in
+        the registered import <code>15-newforms</code>.
+      </div>
+      <p>A <strong>normalized newform</strong> — also called a <strong>primitive form</strong> — is
+        therefore a normalized simultaneous Hecke eigenform in
+        $S_k(\Gamma_0(N))^{\mathrm{new}}$. The adjective “new” supplies the missing minimality, and
+        “normalized” removes the remaining scalar ambiguity.</p>
+
+      <h3>What “the level” now means</h3>
+      <p>There are now two integers that must not be confused:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>integer</th><th>what it says</th><th>is it intrinsic?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>ambient level $N$</td>
+              <td>the form is being viewed in $S_k(\Gamma_0(N))$</td>
+              <td>no; it can be replaced by a multiple</td>
+            </tr>
+            <tr>
+              <td>newform level $M$</td>
+              <td>the unique level where the primitive eigensystem first occurs</td>
+              <td>yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Our function $f_{11}$ belongs to $S_2(\Gamma_0(22))$, but it is old there. Its exact newform
+        level remains $11$. Conversely, equation (8) says that no primitive eigensystem has exact
+        level $22$.</p>
+      <p>This is the sense of “level” that later theorems use. When Ribet lowers a residual
+        representation from one modular level to another, the endpoint is not merely another ambient
+        space containing the same function. It is the exact level of a newform realizing that
+        eigensystem.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>A canonical modular object</h3>
+      <p>At the start of essay 14, a modular form was a function with a transformation law. At its end,
+        a good-Hecke eigenform carried arithmetic numbers $a_\ell$. This essay removes the two
+        ambiguities still attached to that object:</p>
+      <ul>
+        <li>normalization $a_1=1$ removes scalar rescaling;</li>
+        <li>newness supplies the unique exact level.</li>
+      </ul>
+      <p>So the phrase</p>
+      <p>$$
+        \text{“a normalized weight-$2$ newform of level $N$”}
+      $$</p>
+      <p>now names a rigid arithmetic object. Its good coefficients determine it, its bad-prime
+        operators are part of its eigenpacket, and $N$ records where that packet is genuinely new.</p>
+
+      <h3>The level-$11$ thread is ready to cross the bridge</h3>
+      <p>The same form has now acquired four compatible descriptions:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>essay</th><th>description of the same object</th></tr></thead>
+          <tbody>
+            <tr><td>12</td><td>the eta product $(\eta(z)\eta(11z))^2$ and its $q$-expansion</td></tr>
+            <tr><td>13</td><td>the unique line in $S_2(\Gamma_0(11))$</td></tr>
+            <tr><td>14</td><td>a normalized eigenform with good eigenvalues $a_\ell$</td></tr>
+            <tr><td>15</td><td>the normalized newform of exact level $11$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Essay 16 can now attach a Galois representation to this precise object. Essay 17 can attach
+        its $L$-function, including the local factors at bad primes. Essay 18 can state modularity with
+        no ambiguity: an elliptic curve of conductor $N$ corresponds to a weight-$2$ newform of exact
+        level $N$.</p>
+
+      <h3>The ending has also become sharper</h3>
+      <p>Essay <a href="25-ribet-and-the-end.html">25</a> ends by demanding a weight-$2$ newform of
+        level $2$. That demand now means a genuinely new primitive form, not an arbitrary cusp form
+        viewed at level $2$. At level $2$ the distinction happens not to affect the numerical
+        contradiction because the entire cusp space is zero. At level $22$ it matters decisively:
+        the cusp space has dimension $2$, while the newspace has dimension $0$.</p>
+      <p>This also explains why lists of levels with no newforms are longer than lists of genus-zero
+        modular curves. Newform theory removes inherited dimensions before asking whether anything
+        remains.</p>
+
+      <h3>Exactly where this essay stops</h3>
+      <p>Newform theory identifies the modular object and its exact level. It does not yet:</p>
+      <ul>
+        <li>construct the Galois representation $\rho_{f,p}$;</li>
+        <li>build the Euler product $L(f,s)$ and match its local factors;</li>
+        <li>prove that an elliptic curve supplies such a newform; or</li>
+        <li>lower the level of a residual representation.</li>
+      </ul>
+      <p>Those are essays 16–18 and 25. The gain here is narrower but indispensable: their statements
+        now refer to an object whose normalization and level have actually been defined.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>The boundary inherited from essay 14.</strong> Andrew Sutherland's MIT 18.783 Fall
+        2023 Lecture 24, remark 24.16 and the discussion surrounding theorems 24.20–24.21, states both
+        failures used here: the clean Hermitian theory is prime to the level, and at general level the
+        common good-Hecke eigenspaces need not be one-dimensional. Theorem 24.21 gives the resulting
+        normalized newform basis.</p>
+      <p><strong>The full old/new repair.</strong> The 2018 ENS notes
+        <em>Modular Forms</em>, §5.3, define the two degeneracy maps, oldspace and newspace; compute the
+        bad-prime action; introduce the Fricke operator to control adjoints; and state the
+        Atkin–Lehner–Li theorem as theorem 5.13. In particular, a good-Hecke eigenform in the newspace
+        is an eigenform for every $T_m$, two such forms with the same good eigenvalues are scalar
+        multiples, and normalized primitive forms form an orthogonal basis.</p>
+      <p><strong>Original sources.</strong> The classical theory originates in A. O. L. Atkin and
+        J. Lehner, “Hecke operators on $\Gamma_0(m)$,” <em>Mathematische Annalen</em> 185 (1970),
+        134–160, DOI 10.1007/BF01359701, and its extension in Wen-Ch'ing Winnie Li, “Newforms and
+        functional equations,” <em>Mathematische Annalen</em> 212 (1975), 285–315,
+        DOI 10.1007/BF01344466.</p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/newforms_and_level.py</code>. It builds
+        $f_{11}$ from its eta product with exact integer coefficients; checks the dimensions at levels
+        $11$ and $22$; verifies that $f(q)$ and $f(q^2)$ are independent and have identical
+        eigenvalues for every tested good prime; computes the matrix (14) directly from $q$-series;
+        and confirms that its characteristic polynomial has negative discriminant. The script checks
+        the motivating example, not the imported newform theorem.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="15-level22-oldspace">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The two degeneracy images $f_{11}(q)$ and $f_{11}(q^2)$ span
+              $S_2(\Gamma_0(22))$, share every good Hecke eigenvalue, and satisfy
+              $[U_2]=\left(\begin{smallmatrix}-2&amp;1\\-2&amp;0\end{smallmatrix}\right)$; hence the
+              whole level-$22$ space is old, the newspace is zero, and $U_2$ is not Hermitian</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="15-newforms">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Atkin–Lehner–Li theory preserves the old/new decomposition under the full Hecke algebra,
+              turns a good-Hecke eigenvector in the newspace into a unique normalized full-Hecke
+              eigenform, and assigns every eigensystem a unique primitive level
+              <span class="lref">(L12)</span></li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
+            <li>Eichler–Shimura, and modularity — assumption (M)
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Ribet's level-lowering theorem <span class="lref">(L18, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="14-hecke-operators.html"><span class="dir">← Previous written essay</span> 14 · Hecke operators</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 15 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp"><a href="https://github.com/AnthonyKot/fermat-last-theorem">Source</a> · <a href="https://github.com/AnthonyKot/fermat-last-theorem/deployments">deployment history</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

@@ -56,7 +56,7 @@
         <li>A genus-$g$ compact Riemann surface has a $g$-dimensional space of holomorphic differentials <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span></li>
         <li>Riemann--Hurwitz, and the ramification structure of $X_0(N)\to X(1)$ <span class="scope-essays">(<a href="chapters/13-valence-and-dimension.html">essay 13</a>)</span></li>
         <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(<a href="chapters/14-hecke-operators.html">essay 14</a>)</span></li>
-        <li>Newform theory, and the level of a newform <span class="scope-essays">(essay 15)</span> <span class="roster-planned">not yet written</span></li>
+        <li>Newform theory, and the level of a newform <span class="scope-essays">(<a href="chapters/15-newforms-and-level.html">essay 15</a>)</span></li>
         <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
         <li>The Modularity Theorem, semistable case <span class="scope-essays">(essay 18)</span> <span class="roster-planned">not yet written</span></li>
         <li>Ramification at a multiplicative prime: unramified iff $p\mid v_\ell(\Delta_{\min})$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
@@ -111,7 +111,7 @@
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is discharged or narrowed.</p>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 5 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 4 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -303,6 +303,11 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           For $\gcd(n,N)=1$, the coefficient formula $a_r(T_nf)=\sum_{d\mid(r,n)}d^{k-1}a_{rn/d^2}$ gives $a_1(T_nf)=a_n(f)$. Thus for a normalised simultaneous eigenform the good Hecke eigenvalues are its Fourier coefficients, which are multiplicative and satisfy the prime-power recurrence. <span class="scope-essays">(<a href="chapters/14-hecke-operators.html">essay 14</a>)</span>
        </li>
+        <li data-proof-id="15-level22-oldspace">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          The two degeneracy images $f_{11}(q)$ and $f_{11}(q^2)$ span $S_2(\Gamma_0(22))$, share every good Hecke eigenvalue, and satisfy $[U_2]=\left(\begin{smallmatrix}-2&amp;1\\-2&amp;0\end{smallmatrix}\right)$; hence the whole level-$22$ space is old, the newspace is zero, and $U_2$ is not Hermitian. <span class="scope-essays">(<a href="chapters/15-newforms-and-level.html">essay 15</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -429,6 +434,11 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The Petersson product is positive definite, and the Hecke operators $T_n$ with $\gcd(n,N)=1$ preserve $S_k(\Gamma_0(N))$, commute and are self-adjoint. The spectral theorem therefore decomposes the space into simultaneous good-Hecke eigenspaces; at general level these eigenspaces need not yet be one-dimensional. <span class="scope-essays">(<a href="chapters/14-hecke-operators.html">essay 14</a>)</span>
        </li>
+        <li data-proof-id="15-newforms">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Atkin--Lehner--Li theory preserves the old/new decomposition under the full Hecke algebra, turns a good-Hecke eigenvector in the newspace into a unique normalized full-Hecke eigenform, and assigns every eigensystem a unique primitive level. Imported: the bad-prime adjoint and multiplicity-one machinery. Without it "the level" in Ribet's theorem is undefined. <span class="scope-essays">(<a href="chapters/15-newforms-and-level.html">essay 15</a>)</span>
+       </li>
         <li data-proof-id="24-multiplicative-ramification">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -454,11 +464,6 @@
           <span class="scope-mode scope-mode--outlined">Outlined</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="15-newforms">
-          <span class="scope-mode scope-mode--stated">To assume</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The decomposition of $S_2(\Gamma_0(N))$ into old and new subspaces, and the well-definedness of the level of a newform. Imported: Atkin--Lehner theory. Without it "the level" in Ribet's theorem is undefined. <span class="scope-essays">(essay 15)</span>
        </li>
         <li data-proof-id="16-eichler-shimura">
           <span class="scope-mode scope-mode--stated">To assume</span>
@@ -638,7 +643,7 @@
 
     <h2>Status</h2>
 
-    <!-- about-essay-count:start --><p><strong>Eighteen of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The seven unwritten essays are 15, 16, 17, 18, 19, 20 and 21. The canonical proof register currently records 5 required items still owed, so the chain does not yet close. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
+    <!-- about-essay-count:start --><p><strong>Nineteen of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/15-newforms-and-level.html">15</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The six unwritten essays are 16, 17, 18, 19, 20 and 21. The canonical proof register currently records 4 required items still owed, so the chain does not yet close. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
 
     <p>This is the third in a series of collections built the same way, after
       <em>The Quantum Quartet</em> (four authors on early quantum mechanics) and <em>The Bridge</em>
