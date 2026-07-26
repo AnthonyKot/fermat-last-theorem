@@ -20,12 +20,13 @@ nouns badly mangled (Wiles → "walls", Galois → "galwa"/"gallo", Frey → "fr
 Frobenius → "probenius", Hecke → "heap"/"hackiff", Mazur → "mazour", Néron–Ogg–Shafarevich → "naron
 arc chef thorich", Eichler–Shimura → "equil shimmerra", eigen → "igen").
 
-**How it is used:** the video fixes *what* the series covers and *in what order*. It is never cited —
-no timestamps exist to cite, and a mangled auto-caption is not a citable source. `resources/` is
-git-ignored. Verification queries against it are done with word-offset percentages, and the mangling
-means **a term coming up "absent" in a grep proves nothing** until phonetic variants are checked; that
-mistake was made once already and produced a coverage map claiming the video never mentions Galois
-theory, Hecke operators, Frey, or Ribet.
+**How it is used:** the video fixes *what* the series covers and *in what order*. The public About page
+credits that curricular role explicitly, naming and linking the video and its channel. It is never
+cited as mathematical evidence — no timestamps exist to cite, and a mangled auto-caption is not a
+citable source. `resources/` is git-ignored. Verification queries against it are done with word-offset
+percentages, and the mangling means **a term coming up "absent" in a grep proves nothing** until
+phonetic variants are checked; that mistake was made once already and produced a coverage map claiming
+the video never mentions Galois theory, Hecke operators, Frey, or Ribet.
 
 **Verified coverage map** (word-offset % → essay), from grepping variants and reading the passages:
 
@@ -168,7 +169,8 @@ The rest of the non-negotiable boundary is:
 - Wiles's machinery in Part V is **described as anatomy**, not proved. The reader learns what the
   objects are and what the strategy is. Three essays cannot prove a 109-page paper and must not
   pretend to;
-- the second case for $n=3$ remains **outlined** unless essay 02 is expanded into a genuine proof;
+- essay 02's second case is in the **proved** register only because the expanded descent isolates the
+  common $\lambda$-factor, checks all three unit classes and constructs the smaller solution explicitly;
 - an item moves into the **proved** register only when its essay exists and supplies the promised
   derivation.
 
@@ -228,7 +230,7 @@ may use a line before the essay that makes it available.
 
 | # | Ledger line | Resolved in |
 |---|---|---|
-| L1 | FLT reduces to exponents p prime, p ≥ 5 | 01; 02 proves the first case for n = 3 but still owes the second-case descent |
+| L1 | FLT reduces to exponents p prime, p ≥ 5 | 01 and 02; both cases for n = 3 are proved |
 | L2 | G_Q exists; Frobenius elements; traces of Frobenius determine a semisimple representation | 03, 05 |
 | L3 | Z_p and the p-adic valuation v_ℓ | 04 |
 | L4 | Elliptic curves over Q form a group; discriminant, reduction types, conductor | 06, 07, 08 |
@@ -321,7 +323,7 @@ if copies arrive.
 | # | Slug | Construction | Notes |
 |---|------|--------------|-------|
 | 01 | descent-and-n4 | Infinite descent; Pythagorean parametrization; **FLT for n = 4, proved** | Fermat's own method, in full. The gcd lemmas the video front-loads are stated here as tooling, where they are used. Fixes the exponent reduction: any n ≥ 3 has an odd prime factor or is divisible by 4. |
-| 02 | unique-factorization-and-n3 | **First case for n = 3 proved; second case outlined**; then unique factorization as a *structure*: UFDs, the failure in Z[ζ₂₃], class numbers, regular primes, Kummer's partial result | The pivot of Part I. The video proves n = 3 by elementary number theory and introduces UFDs separately; we keep both and connect them. Until the second-case descent is expanded, L1 remains open. See Deviations #2. |
+| 02 | unique-factorization-and-n3 | **Both cases for n = 3 proved**; then unique factorization as a *structure*: UFDs, the failure in Z[ζ₂₃], class numbers, regular primes, Kummer's partial result | The pivot of Part I. The video proves n = 3 by elementary number theory and introduces UFDs separately; we keep both and connect them. The expanded Eisenstein-integer descent closes L1. See Deviations #2. |
 | 03 | galois-and-g-q | Field extensions and degree, the Galois correspondence, Q̄, **G_Q** as a profinite group, **Frobenius elements** at primes | Why G_Q resists direct study: not finite, no presentation. Motivates 05 instead of asserting it. |
 | 04 | p-adics-and-modules | The p-adic valuation v_ℓ, Z_p and Q_p, "small means highly divisible"; modules over a ring, free modules and rank | **Not in my first draft; the transcript forced it.** Needed for T_p(E) ≅ Z_p² (09), GL₂(Z_p) (10), the finite-at-p condition (24), and the valuation computation (23). Resolves L3. |
 | 05 | galois-representations | Continuous ρ : G_Q → GL₂(K); ramified/unramified primes; conductor of a representation; irreducibility; **traces of Frobenius determine a semisimple ρ** | The linearization move. The trace fact is load-bearing — it makes "these two representations are isomorphic" *checkable* in 18, so it lives here. Resolves L2, partly by registered import. |
@@ -373,12 +375,9 @@ Not in the video at all. Opens with a standing banner: these three essays descri
 | 24 | the-frey-representation | ρ̄ = ρ̄_{Frey,p}: **irreducible** via Mazur's isogeny theorem (10), unramified outside 2 and p via **Néron–Ogg–Shafarevich** (10), finite at p, and **conductor exactly 2** | Resolves L17 through proved calculations and registered local imports. Corrections #5 lives here: the *curve's* conductor is rad(abc); it is the *representation's* conductor that is 2. Level lowering exists to close exactly that gap. |
 | 25 | ribet-and-the-end | **Ribet's level-lowering theorem** (1990) with its hypotheses; applied: modular of level rad(abc) ⟹ modular of level 2, so a weight-2 newform of level 2 exists. But μ = 3, ν₂ = 1, ν₃ = 0, ν_∞ = 2 gives 1 + 3/12 − 1/4 − 0 − 1 = 0, so **dim S₂(Γ₀(2)) = 0**. No such form. Hence no such representation, no such curve, no such solution. ∎ | Imports L18 and proves the L19 computation once essay 13 supplies its formula; the required debt then empties without disguising Ribet as proved. Closes with what the proof does *not* give: no effective bounds, no explanation of *why*, and the ABC-shaped questions still open. Note the slack — levels 1, 2, 3, 4 all give 0 — so the contradiction is not knife-edge. |
 
-**Parts I and II have all ten essays written, and Part I still carries one debt inside it.** Do not
-call either Part "complete": L1, the second case for $n=3$, lives in essay 02 and is `outlined`, not
-proved — and Part I is the one Part that claims to prove from scratch rather than import, so the word
-matters there most. Three options, and the choice should be deliberate rather than smuggled in by
-vocabulary: write the descent, reclassify L1 as a declared assumption with a citation, or say **"all
-five essays written, one debt outstanding"**. The third is free and true, and is what the site says.
+**Parts I and II have all ten essays written, and Part I is complete.** L1 closed when essay 02's
+second case was expanded from an outline into a descent that performs the unit analysis and produces
+the smaller solution. No classical exponent is imported as an assumption.
 
 What *is* true and worth saying: essays 01–10 form an unbroken reading path with no forward references,
 verified by the two symmetric ledger checks rather than asserted.
@@ -416,8 +415,8 @@ the comparison, not to a self-referential string in the artifact. For a narrow d
   $G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}/\ell^n)$ is determined at a finite level, while $\rho$
   itself need not be. *Finite level on each layer, not finite overall.* Essay 05 states it in that
   form and points at the single-layer case as the reason $\bar\rho$ is easier.
-- **Writing order from here: then 11 → 12 → 13, then 14 → 15 → 16 → 17 → 18,
-  then 19–21 and 02's second case.** Essays through 18 are now written. This replaces an earlier note that put 24 next, which was
+- **Writing order from here: optional essays 19–21.** Essays through 18 and the full second case in 02
+  are now written. This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
   until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
 - **Essay 09 comes first, and it earns its place twice.** It needs only 04, 06 and 07, all written.
@@ -578,6 +577,10 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
     $\Delta_{\min}=2^{-8}(abc)^{2p}$; without that bridge, essay 22's displayed discriminant appears
     to change silently in essay 23.
 11. **Use *semistable* consistently**, one word.
+12. **Keep Latin $v_q$ and Greek $\nu_q$ distinct.** The former is a $q$-adic valuation and always
+    carries an argument, such as $v_2(\Delta_{\min})$; the latter counts elliptic points in the modular
+    curve dimension formula. Essay 24 states the distinction at the point of use, and `verify.sh`
+    rejects a bare valuation or a Greek nu applied to a discriminant.
 
 ## Tech stack (unchanged from books 1 and 2)
 
@@ -696,8 +699,9 @@ all written, plus a declared import of modularity from 18.
    curves), §1.8 (Shimura–Taniyama), theorem 2.15 in §2.2 (ramification of the Frey representation),
    §3.2 (Serre's conjectures). Read the chapter openings for the deformation-theory and R = T sections
    before drafting 19–21.
-3. **Essay 02's second case** is an outline, and `about.html` says so. Either complete it or leave the
-   fence — but do not quietly upgrade the claim.
+3. ~~**Complete essay 02's second case.**~~ **Done.** The proof now isolates the
+   $\lambda$-valuation, derives the unit-times-$\lambda$-times-cube factorisation, eliminates the two
+   impossible unit classes modulo $9$, and constructs a strictly smaller Fermat solution.
 4. When 03, 05, 09–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become
    back-references and its ledger must close. `verify.sh`'s forward-dependency check will enforce the
    direction; the closing itself needs a human look.
@@ -706,7 +710,7 @@ all written, plus a declared import of modularity from 18.
    the minimal-model and conductor material sits at its end, in §24.7 and definitions 24.29–24.31.
    Numbered items usable later, all in that one lecture: **theorem 24.8** gives
    $\dim M_k(\Gamma)$ and $\dim S_k(\Gamma)$ with $\dim S_2(\Gamma)=g(\Gamma)$ (**essay 13** — note it
-   is the genus form, so essay 13 still owes the arithmetic route to the genus); definition 24.5,
+   is the genus form; essay 13 subsequently derived the arithmetic route to the genus); definition 24.5,
    24.6 and theorem 24.11, corollaries 24.12–24.13, theorem 24.14, corollary 24.15 and remark 24.16
    cover modular forms, cusp forms and Hecke operators including the $\gcd(n,N)=1$ restriction
    (**essays 12, 14**, and remark 24.16 confirms Corrections #4); definition 24.24, theorem 24.25 and

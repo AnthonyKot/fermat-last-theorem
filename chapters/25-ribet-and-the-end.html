@@ -29,11 +29,11 @@
       two. It must exist. The space it would live in has dimension zero.</p>
 
     <div class="claim">
-      <span class="tag">This essay states, computes, and concludes conditionally</span>
+      <span class="tag">This essay states, computes, and closes the chain</span>
       <strong>States:</strong> Ribet's level-lowering theorem, with hypotheses.
       <strong>Computes:</strong> $\dim S_2(\Gamma_0(2)) = 0$, from the dimension formula essay 13
       derives.
-      <strong>Concludes conditionally:</strong> Fermat's Last Theorem.
+      <strong>Concludes:</strong> Fermat's Last Theorem from the published roster of named assumptions.
     </div>
 
     <section class="rung">
@@ -44,9 +44,8 @@
       <p>$$ E \;:\; y^2 = x(x-a^p)(x+b^p) $$</p>
       <p>is an elliptic curve over $\mathbb{Q}$ with discriminant $\Delta = 16\,(abc)^{2p}$.</p>
       <div class="fence">
-        <strong>One assumption, and it is about the modular side.</strong> Everything on the
-        elliptic-curve side of the argument is established, and the one remaining assumption lives in an
-        essay that is not yet written:
+        <strong>Three direct imports, all named.</strong> Everything on the elliptic-curve side of the
+        argument is established. The modular input is:
         <ul>
           <li><strong>(M) Modularity.</strong> Every semistable elliptic curve over $\mathbb{Q}$ is
             modular. Stated in essay 18, applied in essay
@@ -93,10 +92,9 @@
         proved here for independent reasons — so <strong>the argument runs for every prime
         $p\geq5$</strong> with no exceptional exponents. The conductor of $\bar\rho$ used to be assumed;
         it is now computed. And the dimension formula used to be quoted; it is now derived.</p>
-      <p>So the collection's claim to a proof of the full theorem has exactly <strong>one</strong>
-        external debt left, and it is not in this Part: essay
-        <a href="02-unique-factorization-and-n3.html">02</a> outlines rather than proves the
-        second-case descent for $n=3$.</p>
+      <p>Essay <a href="02-unique-factorization-and-n3.html">02</a> now proves the second-case descent
+        for $n=3$ in full. The last internal debt has therefore closed: what remains visible is not an
+        owed step but the roster of external theorems this derivation assumes.</p>
     </section>
 
     <section class="rung">
@@ -176,10 +174,10 @@
       </ul>
       <p>The modular contradiction applies to <em>every</em> prime $p\geq5$ — no exponent in that range
         is excluded, which was not true of earlier drafts of this collection. Essay 01 reduced every
-        $n\geq3$ to $n=4$ or an odd prime and settled $n=4$; essay 02 settles the first case of $n=3$ and
-        outlines the second. So once that outline becomes a proof, no exponent $n\geq3$ survives:
-        Fermat's Last Theorem. Today that last sentence is conditional on (M), Ribet and essay 02,
-        exactly as the ledger records — and on nothing else. $\blacksquare$</p>
+        $n\geq3$ to $n=4$ or an odd prime and settled $n=4$; essay 02 settles both cases for $n=3$ by
+        descent. No exponent $n\geq3$ survives: Fermat's Last Theorem, derived from the named
+        assumptions published on the About page. Those imports remain assumptions; the required
+        internal debt is empty. $\blacksquare$</p>
 
       <h3>How much room there was</h3>
       <p>A natural worry about an argument that ends in a zero is whether it only barely ends there.
@@ -254,6 +252,12 @@
               <span class="ledger-dep">conditional on essay 13's two imports</span>
               $\dim S_2(\Gamma_0(2))=0$, from $\mu=3$, $\nu_2=1$, $\nu_3=0$, $\nu_\infty=2$ and a
               formula essay 13 derives rather than quotes <span class="lref">(L19)</span></li>
+            <li data-proof-id="25-contradiction">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              <span class="ledger-dep">conditional on the named imports in essays 18, 24 and 25</span>
+              The Frey--Ribet contradiction, combined with essays 01 and 02, rules out every
+              exponent $n\geq3$</li>
           </ul>
         </div>
         <div class="col assumed-here">
@@ -269,20 +273,14 @@
         <div class="col owed">
           <h3>Still owed</h3>
           <ul>
-            <li data-ledger-line="L1">The exponent reduction, including both cases for $n=3$ <span class="lref">(L1, essay 02)</span></li>
-            <li data-proof-id="25-contradiction">
-              <span class="ledger-mode ledger-mode--conditional">Conditional</span>
-              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              The final contradiction remains conditional on (M), Ribet and finiteness at $p$, and the
-              collection's full claim also on essay 02's second case for $n=3$</li>
           </ul>
         </div>
       </div>
-      <p class="ledger-open">The required debt does not close yet. It closes when essay 18 registers
-        modularity, the conditional contradiction is discharged, and essay 02's second-case outline
-        becomes a proof. Essay 17 supplies the motivating $L$-function bridge, while essays 19–21 are
-        an optional anatomy of Wiles's machinery; none of those four carries a required debt.
-        Imported inputs remain visible even when the chain closes.</p>
+      <p class="ledger-open"><strong>The required debt is empty.</strong> Essay 18 registers
+        modularity, this essay derives the contradiction from Ribet's theorem and finiteness at $p$,
+        and essay 02 supplies the complete second-case descent. Essay 17 supplies the motivating
+        $L$-function bridge, while essays 19–21 remain an optional anatomy of Wiles's machinery.
+        Imported inputs stay visible after the chain closes.</p>
     </section>
 
     <nav class="chapter-nav">

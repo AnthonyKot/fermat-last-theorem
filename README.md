@@ -9,9 +9,9 @@ Third in a series built the same way, after [The Quantum Quartet](https://anthon
 quantum information).
 
 Each essay follows four rungs — **What we already have → The construction → What it buys → Reading** —
-and closes with a three-part **ledger**: what it proves, what it explicitly assumes, and what the final
-contradiction is still owed. The series is finished when the required debt is empty; assumed results
-remain visible as assumptions. See [`about.html`](about.html) for the generated proof boundary.
+and closes with a three-part **ledger**: what it proves, what it explicitly assumes, and what remained
+owed at that point. The required debt is now empty; assumed results remain visible as assumptions.
+See [`about.html`](about.html) for the generated proof boundary.
 
 ## Reading it
 
@@ -31,7 +31,7 @@ semistability check:
 | # | Essay | What it delivers |
 |---|-------|------------------|
 | 01 | Descent, and the exponent four | $x^4+y^4=z^2$ has no solution, proved in full; reduction to odd prime exponents |
-| 02 | Unique factorisation, and where it runs out | $n=3$ first case in the Eisenstein integers; failure of unique factorisation; Kummer's regular primes |
+| 02 | Unique factorisation, and where it runs out | Both cases for $n=3$ proved in the Eisenstein integers; failure of unique factorisation; Kummer's regular primes |
 | 03 | The absolute Galois group | $G_{\mathbb{Q}}$ as an inverse limit of finite Galois groups; $\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong(\mathbb{Z}/n)^\times$ with $\mathrm{Frob}_\ell=\sigma_\ell$ |
 | 04 | A new pair of sunglasses: the $p$-adics | $v_\ell$ and the ultrametric inequality; $\mathbb{Z}_\ell$ built twice; free modules and $\mathrm{GL}_2(\mathbb{Z}_\ell)$ |
 | 05 | Galois representations | Continuous $\rho$ into $\mathrm{GL}_2(K)$, reducibility and semisimplicity; the conductor stated; traces of Frobenius identify a semisimple $\rho$ |
@@ -51,7 +51,7 @@ semistability check:
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
 | 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; irreducibility for every $p\geq5$ |
-| 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
+| 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the FLT contradiction derived from the published assumption roster |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08

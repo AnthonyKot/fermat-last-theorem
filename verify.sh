@@ -363,6 +363,35 @@ print(f"  no {N}-word overlap with the transcript" if not bad else f"  {bad} ove
 sys.exit(1 if bad else 0)
 PY
 
+echo "== valuation and elliptic-point notation stay distinct =="
+python3 - <<'PY' || fail=1
+import glob, re, sys
+
+files = sorted(glob.glob("*.html") + glob.glob("chapters/*.html") + ["data/ledger.json"])
+problems = 0
+for path in files:
+    text = open(path).read()
+    # Latin v_q is a valuation and must name its argument; Greek nu_q is an
+    # elliptic-point count. They are visually close enough that a bare v_2 was
+    # previously published as though it were a value rather than a function.
+    for match in re.finditer(r"(?<!\\)v_(?:2|3|\\ell)\s*=", text):
+        line = text[:match.start()].count("\n") + 1
+        print(f"  {path}:{line}: bare valuation symbol; write v_q(argument)")
+        problems += 1
+    for match in re.finditer(r"\\nu_(?:2|3|\\ell)\s*\(\s*(?:\\Delta|abc\b|b\b)", text):
+        line = text[:match.start()].count("\n") + 1
+        print(f"  {path}:{line}: Greek nu used as a valuation; write Latin v")
+        problems += 1
+
+chapter = open("chapters/24-the-frey-representation.html").read()
+if "This is the Latin $v_2$" not in chapter or "It is not the Greek $\\nu_2$" not in chapter:
+    print("  essay 24 must state the v_2 / nu_2 distinction where the valuation is used")
+    problems += 1
+print("  Latin v_q is reserved for valuations; Greek nu_q for elliptic-point counts"
+      if not problems else f"  {problems} notation problem(s)")
+sys.exit(1 if problems else 0)
+PY
+
 echo "== self-assessment scan (an essay must not grade itself) =="
 hits=$(grep -rniE "cleanest|clearest|sharpest|in the whole book|of its thesis|worth saying|this book cannot|the rest of this book" chapters/*.html)
 if [ -n "$hits" ]; then echo "  triage (mathematical superlative = ok; verdict about the essay = fix):"; echo "$hits"

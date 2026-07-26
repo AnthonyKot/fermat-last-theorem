@@ -4,13 +4,16 @@ Every precise citation in the essays is logged here: what was fetched, when, and
 An essay citation absent from this table is treated as unverified and fails `verify.sh`.
 
 Tier definitions are in `CONTEXT.md`. Briefly: **A** = fetched this session, citable precisely
-(LMFDB labels, paper theorem numbers, named open notes). **B** = orientation only, never cited
-(Wikipedia, blogs, forums, the video transcript). **C** = textbooks not owned, topic-level only.
+(LMFDB labels, paper theorem numbers, named open notes). **B** = orientation or curricular provenance
+only, never mathematical evidence (Wikipedia, blogs, forums, the reference video and its transcript).
+**C** = textbooks not owned, topic-level only.
 
 ## Verified
 
 | Date | Source | Identifier | What it confirmed | Used in |
 |---|---|---|---|---|
+| 2026-07-27 | [Mathlib, `Mathlib.NumberTheory.FLT.Three`](https://github.com/leanprover-community/mathlib4/blob/5e932f97dd25535344f80f9dd8da3aab83df0fe6/Mathlib/NumberTheory/FLT/Three.lean) | theorem `fermatLastTheoremThree`; pinned source revision `5e932f9` | A machine-checked proof of Fermat's Last Theorem for exponent $3$. The module documentation identifies the two-case strategy, the generalized Eisenstein-integer equation needed to control units, and descent in the multiplicity of $\lambda=\zeta_3-1$ | 02 |
+| 2026-07-27 | [Roelof Oosterhuis, Archive of Formal Proofs, *Fermat's Last Theorem for Exponents 3 and 4 and the Parametrisation of Pythagorean Triples*](https://isa-afp.org/entries/Fermat3_4.html) | `fermat-3`; release dated 6 February 2026 | An independent machine-checked proof over the integers that $x^3+y^3=z^3$ forces $xyz=0$, using infinite descent and the quadratic form $x^2+3y^2$; the proof outline explicitly constructs a solution with smaller final term | 02 |
 | 2026-07-27 | [LMFDB newform page](https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/11/2/a/a/) | `11.2.a.a` | Level 11, weight 2, trivial character orbit `11.a`, **space dimension 1**; coefficients a₁…a₁₃ = 1, −2, −1, 2, 1, 2, −2, 0, −2, −2, 1, −2, 4; associated to elliptic curve isogeny class `11.a` | 16, 17, 18 |
 | 2026-07-27 | [LMFDB elliptic-curve isogeny class](https://www.lmfdb.org/EllipticCurve/Q/11/a/) | `11.a3`, class `11.a`; L-function data | The model $y^2+y=x^3-x^2$ has label `11.a3`, discriminant $-11$ and conductor $11$; class `11.a` is attached to newform `11.2.a.a`; `11.a2`, not `11.a3`, is the $\Gamma_0(11)$-optimal curve. The class page gives good local polynomials $1+2T+2T^2$, $1+T+3T^2$, $1-T+5T^2$, $1+2T+7T^2$ at $2,3,5,7$, and bad local polynomial $1-T$ at $11$ | 06, 16, 17, 18, 25 |
 | 2026-07-25 | Darmon–Diamond–Taylor, *Fermat's Last Theorem* (rev. 9 Sept 2007), Introduction | p. 3 | Fermat's n = 4 proof establishes the stronger claim that x⁴ + y⁴ = z² has no solution in coprime integers with xyz ≠ 0; such solutions correspond to rational points on v² = u³ − 4u. **The reduction: every integer n ≥ 3 is divisible either by an odd prime or by 4.** Euler proved ℓ = 3 in 1753 by a 3-descent on x³ + y³ = 1, and **his argument seems to have contained a gap**. ℓ = 5 settled ~100 years later | 01, 02 |

@@ -286,13 +286,13 @@
     },
     {
       "id": "02-n3-second-case",
-      "register": "outlined",
+      "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
       "essays": [
         2
       ],
-      "text": "The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed."
+      "text": "The second case for $n=3$ is proved by infinite descent in the Eisenstein integers: the common $\\lambda$-factor is isolated, all three unit classes are checked, and a primitive solution produces a strictly smaller one."
     },
     {
       "id": "02-ufd-failure",
@@ -1078,7 +1078,7 @@
       "essays": [
         24
       ],
-      "text": "$N(\\bar\\rho_{E,p})=2$. At an odd bad prime $v_\\ell(\\Delta_{\\min})=2p\\,v_\\ell(abc)$ is a multiple of $p$, so the prime drops out of the conductor; at $2$, $v_2=2p\\,v_2(b)-8\\equiv-8\\not\\equiv0$ because $p\\nmid8$, so $2$ survives, tamely, with $n_2=1$.",
+      "text": "$N(\\bar\\rho_{E,p})=2$. At an odd bad prime $v_\\ell(\\Delta_{\\min})=2p\\,v_\\ell(abc)$ is a multiple of $p$, so the prime drops out of the conductor; at $2$, $v_2(\\Delta_{\\min})=2p\\,v_2(b)-8\\equiv-8\\not\\equiv0$ because $p\\nmid8$, so $2$ survives, tamely, with $n_2=1$.",
       "depends_on": [
         "24-multiplicative-ramification"
       ]
@@ -1117,13 +1117,18 @@
     },
     {
       "id": "25-contradiction",
-      "register": "conditional",
+      "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
       "essays": [
         25
       ],
-      "text": "The final contradiction is assembled conditionally on exactly three inputs -- modularity (essay 18), Ribet's theorem, stated here, and finiteness at $p$ (essay 24) -- and the collection's full FLT conclusion additionally on essay 02's outlined second case for $n=3$. Nothing else is external: the irreducibility threshold and the conductor of $\\bar\\rho$ are settled in essay 24, and the dimension formula, once assumption (F), is derived in essay 13."
+      "depends_on": [
+        "18-modularity",
+        "24-finite-at-p",
+        "25-ribet"
+      ],
+      "text": "The final contradiction is assembled from the completed chain: essay 02 settles $n=3$, essay 01 settles $n=4$ and reduces all remaining exponents to primes $p\\geq5$, and the Frey--Ribet argument rules those out. The last step is proved from the three direct imports modularity, finiteness at $p$, and Ribet's theorem; the full chain rests on the completion policy's published roster of named assumptions."
     },
     {
       "id": "25-level-two",

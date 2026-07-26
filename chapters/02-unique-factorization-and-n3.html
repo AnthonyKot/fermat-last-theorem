@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>02 · Unique factorisation, and where it runs out — No Such Form</title>
-<meta name="description" content="The first case of Fermat's Last Theorem for n = 3 in the Eisenstein integers, an outline of the second, then the failure of unique factorisation, class numbers, and Kummer's regular primes.">
+<meta name="description" content="Fermat's Last Theorem for n = 3 proved by descent in the Eisenstein integers, followed by the failure of unique factorisation, class numbers, and Kummer's regular primes.">
 <script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="stylesheet" href="../static/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
@@ -31,9 +31,8 @@
 
     <div class="claim">
       <span class="tag">This essay proves and states</span>
-      <strong>Proves:</strong> the first case of Fermat's Last Theorem for $n = 3$, in the Eisenstein
-      integers, in full; and that unique factorisation genuinely fails in rings of this kind.
-      <strong>Outlines:</strong> the descent for the second case.
+      <strong>Proves:</strong> Fermat's Last Theorem for $n = 3$, both cases, in the Eisenstein
+      integers; and that unique factorisation genuinely fails in rings of this kind.
       <strong>States:</strong> Kummer's criterion for regular primes.
     </div>
 
@@ -122,26 +121,75 @@
         cubes are rigid modulo $\lambda^4$, the obstruction is a statement about the three numbers
         $\pm 1$.</p>
 
-      <h3>The second case, in outline</h3>
-      <div class="fence">
-        <strong>Outline only.</strong> The remaining case — where $\lambda$ divides one of the three
-        terms — needs a genuine descent rather than a congruence, and it is not proved here. The
-        skeleton below is faithful, but the case analysis inside step 3 is compressed.
-      </div>
-      <p>The standard route strengthens the statement so that the class of equations is closed under
-        the descent, exactly as essay 01 proved something stronger than $n=4$. One shows that</p>
-      <p>$$ \alpha^3 + \beta^3 + \varepsilon\,\lambda^{3n}\gamma^3 = 0 $$</p>
-      <p>has no solution in $\mathbb{Z}[\omega]$ with $\varepsilon$ a unit, $n \geq 1$, and
-        $\lambda \nmid \alpha\beta\gamma$. The argument runs: (1) factor
-        $\alpha^3+\beta^3 = (\alpha+\beta)(\alpha+\omega\beta)(\alpha+\omega^2\beta)$; (2) show the
-        three factors are pairwise coprime away from $\lambda$, and that exactly one of them absorbs all
-        the powers of $\lambda$; (3) apply unique factorisation, so that each factor is a unit times a
-        cube, and analyse which units can occur — this is the step that requires care, because there are
-        six of them; (4) recombine to produce a solution of the same shape with $n$ replaced by
-        $n - 1$. Minimality of $n$ then finishes it.</p>
-      <p>Completing that second-case descent would combine with the first case to give Fermat's Last
-        Theorem for $n = 3$. With essay 01, that would leave only the primes $p \geq 5$. In the
-        collection as it stands, this remains an explicit debt rather than a completed reduction.</p>
+      <h3>The second case: set up the descent</h3>
+      <p>The remaining case is the one in which $3$ divides one of the three rational integers. Start
+        with a non-zero primitive solution and write it, after permuting the three signed cubes, as</p>
+      <p>$$ x^3+y^3=z^3,\qquad 3\mid z,\qquad 3\nmid xy,\qquad \gcd(x,y)=1. $$</p>
+      <p>The signs cause no difficulty: the term divisible by $3$ is moved to the right and made
+        positive. The quadratic factor $x^2-xy+y^2$ is positive, so $x+y$ is then positive as well.</p>
+      <p>Because $x+y\equiv0\pmod3$, write $x+y=3A$. The other factor is</p>
+      <p>$$ x^2-xy+y^2=(x+y)^2-3xy=3(3A^2-xy). $$</p>
+      <p>The expression in parentheses is not divisible by $3$, since $3\nmid xy$. Thus
+        $v_3(x^2-xy+y^2)=1$. Moreover</p>
+      <p>$$ \gcd(x+y,x^2-xy+y^2)=3: $$</p>
+      <p>any common divisor divides $3xy$, while $\gcd(x+y,xy)=1$. Dividing both factors by their common
+        $3$, we therefore have coprime integers $A,B$ with $3\nmid B$ and</p>
+      <p>$$ z^3=(x+y)(x^2-xy+y^2)=9AB. $$</p>
+      <p>Unique factorisation in $\mathbb Z$ now fixes every exponent. Away from $3$, both $A$ and $B$
+        are cubes; at $3$, the exponent in $9A$ must be a multiple of $3$. Hence for positive integers
+        $r,s$</p>
+      <p>$$ \boxed{x+y=9r^3,\qquad x^2-xy+y^2=3s^3,\qquad z=3rs.} $$</p>
+
+      <h3>The Eisenstein factor, including its unit</h3>
+      <p>Put $\alpha=x+\omega y$. It has exactly one factor of $\lambda$:</p>
+      <p>$$ \alpha=(x+y)-\lambda y,\qquad v_\lambda(x+y)\geq4,\qquad
+              v_\lambda(\lambda y)=1. $$</p>
+      <p>Here $v_\lambda(x+y)=2v_3(x+y)$ for rational integers. A prime of
+        $\mathbb Z[\omega]$ other than $\lambda$ cannot divide both $\alpha$ and its conjugate:
+        their difference is $\omega\lambda y$, and then the prime would divide both $x$ and $y$.
+        Nor can it divide both $\alpha$ and $x+y$, because their difference is $-\lambda y$ and the
+        same conclusion follows. Thus the three factors in</p>
+      <p>$$ z^3=(x+y)(x+\omega y)(x+\omega^2y), $$</p>
+      <p>every prime away from $\lambda$ occurring in $\alpha$ must consequently occur to an exponent
+        divisible by $3$. Since $\mathbb Z[\omega]$ is a unique-factorisation domain and
+        $v_\lambda(\alpha)=1$, there are a unit $\varepsilon$ and
+        $\gamma=m+n\omega$ such that</p>
+      <p>$$ x+\omega y=\varepsilon\lambda\gamma^3,\qquad \lambda\nmid\gamma. $$</p>
+      <p>This is the point at which “up to a unit” has to be resolved, not waved away. Absorb the sign
+        $\pm1$, which is itself a cube, into $\gamma$. It leaves three possibilities
+        $\varepsilon\in\{1,\omega,\omega^2\}$. Expanding once, set</p>
+      <p>$$
+        \gamma^3=C+D\omega,\qquad
+        C=m^3+n^3-3mn^2,\qquad D=3mn(m-n).
+      $$</p>
+      <p>Multiplication by $\lambda=1-\omega$ makes the sum of the two rational coefficients equal to
+        $3D$; multiplication by $\omega\lambda$ makes it $3(C-D)$; and multiplication by
+        $\omega^2\lambda$ makes it $-3C$. Now $\lambda\nmid\gamma$ says
+        $m+n\not\equiv0\pmod3$, while</p>
+      <p>$$ C\equiv m+n\not\equiv0\pmod3,\qquad D\equiv0\pmod3. $$</p>
+      <p>The last two coefficient sums are therefore divisible by $3$ but not by $9$. They cannot equal
+        $x+y=9r^3$. Only $\varepsilon=1$ survives, and its coefficient sum gives</p>
+      <p>$$ 9r^3=3D=9mn(m-n),\qquad\text{so}\qquad r^3=mn(m-n). $$</p>
+
+      <h3>A smaller solution</h3>
+      <p>If a rational prime divided both $m$ and $n$, its cube would divide both rational coefficients
+        of $\lambda\gamma^3=x+\omega y$, contradicting $\gcd(x,y)=1$. Thus $m$ and $n$ are coprime, and
+        so are the three integers $m$, $n$ and $m-n$. Their product is a cube; each is therefore a
+        signed cube:</p>
+      <p>$$ m=a^3,\qquad n=b^3,\qquad m-n=c^3. $$</p>
+      <p>They are all non-zero, because otherwise $r=0$ and then $z=0$. Recombining gives another
+        non-zero Fermat solution</p>
+      <p>$$ a^3=b^3+c^3. $$</p>
+      <p>After moving negative terms, this is a solution in positive integers. It is strictly smaller.
+        Indeed $s=N(\gamma)=m^2-mn+n^2$, and this positive quadratic form is at least each of
+        $|m|$, $|n|$ and $|m-n|$: for example
+        $4s=(2m-n)^2+3n^2\geq3m^2$, which proves the claim for $|m|\geq2$, and the cases
+        $|m|\leq1$ are immediate; the other two follow by symmetry. Therefore</p>
+      <p>$$ |a|^3,\ |b|^3,\ |c|^3\leq s\lt 3rs=z. $$</p>
+      <p>Choose at the start a positive primitive solution with $z$ least. The construction has just
+        produced another positive solution whose largest term is smaller than $z$, a contradiction.
+        The second case is impossible. Together with the congruence argument above, this proves
+        Fermat's Last Theorem for $n=3$. $\blacksquare$</p>
 
       <h3>Now do it for every prime — and watch it fail</h3>
       <p>The obvious plan is to repeat this in $\mathbb{Z}[\zeta_p]$ for each odd prime, factoring
@@ -230,6 +278,13 @@
         in its introduction that Euler's argument appears to have contained a gap — a useful reminder
         that descent arguments in rings whose factorisation properties are not yet understood are
         exactly where errors hide, which is the theme of this essay.</p>
+      <p><strong>Machine-checked comparison.</strong>
+        <a href="https://github.com/leanprover-community/mathlib4/blob/5e932f97dd25535344f80f9dd8da3aab83df0fe6/Mathlib/NumberTheory/FLT/Three.lean">Mathlib's
+        <code>Mathlib.NumberTheory.FLT.Three</code></a> and
+        <a href="https://isa-afp.org/entries/Fermat3_4.html">Roelof Oosterhuis's Archive of Formal
+        Proofs development</a> both formalise the full exponent-$3$ theorem by infinite descent. They
+        take different presentations of the descent, which is useful independent confirmation of the
+        completed case rather than a source for the prose above.</p>
       <p><strong>Kummer's criterion.</strong> The same survey states the criterion in the form used
         here: regularity is equivalent to $p$ dividing the numerator of no $B_{2i}$ for
         $1 \leq i \leq (p-3)/2$, obtained by splitting the class number into two factors and finding a
@@ -256,6 +311,10 @@
               <span class="ledger-mode ledger-mode--proved">Proved</span>
               <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
               Fermat for $n = 3$, first case complete</li>
+            <li data-proof-id="02-n3-second-case">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Fermat for $n = 3$, second-case descent complete</li>
             <li data-proof-id="02-ufd-failure">
               <span class="ledger-mode ledger-mode--proved">Proved</span>
               <span class="ledger-role ledger-role--background">Background</span>
@@ -274,7 +333,6 @@
         <div class="col owed">
           <h3>Still owed</h3>
           <ul>
-            <li data-ledger-line="L1">The exponent reduction, including both cases for $n=3$ <span class="lref">(L1, essay 02)</span></li>
             <li data-ledger-line="L2">$G_{\mathbb Q}$, Frobenius, and traces determining semisimple representations <span class="lref">(L2, essay 05)</span></li>
             <li data-ledger-line="L3">$p$-adic valuations, integers, and free modules <span class="lref">(L3, essay 04)</span></li>
             <li data-ledger-line="L4">Elliptic curves, their group law, reduction types, and conductor <span class="lref">(L4, essay 08)</span></li>
@@ -293,11 +351,6 @@
             <li data-ledger-line="L17">The conductor of the residual Frey representation <span class="lref">(L17, essay 24)</span></li>
             <li data-ledger-line="L18">Ribet's level-lowering theorem <span class="lref">(L18, essay 25)</span></li>
             <li data-ledger-line="L19">The vanishing of $S_2(\Gamma_0(2))$ <span class="lref">(L19, essay 25)</span></li>
-            <li data-proof-id="02-n3-second-case">
-              <span class="ledger-mode ledger-mode--outlined">Outlined</span>
-              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              The second-case descent for $n=3$ in full; only an outline is present
-              <span class="lref">(L1)</span></li>
           </ul>
         </div>
       </div>

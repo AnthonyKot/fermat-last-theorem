@@ -38,7 +38,7 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>21</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof rests on <strong>21</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Frobenius elements at unramified primes, as a conjugacy class <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
@@ -115,7 +115,7 @@
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is retired or narrowed.</p>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 2 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Required debt settled:</strong> no required items remain owed. The collection now gives a completed derivation of Fermat's Last Theorem from the named assumptions above; those imports remain visible as assumptions.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -136,6 +136,11 @@
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The first case of Fermat's Last Theorem for $n=3$ is ruled out in the Eisenstein integers. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+       </li>
+        <li data-proof-id="02-n3-second-case">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The second case for $n=3$ is proved by infinite descent in the Eisenstein integers: the common $\lambda$-factor is isolated, all three unit classes are checked, and a primitive solution produces a strictly smaller one. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
        </li>
         <li data-proof-id="02-ufd-failure">
           <span class="scope-mode scope-mode--proved">Proved</span>
@@ -360,12 +365,17 @@
         <li data-proof-id="24-frey-representation">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span> <span class="scope-dep">conditional on: Ramification at a multiplicative prime: unramified iff $p\mid v_\ell(\Delta_{\min})$</span>
-          $N(\bar\rho_{E,p})=2$. At an odd bad prime $v_\ell(\Delta_{\min})=2p\,v_\ell(abc)$ is a multiple of $p$, so the prime drops out of the conductor; at $2$, $v_2=2p\,v_2(b)-8\equiv-8\not\equiv0$ because $p\nmid8$, so $2$ survives, tamely, with $n_2=1$. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
+          $N(\bar\rho_{E,p})=2$. At an odd bad prime $v_\ell(\Delta_{\min})=2p\,v_\ell(abc)$ is a multiple of $p$, so the prime drops out of the conductor; at $2$, $v_2(\Delta_{\min})=2p\,v_2(b)-8\equiv-8\not\equiv0$ because $p\nmid8$, so $2$ survives, tamely, with $n_2=1$. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
        </li>
         <li data-proof-id="24-small-exponent-narrowing">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--background">Background</span>
           Full rational $E[2]$ forces $4\mid\#\tilde E(\mathbb{F}_\ell)$, and with Hasse this pins $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$, $a_{17}\in\{\pm2,\pm6\}$. Each makes $a_\ell^2-4\ell$ a non-square modulo $p$, proving irreducibility when the witness prime has good reduction -- so $\bar\rho$ is irreducible for $p=5$ unless $21\mid abc$ and for $p=7$ unless $85\mid abc$. Derived here, not sourced; no further uniform witness exists below 400. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
+       </li>
+        <li data-proof-id="25-contradiction">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span> <span class="scope-dep">conditional on: The Modularity Theorem, semistable case, $\bar\rho_{E,p}$ is finite at $p$, Ribet's level-lowering theorem</span>
+          The final contradiction is assembled from the completed chain: essay 02 settles $n=3$, essay 01 settles $n=4$ and reduces all remaining exponents to primes $p\geq5$, and the Frey--Ribet argument rules those out. The last step is proved from the three direct imports modularity, finiteness at $p$, and Ribet's theorem; the full chain rests on the completion policy's published roster of named assumptions. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
        </li>
         <li data-proof-id="25-level-two">
           <span class="scope-mode scope-mode--proved">Proved</span>
@@ -486,20 +496,9 @@
        </li>
       </ul>
 
-   <h3>Still owed by the FLT chain</h3>
-    <p class="scope-note">An item remains here while its essay is unwritten, its treatment is
-     only outlined or conditional, or it has not yet reached its declared imported state.</p>
+   <h3>Required debt</h3>
+    <p class="scope-note">No required item remains. The empty list below is generated from the same register as the completion statement above.</p>
       <ul class="scope-register">
-        <li data-proof-id="02-n3-second-case">
-          <span class="scope-mode scope-mode--outlined">Outlined</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="25-contradiction">
-          <span class="scope-mode scope-mode--conditional">Conditional</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The final contradiction is assembled conditionally on exactly three inputs -- modularity (essay 18), Ribet's theorem, stated here, and finiteness at $p$ (essay 24) -- and the collection's full FLT conclusion additionally on essay 02's outlined second case for $n=3$. Nothing else is external: the irreducibility threshold and the conductor of $\bar\rho$ are settled in essay 24, and the dimension formula, once assumption (F), is derived in essay 13. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
-       </li>
       </ul>
 
    <h3>Background outside the closing debt</h3>
@@ -569,8 +568,7 @@
       </ul>
 <!-- proof-register:end -->
 
-    <p>When the required debt is empty — and it is <em>not</em> empty today; the count is generated
-      above — the honest description of this collection will be:
+    <p>The required debt is now empty, so the honest description of this collection is:
       <strong>a complete and checkable derivation of Fermat's Last Theorem from the assumed results on
       the FLT-chain list, plus a guided tour of the background around them.</strong> Two things that
       sentence deliberately does not say. It does not say <em>from first principles</em>: the chain
@@ -583,8 +581,8 @@
     <h2>The ledger</h2>
 
     <p>Every essay ends with a three-column ledger: <strong>proved here</strong>,
-      <strong>imported here</strong>, and <strong>still owed</strong>. A green check is reserved for
-      something the essay actually proves. An imported theorem can make an object available to later
+      <strong>assumed here</strong>, and <strong>still owed</strong>. A green check is reserved for
+      something the essay actually proves. An assumed theorem can make an object available to later
       essays, but it remains labelled as an assumption. An outline or conditional computation stays
       in the owed column.</p>
 
@@ -592,8 +590,8 @@
       something a <em>later</em> essay builds — a defect no careful reading catches, because each essay
       is internally correct. The current script checks that every written essay carries a ledger and
       that its first rung does not link forward. It also checks every proof-status marker against
-      <code>data/ledger.json</code>, including its column, mode and role. Once the intervening essays
-      exist, the stronger carry-forward equality must become a release gate: every required debt is
+      <code>data/ledger.json</code>, including its column, mode and role. The carry-forward equality is
+      also a release gate: every required debt is
       either proved or explicitly accepted by the completion policy, and nothing merely outlined or
       conditional is allowed to disappear. The ledger already caught one dependency gap while the
       series was being planned.</p>
@@ -640,8 +638,18 @@
       appear. A topic pointer degrades gracefully across editions; a fabricated section number simply
       sends the reader to the wrong page.</p>
 
-    <p><strong>Not cited at all:</strong> encyclopaedias, blogs, and lecture videos. They are useful
-      for finding out what a thing is called. They are not evidence.</p>
+    <p><strong>Curricular origin, credited explicitly:</strong> the scope and broad sequence of this
+      collection were mapped from
+      <a href="https://www.youtube.com/watch?v=9f-hGSh8lF0"><em>Proof of Fermat Last Theorem FROM
+      SCRATCH</em></a>, published by the YouTube channel
+      <a href="https://www.youtube.com/@%EC%89%BD%EA%B2%8C%ED%92%80%EC%96%B4%EB%B3%B4%EB%8A%94%EC%88%98%ED%95%99%EC%9D%B4%EB%A1%A0">쉽게
+      풀어보는 수학이론</a>. That is a curricular attribution, not a mathematical citation: the
+      auto-generated captions have no usable timestamps and every theorem, definition and numerical
+      claim in the essays is checked against the sources and computations described above.</p>
+
+    <p><strong>Not used as mathematical evidence:</strong> encyclopaedias, blogs, forums, and the
+      reference video's transcript. They are useful for finding out what a thing is called; they do
+      not carry a claim in the proof.</p>
 
     <h2>Numbers are computed, not asserted</h2>
 
@@ -663,7 +671,7 @@
 
     <h2>Status</h2>
 
-    <!-- about-essay-count:start --><p><strong>Twenty-two of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/15-newforms-and-level.html">15</a>, <a href="chapters/16-modular-representation.html">16</a>, <a href="chapters/17-two-l-functions.html">17</a>, <a href="chapters/18-modularity-theorem.html">18</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The three unwritten essays are 19, 20 and 21. The canonical proof register currently records 2 required items still owed, so the chain does not yet close. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
+    <!-- about-essay-count:start --><p><strong>Twenty-two of twenty-five essays are written:</strong> <a href="chapters/01-descent-and-n4.html">01</a>, <a href="chapters/02-unique-factorization-and-n3.html">02</a>, <a href="chapters/03-galois-and-g-q.html">03</a>, <a href="chapters/04-p-adics-and-modules.html">04</a>, <a href="chapters/05-galois-representations.html">05</a>, <a href="chapters/06-elliptic-curves.html">06</a>, <a href="chapters/07-the-group-law.html">07</a>, <a href="chapters/08-reduction-and-conductor.html">08</a>, <a href="chapters/09-torsion-and-tate-module.html">09</a>, <a href="chapters/10-elliptic-representation.html">10</a>, <a href="chapters/11-the-modular-group.html">11</a>, <a href="chapters/12-modular-forms.html">12</a>, <a href="chapters/13-valence-and-dimension.html">13</a>, <a href="chapters/14-hecke-operators.html">14</a>, <a href="chapters/15-newforms-and-level.html">15</a>, <a href="chapters/16-modular-representation.html">16</a>, <a href="chapters/17-two-l-functions.html">17</a>, <a href="chapters/18-modularity-theorem.html">18</a>, <a href="chapters/22-the-frey-curve.html">22</a>, <a href="chapters/23-semistable-and-modular.html">23</a>, <a href="chapters/24-the-frey-representation.html">24</a> and <a href="chapters/25-ribet-and-the-end.html">25</a>. The three unwritten essays are 19, 20 and 21. The canonical proof register records no required items still owed, so the FLT chain now closes from its published roster of named assumptions. The <a href="index.html">contents page</a> gives the reading order and the contribution of every written and planned essay.</p><!-- about-essay-count:end -->
 
     <p>This is the third in a series of collections built the same way, after
       <em>The Quantum Quartet</em> (four authors on early quantum mechanics) and <em>The Bridge</em>

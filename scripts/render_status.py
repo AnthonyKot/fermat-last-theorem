@@ -206,12 +206,21 @@ def about_essay_count(items: list[dict], policy: dict) -> str:
         )
     else:
         remaining = "No essays remain unwritten."
+    if debts:
+        debt_status = (
+            f"The canonical proof register currently records {debts} required "
+            f'item{"" if debts == 1 else "s"} still owed, so the chain does not yet close.'
+        )
+    else:
+        debt_status = (
+            "The canonical proof register records no required items still owed, so the FLT chain "
+            "now closes from its published roster of named assumptions."
+        )
     return (
         f"{ABOUT_COUNT_START}<p><strong>{WORDS[len(files)]} of twenty-five essays are written:</strong> "
         f"{written_links('chapters/')}."
         f" {remaining}"
-        f" The canonical proof register currently records {debts} required "
-        f'item{"" if debts == 1 else "s"} still owed, so the chain does not yet close. '
+        f" {debt_status} "
         f'The <a href="index.html">contents page</a> gives the reading order and the contribution '
         f"of every written and planned essay.</p>{ABOUT_COUNT_END}"
     )
@@ -813,11 +822,35 @@ def render_block(items: list[dict], policy: dict, revisions: list[dict], upto: s
     chain_assumed = [i for i in items if i["role"] == "required_for_flt" and i["register"] == "stated"]
     bg_assumed = [i for i in items if i["role"] == "background" and i["register"] == "stated"]
     n_owed_chain = len(owed)
+    finished_tense = "rests" if n_owed_chain == 0 else "would rest"
+    if n_owed_chain:
+        debt_note = (
+            '      <p class="scope-note"><strong>Not yet settled:</strong> '
+            f'{n_owed_chain} required item{"" if n_owed_chain == 1 else "s"} remain'
+            f'{"s" if n_owed_chain == 1 else ""} owed, listed below. Until that list is empty the'
+            " collection is an argument in progress, not a completed derivation.</p>"
+        )
+        owed_heading = "Still owed by the FLT chain"
+        owed_explanation = (
+            "An item remains here while its essay is unwritten, its treatment is only outlined or "
+            "conditional, or it has not yet reached its declared imported state."
+        )
+    else:
+        debt_note = (
+            '      <p class="scope-note"><strong>Required debt settled:</strong> no required items '
+            "remain owed. The collection now gives a completed derivation of Fermat's Last Theorem "
+            "from the named assumptions above; those imports remain visible as assumptions.</p>"
+        )
+        owed_heading = "Required debt"
+        owed_explanation = (
+            "No required item remains. The empty list below is generated from the same register as "
+            "the completion statement above."
+        )
 
     lines = [
         START,
         '    <div class="scope-counts">',
-        '      <p class="scope-headline">The finished proof would rest on '
+        f'      <p class="scope-headline">The finished proof {finished_tense} on '
         f'<strong>{len(chain_assumed)}</strong> assumed result'
         f'{"" if len(chain_assumed) == 1 else "s"}.</p>',
         '      <p class="scope-note">These are the results the FLT chain consumes and does not prove. '
@@ -846,10 +879,7 @@ def render_block(items: list[dict], policy: dict, revisions: list[dict], upto: s
         "comparable; each change is logged below rather than applied silently.</p>",
         *render_revisions(revisions),
         *trajectory(upto),
-        '      <p class="scope-note"><strong>Not yet settled:</strong> '
-        f'{n_owed_chain} required item{"" if n_owed_chain == 1 else "s"} remain'
-        f'{"s" if n_owed_chain == 1 else ""} owed, listed below. Until that list is empty the'
-        " collection is an argument in progress, not a completed derivation.</p>",
+        debt_note,
         "   </div>",
         "",
         "   <h3>Proved in the written essays</h3>",
@@ -863,9 +893,8 @@ def render_block(items: list[dict], policy: dict, revisions: list[dict], upto: s
         "     without being presented as a proof.</p>",
         *render_items(imported),
         "",
-        "   <h3>Still owed by the FLT chain</h3>",
-        '    <p class="scope-note">An item remains here while its essay is unwritten, its treatment is',
-        "     only outlined or conditional, or it has not yet reached its declared imported state.</p>",
+        f"   <h3>{owed_heading}</h3>",
+        f'    <p class="scope-note">{owed_explanation}</p>',
         *render_items(owed),
         "",
         "   <h3>Background outside the closing debt</h3>",
