@@ -30,142 +30,184 @@
     <h2>What is proved, and what is not</h2>
 
     <p>A series like this can mislead in one specific way: by narrating a proof so smoothly that a
-      reader finishes believing they have seen one. Five registers are used here, and every essay
-      declares which one it is in.</p>
+      reader finishes believing they have seen one. The register therefore answers three separate
+      questions about every claim: whether it is proved or imported, whether it is available yet,
+      and whether the FLT chain actually needs it. Collapsing those questions into one green check
+      would hide exactly the distinction this site exists to preserve.</p>
 
 <!-- proof-register:start -->
-    <h3>Currently proved in full</h3>
+    <h3>Proved in the written essays</h3>
     <p class="scope-note">This list is generated from <code>data/ledger.json</code>. An item
-      appears here only when the register marks it as both available and proved.</p>
+      appears here only when it is both available and marked proved.</p>
       <ul class="scope-register">
         <li data-proof-id="01-n4">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           $x^4+y^4=z^2$ has no solution in positive integers, and therefore Fermat's Last Theorem holds for $n=4$. <span class="scope-essays">(<a href="chapters/01-descent-and-n4.html">essay 01</a>)</span>
         </li>
         <li data-proof-id="01-exponent-reduction">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           A counterexample at any exponent $n\geq3$ would give one at exponent $4$ or at an odd prime exponent. <span class="scope-essays">(<a href="chapters/01-descent-and-n4.html">essay 01</a>)</span>
         </li>
         <li data-proof-id="02-n3-first-case">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The first case of Fermat's Last Theorem for $n=3$ is ruled out in the Eisenstein integers. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
         </li>
         <li data-proof-id="02-ufd-failure">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
           Unique factorisation is shown to fail by an explicit double factorisation in $\mathbb{Z}[\sqrt{-5}]$. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
         </li>
         <li data-proof-id="06-integral-model-example">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
           For $y^2+y=x^3-x^2$, direct calculation gives $\Delta=-11$ and a short integral model whose discriminant is $6^{12}(-11)$. <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span>
         </li>
         <li data-proof-id="07-chord-tangent">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The chord-and-tangent rule, rational closure and the short-Weierstrass addition formulas are derived. <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span>
         </li>
         <li data-proof-id="07-order-five">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
           The point $(0,0)$ on $y^2+y=x^3-x^2$ is shown by direct calculation to have order $5$. <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span>
         </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           A normalised hypothetical Fermat solution produces the Frey curve $y^2=x(x-a^p)(x+b^p)$. <span class="scope-essays">(<a href="chapters/22-the-frey-curve.html">essay 22</a>)</span>
         </li>
         <li data-proof-id="22-frey-discriminant">
           <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The displayed Frey model has discriminant $16(abc)^{2p}$. <span class="scope-essays">(<a href="chapters/22-the-frey-curve.html">essay 22</a>)</span>
         </li>
       </ul>
 
-    <h3>Present, but not proved in full</h3>
+    <h3>Explicitly imported, not proved here</h3>
+    <p class="scope-note">These available inputs are named in the completion policy. They
+      close a dependency without being presented as proofs.</p>
       <ul class="scope-register">
-        <li data-proof-id="02-n3-second-case">
-          <span class="scope-mode scope-mode--outlined">Outlined</span>
-          The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-        </li>
-        <li data-proof-id="02-kummer">
-          <span class="scope-mode scope-mode--stated">Stated</span>
-          Kummer's regular-prime criterion and his theorem for regular prime exponents are stated. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-        </li>
         <li data-proof-id="06-weierstrass-definition">
-          <span class="scope-mode scope-mode--stated">Stated</span>
+          <span class="scope-mode scope-mode--stated">Imported</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The genus-one characterization and existence of a general Weierstrass model are stated; its point at infinity and discriminant are defined; the discriminant criterion for smoothness is stated. <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span>
         </li>
         <li data-proof-id="07-associativity">
-          <span class="scope-mode scope-mode--stated">Stated</span>
+          <span class="scope-mode scope-mode--stated">Imported</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Associativity of chord-and-tangent addition, and hence the full abelian-group theorem for $E(\mathbb{Q})$, is stated rather than proved. <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span>
         </li>
-        <li data-proof-id="07-uniformization">
-          <span class="scope-mode scope-mode--stated">Stated</span>
-          Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ is stated, not proved. <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span>
-        </li>
         <li data-proof-id="25-ribet">
-          <span class="scope-mode scope-mode--stated">Stated</span>
+          <span class="scope-mode scope-mode--stated">Imported</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+        </li>
+      </ul>
+
+    <h3>Still owed by the FLT chain</h3>
+    <p class="scope-note">An item remains here while its essay is unwritten, its treatment is
+      only outlined or conditional, or it has not yet reached its declared imported state.</p>
+      <ul class="scope-register">
+        <li data-proof-id="02-n3-second-case">
+          <span class="scope-mode scope-mode--outlined">Outlined</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
         </li>
         <li data-proof-id="25-level-two">
           <span class="scope-mode scope-mode--conditional">Conditional</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
         </li>
         <li data-proof-id="25-contradiction">
           <span class="scope-mode scope-mode--conditional">Conditional</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The final contradiction is assembled conditionally on the explicit inputs assigned to essays 13, 18, 23 and 24, and the collection's full FLT conclusion also still owes the outlined second case for $n=3$. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
         </li>
-      </ul>
-
-    <h3>Boundary for the unwritten essays</h3>
-      <ul class="scope-register">
         <li data-proof-id="10-local-theorems">
-          <span class="scope-mode scope-mode--stated">To state</span>
+          <span class="scope-mode scope-mode--stated">To import</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Mazur's isogeny theorem and the Néron–Ogg–Shafarevich criterion will be stated with their hypotheses. <span class="scope-essays">(essay 10)</span>
         </li>
         <li data-proof-id="13-dimension-formula">
           <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The dimension formula for $S_2(\Gamma_0(N))$ will be derived from the index, elliptic-point counts and cusp count. <span class="scope-essays">(essay 13)</span>
         </li>
         <li data-proof-id="16-eichler-shimura">
-          <span class="scope-mode scope-mode--stated">To state</span>
+          <span class="scope-mode scope-mode--stated">To import</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Eichler–Shimura will be stated, not proved. <span class="scope-essays">(essay 16)</span>
         </li>
         <li data-proof-id="18-modularity">
-          <span class="scope-mode scope-mode--stated">To state</span>
+          <span class="scope-mode scope-mode--stated">To import</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The Modularity Theorem will be stated, not proved. <span class="scope-essays">(essay 18)</span>
-        </li>
-        <li data-proof-id="19-21-wiles">
-          <span class="scope-mode scope-mode--described">To describe</span>
-          Wiles's deformation-theoretic machinery will be described as an anatomy, not presented as a proof. <span class="scope-essays">(essay 19, essay 20, and essay 21)</span>
-        </li>
-        <li data-proof-id="21-langlands-tunnell">
-          <span class="scope-mode scope-mode--stated">To state</span>
-          Langlands–Tunnell will be stated, not proved. <span class="scope-essays">(essay 21)</span>
         </li>
         <li data-proof-id="23-frey-reduction">
           <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The Frey curve's minimal model, semistability and conductor will be established. <span class="scope-essays">(essay 23)</span>
         </li>
         <li data-proof-id="24-frey-representation">
           <span class="scope-mode scope-mode--proved">To prove</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The conductor of the Frey curve's mod $p$ representation will be established, with the irreducibility threshold handled explicitly. <span class="scope-essays">(essay 24)</span>
+        </li>
+      </ul>
+
+    <h3>Background outside the closing debt</h3>
+    <p class="scope-note">These claims support orientation or historical context. Their proof
+      status remains visible, but they do not determine whether the FLT chain closes.</p>
+      <ul class="scope-register">
+        <li data-proof-id="02-kummer">
+          <span class="scope-mode scope-mode--stated">Imported</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Kummer's regular-prime criterion and his theorem for regular prime exponents are stated. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+        </li>
+        <li data-proof-id="07-uniformization">
+          <span class="scope-mode scope-mode--stated">Imported</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ is stated, not proved. <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span>
+        </li>
+        <li data-proof-id="19-21-wiles">
+          <span class="scope-mode scope-mode--described">To describe</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Wiles's deformation-theoretic machinery will be described as an anatomy, not presented as a proof. <span class="scope-essays">(essay 19, essay 20, and essay 21)</span>
+        </li>
+        <li data-proof-id="21-langlands-tunnell">
+          <span class="scope-mode scope-mode--stated">To import</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Langlands–Tunnell will be stated, not proved. <span class="scope-essays">(essay 21)</span>
         </li>
       </ul>
 <!-- proof-register:end -->
 
-    <p>When the register is complete, the honest description of this collection will be:
-      <strong>a complete and checkable derivation of Fermat's Last Theorem from the modularity theorem,
-      plus a guided tour of why modularity is true.</strong> The current register above distinguishes
-      that target from what the written essays establish today.</p>
+    <p>When the required debt is empty, the honest description of this collection will be:
+      <strong>a complete and checkable derivation of Fermat's Last Theorem from the explicitly named
+      imported results, plus a guided tour of the background around them.</strong> Imported results
+      do not turn into proofs when the series is finished; they remain visible in their own register.</p>
 
     <h2>The ledger</h2>
 
-    <p>Every essay ends with a two-column ledger: what it discharged, and what the final contradiction
-      is still owed. The owed column carries forward from essay to essay, and the last essay's must be
-      empty.</p>
+    <p>Every essay ends with a three-column ledger: <strong>proved here</strong>,
+      <strong>imported here</strong>, and <strong>still owed</strong>. A green check is reserved for
+      something the essay actually proves. An imported theorem can make an object available to later
+      essays, but it remains labelled as an assumption. An outline or conditional computation stays
+      in the owed column.</p>
 
     <p>This is not decoration. The failure mode of a long expository chain is an essay that leans on
       something a <em>later</em> essay builds — a defect no careful reading catches, because each essay
       is internally correct. The current script checks that every written essay carries a ledger and
-      that its first rung does not link forward. Once the intervening essays exist, the stronger
-      carry-forward equality — previous debt minus the current discharge — must become a release gate.
-      The ledger already caught one dependency gap while the series was being planned.</p>
+      that its first rung does not link forward. It also checks every proof-status marker against
+      <code>data/ledger.json</code>, including its column, mode and role. Once the intervening essays
+      exist, the stronger carry-forward equality must become a release gate: every required debt is
+      either proved or explicitly accepted by the completion policy, and nothing merely outlined or
+      conditional is allowed to disappear. The ledger already caught one dependency gap while the
+      series was being planned.</p>
 
     <h2>Reading order</h2>
 
@@ -235,10 +277,10 @@
     <p>Six of twenty-five essays are written: <strong>01</strong> and <strong>02</strong> establish
       the classical opening; <strong>06</strong> and <strong>07</strong> introduce elliptic curves,
       their integral models and their group law; <strong>22</strong> and <strong>25</strong> give the
-      Frey construction and the conditional closing contradiction. The remaining nineteen are listed on the
-      <a href="index.html">contents page</a> with what each will add. Most of the bridge remains
-      unwritten, so the ledger does not yet close: essay 25 currently states what it depends on rather
-      than pointing back to established essays, and it says so.</p>
+      Frey construction and the conditional closing contradiction. The remaining nineteen are listed
+      on the <a href="index.html">contents page</a> with what each will add. Most of the bridge remains
+      unwritten, and essay 02's second case remains only outlined, so the required debt does not yet
+      close.</p>
 
     <p>This is the third in a series of collections built the same way, after
       <em>The Quantum Quartet</em> (four authors on early quantum mechanics) and <em>The Bridge</em>

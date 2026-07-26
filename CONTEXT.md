@@ -9,7 +9,8 @@ nowhere to live. (Alternative considered: *The Ladder*. Decide before `index.htm
 
 A single argument, built one rung at a time, from Fermat's own descent to the 1995 contradiction.
 Every essay adds exactly one object or one theorem, and every essay closes by saying what the final
-contradiction now has and what it still owes. The series is finished when the ledger is empty.
+contradiction now has and what it still owes. The series is finished when the required debt is empty;
+explicit imports remain visible as assumptions.
 
 ## The reference video
 
@@ -70,16 +71,30 @@ hypotheses properly, and it does treat irreducibility as a theorem. Those correc
 
 ## What is proved and what is stated (hard fence)
 
-`data/ledger.json` is the only source of truth for the public proof boundary. It records whether each
-claim is available or planned and whether its register is proved, stated, outlined, conditional or
-described. Every available record is tied to exactly one essay-ledger item by `data-proof-id`.
-`about.html` is generated from it; never edit the generated block to change scope.
+`data/ledger.json` is the only source of truth for the public proof boundary. It keeps three questions
+orthogonal: whether a claim is available or planned; whether it is proved, stated, outlined,
+conditional or described; and whether it is required by the FLT chain or is background. Every
+available record is tied to exactly one essay-ledger item by `data-proof-id`. `about.html` is generated
+from it; never edit the generated block to change scope.
 
-The non-negotiable target boundary is:
+The completion policy names every required result that the collection deliberately imports rather
+than proves. At present those records are:
 
-- the Modularity Theorem, Ribet's level-lowering theorem, Mazur's isogeny theorem,
-  Néron–Ogg–Shafarevich, Eichler–Shimura and Langlands–Tunnell are **stated with hypotheses, not
-  proved**;
+- the genus-one/Weierstrass characterization and discriminant criterion;
+- associativity of the elliptic-curve group law;
+- Mazur's isogeny theorem and Néron–Ogg–Shafarevich;
+- Eichler–Shimura;
+- the Modularity Theorem;
+- Ribet's level-lowering theorem.
+
+They are **stated with their usable hypotheses, not proved**. The validator requires the policy's
+allowlist to equal the required records whose proof mode is `stated`; a new assumption cannot slip in
+without changing the canonical policy.
+
+The rest of the non-negotiable boundary is:
+
+- Langlands–Tunnell and complex uniformization are imported as background, not dependencies of the
+  closing FLT chain;
 - Wiles's machinery in Part V is **described as anatomy**, not proved. The reader learns what the
   objects are and what the strategy is. Three essays cannot prove a 109-page paper and must not
   pretend to;
@@ -91,9 +106,9 @@ Part V is not in the video at all: greps for deformation, universal (deformation
 Tunnell, base change and $R=T$ all come back genuinely empty, variants included. It is entirely ours,
 which is also why it is the likeliest place to overreach.
 
-The completed target remains a checkable derivation of *FLT from modularity*, plus a guided tour of why
-modularity is true. Until the register closes, About presents that as a target rather than a current
-achievement.
+The completed target remains a checkable derivation of FLT from the explicitly named imported
+results, plus a guided tour of the background around them. Completion means that no required record is
+planned, outlined, conditional or otherwise unresolved. It does not relabel an import as a proof.
 
 ## Reader
 
@@ -122,15 +137,19 @@ Exact headings (`<section class="rung">`, `<h2>` with a numbered pill):
 3. **What it buys** — an original worked example, plus the specific later essay that consumes this.
 4. **Reading** — topic-level citations only (see Sourcing), flagged unverified.
 
-Then the **ledger** (`<section class="ledger">`): two columns, *discharged here* and *still owed*. The
-owed column is the previous essay's owed minus what this one discharged. `verify.sh` checks the chain.
+Then the **ledger** (`<section class="ledger">`): three columns, *proved here*, *imported here* and
+*still owed*. A registered item carries canonical mode and role badges. Proved items alone receive a
+green check; stated results remain imports; outlined and conditional results remain owed. The owed
+column is the previous essay's debt minus what this essay proves or explicitly imports.
+`verify.sh` checks the structure now and will check exact carry-forward equality when the middle
+essays exist.
 
 Header, footer, prev/next nav copied verbatim between essays.
 
 ## The master ledger
 
-Essay 25 needs exactly these. Every line must be discharged, and no essay may use a line before the
-essay that discharges it.
+Essay 25 needs exactly these. Every line must be resolved by a proof or a declared import, and no essay
+may use a line before the essay that makes it available.
 
 | # | Ledger line | Discharged in |
 |---|---|---|
@@ -207,7 +226,7 @@ conductor". No section numbers.
 
 1. **Internal dependency check.** Every theorem an essay uses must be stated in an earlier essay.
    `verify.sh` parses each ledger, confirms the owed column carries forward, confirms no essay uses a
-   line before its discharging essay, and confirms essay 25's owed column is empty. Catches forward
+   line before the essay that makes it available, and confirms essay 25's owed column is empty. Catches forward
    dependency, which no per-essay read catches because each essay is internally fine. Already caught
    one at the planning stage (p-adics).
 2. **Numerical self-check, now cross-validated.** Compute it ourselves in `checks/` *and* confirm
@@ -277,7 +296,7 @@ Not in the video at all. Opens with a standing banner: these three essays descri
 | 22 | the-frey-curve | Assume a primitive solution aᵖ + bᵖ = cᵖ, p prime ≥ 5; normalize (coprimality, aᵖ ≡ −1 mod 4, bᵖ ≡ 0 mod 32); build **y² = x(x − aᵖ)(x + bᵖ)**; compute the discriminant 16(abc)^{2p} | Discharges L15. **Frey 1986**, following Hellegouarch (DDT p. 8) — not 1984 as the plan summary has it. Turn a solution into a curve whose properties are absurdly good. DDT's convention aᵖ + bᵖ = cᵖ adopted so the citable source and the essay agree. |
 | 23 | semistable-and-modular | ℓ-adic valuations of the discriminant ⟹ multiplicative reduction at every bad prime ⟹ **semistable**, conductor = rad(abc) ⟹ **modular** by 18 | Discharges L16. The valuation computation is done in full — elementary, and the one place a reader can check Wiles's hypothesis is met. Uses 04. |
 | 24 | the-frey-representation | ρ̄ = ρ̄_{Frey,p}: **irreducible** via Mazur's isogeny theorem (10), unramified outside 2 and p via **Néron–Ogg–Shafarevich** (10), finite at p, and **conductor exactly 2** | Discharges L17. Corrections #5 lives here: the *curve's* conductor is rad(abc); it is the *representation's* conductor that is 2. Level lowering exists to close exactly that gap. |
-| 25 | ribet-and-the-end | **Ribet's level-lowering theorem** (1990) with its hypotheses; applied: modular of level rad(abc) ⟹ modular of level 2, so a weight-2 newform of level 2 exists. But μ = 3, ν₂ = 1, ν₃ = 0, ν_∞ = 2 gives 1 + 3/12 − 1/4 − 0 − 1 = 0, so **dim S₂(Γ₀(2)) = 0**. No such form. Hence no such representation, no such curve, no such solution. ∎ | Discharges L18, L19; ledger empties. Closes with what the proof does *not* give: no effective bounds, no explanation of *why*, and the ABC-shaped questions still open. Note the slack — levels 1, 2, 3, 4 all give 0 — so the contradiction is not knife-edge. |
+| 25 | ribet-and-the-end | **Ribet's level-lowering theorem** (1990) with its hypotheses; applied: modular of level rad(abc) ⟹ modular of level 2, so a weight-2 newform of level 2 exists. But μ = 3, ν₂ = 1, ν₃ = 0, ν_∞ = 2 gives 1 + 3/12 − 1/4 − 0 − 1 = 0, so **dim S₂(Γ₀(2)) = 0**. No such form. Hence no such representation, no such curve, no such solution. ∎ | Imports L18 and proves the L19 computation once essay 13 supplies its formula; the required debt then empties without disguising Ribet as proved. Closes with what the proof does *not* give: no effective bounds, no explanation of *why*, and the ABC-shaped questions still open. Note the slack — levels 1, 2, 3, 4 all give 0 — so the contradiction is not knife-edge. |
 
 ## Sequencing notes (writing order is not reading order)
 
@@ -378,12 +397,13 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
 Port book 2's checks (count sync, link resolution, math-delimiter balance, prev/next contiguity,
 quotation scan, no tracked PDFs), then add:
 
-1. **Current ledger structure** — every written essay has discharged/owed columns, and no essay's
-   *What we already have* names an essay number ≥ its own.
+1. **Current ledger structure** — every written essay has proved/imported/owed columns; every
+   registered item is in the column dictated by its mode and carries canonical mode/role badges; and
+   no essay's *What we already have* names an essay number ≥ its own.
 2. **Proof-register sync** — every available `data/ledger.json` item maps to exactly one essay-ledger
    entry, and About's generated scope block matches the canonical data.
 3. **Full-chain release gate, once the middle exists** — each essay's *still owed* must equal the
-   previous debt minus its discharge, and essay 25's owed column must be empty. This is not honestly
+   previous debt minus its proofs and declared imports, and essay 25's owed column must be empty. This is not honestly
    checkable across the current jumps from 02 to 22 to 25, so the current script does not claim to.
 4. **No book section numbers** — grep Reading rungs for `§`, `Ch.` + digit, `p.` + digit; fail on a
    hit. LMFDB labels and paper theorem numbers are permitted (Tier A) and must not be caught by this

@@ -17,7 +17,7 @@
   --accent-soft:   #6b83ac;
   --link:          #2c4d86;
   --link-hover:    #17325e;
-  --have:          #2f6048;   /* discharged / what we already have */
+  --have:          #2f6048;   /* proved / what we already have */
   --owed:          #8a4326;   /* still owed */
   --code-bg:       #f1efe9;
   --max:           44rem;
@@ -183,20 +183,48 @@ th { font-weight: 700; color: var(--ink); font-size: .8rem; letter-spacing: .04e
   text-transform: uppercase; color: var(--ink-faint);
   margin: 0 0 .9rem; border-bottom: 1px solid var(--rule); padding-bottom: .5rem;
 }
-.ledger .cols { display: flex; flex-wrap: wrap; gap: 1.6rem; }
-.ledger .col { flex: 1 1 14rem; min-width: 0; }
+.ledger .cols { display: flex; flex-wrap: wrap; gap: 1rem; }
+.ledger .col { flex: 1 1 11rem; min-width: 0; }
 .ledger .col h3 {
   font-size: .72rem; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; margin: 0 0 .5rem;
 }
-.ledger .discharged h3 { color: var(--have); }
+.ledger .proved-here h3 { color: var(--have); }
+.ledger .imported-here h3 { color: var(--accent); }
 .ledger .owed h3 { color: var(--owed); }
 .ledger ul { list-style: none; margin: 0; padding: 0; font-size: .88rem; line-height: 1.45; }
 .ledger li { margin-bottom: .4rem; padding-left: 1.1rem; position: relative; color: var(--ink-soft); }
-.ledger .discharged li::before { content: "✓"; position: absolute; left: 0; color: var(--have); font-weight: 700; }
+.ledger .proved-here li::before { content: "✓"; position: absolute; left: 0; color: var(--have); font-weight: 700; }
+.ledger .imported-here li::before { content: "↗"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 .ledger .owed li::before { content: "○"; position: absolute; left: 0; color: var(--owed); }
+.ledger-mode,
+.ledger-role {
+  display: inline-block; margin: 0 .28rem .18rem 0; padding: .1em .45em;
+  border-radius: 999px; font-size: .62rem; font-weight: 700; line-height: 1.4;
+  letter-spacing: .06em; text-transform: uppercase; vertical-align: .08em;
+}
+.ledger-mode--proved {
+  color: var(--have); background: color-mix(in srgb, var(--have) 10%, transparent);
+}
+.ledger-mode--stated {
+  color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.ledger-mode--outlined,
+.ledger-mode--conditional {
+  color: var(--owed); background: color-mix(in srgb, var(--owed) 10%, transparent);
+}
+.ledger-mode--described {
+  color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.ledger-role {
+  color: var(--ink-faint); border: 1px solid var(--rule); background: transparent;
+}
+.ledger-role--required_for_flt { color: var(--ink-soft); }
+.ledger-none {
+  margin: 0; color: var(--ink-faint); font-size: .84rem; font-style: italic;
+}
 .ledger .lref { color: var(--ink-faint); font-size: .8em; }
-.ledger .empty { color: var(--have); font-style: italic; font-size: .9rem; }
+.ledger .ledger-open { color: var(--owed); font-style: italic; font-size: .9rem; }
 
 /* ---- standing banner (e.g. Part V: anatomy, not proof) ---- */
 .fence {
@@ -225,10 +253,17 @@ th { font-weight: 700; color: var(--ink); font-size: .8rem; letter-spacing: .04e
   letter-spacing: .08em; text-transform: uppercase;
 }
 .scope-mode--proved { color: var(--have); }
-.scope-mode--stated,
+.scope-mode--stated { color: var(--accent); }
 .scope-mode--outlined,
 .scope-mode--conditional { color: var(--owed); }
 .scope-mode--described { color: var(--accent); }
+.scope-role {
+  display: inline-block; margin-right: .45rem; padding: .08em .42em;
+  border: 1px solid var(--rule); border-radius: 999px;
+  color: var(--ink-faint); font-size: .64rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.scope-role--required_for_flt { color: var(--ink-soft); }
 .scope-essays { color: var(--ink-faint); font-size: .84em; white-space: nowrap; }
 
 /* ---- prerequisite bands ---- */
@@ -295,6 +330,7 @@ img, svg { max-width: 100%; }
   h1 { font-size: 1.7rem; }
   .lede { font-size: 1.14rem; }
   .ledger .cols { gap: 1.1rem; }
+  .ledger .col { flex-basis: 100%; }
 }
 
 /* ---- print ---- */

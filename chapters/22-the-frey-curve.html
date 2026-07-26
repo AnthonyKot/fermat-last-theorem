@@ -193,16 +193,25 @@
     <section class="ledger">
       <h2>Ledger</h2>
       <div class="cols">
-        <div class="col discharged">
-          <h3>Discharged here</h3>
+        <div class="col proved-here">
+          <h3>Proved here</h3>
           <ul>
-            <li>Normalisation of a hypothetical solution: $b$ even, $a^p \equiv -1 \bmod 4$, $b^p \equiv 0 \bmod 32$</li>
-            <li data-proof-id="22-frey-construction">The Frey curve
+            <li data-proof-id="22-frey-construction">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              After normalising the hypothetical solution, the Frey curve
               $y^2 = x(x-a^p)(x+b^p)$ is an elliptic curve over $\mathbb{Q}$
               <span class="lref">(L15)</span></li>
-            <li data-proof-id="22-frey-discriminant">Its displayed discriminant is
+            <li data-proof-id="22-frey-discriminant">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Its displayed discriminant is
               $16(abc)^{2p}$ — verified two independent ways</li>
           </ul>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
+          <p class="ledger-none">None.</p>
         </div>
         <div class="col owed">
           <h3>Still owed</h3>

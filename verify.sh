@@ -79,8 +79,13 @@ for f in essays:
     if '<section class="ledger">' not in t:
         print(f"  {os.path.basename(f)}: no ledger section"); prob += 1; continue
     led = t.split('<section class="ledger">', 1)[1]
-    if 'class="col discharged"' not in led or 'class="col owed"' not in led:
-        print(f"  {os.path.basename(f)}: ledger missing a discharged/owed column"); prob += 1
+    expected_columns = (
+        'class="col proved-here"',
+        'class="col imported-here"',
+        'class="col owed"',
+    )
+    if any(column not in led for column in expected_columns):
+        print(f"  {os.path.basename(f)}: ledger missing a proved/imported/owed column"); prob += 1
     # forward dependency: "What we already have" must not cite a later essay
     m = re.search(r'Rung 1</span>\s*What we already have(.*?)</section>', t, re.S)
     if m:

@@ -1,9 +1,21 @@
 {
+  "completion_policy": {
+    "required_role": "required_for_flt",
+    "accepted_assumption_ids": [
+      "06-weierstrass-definition",
+      "07-associativity",
+      "10-local-theorems",
+      "16-eichler-shimura",
+      "18-modularity",
+      "25-ribet"
+    ]
+  },
   "proof_register": [
     {
       "id": "01-n4",
       "register": "proved",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [1],
       "text": "$x^4+y^4=z^2$ has no solution in positive integers, and therefore Fermat's Last Theorem holds for $n=4$."
     },
@@ -11,6 +23,7 @@
       "id": "01-exponent-reduction",
       "register": "proved",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [1],
       "text": "A counterexample at any exponent $n\\geq3$ would give one at exponent $4$ or at an odd prime exponent."
     },
@@ -18,6 +31,7 @@
       "id": "02-n3-first-case",
       "register": "proved",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [2],
       "text": "The first case of Fermat's Last Theorem for $n=3$ is ruled out in the Eisenstein integers."
     },
@@ -25,6 +39,7 @@
       "id": "02-n3-second-case",
       "register": "outlined",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [2],
       "text": "The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed."
     },
@@ -32,6 +47,7 @@
       "id": "02-ufd-failure",
       "register": "proved",
       "availability": "available",
+      "role": "background",
       "essays": [2],
       "text": "Unique factorisation is shown to fail by an explicit double factorisation in $\\mathbb{Z}[\\sqrt{-5}]$."
     },
@@ -39,6 +55,7 @@
       "id": "02-kummer",
       "register": "stated",
       "availability": "available",
+      "role": "background",
       "essays": [2],
       "text": "Kummer's regular-prime criterion and his theorem for regular prime exponents are stated."
     },
@@ -46,6 +63,7 @@
       "id": "06-weierstrass-definition",
       "register": "stated",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [6],
       "text": "The genus-one characterization and existence of a general Weierstrass model are stated; its point at infinity and discriminant are defined; the discriminant criterion for smoothness is stated."
     },
@@ -53,6 +71,7 @@
       "id": "06-integral-model-example",
       "register": "proved",
       "availability": "available",
+      "role": "background",
       "essays": [6],
       "text": "For $y^2+y=x^3-x^2$, direct calculation gives $\\Delta=-11$ and a short integral model whose discriminant is $6^{12}(-11)$."
     },
@@ -60,6 +79,7 @@
       "id": "07-chord-tangent",
       "register": "proved",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [7],
       "text": "The chord-and-tangent rule, rational closure and the short-Weierstrass addition formulas are derived."
     },
@@ -67,6 +87,7 @@
       "id": "07-order-five",
       "register": "proved",
       "availability": "available",
+      "role": "background",
       "essays": [7],
       "text": "The point $(0,0)$ on $y^2+y=x^3-x^2$ is shown by direct calculation to have order $5$."
     },
@@ -74,6 +95,7 @@
       "id": "07-associativity",
       "register": "stated",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [7],
       "text": "Associativity of chord-and-tangent addition, and hence the full abelian-group theorem for $E(\\mathbb{Q})$, is stated rather than proved."
     },
@@ -81,6 +103,7 @@
       "id": "07-uniformization",
       "register": "stated",
       "availability": "available",
+      "role": "background",
       "essays": [7],
       "text": "Complex uniformization $E(\\mathbb{C})\\cong\\mathbb{C}/\\Lambda$ is stated, not proved."
     },
@@ -88,6 +111,7 @@
       "id": "22-frey-construction",
       "register": "proved",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [22],
       "text": "A normalised hypothetical Fermat solution produces the Frey curve $y^2=x(x-a^p)(x+b^p)$."
     },
@@ -95,6 +119,7 @@
       "id": "22-frey-discriminant",
       "register": "proved",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [22],
       "text": "The displayed Frey model has discriminant $16(abc)^{2p}$."
     },
@@ -102,6 +127,7 @@
       "id": "25-ribet",
       "register": "stated",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [25],
       "text": "Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument."
     },
@@ -109,6 +135,7 @@
       "id": "25-level-two",
       "register": "conditional",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [25],
       "text": "The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13."
     },
@@ -116,6 +143,7 @@
       "id": "25-contradiction",
       "register": "conditional",
       "availability": "available",
+      "role": "required_for_flt",
       "essays": [25],
       "text": "The final contradiction is assembled conditionally on the explicit inputs assigned to essays 13, 18, 23 and 24, and the collection's full FLT conclusion also still owes the outlined second case for $n=3$."
     },
@@ -123,6 +151,7 @@
       "id": "10-local-theorems",
       "register": "stated",
       "availability": "planned",
+      "role": "required_for_flt",
       "essays": [10],
       "text": "Mazur's isogeny theorem and the Néron–Ogg–Shafarevich criterion will be stated with their hypotheses."
     },
@@ -130,6 +159,7 @@
       "id": "13-dimension-formula",
       "register": "proved",
       "availability": "planned",
+      "role": "required_for_flt",
       "essays": [13],
       "text": "The dimension formula for $S_2(\\Gamma_0(N))$ will be derived from the index, elliptic-point counts and cusp count."
     },
@@ -137,6 +167,7 @@
       "id": "16-eichler-shimura",
       "register": "stated",
       "availability": "planned",
+      "role": "required_for_flt",
       "essays": [16],
       "text": "Eichler–Shimura will be stated, not proved."
     },
@@ -144,6 +175,7 @@
       "id": "18-modularity",
       "register": "stated",
       "availability": "planned",
+      "role": "required_for_flt",
       "essays": [18],
       "text": "The Modularity Theorem will be stated, not proved."
     },
@@ -151,6 +183,7 @@
       "id": "19-21-wiles",
       "register": "described",
       "availability": "planned",
+      "role": "background",
       "essays": [19, 20, 21],
       "text": "Wiles's deformation-theoretic machinery will be described as an anatomy, not presented as a proof."
     },
@@ -158,6 +191,7 @@
       "id": "21-langlands-tunnell",
       "register": "stated",
       "availability": "planned",
+      "role": "background",
       "essays": [21],
       "text": "Langlands–Tunnell will be stated, not proved."
     },
@@ -165,6 +199,7 @@
       "id": "23-frey-reduction",
       "register": "proved",
       "availability": "planned",
+      "role": "required_for_flt",
       "essays": [23],
       "text": "The Frey curve's minimal model, semistability and conductor will be established."
     },
@@ -172,6 +207,7 @@
       "id": "24-frey-representation",
       "register": "proved",
       "availability": "planned",
+      "role": "required_for_flt",
       "essays": [24],
       "text": "The conductor of the Frey curve's mod $p$ representation will be established, with the irreducibility threshold handled explicitly."
     }

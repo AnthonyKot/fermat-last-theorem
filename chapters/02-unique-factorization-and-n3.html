@@ -248,24 +248,36 @@
     <section class="ledger">
       <h2>Ledger</h2>
       <div class="cols">
-        <div class="col discharged">
-          <h3>Discharged here</h3>
+        <div class="col proved-here">
+          <h3>Proved here</h3>
           <ul>
-            <li>The Eisenstein integers, their norm, six units, and unique factorisation</li>
-            <li>$\lambda = 1-\omega$, the ramified prime above $3$</li>
-            <li data-proof-id="02-n3-first-case">Fermat for $n = 3$, first case complete</li>
-            <li data-proof-id="02-n3-second-case">Fermat for $n = 3$, second case outlined</li>
-            <li>Conditional on the outlined second-case descent, exponents reduce to the primes
-              $p \geq 5$ <span class="lref">(L1, not yet complete)</span></li>
-            <li data-proof-id="02-ufd-failure">Unique factorisation demonstrably fails</li>
-            <li>Class numbers and regular primes</li>
-            <li data-proof-id="02-kummer">Kummer's regular-prime criterion, stated</li>
+            <li data-proof-id="02-n3-first-case">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Fermat for $n = 3$, first case complete</li>
+            <li data-proof-id="02-ufd-failure">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Unique factorisation demonstrably fails in $\mathbb{Z}[\sqrt{-5}]$</li>
+          </ul>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
+          <ul>
+            <li data-proof-id="02-kummer">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Kummer's regular-prime criterion and theorem</li>
           </ul>
         </div>
         <div class="col owed">
           <h3>Still owed</h3>
           <ul>
-            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li data-proof-id="02-n3-second-case">
+              <span class="ledger-mode ledger-mode--outlined">Outlined</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The second-case descent for $n=3$ in full; only an outline is present
+              <span class="lref">(L1)</span></li>
             <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essay 05)</span></li>
             <li>$\mathbb{Z}_p$ and the valuation $v_\ell$ <span class="lref">(L3, essay 04)</span></li>
             <li>Elliptic curves, reduction, the conductor <span class="lref">(L4–L5, essays 06–08)</span></li>

@@ -211,17 +211,26 @@
     <section class="ledger">
       <h2>Ledger</h2>
       <div class="cols">
-        <div class="col discharged">
-          <h3>Discharged here</h3>
+        <div class="col proved-here">
+          <h3>Proved here</h3>
           <ul>
-            <li data-proof-id="06-weierstrass-definition">The formal genus-one definition and the
-              existence of a general Weierstrass model, stated; its projective closure, unique point
-              at infinity and discriminant, defined; the discriminant smoothness criterion, stated
-              <span class="lref">(first half of L4)</span></li>
-            <li data-proof-id="06-integral-model-example">For $y^2+y=x^3-x^2$, the discriminant
+            <li data-proof-id="06-integral-model-example">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              For $y^2+y=x^3-x^2$, the discriminant
               $\Delta=-11$ and the change to a short integral model with discriminant
               $6^{12}(-11)$, proved by direct calculation</li>
-            <li>The distinction between a curve over $\mathbb{Q}$ and a chosen integral model</li>
+          </ul>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
+          <ul>
+            <li data-proof-id="06-weierstrass-definition">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The genus-one characterization, existence of a general Weierstrass model and
+              discriminant smoothness criterion; the model and its invariants are defined here
+              <span class="lref">(first half of L4)</span></li>
           </ul>
         </div>
         <div class="col owed">

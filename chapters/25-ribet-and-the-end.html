@@ -218,22 +218,33 @@
     <section class="ledger">
       <h2>Ledger</h2>
       <div class="cols">
-        <div class="col discharged">
-          <h3>Discharged here</h3>
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <p class="ledger-none">No unconditional ledger item closes here yet.</p>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
           <ul>
-            <li data-proof-id="25-ribet">Ribet's level-lowering theorem, stated with hypotheses
+            <li data-proof-id="25-ribet">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Ribet's level-lowering theorem, stated with hypotheses
               <span class="lref">(L18)</span></li>
-            <li>Its hypotheses checked against the Frey representation</li>
-            <li>$\mu = 3$, $\nu_2 = 1$, $\nu_3 = 0$, $\nu_\infty = 2$ at level $2$</li>
-            <li data-proof-id="25-level-two">The level-$2$ dimension arithmetic, computed and
-              cross-checked; the formula remains owed <span class="lref">(L19)</span></li>
-            <li data-proof-id="25-contradiction">The contradiction, and Fermat's Last Theorem —
-              conditional on the four inputs below and the separately handled classical cases</li>
           </ul>
         </div>
         <div class="col owed">
           <h3>Still owed</h3>
           <ul>
+            <li data-proof-id="25-level-two">
+              <span class="ledger-mode ledger-mode--conditional">Conditional</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The level-$2$ dimension arithmetic is checked, but the formula it uses remains owed
+              <span class="lref">(L19)</span></li>
+            <li data-proof-id="25-contradiction">
+              <span class="ledger-mode ledger-mode--conditional">Conditional</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The final contradiction remains conditional on (A)–(D) and the second case for
+              $n=3$</li>
             <li><strong>(A)</strong> $E$ semistable and modular <span class="lref">(L14, L16; essays 18, 23)</span></li>
             <li><strong>(B)</strong> $\bar\rho$ irreducible, and the $p > 7$ threshold resolved <span class="lref">(L8; essays 10, 24)</span></li>
             <li><strong>(C)</strong> $\bar\rho$ finite at $p$, conductor $2$ <span class="lref">(L9, L17; essays 10, 24)</span></li>
@@ -243,8 +254,9 @@
           </ul>
         </div>
       </div>
-      <p class="empty">The ledger does not close yet. It closes when essays 03–05, 08–21, 23 and 24 are
-        written; that is what this collection is for.</p>
+      <p class="ledger-open">The required debt does not close yet. It closes when essays 03–05, 08–21, 23
+        and 24 are written and essay 02's second-case outline becomes a proof. Imported inputs remain
+        visible even then.</p>
     </section>
 
     <nav class="chapter-nav">

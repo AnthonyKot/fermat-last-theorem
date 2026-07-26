@@ -217,17 +217,32 @@
     <section class="ledger">
       <h2>Ledger</h2>
       <div class="cols">
-        <div class="col discharged">
-          <h3>Discharged here</h3>
+        <div class="col proved-here">
+          <h3>Proved here</h3>
           <ul>
-            <li data-proof-id="07-chord-tangent">The chord-and-tangent rule, rational closure,
+            <li data-proof-id="07-chord-tangent">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The chord-and-tangent rule, rational closure,
               identity, inverses and commutativity; explicit short-Weierstrass addition formulas</li>
-            <li data-proof-id="07-associativity">Associativity, stated rather than proved; hence
-              $E(\mathbb{Q})$ is an abelian group</li>
-            <li data-proof-id="07-order-five">The point $(0,0)$ on $y^2+y=x^3-x^2$ has order $5$,
+            <li data-proof-id="07-order-five">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The point $(0,0)$ on $y^2+y=x^3-x^2$ has order $5$,
               proved by direct calculation</li>
-            <li data-proof-id="07-uniformization">Complex uniformization
-              $E(\mathbb{C})\cong\mathbb{C}/\Lambda$, stated</li>
+          </ul>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
+          <ul>
+            <li data-proof-id="07-associativity">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Associativity; hence $E(\mathbb{Q})$ is an abelian group</li>
+            <li data-proof-id="07-uniformization">
+              <span class="ledger-mode ledger-mode--stated">Imported</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$</li>
           </ul>
         </div>
         <div class="col owed">

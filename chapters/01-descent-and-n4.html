@@ -188,15 +188,24 @@
     <section class="ledger">
       <h2>Ledger</h2>
       <div class="cols">
-        <div class="col discharged">
-          <h3>Discharged here</h3>
+        <div class="col proved-here">
+          <h3>Proved here</h3>
           <ul>
-            <li>Infinite descent, and the parametrisation of primitive Pythagorean triples</li>
-            <li data-proof-id="01-n4">Fermat's Last Theorem for $n = 4$
+            <li data-proof-id="01-n4">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Fermat's Last Theorem for $n = 4$, by infinite descent
               <span class="lref">(L1, first half)</span></li>
-            <li data-proof-id="01-exponent-reduction">The reduction: it suffices to treat odd prime
+            <li data-proof-id="01-exponent-reduction">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The reduction: it suffices to treat odd prime
               exponents <span class="lref">(L1)</span></li>
           </ul>
+        </div>
+        <div class="col imported-here">
+          <h3>Imported here</h3>
+          <p class="ledger-none">None.</p>
         </div>
         <div class="col owed">
           <h3>Still owed</h3>
