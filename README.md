@@ -24,7 +24,7 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Ten essays are written — the two ends of the rope,
+Scaffold and the full 25-essay map are complete. Eleven essays are written — the two ends of the rope,
 the valuation, the elliptic-curve bridge as far as the conductor, and the semistability check:
 
 | # | Essay | What it delivers |
@@ -36,6 +36,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 | 07 | The group law | Chord-and-tangent addition and an order-five example; associativity and complex uniformization stated |
 | 08 | Reduction and the conductor | Good, multiplicative and additive reduction; $a_\ell$; semistable ⟺ square-free conductor |
 | 09 | Division points and the Tate module | $E[2]$ and $E[3]$ by hand; the Frey curve's full rational $2$-torsion; $T_\ell(E)$ free of rank $2$ |
+| 10 | The representation attached to a curve | $\rho_{E,\ell}$ from the Tate module; $\det=\chi_\ell$ so every $\bar\rho$ is odd; reducible $\iff$ a rational subgroup |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
 | 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
@@ -43,7 +44,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 03, 05, 10–21 and 24 are stubbed on
+valuation to link back to rather than a declared debt. Essays 03, 05, 11–21 and 24 are stubbed on
 the contents page, and essay 25 states plainly that it is conditional until they exist.
 
 ## Verification
@@ -77,6 +78,10 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     inequality and its equality case over thousands of pairs, every digit string recomputed from
     congruences, and the $\mathrm{GL}_2(\mathbb{Z}_3)$ determinant criterion checked against the
     adjugate exhaustively.
+  - `mod_ell_representation.py` — the pairing identity $e(Mv,Mw)=e(v,w)^{\det M}$ over every invertible
+    matrix for several moduli, the uniqueness of $-1$ as the root-of-unity-inverting exponent, and the
+    reducibility congruence $a_\ell\equiv\ell+1$ tested on two curves at two primes each, passing in
+    the two cases with a rational subgroup and failing in the two without.
   - `torsion.py` — an exact rational group law for general Weierstrass models: the $2$-division cubic,
     no rational $2$-torsion for the conductor-$11$ curve versus all of it for six Frey curves, $\psi_3$
     and the order of $(0,\pm1)$ on $y^2=x^3+1$, and the coordinate description of the Tate module.

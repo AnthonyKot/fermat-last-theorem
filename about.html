@@ -37,7 +37,7 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>13</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>15</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Traces of Frobenius determine a semisimple representation <span class="scope-essays">(essay 05)</span> <span class="roster-planned">not yet written</span></li>
@@ -45,7 +45,9 @@
         <li>Associativity of the chord-and-tangent group law <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
         <li>Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
         <li>Conductor exponent $f_\ell=1$ at a multiplicative prime <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
-        <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(essay 10)</span> <span class="roster-planned">not yet written</span></li>
+        <li>The Weil pairing $e_n:E[n]\times E[n]\to\mu_n$ <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
+        <li>$\operatorname{tr}\bar\rho_{E,p}(\mathrm{Frob}_\ell)\equiv a_\ell$ <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
+        <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span></li>
         <li>The valence formula for $\Gamma_0(N)$ <span class="scope-essays">(essay 13)</span> <span class="roster-planned">not yet written</span></li>
         <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(essay 14)</span> <span class="roster-planned">not yet written</span></li>
         <li>Newform theory, and the level of a newform <span class="scope-essays">(essay 15)</span> <span class="roster-planned">not yet written</span></li>
@@ -67,7 +69,7 @@
         <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
       </ul>
       <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
-      <p class="scope-note"><strong>Not yet settled:</strong> 17 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 16 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -174,6 +176,26 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The $2$-division cubic $4x^3+b_2x^2+2b_4x+b_6$ gives $\#E[2]=4$ with $E[2]\cong(\mathbb{Z}/2)^2$; $\psi_3$ gives $\#E[3]=9$; and the Tate module $T_\ell(E)=\varprojlim E[\ell^n]$ is free of rank $2$ over $\mathbb{Z}_\ell$, which is why the representations are $2\times2$. <span class="scope-essays">(<a href="chapters/09-torsion-and-tate-module.html">essay 09</a>)</span>
        </li>
+        <li data-proof-id="10-representation">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          $G_{\mathbb{Q}}$ acts on each $E[\ell^n]$ by group automorphisms, because the curve and the group law are defined over $\mathbb{Q}$; in a compatible basis this is $\rho_{E,\ell}:G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$, with reduction $\bar\rho_{E,\ell}$. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
+        <li data-proof-id="10-determinant-odd">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span> <span class="scope-dep">conditional on: The Weil pairing $e_n:E[n]\times E[n]\to\mu_n$</span>
+          $\det\rho_{E,\ell}$ is the cyclotomic character, from $e_n(Mv,Mw)=e_n(v,w)^{\det M}$ and Galois-equivariance of the pairing. Complex conjugation inverts roots of unity, so $\det\bar\rho(c)=-1$: every $\bar\rho_{E,\ell}$ is odd, discharging that hypothesis of Ribet's theorem. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
+        <li data-proof-id="10-reducible-iff-subgroup">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          $\bar\rho_{E,\ell}$ is reducible exactly when $E$ has a rational subgroup of order $\ell$, since a Galois-stable line in $E[\ell]$ is such a subgroup. The Frey curve's full rational $2$-torsion makes $\bar\rho_{E,2}$ trivial. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
+        <li data-proof-id="10-reducibility-congruence">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          A rational subgroup of order $m$ forces the stable line to carry the trivial character, hence $a_\ell\equiv\ell+1\pmod m$ at every good prime -- which is essay 08's divisibility, and which fails for both worked curves at the prime where no such subgroup exists. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -230,6 +252,21 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           At a prime of multiplicative reduction the conductor exponent is $f_\ell=1$. This is the only conductor exponent the Fermat argument uses, because the Frey curve is semistable. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
        </li>
+        <li data-proof-id="10-weil-pairing">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Weil pairing: bilinear, alternating, non-degenerate and Galois-equivariant. Its construction uses divisors on the curve and is not given. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
+        <li data-proof-id="10-trace-formula">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          At a good prime $\ell\neq p$, $\bar\rho_{E,p}$ is unramified with $\operatorname{tr}\bar\rho(\mathrm{Frob}_\ell)\equiv a_\ell$ and $\det\equiv\ell$ modulo $p$. Stated rather than derived because $\mathrm{Frob}_\ell$ is constructed in essay 03. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
+        <li data-proof-id="10-local-theorems">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Mazur's isogeny theorem -- no curve over $\mathbb{Q}$ has a rational subgroup of prime order $\ell$ outside $\{2,3,5,7,11,13,17,19,37,43,67,163\}$, collapsing to $\ell\leq7$ for semistable curves -- and the Néron--Ogg--Shafarevich criterion that $\rho_{E,p}$ is unramified at $\ell\neq p$ exactly when $E$ has good reduction there. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
         <li data-proof-id="25-ribet">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -265,11 +302,6 @@
           <span class="scope-mode scope-mode--stated">To assume</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           A semisimple two-dimensional representation is determined up to isomorphism by the traces of Frobenius at almost all primes. This is what makes "these two representations agree" a checkable claim in essays 18 and 25. <span class="scope-essays">(essay 05)</span>
-       </li>
-        <li data-proof-id="10-local-theorems">
-          <span class="scope-mode scope-mode--stated">To assume</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          Mazur's isogeny theorem and the Néron–Ogg–Shafarevich criterion will be stated with their hypotheses. <span class="scope-essays">(essay 10)</span>
        </li>
         <li data-proof-id="11-modular-group">
           <span class="scope-mode scope-mode--proved">To prove</span>
@@ -506,6 +538,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/3b81be6"><code>3b81be6</code></a> · 2026-07-26 16:33 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 16:40 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

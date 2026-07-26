@@ -1,0 +1,365 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 · The representation attached to a curve — No Such Form</title>
+<meta name="description" content="The Galois action on the Tate module gives rho_E, whose determinant is the cyclotomic character and whose traces are the a_ell. Mazur's isogeny theorem and Neron-Ogg-Shafarevich stated.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part II · Elliptic curves — Essay 10</p>
+    <h1>The representation attached to a curve</h1>
+    <p class="lede">The torsion points have algebraic coordinates, so the symmetries of the algebraic
+      numbers move them around. Write that motion in a basis and the curve has become a family of
+      $2\times2$ matrices — the object the rest of this collection is about.</p>
+
+    <div class="claim">
+      <span class="tag">This essay constructs, derives, and states</span>
+      <strong>Constructs:</strong> $\rho_{E,\ell}:G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$ and
+      its reduction $\bar\rho_{E,\ell}$.
+      <strong>Derives:</strong> $\det\rho_{E,\ell}$ is the cyclotomic character, hence
+      $\bar\rho$ is <em>odd</em>; and that a rational subgroup of order $\ell$ is exactly what makes
+      $\bar\rho_{E,\ell}$ reducible.
+      <strong>States:</strong> the Weil pairing, the trace formula
+      $\operatorname{tr}\bar\rho(\mathrm{Frob}_\ell)\equiv a_\ell$, Mazur's isogeny theorem, and
+      Néron–Ogg–Shafarevich.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="09-torsion-and-tate-module.html">09</a> is the direct input:
+        $E[\ell^n]\cong(\mathbb{Z}/\ell^n)^2$, and the Tate module
+        $T_\ell(E)=\varprojlim E[\ell^n]$ is free of rank $2$ over $\mathbb{Z}_\ell$. It also computed
+        the rational torsion of two curves — none at $2$ for the conductor-$11$ curve, all of it for
+        the Frey curve — and those two facts become two representations of opposite character below.</p>
+      <p>Essay <a href="04-p-adics-and-modules.html">04</a> gives $\mathbb{Z}_\ell$, free modules, and
+        the criterion that a matrix lies in $\mathrm{GL}_2(\mathbb{Z}_\ell)$ exactly when its
+        determinant is a unit. Essay <a href="08-reduction-and-conductor.html">08</a> gives
+        $a_\ell=\ell+1-\#\tilde{E}(\mathbb{F}_\ell)$ and the good primes. Essay
+        <a href="07-the-group-law.html">07</a> gives the group law, which is what makes the action
+        below a homomorphism rather than a mere permutation.</p>
+      <div class="fence">
+        <strong>Two debts, declared, and they are larger here than usual.</strong> Essays 03 and 05 are
+        unwritten. Essay 03 builds $G_{\mathbb{Q}}=\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})$ as a
+        profinite group and constructs <em>Frobenius elements</em> $\mathrm{Frob}_\ell$; essay 05
+        defines continuity for such a representation and the <em>conductor</em> of one. This essay uses
+        $G_{\mathbb{Q}}$ as a group of field automorphisms, which needs no machinery, and that carries
+        the construction and the determinant. But the trace formula and the conductor are stated rather
+        than derived here, because the objects they speak about are built in those two essays.
+        <em>Unlike essay 23, whose debts were peripheral, these are this essay's own vocabulary</em> —
+        so read the trace formula as a signpost and expect essay 05 to be where it is earned.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>The action needs no new ideas</h3>
+      <p>Let $\sigma$ be an automorphism of $\overline{\mathbb{Q}}$ fixing $\mathbb{Q}$, and let it act
+        on points coordinatewise: $\sigma(x,y)=(\sigma x,\sigma y)$, with $\sigma O=O$. Three
+        observations, each immediate:</p>
+      <ul>
+        <li><strong>$\sigma$ maps $E$ to itself.</strong> The equation has rational coefficients, so
+          applying $\sigma$ to $y^2+a_1xy+a_3y=x^3+\cdots$ leaves it unchanged.</li>
+        <li><strong>$\sigma$ respects addition.</strong> Essay 07's formulas for $P+Q$ are rational
+          functions of the coordinates with rational coefficients, and $\sigma$ is a field homomorphism,
+          so $\sigma(P+Q)=\sigma P+\sigma Q$.</li>
+        <li><strong>$\sigma$ preserves $E[n]$.</strong> From additivity, $\sigma(nP)=n\,\sigma(P)$, so
+          $nP=O$ implies $n\,\sigma P=O$.</li>
+      </ul>
+      <p>So $G_{\mathbb{Q}}$ acts on each $E[\ell^n]$ by group automorphisms. Essay 09 gave
+        $E[\ell^n]\cong(\mathbb{Z}/\ell^n)^2$; choosing a basis compatibly in $n$ and using
+        $T_\ell(E)\cong\mathbb{Z}_\ell^2$, the action becomes a homomorphism</p>
+      <p>$$
+        \boxed{\quad\rho_{E,\ell}:G_{\mathbb{Q}}\longrightarrow
+        \mathrm{Aut}\bigl(T_\ell(E)\bigr)\cong\mathrm{GL}_2(\mathbb{Z}_\ell).\quad}
+      $$</p>
+      <p>Reducing the entries modulo $\ell$ — equivalently, acting on the single layer $E[\ell]$ —
+        gives the <strong>mod $\ell$ representation</strong></p>
+      <p>$$
+        \bar\rho_{E,\ell}:G_{\mathbb{Q}}\longrightarrow\mathrm{GL}_2(\mathbb{F}_\ell).
+      $$</p>
+      <p>Nothing here was hard, and that is worth saying plainly: the object at the centre of the whole
+        Fermat argument is the observation that Galois symmetry moves torsion points, written in a
+        basis. Everything difficult lies in what the resulting matrices <em>are</em>.</p>
+
+      <h3>The determinant is forced</h3>
+      <p>A $2\times2$ matrix has two obvious invariants, and one of them can be identified outright.
+        The tool is a pairing on torsion.</p>
+      <div class="fence">
+        <strong>Stated: the Weil pairing.</strong> For each $n$ there is a map
+        $e_n:E[n]\times E[n]\to\mu_n$ into the $n$-th roots of unity which is bilinear, alternating,
+        non-degenerate, and <em>Galois-equivariant</em>:
+        $e_n(\sigma P,\sigma Q)=\sigma\bigl(e_n(P,Q)\bigr)$. Its construction uses divisors on the
+        curve and is not given here.
+      </div>
+      <p>Take a basis $P,Q$ of $E[n]$. Non-degeneracy makes $\zeta=e_n(P,Q)$ a primitive $n$-th root of
+        unity. Now compute $\sigma\zeta$ two ways. By equivariance it is $e_n(\sigma P,\sigma Q)$; and
+        writing $\sigma$ as the matrix $\rho(\sigma)$ in that basis, bilinearity and alternation give
+        the standard identity</p>
+      <p>$$
+        e_n(Mv,Mw)=e_n(v,w)^{\det M}.
+      $$</p>
+      <p>Both routes must agree, so</p>
+      <p>$$
+        \sigma(\zeta)=\zeta^{\det\rho(\sigma)}.
+      $$</p>
+      <p>The exponent by which $\sigma$ acts on roots of unity is called the <strong>cyclotomic
+        character</strong> $\chi$. So</p>
+      <p>$$
+        \boxed{\quad\det\rho_{E,\ell}=\chi_\ell,\quad}
+      $$</p>
+      <p>the same for every elliptic curve. Half the matrix is fixed before the curve is even named.
+        What distinguishes one curve from another is the <em>trace</em>.</p>
+
+      <h3>Oddness, in two lines</h3>
+      <p>Complex conjugation restricts to an automorphism $c\in G_{\mathbb{Q}}$ of order two, and its
+        effect on roots of unity is inversion, $c(\zeta)=\bar\zeta=\zeta^{-1}$. So $\chi(c)=-1$, and
+        therefore</p>
+      <p>$$ \det\bar\rho_{E,\ell}(c)=-1. $$</p>
+      <p>A representation with $\det\rho(c)=-1$ is called <strong>odd</strong>. This is not a
+        decoration: it is one of the hypotheses of Ribet's theorem in essay 25, and it is now
+        discharged for every elliptic curve at once. Note where it came from — the pairing lands in
+        roots of unity, and conjugation inverts them. Oddness is a fact about $\mathbb{C}$, not about
+        the curve.</p>
+
+      <h3>The trace is the point count</h3>
+      <p>At a prime $\ell$ of good reduction, essay 03's Frobenius element $\mathrm{Frob}_\ell$ acts,
+        and the matrix it produces is determined by two numbers.</p>
+      <div class="fence">
+        <strong>Stated, pending essays 03 and 05.</strong> For $E$ with good reduction at $\ell$ and
+        $\ell\neq p$, the representation $\bar\rho_{E,p}$ is unramified at $\ell$ and
+        $$
+          \operatorname{tr}\bar\rho_{E,p}(\mathrm{Frob}_\ell)\equiv a_\ell,
+          \qquad
+          \det\bar\rho_{E,p}(\mathrm{Frob}_\ell)\equiv\ell
+          \pmod p,
+        $$
+        so $\mathrm{Frob}_\ell$ has characteristic polynomial $x^2-a_\ell x+\ell$ modulo $p$.
+      </div>
+      <p>The determinant half of that is the cyclotomic character evaluated at $\mathrm{Frob}_\ell$,
+        which is $\ell$ — consistent with what was just derived. The trace half is the bridge the whole
+        collection is built to cross: <strong>the integers $a_\ell$ that essay 08 obtained by counting
+        points are the traces of a family of matrices.</strong> Part IV finds a second, entirely
+        different source of the same integers.</p>
+
+      <h3>Reducible means a rational subgroup</h3>
+      <p>Call $\bar\rho$ <strong>reducible</strong> if some one-dimensional subspace of
+        $\mathbb{F}_\ell^2$ is preserved by every $\sigma$ — equivalently, if the image can be written
+        with all matrices upper triangular. Unwinding the definitions, a Galois-stable line in
+        $E[\ell]$ is a subgroup of order $\ell$ carried to itself by every automorphism, which is what
+        it means for that subgroup to be defined over $\mathbb{Q}$:</p>
+      <p>$$
+        \bar\rho_{E,\ell}\text{ reducible}
+        \quad\Longleftrightarrow\quad
+        E\text{ has a rational subgroup of order }\ell.
+      $$</p>
+      <p>This is the sentence that makes essay 09's two computations matter. A rational subgroup is a
+        concrete, checkable thing; irreducibility of a representation sounds abstract; they are the same
+        condition. And it is why the two named theorems below are about <em>subgroups</em> when what the
+        argument needs is a statement about representations.</p>
+      <div class="fence">
+        <strong>Stated: Mazur's isogeny theorem (1978).</strong> No elliptic curve over $\mathbb{Q}$
+        admits a rational subgroup of prime order $\ell$ for
+        $$\ell\notin\{2,3,5,7,11,13,17,19,37,43,67,163\},$$
+        and the last four require complex multiplication. For a <em>semistable</em> curve the list
+        collapses to $\ell\leq7$. Hence $\bar\rho_{E,\ell}$ is irreducible for $\ell\gt7$ when $E$ is
+        semistable.
+        <br><br>
+        <strong>Stated: the Néron–Ogg–Shafarevich criterion.</strong> For $\ell\neq p$, the
+        representation $\rho_{E,p}$ is unramified at $\ell$ if and only if $E$ has good reduction at
+        $\ell$. So the primes where the representation is ramified are exactly the bad primes — with $p$
+        itself always requiring separate treatment.
+      </div>
+      <p>Néron–Ogg–Shafarevich is the reason essay 08's work was not merely local colour: it converts
+        the reduction types computed there into ramification of the representation, which is what
+        essay 24 needs to compute a conductor.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>Essay 08's mystery, solved — and it is a falsifiable prediction</h3>
+      <p>Essay 08 recorded, without explanation, that every point count of the conductor-$11$ curve was
+        divisible by $5$. Here is the reason, and it is a good advertisement for the whole apparatus.</p>
+      <p>Essay 07 found a rational point of order $5$, so $\langle(0,0)\rangle$ is a rational subgroup
+        of order $5$ and $\bar\rho_{E,5}$ is <em>reducible</em>. More than that: the subgroup consists
+        of points with rational coordinates, so every $\sigma$ fixes each of them <em>pointwise</em>.
+        The stable line therefore carries the <strong>trivial</strong> character. In a basis whose first
+        vector spans that line,</p>
+      <p>$$
+        \bar\rho_{E,5}(\sigma)=
+        \begin{pmatrix}1&amp;*\\0&amp;\chi(\sigma)\end{pmatrix},
+      $$</p>
+      <p>the lower-right entry being forced by $\det=\chi$. Taking traces at $\mathrm{Frob}_\ell$:</p>
+      <p>$$
+        a_\ell\equiv1+\ell\pmod 5\qquad\text{for every good prime }\ell.
+      $$</p>
+      <p>Which rearranges to $5\mid\ell+1-a_\ell=\#\tilde{E}(\mathbb{F}_\ell)$ — exactly essay 08's
+        observation. Check it against that essay's table:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>$\ell$</th><th>$a_\ell$</th><th>$a_\ell\bmod5$</th><th>$\ell+1\bmod5$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$2$</td><td>$-2$</td><td>$3$</td><td>$3$</td></tr>
+            <tr><td>$3$</td><td>$-1$</td><td>$4$</td><td>$4$</td></tr>
+            <tr><td>$7$</td><td>$-2$</td><td>$3$</td><td>$3$</td></tr>
+            <tr><td>$13$</td><td>$4$</td><td>$4$</td><td>$4$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>It holds at all $44$ good primes below $200$. And the prediction has teeth, which is the part
+        that makes it evidence rather than bookkeeping: the same congruence <em>modulo $3$</em> fails
+        for this curve at $26$ of those primes, because it has no rational $3$-torsion. Run the
+        experiment the other way and it flips — $y^2=x^3+1$, which essay 09 showed has rational
+        $3$-torsion, satisfies the congruence mod $3$ everywhere and fails it mod $5$ at $38$ primes.</p>
+      <p>Two curves, two primes each, and the congruence holds in exactly the two cases where a rational
+        subgroup exists. That is the cheapest available demonstration that these representations are
+        real objects with observable consequences, rather than a change of language.</p>
+
+      <h3>The Frey curve's mod $2$ representation is trivial</h3>
+      <p>Essay 09 proved the Frey curve has <em>full</em> rational $2$-torsion. So every point of
+        $E[2]$ is fixed by every automorphism, and</p>
+      <p>$$ \bar\rho_{E,2}=\text{the trivial representation}. $$</p>
+      <p>Not merely reducible — trivial, the whole image being the identity. The Frey curve is therefore
+        as far from irreducible as a curve can be at the prime $2$, which is exactly why the Fermat
+        argument works at the prime $p$ instead, and why Mazur's theorem is needed there.</p>
+
+      <h3>What essay 24 collects</h3>
+      <p>Everything essay 24 needs about the Frey representation is now stated or derived. It is odd,
+        because every $\bar\rho_{E,\ell}$ is. Its determinant is $\chi$. It is irreducible for
+        $p\gt7$ by Mazur, given essay 23's semistability — and whether the Frey curve's full rational
+        $2$-torsion pushes that to $p\geq5$ remains open. It is unramified outside $2$, $p$ and the bad
+        primes by Néron–Ogg–Shafarevich, applied to essay 23's reduction types. What remains for
+        essay 24 is the conductor: to show that the odd primes drop out and only $2$ survives.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>The representation, the Tate module, and the trace formula.</strong> Andrew
+        Sutherland's MIT 18.783 Fall 2023 Lecture 25, §25.3, constructs the action of
+        $\mathrm{Gal}(\mathbb{Q}(E[\ell])/\mathbb{Q})$ on $E[\ell]$, defines
+        $\rho_{E,\ell}:G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$ from the Tate module, records
+        the characteristic polynomial of $\mathrm{Frob}_p$ as $x^2-(\operatorname{tr})x+\det$ with
+        $\operatorname{tr}\equiv a_p$ and $\det\equiv p$, and defines $\bar\rho_{E,\ell}$ by reduction.
+        Its §25.4 defines irreducibility, notes that $\bar\rho_{E,\ell}$ is irreducible exactly when
+        $E$ admits no rational $\ell$-isogeny, and gives Mazur's exceptional list
+        $\{2,3,5,7,11,13,17,19,37,43,67,163\}$ with the four CM cases; the same section derives oddness
+        from the complex-conjugation action on the torus.</p>
+      <p><strong>Semistability sharpens Mazur.</strong> Darmon, Diamond and Taylor's survey
+        <em>Fermat's Last Theorem</em>, p. 8–9, states that a semistable elliptic curve over
+        $\mathbb{Q}$ has no rational cyclic subgroup of order $\ell$ for $\ell\gt7$, and that this is
+        what gives irreducibility of $\bar\rho_{E,\ell}$ there.</p>
+      <p><strong>The Weil pairing and Néron–Ogg–Shafarevich.</strong> Silverman's <em>The Arithmetic of
+        Elliptic Curves</em> constructs the Weil pairing and proves the criterion relating good
+        reduction to unramifiedness.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/mod_ell_representation.py</code>. It
+        verifies the pairing identity $e(Mv,Mw)=e(v,w)^{\det M}$ exhaustively over every invertible
+        matrix for several moduli — the algebra that forces $\det\rho=\chi$ — confirms that $-1$ is the
+        unique exponent inverting all roots of unity, and tests the reducibility congruence
+        $a_\ell\equiv\ell+1$ on both curves at both primes, so that it passes in the two cases with a
+        rational subgroup and fails in the two without.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="10-representation">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $G_{\mathbb{Q}}$ acts on $E[\ell^n]$ by group automorphisms, giving
+              $\rho_{E,\ell}:G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}_\ell)$ and its reduction
+              $\bar\rho_{E,\ell}$ <span class="lref">(L7)</span></li>
+            <li data-proof-id="10-determinant-odd">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              <span class="ledger-dep">conditional on the Weil pairing</span>
+              $\det\rho_{E,\ell}=\chi_\ell$, and hence $\det\bar\rho(c)=-1$: every
+              $\bar\rho_{E,\ell}$ is <strong>odd</strong>, which discharges that hypothesis of Ribet's
+              theorem</li>
+            <li data-proof-id="10-reducible-iff-subgroup">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $\bar\rho_{E,\ell}$ is reducible exactly when $E$ has a rational subgroup of order
+              $\ell$; the Frey curve's $\bar\rho_{E,2}$ is trivial</li>
+            <li data-proof-id="10-reducibility-congruence">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              A rational subgroup of order $m$ forces $a_\ell\equiv\ell+1\pmod m$, which explains
+              essay 08's divisibility and fails for both curves at the prime where no such subgroup
+              exists</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="10-weil-pairing">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The Weil pairing $e_n:E[n]\times E[n]\to\mu_n$ — bilinear, alternating, non-degenerate
+              and Galois-equivariant</li>
+            <li data-proof-id="10-local-theorems">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Mazur's isogeny theorem, with its exceptional list and the semistable collapse to
+              $\ell\leq7$; and Néron–Ogg–Shafarevich <span class="lref">(L8, L9)</span></li>
+            <li data-proof-id="10-trace-formula">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $\operatorname{tr}\bar\rho_{E,p}(\mathrm{Frob}_\ell)\equiv a_\ell$ and
+              $\det\equiv\ell$ — stated here because $\mathrm{Frob}_\ell$ is built in essay 03
+              <span class="lref">(part of L7)</span></li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>$G_{\mathbb{Q}}$ and Frobenius elements, and continuity and the conductor of a
+              representation — this essay's own vocabulary
+              <span class="lref">(L2, essays 03, 05)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 11–15)</span></li>
+            <li>Eichler–Shimura, and the essays that state modularity
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Conductor of $\bar\rho_{E,p}$ is $2$ <span class="lref">(L17, essay 24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="09-torsion-and-tate-module.html"><span class="dir">← Previous written essay</span> 09 · Division points and the Tate module</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 10 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 16:40 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

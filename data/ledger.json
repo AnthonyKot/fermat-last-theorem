@@ -8,6 +8,8 @@
       "07-uniformization",
       "08-conductor-multiplicative",
       "10-local-theorems",
+      "10-trace-formula",
+      "10-weil-pairing",
       "13-valence-formula",
       "14-eigenbasis",
       "15-newforms",
@@ -384,14 +386,79 @@
       "availability": "available"
     },
     {
-      "id": "10-local-theorems",
-      "register": "stated",
-      "availability": "planned",
+      "id": "10-representation",
+      "register": "proved",
       "role": "required_for_flt",
       "essays": [
         10
       ],
-      "text": "Mazur's isogeny theorem and the N\u00e9ron\u2013Ogg\u2013Shafarevich criterion will be stated with their hypotheses.",
+      "text": "$G_{\\mathbb{Q}}$ acts on each $E[\\ell^n]$ by group automorphisms, because the curve and the group law are defined over $\\mathbb{Q}$; in a compatible basis this is $\\rho_{E,\\ell}:G_{\\mathbb{Q}}\\to\\mathrm{GL}_2(\\mathbb{Z}_\\ell)$, with reduction $\\bar\\rho_{E,\\ell}$.",
+      "availability": "available"
+    },
+    {
+      "id": "10-determinant-odd",
+      "register": "proved",
+      "role": "required_for_flt",
+      "essays": [
+        10
+      ],
+      "depends_on": [
+        "10-weil-pairing"
+      ],
+      "text": "$\\det\\rho_{E,\\ell}$ is the cyclotomic character, from $e_n(Mv,Mw)=e_n(v,w)^{\\det M}$ and Galois-equivariance of the pairing. Complex conjugation inverts roots of unity, so $\\det\\bar\\rho(c)=-1$: every $\\bar\\rho_{E,\\ell}$ is odd, discharging that hypothesis of Ribet's theorem.",
+      "availability": "available"
+    },
+    {
+      "id": "10-reducible-iff-subgroup",
+      "register": "proved",
+      "role": "required_for_flt",
+      "essays": [
+        10
+      ],
+      "text": "$\\bar\\rho_{E,\\ell}$ is reducible exactly when $E$ has a rational subgroup of order $\\ell$, since a Galois-stable line in $E[\\ell]$ is such a subgroup. The Frey curve's full rational $2$-torsion makes $\\bar\\rho_{E,2}$ trivial.",
+      "availability": "available"
+    },
+    {
+      "id": "10-reducibility-congruence",
+      "register": "proved",
+      "role": "background",
+      "essays": [
+        10
+      ],
+      "text": "A rational subgroup of order $m$ forces the stable line to carry the trivial character, hence $a_\\ell\\equiv\\ell+1\\pmod m$ at every good prime -- which is essay 08's divisibility, and which fails for both worked curves at the prime where no such subgroup exists.",
+      "availability": "available"
+    },
+    {
+      "id": "10-weil-pairing",
+      "register": "stated",
+      "role": "required_for_flt",
+      "essays": [
+        10
+      ],
+      "short": "The Weil pairing $e_n:E[n]\\times E[n]\\to\\mu_n$",
+      "text": "The Weil pairing: bilinear, alternating, non-degenerate and Galois-equivariant. Its construction uses divisors on the curve and is not given.",
+      "availability": "available"
+    },
+    {
+      "id": "10-trace-formula",
+      "register": "stated",
+      "role": "required_for_flt",
+      "essays": [
+        10
+      ],
+      "short": "$\\operatorname{tr}\\bar\\rho_{E,p}(\\mathrm{Frob}_\\ell)\\equiv a_\\ell$",
+      "text": "At a good prime $\\ell\\neq p$, $\\bar\\rho_{E,p}$ is unramified with $\\operatorname{tr}\\bar\\rho(\\mathrm{Frob}_\\ell)\\equiv a_\\ell$ and $\\det\\equiv\\ell$ modulo $p$. Stated rather than derived because $\\mathrm{Frob}_\\ell$ is constructed in essay 03.",
+      "availability": "available"
+    },
+    {
+      "id": "10-local-theorems",
+      "register": "stated",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [
+        10
+      ],
+      "text": "Mazur's isogeny theorem -- no curve over $\\mathbb{Q}$ has a rational subgroup of prime order $\\ell$ outside $\\{2,3,5,7,11,13,17,19,37,43,67,163\\}$, collapsing to $\\ell\\leq7$ for semistable curves -- and the N\u00e9ron--Ogg--Shafarevich criterion that $\\rho_{E,p}$ is unramified at $\\ell\\neq p$ exactly when $E$ has good reduction there.",
       "short": "Mazur's isogeny theorem, and N\u00e9ron\u2013Ogg\u2013Shafarevich"
     },
     {
