@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>24 · The Frey representation — No Such Form</title>
-<meta name="description" content="The mod p representation of the Frey curve: odd, irreducible, unramified outside 2, and of conductor exactly 2 — with the p >= 5 threshold faced rather than glossed.">
+<meta name="description" content="The mod p representation of the Frey curve: odd, irreducible for every p >= 5, unramified outside 2, and of conductor exactly 2 — so no exponent is left to classical work.">
 <script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="stylesheet" href="../static/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
@@ -32,8 +32,12 @@
       <span class="tag">This essay computes, derives, and states</span>
       <strong>Computes:</strong> $N(\bar\rho_{E,p})=2$ — every odd prime drops out because
       $p$ divides its valuation of $\Delta_{\min}$, and $2$ survives because $p\nmid8$.
-      <strong>Derives:</strong> irreducibility for $p=5$ and $p=7$ whenever a witness prime is good,
-      narrowing the classical dependency to $21\mid abc$ and $85\mid abc$.
+      <strong>Establishes:</strong> $\bar\rho$ irreducible for <em>every</em> prime $p\geq5$, via
+      Mazur's sharpened isogeny theorem — whose three hypotheses are all already proved here — so no
+      exponent is handed to classical work.
+      <strong>Derives independently:</strong> the same conclusion for $p=5,7$ by an elementary
+      $2$-torsion argument, which reaches every case except $21\mid abc$ and $85\mid abc$ and is kept
+      because it shows <em>why</em> the $2$-torsion is what sharpens Mazur.
       <strong>States:</strong> that $\bar\rho$ is finite at $p$, and the ramification criterion for
       multiplicative primes.
     </div>
@@ -340,6 +344,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 24 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/22d7fed"><code>22d7fed</code></a> · 2026-07-26 18:29 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/eb19775"><code>eb19775</code></a> · 2026-07-26 18:36 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
