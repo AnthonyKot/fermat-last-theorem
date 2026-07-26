@@ -37,13 +37,14 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>13</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>14</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Traces of Frobenius determine a semisimple representation <span class="scope-essays">(essay 05)</span> <span class="roster-planned">not yet written</span></li>
         <li>A genus-one curve has a Weierstrass model, and $\Delta\neq0$ is smoothness <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span></li>
         <li>Associativity of the chord-and-tangent group law <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
         <li>Conductor exponent $f_\ell=1$ at a multiplicative prime <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>$E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero <span class="scope-essays">(<a href="chapters/09-torsion-and-tate-module.html">essay 09</a>)</span></li>
         <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(essay 10)</span> <span class="roster-planned">not yet written</span></li>
         <li>The valence formula for $\Gamma_0(N)$ <span class="scope-essays">(essay 13)</span> <span class="roster-planned">not yet written</span></li>
         <li>A simultaneous Hecke eigenbasis exists for $\gcd(n,N)=1$ <span class="scope-essays">(essay 14)</span> <span class="roster-planned">not yet written</span></li>
@@ -68,7 +69,7 @@
         <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
       </ul>
       <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
-      <p class="scope-note"><strong>Not yet settled:</strong> 19 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 17 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -155,6 +156,21 @@
           <span class="scope-role scope-role--background">Background</span>
           $y^2+y=x^3-x^2$ is semistable of conductor $11$, split multiplicative at $11$ with $a_{11}=1$; $y^2=x^3+1$ is additive at $2$ and $3$, so it is not semistable. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
        </li>
+        <li data-proof-id="09-frey-full-2-torsion">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Frey curve has full rational $2$-torsion: $x(x-a^p)(x+b^p)$ has three rational roots, so $E[2]\subset E(\mathbb{Q})$, while the conductor-$11$ curve has $E(\mathbb{Q})[2]=\{O\}$. This is the extra structure that may sharpen Mazur's threshold from $p&gt;7$ to $p\geq5$. <span class="scope-essays">(<a href="chapters/09-torsion-and-tate-module.html">essay 09</a>)</span>
+       </li>
+        <li data-proof-id="09-worked-three-torsion">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          For $y^2=x^3+1$: $\psi_3=3x(x^3+4)$, the point $(0,1)$ has order $3$ by a triple tangency, and exactly three of the nine points of $E[3]$ are rational. <span class="scope-essays">(<a href="chapters/09-torsion-and-tate-module.html">essay 09</a>)</span>
+       </li>
+        <li data-proof-id="09-torsion-structure">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The $2$-division cubic $4x^3+b_2x^2+2b_4x+b_6$ gives $\#E[2]=4$ with $E[2]\cong(\mathbb{Z}/2)^2$; $\psi_3$ gives $\#E[3]=9$; and the Tate module $T_\ell(E)=\varprojlim E[\ell^n]$ is free of rank $2$ over $\mathbb{Z}_\ell$, which is why the representations are $2\times2$. <span class="scope-essays">(<a href="chapters/09-torsion-and-tate-module.html">essay 09</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -201,6 +217,11 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           At a prime of multiplicative reduction the conductor exponent is $f_\ell=1$. This is the only conductor exponent the Fermat argument uses, because the Frey curve is semistable. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
        </li>
+        <li data-proof-id="09-torsion-general">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          That $E[n]\cong(\mathbb{Z}/n)^2$ for every $n$, derived on the complex torus from essay 07's uniformization. The $n=2$ and $n=3$ cases are verified independently by the division polynomials, so this import is used only for general $n$. <span class="scope-essays">(<a href="chapters/09-torsion-and-tate-module.html">essay 09</a>)</span>
+       </li>
         <li data-proof-id="23-modularity-applied">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -241,16 +262,6 @@
           <span class="scope-mode scope-mode--stated">To assume</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           A semisimple two-dimensional representation is determined up to isomorphism by the traces of Frobenius at almost all primes. This is what makes "these two representations agree" a checkable claim in essays 18 and 25. <span class="scope-essays">(essay 05)</span>
-       </li>
-        <li data-proof-id="09-frey-full-2-torsion">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The Frey curve has full rational $2$-torsion: $x(x-a^p)(x+b^p)$ has three rational roots, so $E[2]\subset E(\mathbb{Q})$. This is the extra structure that may sharpen Mazur's threshold from $p&gt;7$ to $p\geq5$. <span class="scope-essays">(essay 09)</span>
-       </li>
-        <li data-proof-id="09-torsion-structure">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero, and the Tate module $T_\ell(E)=\varprojlim E[\ell^n]$ is free of rank $2$ over $\mathbb{Z}_\ell$ -- which is why the representations are $2\times2$. <span class="scope-essays">(essay 09)</span>
        </li>
         <li data-proof-id="10-local-theorems">
           <span class="scope-mode scope-mode--stated">To assume</span>
@@ -497,6 +508,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/9a0cfc2"><code>9a0cfc2</code></a> · 2026-07-26 16:13 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/a8d7365"><code>a8d7365</code></a> · 2026-07-26 16:24 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

@@ -308,7 +308,7 @@ if copies arrive.
 | 06 | elliptic-curves | General Weierstrass form, smoothness, the discriminant, the point at infinity; why short integral form loses information at 2 and 3 | Corrections #1, #2. Short form exists over Q, but its integral arithmetic can be bad at 2 and 3; the Frey argument happens at 2. Get the distinction right here or pay in 23. |
 | 07 | the-group-law | Chord-and-tangent addition, E(Q) abelian, associativity (stated), E(C) ≅ C/Λ | The torus is not decoration: it is what makes a modular parametrization X₀(N) → E conceivable in Part IV. |
 | 08 | reduction-and-conductor | Minimal integral models; reduction mod ℓ; good, multiplicative, additive reduction; a_ℓ = ℓ + 1 − #E(F_ℓ); the conductor; **semistable ⟺ conductor squarefree** | Discharges L4, L5. Check: brute-force a_ℓ for a small curve. |
-| 09 | torsion-and-tate-module | E[2] and E[3] explicitly, then E[n] ≅ (Z/n)² in characteristic 0; the **Tate module** T_p(E), free of rank 2 **over Z_p**; det = cyclotomic character | The video's route — compute two small cases, then generalize — is the right one; keep it. Name the ring (Corrections #3). Rank 2 is why the representations are 2×2. Discharges L6. |
+| 09 | torsion-and-tate-module *(written)* | E[2] and E[3] explicitly, then E[n] ≅ (Z/n)² in characteristic 0; the **Tate module** T_p(E), free of rank 2 **over Z_p**; det = cyclotomic character | The video's route — compute two small cases, then generalize — is the right one; keep it. Name the ring (Corrections #3). Rank 2 is why the representations are 2×2. Discharges L6. |
 | 10 | elliptic-representation | ρ_{E,p} : G_Q → GL₂(Z_p) from the action on T_p(E); reduction to ρ̄_{E,p}; tr ρ(Frob_ℓ) = a_ℓ; **Mazur's isogeny theorem**; **Néron–Ogg–Shafarevich** | Discharges L7; states L8, L9. Both named theorems were absent from the plan summary and are the *methods* 24 needs. Introduce here so 24 can cite rather than assert. |
 
 ### PART III — MODULAR FORMS (5)
@@ -354,7 +354,12 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   nearly independent of the middle. Having 25 drafted early keeps every construction essay honest
   about what it is *for* — the failure mode of expositions like this is beautiful machinery with no
   memory of the target.
-- **Writing order from here: 09 → 03 → 05 → 10 → 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
+- **Essay 09 is written. Deviation recorded:** the spine assigned "det = cyclotomic character" to 09,
+  but a determinant is a statement about a *representation*, which does not exist until essay 10. The
+  Weil pairing and the resulting oddness of $\bar\rho$ therefore move to **essay 10**, where they are
+  also what supplies Ribet's "odd" hypothesis. Essay 09 keeps $E[2]$, $E[3]$, $E[n]\cong(\mathbb{Z}/n)^2$
+  and the Tate module, and it stays one idea.
+- **Writing order from here: 03 → 05 → 10 → 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
   then 17, 19–21 and 02's second case.** This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
   until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
@@ -540,9 +545,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 04, 06, 07, 08, 22, 23, 25 — the two ends of the rope, the valuation, the
-elliptic-curve bridge as far as the conductor, and the semistability check.
-**Unwritten:** 03, 05, 09–21, 24.
+**Written:** 01, 02, 04, 06, 07, 08, 09, 22, 23, 25 — the two ends of the rope, the valuation, the
+elliptic-curve bridge through the Tate module, and the semistability check.
+**Unwritten:** 03, 05, 10–21, 24.
 
 **L3, L4 and L5 are now discharged.** Essay 04 supplies $v_\ell$, $\mathbb{Z}_\ell$ and free modules;
 essay 08 supplies reduction types, the conductor, and semistable ⟺ square-free conductor. Essay 23's

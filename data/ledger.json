@@ -14,7 +14,8 @@
       "18-modularity",
       "23-modularity-applied",
       "25-ribet",
-      "25-small-exponents"
+      "25-small-exponents",
+      "09-torsion-general"
     ]
   },
   "proof_register": [
@@ -347,8 +348,29 @@
       "essays": [
         9
       ],
-      "text": "The Frey curve has full rational $2$-torsion: $x(x-a^p)(x+b^p)$ has three rational roots, so $E[2]\\subset E(\\mathbb{Q})$. This is the extra structure that may sharpen Mazur's threshold from $p>7$ to $p\\geq5$.",
-      "availability": "planned"
+      "text": "The Frey curve has full rational $2$-torsion: $x(x-a^p)(x+b^p)$ has three rational roots, so $E[2]\\subset E(\\mathbb{Q})$, while the conductor-$11$ curve has $E(\\mathbb{Q})[2]=\\{O\\}$. This is the extra structure that may sharpen Mazur's threshold from $p>7$ to $p\\geq5$.",
+      "availability": "available"
+    },
+    {
+      "id": "09-worked-three-torsion",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        9
+      ],
+      "text": "For $y^2=x^3+1$: $\\psi_3=3x(x^3+4)$, the point $(0,1)$ has order $3$ by a triple tangency, and exactly three of the nine points of $E[3]$ are rational."
+    },
+    {
+      "id": "09-torsion-general",
+      "register": "stated",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [
+        9
+      ],
+      "short": "$E[n]\\cong(\\mathbb{Z}/n)^2$ in characteristic zero",
+      "text": "That $E[n]\\cong(\\mathbb{Z}/n)^2$ for every $n$, derived on the complex torus from essay 07's uniformization. The $n=2$ and $n=3$ cases are verified independently by the division polynomials, so this import is used only for general $n$."
     },
     {
       "id": "09-torsion-structure",
@@ -357,8 +379,8 @@
       "essays": [
         9
       ],
-      "text": "$E[n]\\cong(\\mathbb{Z}/n)^2$ in characteristic zero, and the Tate module $T_\\ell(E)=\\varprojlim E[\\ell^n]$ is free of rank $2$ over $\\mathbb{Z}_\\ell$ -- which is why the representations are $2\\times2$.",
-      "availability": "planned"
+      "text": "The $2$-division cubic $4x^3+b_2x^2+2b_4x+b_6$ gives $\\#E[2]=4$ with $E[2]\\cong(\\mathbb{Z}/2)^2$; $\\psi_3$ gives $\\#E[3]=9$; and the Tate module $T_\\ell(E)=\\varprojlim E[\\ell^n]$ is free of rank $2$ over $\\mathbb{Z}_\\ell$, which is why the representations are $2\\times2$.",
+      "availability": "available"
     },
     {
       "id": "10-local-theorems",

@@ -1,0 +1,334 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09 · Division points and the Tate module — No Such Form</title>
+<meta name="description" content="E[2] and E[3] computed by hand, then E[n] as (Z/n)^2, and the Tate module: free of rank two over Z_ell, which is why every representation in this collection is 2x2.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part II · Elliptic curves — Essay 09</p>
+    <h1>Division points and the Tate module</h1>
+    <p class="lede">Solve $nP=O$. For $n=2$ it is a cubic you can factor; for $n=3$ a quartic; and in
+      general the answer always has the same shape, $(\mathbb{Z}/n)^2$. That number $2$ is why every
+      representation in this collection is a $2\times2$ matrix.</p>
+
+    <div class="claim">
+      <span class="tag">This essay proves and computes</span>
+      <strong>Proves:</strong> the $2$-division cubic $4x^3+b_2x^2+2b_4x+b_6$; that the Frey curve has
+      <em>full rational</em> $2$-torsion while the conductor-$11$ curve has none; that
+      $E[3]$ for $y^2=x^3+1$ has nine points of which three are rational; and that
+      $T_\ell(E)$ is free of rank $2$ over $\mathbb{Z}_\ell$.
+      <strong>Assumes:</strong> $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero, via essay 07's
+      complex uniformization.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="07-the-group-law.html">07</a> made $E(\mathbb{Q})$ an abelian group, so
+        "$nP$" means something and $nP=O$ is a question one can ask. It also found a point $(0,0)$ of
+        order exactly $5$ on $y^2+y=x^3-x^2$, and imported complex uniformization
+        $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ — which was flagged there as decoration but is about to
+        do real work.</p>
+      <p>Essay <a href="04-p-adics-and-modules.html">04</a> built $\mathbb{Z}_\ell$ twice, once as a
+        valuation ring and once as the inverse limit $\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$, and
+        defined free modules of rank $n$ together with the criterion for lying in
+        $\mathrm{GL}_2(\mathbb{Z}_\ell)$. The inverse-limit description is the one this essay needs,
+        and the shape will match exactly.</p>
+      <p>Essay <a href="08-reduction-and-conductor.html">08</a> left an unexplained observation: every
+        point count $\#\tilde{E}(\mathbb{F}_\ell)$ of the conductor-$11$ curve was divisible by $5$.
+        That was essay 07's order-five point surviving reduction. By the end of this essay the object
+        it lives in has a name and a structure.</p>
+      <p>Essay <a href="06-elliptic-curves.html">06</a> supplies the general Weierstrass form and the
+        $b$-invariants, which is the notation the $2$-torsion computation comes out in.</p>
+      <p>One convention from essay 04 is in force throughout: $\ell$ is an auxiliary prime, free to
+        vary, while $p$ is reserved for the Fermat exponent. Everything below holds for every $\ell$.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>The $n$-torsion</h3>
+      <p>For $n\geq1$ define</p>
+      <p>$$
+        E[n]=\{\,P\in E(\overline{\mathbb{Q}}):nP=O\,\},
+      $$</p>
+      <p>the <strong>$n$-division points</strong>. Two things about that definition deserve notice
+        immediately. It is a subgroup, because $nP=nQ=O$ gives $n(P-Q)=O$. And it is taken over
+        $\overline{\mathbb{Q}}$, not over $\mathbb{Q}$: the coordinates of a torsion point are roots
+        of polynomials with rational coefficients, so they are algebraic numbers, but there is no
+        reason for them to be rational. The gap between $E[n]$ and its rational part
+        $E(\mathbb{Q})[n]$ is not a technicality — it is the entire content of the worked examples
+        below, and in essay 24 it is what decides whether the Fermat argument runs.</p>
+
+      <h3>$E[2]$ is a cubic</h3>
+      <p>A point has order dividing $2$ exactly when $P=-P$. Essay 07 computed the inverse on a
+        general Weierstrass model as $-(x,y)=(x,-y-a_1x-a_3)$, so $P=-P$ says</p>
+      <p>$$ 2y+a_1x+a_3=0. $$</p>
+      <p>Substitute $y=-(a_1x+a_3)/2$ into the curve. The left-hand side is
+        $y(y+a_1x+a_3)$, and $a_1x+a_3=-2y$ makes the bracket $y-2y=-y$, so the whole left side is
+        $-y^2$. Therefore</p>
+      <p>$$ x^3+a_2x^2+a_4x+a_6+y^2=0,\qquad y^2=\tfrac14(a_1x+a_3)^2, $$</p>
+      <p>and clearing the $4$ gives, in exactly essay 06's $b$-invariants,</p>
+      <p>$$
+        \boxed{\quad 4x^3+b_2x^2+2b_4x+b_6=0.\quad}
+      $$</p>
+      <p>A cubic has three roots, each determining one point, and adding $O$ gives
+        $\#E[2]=4$. The roots are distinct precisely when the curve is smooth, so essay 06's
+        discriminant condition is what stops two of these points colliding. And the group of order
+        four has no element of order $4$ — every non-identity element satisfies $2P=O$ by
+        construction — so</p>
+      <p>$$ E[2]\cong(\mathbb{Z}/2)^2, $$</p>
+      <p>not $\mathbb{Z}/4$. The first instance of the shape.</p>
+
+      <h3>$E[3]$ is a quartic</h3>
+      <p>Now $3P=O$, that is $2P=-P$. Writing this out with the duplication formula and clearing
+        denominators produces, for a short model $y^2=x^3+ax+b$, the
+        <strong>$3$-division polynomial</strong></p>
+      <p>$$
+        \psi_3(x)=3x^4+6ax^2+12bx-a^2.
+      $$</p>
+      <p>Degree four, so four values of $x$; each gives two points $(x,\pm y)$, since $y=0$ would
+        force $P$ to have order $2$ as well as $3$. That is $8$ points, plus $O$:</p>
+      <p>$$ \#E[3]=9=3^2. $$</p>
+      <p>Again a square, and again the group has no element of order $9$, so
+        $E[3]\cong(\mathbb{Z}/3)^2$. Two cases is not a proof, but it is enough to see what to
+        conjecture.</p>
+
+      <h3>The general shape, from the torus</h3>
+      <p>The pattern does not come from the algebra of division polynomials; it comes from the
+        geometry essay 07 imported. Over $\mathbb{C}$ we have $E(\mathbb{C})\cong\mathbb{C}/\Lambda$
+        for a lattice $\Lambda=\mathbb{Z}\omega_1+\mathbb{Z}\omega_2$, and on a torus the $n$-torsion
+        is visible by inspection: $nz\in\Lambda$ means $z\in\frac1n\Lambda$, so</p>
+      <p>$$
+        \bigl(\mathbb{C}/\Lambda\bigr)[n]=\tfrac1n\Lambda/\Lambda
+        =\Bigl\{\tfrac{a\omega_1+b\omega_2}{n}:0\leq a,b\lt n\Bigr\}
+        \cong(\mathbb{Z}/n)^2.
+      $$</p>
+      <p>A lattice has two generators, so dividing it by $n$ produces an $n\times n$ grid — the
+        rank $2$ that everything downstream inherits is the rank of a lattice in the plane. Since
+        torsion points have algebraic coordinates, $E[n]\subset E(\overline{\mathbb{Q}})\subset
+        E(\mathbb{C})$, and we may read the structure off the torus:</p>
+      <div class="fence">
+        <strong>Assumed, resting on essay 07's uniformization.</strong> For an elliptic curve over a
+        field of characteristic zero, $E[n]\cong(\mathbb{Z}/n)^2$ for every $n\geq1$. The argument
+        above is complete <em>given</em> $E(\mathbb{C})\cong\mathbb{C}/\Lambda$, which essay 07 stated
+        without proof. So this is one import deep, not two, and the $n=2$ and $n=3$ cases were
+        verified independently by the polynomials above.
+      </div>
+
+      <h3>The Tate module</h3>
+      <p>Fix a prime $\ell$ and consider the whole tower $E[\ell],E[\ell^2],E[\ell^3],\dots$. Each
+        sits inside the next, and multiplication by $\ell$ maps each down to the one below:</p>
+      <p>$$
+        \cdots\longrightarrow E[\ell^{n+1}]\;\xrightarrow{\;\times\ell\;}\;E[\ell^{n}]
+        \longrightarrow\cdots\longrightarrow E[\ell]\longrightarrow O.
+      $$</p>
+      <p>The <strong>Tate module</strong> is the inverse limit of that system,</p>
+      <p>$$
+        T_\ell(E)=\varprojlim_n E[\ell^n],
+      $$</p>
+      <p>whose elements are compatible sequences $(P_1,P_2,P_3,\dots)$ with $P_n\in E[\ell^n]$ and
+        $\ell P_{n+1}=P_n$. Essay 04 built exactly this kind of object and called the pattern an
+        inverse limit; here it is again, one level up.</p>
+      <p>Now identify the layers. Using the torus description, $E[\ell^n]=\frac1{\ell^n}\Lambda/\Lambda$,
+        and the basis identification</p>
+      <p>$$
+        (a,b)\;\longmapsto\;\frac{a\omega_1+b\omega_2}{\ell^n}
+      $$</p>
+      <p>sends $(\mathbb{Z}/\ell^n)^2$ onto $E[\ell^n]$. <strong>Watch what multiplication by $\ell$
+        becomes in these coordinates.</strong> Multiplying
+        $(a\omega_1+b\omega_2)/\ell^{n+1}$ by $\ell$ gives $(a\omega_1+b\omega_2)/\ell^n$, whose
+        coordinates are $(a\bmod\ell^n,\,b\bmod\ell^n)$. So the geometric map "multiply by $\ell$" is
+        the coordinate map "reduce mod $\ell^n$" — which is precisely the transition map in essay 04's
+        construction of $\mathbb{Z}_\ell$.</p>
+      <p>This is worth pausing on, because the two descriptions are genuinely different maps and only
+        one of them gives the right answer. Multiplication by $\ell$ is <em>not</em> surjective as a
+        self-map of $\mathbb{Z}/\ell^n$ — its image is the multiples of $\ell$. Reduction is
+        surjective, with kernel of order $\ell$. Taking the limit coordinate by coordinate,</p>
+      <p>$$
+        T_\ell(E)\;\cong\;\varprojlim_n(\mathbb{Z}/\ell^n)^2
+        \;=\;\Bigl(\varprojlim_n\mathbb{Z}/\ell^n\Bigr)^{2}
+        \;=\;\mathbb{Z}_\ell^{\,2}.
+      $$</p>
+      <p>So the Tate module is <strong>free of rank $2$ over $\mathbb{Z}_\ell$</strong> — and essay 04
+        insisted on that phrasing rather than "two-dimensional" precisely because
+        $\mathbb{Z}_\ell$ is a ring and not a field. Choosing a basis now turns any automorphism of
+        $T_\ell(E)$ into a $2\times2$ matrix over $\mathbb{Z}_\ell$, invertible exactly when its
+        determinant is a unit.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>Two curves, opposite answers</h3>
+      <p>The rational part of $E[2]$ varies wildly between curves, and the two curves this collection
+        already uses sit at opposite extremes.</p>
+      <p><em>The conductor-$11$ curve.</em> For $y^2+y=x^3-x^2$ essay 06 computed
+        $b_2=-4$, $b_4=0$, $b_6=1$, so the $2$-division cubic is</p>
+      <p>$$ 4x^3-4x^2+1=0. $$</p>
+      <p>By the rational root theorem any rational root is $\pm1,\pm\tfrac12,\pm\tfrac14$, and
+        substituting each gives $1,-7,\tfrac12,-\tfrac12,\tfrac{13}{16},\tfrac{11}{16}$ — never zero.
+        So the cubic is irreducible over $\mathbb{Q}$ and</p>
+      <p>$$ E(\mathbb{Q})[2]=\{O\}. $$</p>
+      <p>The curve has four points of order dividing $2$ over $\overline{\mathbb{Q}}$ and exactly one
+        of them is rational. Its rational torsion is instead the order-five subgroup from essay 07,
+        which is what essay 08's point counts were detecting.</p>
+      <p><em>The Frey curve.</em> For $y^2=x(x-A)(x+B)$ we have $a_1=a_3=0$, $a_2=B-A$, $a_4=-AB$, so
+        $b_2=4(B-A)$, $b_4=-2AB$, $b_6=0$ and the cubic is</p>
+      <p>$$ 4x^3+4(B-A)x^2-4ABx=4x(x-A)(x+B). $$</p>
+      <p>Which is no surprise — it is the original cubic back again, because for a model
+        $y^2=f(x)$ the $2$-torsion is exactly the roots of $f$. But the consequence is the point:
+        those roots are $0$, $A$ and $-B$, all three <strong>rational</strong>. So</p>
+      <p>$$
+        E[2]=\{O,\;(0,0),\;(A,0),\;(-B,0)\}\subset E(\mathbb{Q}),
+      $$</p>
+      <p>and the Frey curve has <strong>full rational $2$-torsion</strong>. With $A=3$, $B=32$ the
+        three points are $(0,0)$, $(3,0)$, $(-32,0)$, each of order $2$, and
+        $(0,0)+(3,0)=(-32,0)$ — the sum of any two is the third, confirming $(\mathbb{Z}/2)^2$ rather
+        than $\mathbb{Z}/4$.</p>
+      <p>Two curves, the same cubic computation, opposite outcomes: none rational, all rational. The
+        second is not an accident of the construction but a consequence of it — Frey built the curve
+        by <em>declaring</em> the solution's terms to be the roots.</p>
+
+      <h3>$E[3]$ on the curve from essay 08</h3>
+      <p>Take $y^2=x^3+1$, the additive contrast curve of essay 08, where $a=0$ and $b=1$. Then</p>
+      <p>$$ \psi_3(x)=3x^4+12x=3x\,(x^3+4). $$</p>
+      <p>The root $x=0$ gives $y^2=1$, hence the two points $(0,\pm1)$. Check the order of $(0,1)$
+        directly: implicit differentiation gives $2y\,y'=3x^2$, so the tangent at $(0,1)$ is
+        horizontal, $y=1$. Substituting into the curve gives $1=x^3+1$, that is $x^3=0$ — a triple
+        contact. So the tangent meets $E$ only at $(0,1)$, three times over, which says
+        $2(0,1)=-(0,1)=(0,-1)$ and therefore</p>
+      <p>$$ 3\,(0,1)=O. $$</p>
+      <p>The remaining factor $x^3+4$ has no rational root, since $\pm1,\pm2,\pm4$ all fail. So of the
+        nine points of $E[3]$, exactly three are rational:</p>
+      <p>$$ E(\mathbb{Q})[3]=\{O,(0,1),(0,-1)\}\cong\mathbb{Z}/3,\qquad E[3]\cong(\mathbb{Z}/3)^2. $$</p>
+      <p>A rational subgroup of order $3$ sitting inside a group of order $9$ — one line of a
+        two-dimensional object defined over $\mathbb{Q}$. Essay 10 will call that situation a
+        <em>reducible</em> representation, and it is exactly the configuration the Fermat argument
+        needs to rule out.</p>
+
+      <h3>What the next essays collect</h3>
+      <ul>
+        <li><strong>Essay 10</strong> takes the action of field automorphisms on $E[\ell^n]$ — they
+          permute these points, because the group law and the curve are defined over $\mathbb{Q}$ —
+          and reads it through the basis above as a homomorphism into
+          $\mathrm{GL}_2(\mathbb{Z}_\ell)$. That the target is $\mathrm{GL}_2$ rather than
+          $\mathrm{GL}_3$ or $\mathrm{GL}_{17}$ is settled here, by the rank of a lattice.</li>
+        <li><strong>Essay 24</strong> collects the full rational $2$-torsion of the Frey curve. A
+          rational subgroup is what makes a representation reducible, and Mazur's isogeny theorem is a
+          statement about which rational subgroups can exist. The $2$-torsion is the extra structure
+          the Frey curve has beyond being semistable, and whether it sharpens Mazur's threshold from
+          $p\gt7$ to $p\geq5$ is the one question this collection has left open.</li>
+        <li><strong>Essay 08's loose end</strong> is now tied: the $5$ dividing every point count was
+          the rational part of $E[5]$, injecting into the reduction at each good prime.</li>
+      </ul>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Division polynomials and the structure of $E[n]$.</strong> Silverman's <em>The
+        Arithmetic of Elliptic Curves</em> develops division polynomials, the group structure of the
+        torsion subgroup, and the Weil pairing.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>The Tate module.</strong> Andrew Sutherland's MIT 18.783 Fall 2023 Lecture 25, §25.3,
+        defines $T_\ell(E)=\varprojlim E[\ell^n]$ as the projective limit of the system whose
+        connecting maps are multiplication by $\ell$, describes its elements as infinite sequences of
+        points with $\ell P_{n+1}=P_n$, and identifies
+        $\mathrm{Aut}(T_\ell(E))\cong\mathrm{GL}_2(\mathbb{Z}_\ell)$ with
+        $\mathbb{Z}_\ell=\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$ — the same two descriptions of
+        $\mathbb{Z}_\ell$ that essay 04 gave.</p>
+      <p><strong>Lattices and the torus.</strong> The same course's Fall 2023 Lecture 14, definition
+        14.1, and Lecture 15, theorem 15.1 and corollary 15.12, give $\mathbb{C}/\Lambda$ and its
+        group isomorphism to an elliptic curve over $\mathbb{C}$ — the import this essay's general
+        structure theorem rests on.</p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/torsion.py</code>. With an exact rational
+        group law for general Weierstrass models it derives the $2$-division cubic, confirms it has no
+        rational root for the conductor-$11$ curve and factors as $4x(x-A)(x+B)$ for six Frey curves,
+        verifies each of the three points has order exactly $2$ and that the sum of any two is the
+        third, computes $\psi_3=3x(x^3+4)$ and the order of $(0,\pm1)$, and checks the coordinate
+        description of the Tate module — including that multiplication by $\ell$ fails to be surjective
+        on $\mathbb{Z}/\ell^n$ while reduction succeeds, which is the step the structure depends on.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="09-torsion-structure">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The $2$-division cubic $4x^3+b_2x^2+2b_4x+b_6$, so $\#E[2]=4$ with
+              $E[2]\cong(\mathbb{Z}/2)^2$; $\#E[3]=9$ from $\psi_3$; and
+              $T_\ell(E)\cong\mathbb{Z}_\ell^2$, free of rank $2$
+              <span class="lref">(L6)</span></li>
+            <li data-proof-id="09-frey-full-2-torsion">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The Frey curve has full rational $2$-torsion, $E[2]\subset E(\mathbb{Q})$, while the
+              conductor-$11$ curve has $E(\mathbb{Q})[2]=\{O\}$</li>
+            <li data-proof-id="09-worked-three-torsion">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              For $y^2=x^3+1$: $\psi_3=3x(x^3+4)$, the point $(0,1)$ has order $3$ by a triple
+              tangency, and exactly three of the nine points of $E[3]$ are rational</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="09-torsion-general">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $E[n]\cong(\mathbb{Z}/n)^2$ in characteristic zero. Derived from essay 07's complex
+              uniformization, which is itself imported — so this rests on one import, not two</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essays 03, 05)</span></li>
+            <li>$\bar\rho_{E,\ell}$, and its determinant; Mazur; Néron–Ogg–Shafarevich
+              <span class="lref">(L7–L9, essay 10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 11–15)</span></li>
+            <li>Eichler–Shimura, and the essays that state modularity
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Conductor of $\bar\rho_{E,p}$ is $2$ <span class="lref">(L17, essay 24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="08-reduction-and-conductor.html"><span class="dir">← Previous written essay</span> 08 · Reduction and the conductor</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 09 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/a8d7365"><code>a8d7365</code></a> · 2026-07-26 16:24 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>
