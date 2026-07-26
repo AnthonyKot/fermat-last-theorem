@@ -50,8 +50,9 @@ invariants, delta = discriminant(0, -1, 1, 0, 0)
 assert invariants == (-4, 0, 1, -1)
 assert delta == -11
 
-# The singular comparison y^2 = x^3 - x^2.
-_, singular_delta = discriminant(0, -1, 0, 0, 0)
+# The singular comparison y^2 = x^3 + x^2.
+singular_invariants, singular_delta = discriminant(0, 1, 0, 0, 0)
+assert singular_invariants == (4, 0, 0, 0)
 assert singular_delta == 0
 
 # Y^2 = X^3 - 432X + 8208

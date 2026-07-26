@@ -47,7 +47,7 @@
       "register": "stated",
       "availability": "available",
       "essays": [6],
-      "text": "The general Weierstrass model, its point at infinity and its discriminant are defined; the discriminant criterion for smoothness is stated."
+      "text": "The genus-one characterization and existence of a general Weierstrass model are stated; its point at infinity and discriminant are defined; the discriminant criterion for smoothness is stated."
     },
     {
       "id": "06-integral-model-example",

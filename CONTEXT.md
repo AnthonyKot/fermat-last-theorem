@@ -174,7 +174,9 @@ book 2 banned recalled `§` pointers. Labels and paper theorem numbers don't hav
   readable account of the whole proof. **This is what Part V needs**: it is the difference between
   Part V being an informed sketch and being vibes. Fetch it before drafting 19–21.
 - **Named open lecture notes** with a stable URL and a version date (Milne on elliptic curves and
-  modular functions; Sutherland's MIT 18.783). Cite author + notes title + topic + the date fetched.
+  modular functions; Sutherland's MIT 18.783). Cite author + notes title or course offering + topic
+  + the date fetched. Use numbered pointers only when the URL and citation pin a specific version;
+  treat rolling, unversioned notes as topic-level pointers.
 
 ### Tier B — orientation only, never cited
 
@@ -236,7 +238,7 @@ if copies arrive.
 |---|------|--------------|-------|
 | 06 | elliptic-curves | General Weierstrass form, smoothness, the discriminant, the point at infinity; why short integral form loses information at 2 and 3 | Corrections #1, #2. Short form exists over Q, but its integral arithmetic can be bad at 2 and 3; the Frey argument happens at 2. Get the distinction right here or pay in 23. |
 | 07 | the-group-law | Chord-and-tangent addition, E(Q) abelian, associativity (stated), E(C) ≅ C/Λ | The torus is not decoration: it is what makes a modular parametrization X₀(N) → E conceivable in Part IV. |
-| 08 | reduction-and-conductor | Reduction mod ℓ; good, multiplicative, additive reduction; a_ℓ = ℓ + 1 − #E(F_ℓ); the conductor; **semistable ⟺ conductor squarefree** | Discharges L4, L5. Check: brute-force a_ℓ for a small curve. |
+| 08 | reduction-and-conductor | Minimal integral models; reduction mod ℓ; good, multiplicative, additive reduction; a_ℓ = ℓ + 1 − #E(F_ℓ); the conductor; **semistable ⟺ conductor squarefree** | Discharges L4, L5. Check: brute-force a_ℓ for a small curve. |
 | 09 | torsion-and-tate-module | E[2] and E[3] explicitly, then E[n] ≅ (Z/n)² in characteristic 0; the **Tate module** T_p(E), free of rank 2 **over Z_p**; det = cyclotomic character | The video's route — compute two small cases, then generalize — is the right one; keep it. Name the ring (Corrections #3). Rank 2 is why the representations are 2×2. Discharges L6. |
 | 10 | elliptic-representation | ρ_{E,p} : G_Q → GL₂(Z_p) from the action on T_p(E); reduction to ρ̄_{E,p}; tr ρ(Frob_ℓ) = a_ℓ; **Mazur's isogeny theorem**; **Néron–Ogg–Shafarevich** | Discharges L7; states L8, L9. Both named theorems were absent from the plan summary and are the *methods* 24 needs. Introduce here so 24 can cite rather than assert. |
 

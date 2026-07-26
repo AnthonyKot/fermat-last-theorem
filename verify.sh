@@ -107,8 +107,8 @@ src = open("SOURCES.md").read() if os.path.exists("SOURCES.md") else ""
 missing = 0
 for f in sorted(glob.glob("chapters/*.html")):
     t = open(f).read()
-    # LMFDB labels like 11.2.a.a or isogeny classes like 11.a
-    for lab in set(re.findall(r'<code>(\d+\.\d+\.[a-z]+\.[a-z]+|\d+\.[a-z])</code>', t)):
+    # LMFDB labels like 11.2.a.a, individual curves like 11.a3, or classes like 11.a
+    for lab in set(re.findall(r'<code>(\d+\.\d+\.[a-z]+\.[a-z]+|\d+\.[a-z]+\d+|\d+\.[a-z]+)</code>', t)):
         if lab not in src:
             print(f"  {os.path.basename(f)}: LMFDB label {lab} not logged in SOURCES.md"); missing += 1
     # DDT theorem/section references
