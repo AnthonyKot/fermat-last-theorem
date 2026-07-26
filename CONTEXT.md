@@ -105,7 +105,8 @@ algebraic geometry, **no** modular forms.
 Consequence: the video's 18–38% stretch (vector spaces, linear transformations, eigenvalues) is *not
 written*. The spectral theorem is recalled in essay 14 where it earns its keep.
 
-The contents page carries a prerequisite band for every Part. Treat those bands as a contract, not
+The contents page carries an orientation band for every Part. Parts I–V name external prerequisites;
+Part VI deliberately names internal reading dependencies instead. Treat those bands as a contract, not
 marketing copy: if an essay needs vocabulary or technique beyond its band's floor, either introduce it
 in place or update the band before publication. Part VI explicitly marks Part V as explanatory rather
 than logically required.
@@ -233,7 +234,7 @@ if copies arrive.
 
 | # | Slug | Construction | Notes |
 |---|------|--------------|-------|
-| 06 | elliptic-curves | General Weierstrass form, smoothness, the discriminant, the point at infinity; why y² = x³ + ax + b is not enough over Q | Corrections #1, #2. The short form fails at 2 and 3 and the Frey argument happens at 2. Get it right here or pay in 23. |
+| 06 | elliptic-curves | General Weierstrass form, smoothness, the discriminant, the point at infinity; why short integral form loses information at 2 and 3 | Corrections #1, #2. Short form exists over Q, but its integral arithmetic can be bad at 2 and 3; the Frey argument happens at 2. Get the distinction right here or pay in 23. |
 | 07 | the-group-law | Chord-and-tangent addition, E(Q) abelian, associativity (stated), E(C) ≅ C/Λ | The torus is not decoration: it is what makes a modular parametrization X₀(N) → E conceivable in Part IV. |
 | 08 | reduction-and-conductor | Reduction mod ℓ; good, multiplicative, additive reduction; a_ℓ = ℓ + 1 − #E(F_ℓ); the conductor; **semistable ⟺ conductor squarefree** | Discharges L4, L5. Check: brute-force a_ℓ for a small curve. |
 | 09 | torsion-and-tate-module | E[2] and E[3] explicitly, then E[n] ≅ (Z/n)² in characteristic 0; the **Tate module** T_p(E), free of rank 2 **over Z_p**; det = cyclotomic character | The video's route — compute two small cases, then generalize — is the right one; keep it. Name the ring (Corrections #3). Rank 2 is why the representations are 2×2. Discharges L6. |
@@ -282,7 +283,7 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   nearly independent of the middle. Having 25 drafted early keeps every construction essay honest
   about what it is *for* — the failure mode of expositions like this is beautiful machinery with no
   memory of the target.
-- **Next: 06, 07, 08, then a first pass at 23.** This gives the reader the concrete elliptic-curve
+- **Essay 06 is written; next write 07, 08, then a first pass at 23.** This gives the reader the concrete elliptic-curve
   world and immediately spends essay 22's construction. Essay 23 may initially carry declared debts
   to 04 and 18, but writing it now fixes the exact depth those earlier-numbered essays must supply.
 - **Then 13.** It is the only formula essay 25 evaluates. Discharging that debt early makes the
@@ -323,9 +324,10 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
 1. **"Smooth cubic with at least one rational point."** The substantive condition is smoothness. For a
    general genus-1 curve, a rational point is what permits the Weierstrass form; once in Weierstrass
    form the point at infinity is there by construction. State it in that order.
-2. **y² = x³ + ax + b is not the right form over Q.** The short form needs char ≠ 2, 3; arithmetic over
-   Q must handle reduction at 2 and 3, so the general form y² + a₁xy + a₃y = x³ + a₂x² + a₄x + a₆ is
-   required. Non-optional: the Frey curve's semistability argument happens at 2.
+2. **Short form exists over Q, but is not enough for integral arithmetic.** Characteristic zero permits
+   y² = x³ + ax + b over Q, but the coordinate changes divide by 2 and 3. Reduction at those primes
+   therefore requires the general integral form y² + a₁xy + a₃y = x³ + a₂x² + a₄x + a₆.
+   Non-optional: the Frey curve's semistability argument happens at 2.
 3. **Name the Tate module's ring.** T_p(E) is free of rank 2 **over Z_p**. "Free module of rank 2"
    without the ring is empty, and the point is that GL₂(Z_p) is where ρ lands.
 4. **Simultaneous diagonalization of Hecke operators has hypotheses.** The clean statement is for T_n
@@ -395,14 +397,15 @@ quotation scan, no tracked PDFs), then add:
 Spine formulated (25 essays, 19 ledger lines) and checked against the transcript. Sourcing is
 web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in `SOURCES.md`.
 
-**Scaffolded and committed** (`git init`, branch `main`, one commit): `index.html` with the full
-25-essay contents (4 linked, 21 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
+**Scaffolded and committed:** `index.html` with the full
+25-essay contents (5 linked, 20 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 22, 25 — the two ends of the rope. **Unwritten:** 03–21, 23, 24.
+**Written:** 01, 02, 06, 22, 25 — the two ends of the rope and the start of the elliptic-curve bridge.
+**Unwritten:** 03–05, 07–21, 23, 24.
 
 **Check scripts, all passing:** `dim_s2_gamma0.py`, `frey_discriminant.py`,
-`kummer_regular_primes.py`.
+`kummer_regular_primes.py`, `weierstrass_models.py`.
 
 ### Open items for the next pass
 
@@ -414,6 +417,6 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
    before drafting 19–21.
 3. **Essay 02's second case** is an outline, and `about.html` says so. Either complete it or leave the
    fence — but do not quietly upgrade the claim.
-4. When 03–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become back-references and its
+4. When 03–05, 07–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become back-references and its
    ledger must close. `verify.sh`'s forward-dependency check will enforce the direction; the closing
    itself needs a human look.

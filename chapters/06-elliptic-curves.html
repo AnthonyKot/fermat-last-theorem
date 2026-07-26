@@ -1,0 +1,252 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 · Elliptic curves, written correctly — No Such Form</title>
+<meta name="description" content="Elliptic curves over the rationals in general Weierstrass form: projective closure, the point at infinity, smoothness, the discriminant, and why integral models at 2 and 3 matter.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part II · Elliptic curves — Essay 06</p>
+    <h1>Elliptic curves, written correctly</h1>
+    <p class="lede">An elliptic curve is not just an equation shaped like $y^2=x^3+Ax+B$.
+      It is a smooth projective curve with a chosen rational point — and the longer equation that
+      definition permits is what keeps the arithmetic at $2$ and $3$ visible.</p>
+
+    <div class="claim">
+      <span class="tag">This essay defines, states, and proves an example</span>
+      <strong>Defines:</strong> the general Weierstrass model, its point at infinity, and its
+      discriminant. <strong>States:</strong> that non-zero discriminant is exactly the smoothness
+      condition. <strong>Proves in the worked example:</strong> a minimal-looking general model and
+      a general integral model and a short model describe the same curve over $\mathbb{Q}$ while
+      their integral discriminants
+      differ by $6^{12}$.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essays <a href="01-descent-and-n4.html">01</a> and
+        <a href="02-unique-factorization-and-n3.html">02</a> treated equations by factoring
+        polynomials and controlling their integer solutions. This Part changes the question. Instead
+        of trying to solve one equation directly, we study the entire set of its rational solutions
+        as a geometric object.</p>
+      <p>The intervening essays 03–05 supply the Galois language that Part II will eventually use, but
+        this first construction does not need it. We need only rational numbers, polynomial equations,
+        partial derivatives, and the willingness to add one point that an affine graph leaves out.</p>
+      <p>That last move is the unfamiliar one. A point in the projective plane has coordinates
+        $[X:Y:Z]$, where multiplying all three entries by the same non-zero number does not change the
+        point. Ordinary affine coordinates are the patch $Z\neq0$: scale to $Z=1$ and read
+        $x=X/Z$, $y=Y/Z$. Points with $Z=0$ are the points at infinity. This compactification is not
+        ornament. It supplies the identity element for the group law in essay 07.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>The definition, then the equation</h3>
+      <p>Formally, an <strong>elliptic curve over $\mathbb{Q}$</strong> is a smooth projective curve
+        of genus one together with a chosen rational point. “Genus one” names the simplest kind of
+        closed curve after genus zero; its full theory belongs later. What matters here is the
+        concrete theorem that every such curve can be written as a Weierstrass equation, and every
+        smooth Weierstrass cubic has genus one.</p>
+      <p>The general affine equation is</p>
+      <p>$$
+        E:\quad y^2+a_1xy+a_3y
+        =x^3+a_2x^2+a_4x+a_6,\qquad a_i\in\mathbb{Q}.
+      $$</p>
+      <p>A suitable rational scaling of $x$ and $y$ gives an equation with integer coefficients.
+        Homogenising — inserting enough powers of $Z$ to make every term degree three — gives the
+        projective cubic</p>
+      <p>$$
+        Y^2Z+a_1XYZ+a_3YZ^2
+        =X^3+a_2X^2Z+a_4XZ^2+a_6Z^3.
+      $$</p>
+      <p>Set $Z=0$. The equation becomes $X^3=0$, so $X=0$; projective coordinates forbid
+        $Y=0$ as well. There is therefore exactly one point at infinity:</p>
+      <p>$$ O=[0:1:0]. $$</p>
+      <p>It is rational, built into every Weierstrass model, and chosen as the distinguished point.
+        Thus the phrase “a cubic with a rational point” hides an order of ideas: a general genus-one
+        curve needs a rational point before it can be put in this form; once the Weierstrass form is
+        written, $O$ is already there.</p>
+
+      <h3>Smooth means no pinches or crossings</h3>
+      <p>Let the homogeneous equation be $F(X,Y,Z)=0$. A point is <strong>singular</strong> if all
+        three partial derivatives $F_X,F_Y,F_Z$ vanish there; the curve is <strong>smooth</strong> if
+        no such point exists, even after allowing algebraic coordinates. The condition excludes a
+        crossing, cusp, or isolated pinch. It is also what makes the addition rule of essay 07 work
+        everywhere.</p>
+      <p>For example, the cubic</p>
+      <p>$$ y^2=x^3-x^2 $$</p>
+      <p>passes through $(0,0)$. For
+        $F=Y^2Z-X^3+X^2Z$, all of $F_X$, $F_Y$ and $F_Z$ vanish at $[0:0:1]$.
+        This is a singular cubic, not an elliptic curve. A picture would show two branches meeting
+        there, but the derivative test is exact and needs no picture.</p>
+
+      <h3>The discriminant packages the derivative test</h3>
+      <p>Checking three partial derivatives afresh for every equation would be possible but clumsy.
+        The coefficients can be combined into four intermediate quantities:</p>
+      <p>$$
+        \begin{aligned}
+        b_2&=a_1^2+4a_2,\\
+        b_4&=2a_4+a_1a_3,\\
+        b_6&=a_3^2+4a_6,\\
+        b_8&=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2.
+        \end{aligned}
+      $$</p>
+      <p>The <strong>discriminant</strong> of the model is</p>
+      <p>$$
+        \Delta=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6.
+      $$</p>
+      <p>The basic criterion, stated here without deriving the elimination behind the formula, is</p>
+      <p>$$ \boxed{\quad E\text{ is smooth}\quad\Longleftrightarrow\quad\Delta\neq0.\quad} $$</p>
+      <p>For the singular example above, $a_2=-1$ and every other $a_i$ is zero. Hence
+        $b_2=-4$ while $b_4=b_6=b_8=0$, and $\Delta=0$, exactly as the partial derivatives found.</p>
+
+      <h3>Short form is valid over $\mathbb{Q}$ — and still not enough</h3>
+      <p>When a field has characteristic other than $2$ and $3$, completing the square and translating
+        $x$ remove the $xy$, $y$ and $x^2$ terms. In particular, over $\mathbb{Q}$ every elliptic
+        curve can be written</p>
+      <p>$$ y^2=x^3+Ax+B, $$</p>
+      <p>with</p>
+      <p>$$ \Delta=-16(4A^3+27B^2). $$</p>
+      <p>So the short form does <em>not</em> fail over $\mathbb{Q}$. The problem is arithmetic rather
+        than geometric: completing the square divides by $2$, removing the quadratic term divides by
+        $3$, and clearing the resulting denominators can insert large powers of $2$ and $3$ into the
+        discriminant. A short integral equation is automatically singular modulo $2$, because its
+        displayed discriminant is divisible by $16$, even when the curve itself has a general integral
+        model that remains smooth there. To study reduction prime by prime, the model matters.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>A curve that remembers the prime $2$</h3>
+      <p>Consider the general integral model</p>
+      <p>$$ E:\quad y^2+y=x^3-x^2. $$</p>
+      <p>Here $a_1=0$, $a_2=-1$, $a_3=1$, $a_4=a_6=0$, so</p>
+      <p>$$ b_2=-4,\qquad b_4=0,\qquad b_6=1,\qquad b_8=-1, $$</p>
+      <p>and therefore</p>
+      <p>$$ \Delta=-(-4)^2(-1)-27(1)^2=16-27=-11. $$</p>
+      <p>The discriminant is non-zero, so this is an elliptic curve. It is also not divisible by
+        $2$ or $3$, a fact whose reduction-theoretic meaning essay 08 will make precise.</p>
+
+      <h3>Forcing the same curve into short integral form</h3>
+      <p>Complete the square, translate $x$, and clear denominators. One convenient change of
+        coordinates is</p>
+      <p>$$ X=36x-12,\qquad Y=216y+108. $$</p>
+      <p>Direct expansion gives the polynomial identity</p>
+      <p>$$
+        Y^2-\bigl(X^3-432X+8208\bigr)
+        =46656\bigl(y^2+y-x^3+x^2\bigr).
+      $$</p>
+      <p>Thus every point of the original equation maps to a point of</p>
+      <p>$$ E':\quad Y^2=X^3-432X+8208, $$</p>
+      <p>and the inverse rational formulas $x=(X+12)/36$, $y=(Y-108)/216$ recover it. The equations
+        describe the same elliptic curve over $\mathbb{Q}$.</p>
+      <p>But the short model's discriminant is</p>
+      <p>$$
+        -16\left(4(-432)^3+27(8208)^2\right)
+        =-23944605696
+        =6^{12}(-11).
+      $$</p>
+      <p>The curve has not become more singular. The chosen integral equation has become worse by a
+        twelfth power, carrying twelve artificial factors of both $2$ and $3$. This is why an
+        elliptic curve and a particular equation for it must not be confused.</p>
+
+      <h3>The chain this unlocks</h3>
+      <p>Essay 07 puts an abelian group law on the rational points, using $O$ as zero. Essay 08 reduces
+        an integral model modulo each prime and asks whether the reduced cubic stays smooth; its answer
+        is organised by the discriminant and compressed into the conductor. Essay 22 then constructs
+        the Frey curve in general Weierstrass form, and essay 23 must choose its model at $2$ with
+        exactly the care exhibited above.</p>
+      <p>The practical rule is now available: <strong>short form is excellent for geometry over
+        $\mathbb{Q}$; general integral form is indispensable for arithmetic at $2$ and $3$.</strong>
+        Later essays may simplify an equation, but they must record what the change does to its
+        discriminant.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Definition and smoothness.</strong> Andrew Sutherland's MIT 18.783 Lecture 1 notes,
+        definition 1.1 and definition 1.5, give the formal definition of an elliptic curve and the
+        partial-derivative test for a smooth projective plane curve. Example 1.12 treats a smooth short
+        Weierstrass cubic as a genus-one curve.</p>
+      <p><strong>The point at infinity.</strong> The same course's Lecture 2, §2.1, writes the general
+        Weierstrass equation, explains its short form when the characteristic is not $2$ or $3$, and
+        verifies that $O=[0:1:0]$ is its unique point at infinity.</p>
+      <p><strong>Why the general integral form matters.</strong> Lecture 24, definition 24.29 and the
+        discussion immediately before it, defines a global minimal model in general Weierstrass form
+        and exhibits a curve whose short equation is bad at $2$ although a general equation is not.
+        That is the arithmetic distinction used here and developed in essay 08.</p>
+      <p><strong>Further reference.</strong> Silverman's <em>The Arithmetic of Elliptic Curves</em>
+        develops admissible changes of variables, the $b$-invariants, discriminants and minimal
+        Weierstrass models.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/weierstrass_models.py</code>. It computes
+        both discriminants from their coefficient formulas and verifies the coordinate-change identity
+        coefficient by coefficient. Then repeat the four-line $b$-invariant calculation for
+        $y^2+y=x^3-x^2$ by hand; the cancellation $16-27=-11$ is the example's whole point.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col discharged">
+          <h3>Discharged here</h3>
+          <ul>
+            <li data-proof-id="06-weierstrass-definition">The general Weierstrass model, its
+              projective closure and its unique point at infinity, defined; the discriminant
+              smoothness criterion, stated <span class="lref">(first half of L4)</span></li>
+            <li data-proof-id="06-integral-model-example">For $y^2+y=x^3-x^2$, the discriminant
+              $\Delta=-11$ and the change to a short integral model with discriminant
+              $6^{12}(-11)$, proved by direct calculation</li>
+            <li>The distinction between a curve over $\mathbb{Q}$ and a chosen integral model</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essay 05)</span></li>
+            <li>$\mathbb{Z}_p$ and the valuation $v_\ell$ <span class="lref">(L3, essay 04)</span></li>
+            <li>The elliptic-curve group law <span class="lref">(essay 07)</span></li>
+            <li>Reduction types and the conductor <span class="lref">(rest of L4 and L5, essay 08)</span></li>
+            <li>$E[n]$, the Tate module <span class="lref">(L6, essay 09)</span></li>
+            <li>$\bar\rho_{E,p}$, Mazur, Néron–Ogg–Shafarevich <span class="lref">(L7–L9, essay 10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 13–15)</span></li>
+            <li>Eichler–Shimura, modularity <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>The Frey curve and its representation <span class="lref">(L15–L17, essays 22–24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="02-unique-factorization-and-n3.html"><span class="dir">← Previous written essay</span> 02 · Unique factorisation, and where it runs out</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 06 · Original prose; no source text reproduced.</p>
+  </div>
+</footer>

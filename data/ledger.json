@@ -43,6 +43,20 @@
       "text": "Kummer's regular-prime criterion and his theorem for regular prime exponents are stated."
     },
     {
+      "id": "06-weierstrass-definition",
+      "register": "stated",
+      "availability": "available",
+      "essays": [6],
+      "text": "The general Weierstrass model, its point at infinity and its discriminant are defined; the discriminant criterion for smoothness is stated."
+    },
+    {
+      "id": "06-integral-model-example",
+      "register": "proved",
+      "availability": "available",
+      "essays": [6],
+      "text": "For $y^2+y=x^3-x^2$, direct calculation gives $\\Delta=-11$ and a short integral model whose discriminant is $6^{12}(-11)$."
+    },
+    {
       "id": "22-frey-construction",
       "register": "proved",
       "availability": "available",

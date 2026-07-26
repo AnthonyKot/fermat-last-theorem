@@ -24,17 +24,19 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Four essays are written — the two ends of the rope:
+Scaffold and the full 25-essay map are complete. Five essays are written — the two ends of the rope,
+plus the first elliptic-curve construction:
 
 | # | Essay | What it delivers |
 |---|-------|------------------|
 | 01 | Descent, and the exponent four | $x^4+y^4=z^2$ has no solution, proved in full; reduction to odd prime exponents |
 | 02 | Unique factorisation, and where it runs out | $n=3$ first case in the Eisenstein integers; failure of unique factorisation; Kummer's regular primes |
+| 06 | Elliptic curves, written correctly | General Weierstrass form, smoothness and discriminant; why integral models at $2$ and $3$ matter |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
-has to justify itself. Essays 03–21, 23 and 24 are stubbed on the contents page, and essay 25 states
+has to justify itself. Essays 03–05, 07–21, 23 and 24 are stubbed on the contents page, and essay 25 states
 plainly that it is conditional until they exist.
 
 ## Verification
@@ -61,6 +63,8 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     Weierstrass $b$-invariants; the two routes share no algebra.
   - `kummer_regular_primes.py` — Bernoulli numbers and the irregular primes, asserted against the
     classical start of that sequence.
+  - `weierstrass_models.py` — the two essay-06 discriminants and the change-of-coordinates identity,
+    checked coefficient by coefficient.
 - Plus the ported checks: computed count sync, link resolution, math-delimiter balance, prev/next
   contiguity, a scan forbidding section numbers for textbooks not owned, a check that every precise
   citation is logged in `SOURCES.md`, and an n-gram check against the reference transcript.
