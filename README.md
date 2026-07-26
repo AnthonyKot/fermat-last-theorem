@@ -24,19 +24,20 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Five essays are written — the two ends of the rope,
-plus the first elliptic-curve construction:
+Scaffold and the full 25-essay map are complete. Six essays are written — the two ends of the rope,
+plus the first two elliptic-curve constructions:
 
 | # | Essay | What it delivers |
 |---|-------|------------------|
 | 01 | Descent, and the exponent four | $x^4+y^4=z^2$ has no solution, proved in full; reduction to odd prime exponents |
 | 02 | Unique factorisation, and where it runs out | $n=3$ first case in the Eisenstein integers; failure of unique factorisation; Kummer's regular primes |
 | 06 | Elliptic curves, written correctly | General Weierstrass form, smoothness and discriminant; why integral models at $2$ and $3$ matter |
+| 07 | The group law | Chord-and-tangent addition and an order-five example; associativity and complex uniformization stated |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
-has to justify itself. Essays 03–05, 07–21, 23 and 24 are stubbed on the contents page, and essay 25 states
+has to justify itself. Essays 03–05, 08–21, 23 and 24 are stubbed on the contents page, and essay 25 states
 plainly that it is conditional until they exist.
 
 ## Verification
@@ -65,6 +66,7 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     classical start of that sequence.
   - `weierstrass_models.py` — the two essay-06 discriminants and the change-of-coordinates identity,
     checked coefficient by coefficient.
+  - `group_law.py` — exact general-Weierstrass addition on essay 07's order-five subgroup.
 - Plus the ported checks: computed count sync, link resolution, math-delimiter balance, prev/next
   contiguity, a scan forbidding section numbers for textbooks not owned, a check that every precise
   citation is logged in `SOURCES.md`, and an n-gram check against the reference transcript.

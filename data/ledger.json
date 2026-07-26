@@ -57,6 +57,34 @@
       "text": "For $y^2+y=x^3-x^2$, direct calculation gives $\\Delta=-11$ and a short integral model whose discriminant is $6^{12}(-11)$."
     },
     {
+      "id": "07-chord-tangent",
+      "register": "proved",
+      "availability": "available",
+      "essays": [7],
+      "text": "The chord-and-tangent rule, rational closure and the short-Weierstrass addition formulas are derived."
+    },
+    {
+      "id": "07-order-five",
+      "register": "proved",
+      "availability": "available",
+      "essays": [7],
+      "text": "The point $(0,0)$ on $y^2+y=x^3-x^2$ is shown by direct calculation to have order $5$."
+    },
+    {
+      "id": "07-associativity",
+      "register": "stated",
+      "availability": "available",
+      "essays": [7],
+      "text": "Associativity of chord-and-tangent addition, and hence the full abelian-group theorem for $E(\\mathbb{Q})$, is stated rather than proved."
+    },
+    {
+      "id": "07-uniformization",
+      "register": "stated",
+      "availability": "available",
+      "essays": [7],
+      "text": "Complex uniformization $E(\\mathbb{C})\\cong\\mathbb{C}/\\Lambda$ is stated, not proved."
+    },
+    {
       "id": "22-frey-construction",
       "register": "proved",
       "availability": "available",

@@ -1,0 +1,263 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 · The group law — No Such Form</title>
+<meta name="description" content="Why the rational points on an elliptic curve form an abelian group: chord-and-tangent addition, explicit formulas, an order-five example, and the complex torus.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part II · Elliptic curves — Essay 07</p>
+    <h1>The group law</h1>
+    <p class="lede">A line meets a cubic three times. Declare those three points to sum to zero, and
+      the rational solutions stop being a list: they become an abelian group that geometry can
+      calculate.</p>
+
+    <div class="claim">
+      <span class="tag">This essay proves, states, and computes</span>
+      <strong>Derives:</strong> the chord-and-tangent operation and its short-Weierstrass formulas.
+      <strong>Proves:</strong> rational closure and an order-five calculation on the curve from essay
+      06. <strong>States:</strong> associativity, the one group axiom not visible from the
+      construction, and complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="06-elliptic-curves.html">06</a> gave us a smooth projective cubic in general
+        Weierstrass form,</p>
+      <p>$$
+        E:\quad y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6,
+      $$</p>
+      <p>together with its unique point at infinity $O=[0:1:0]$. The rational points are</p>
+      <p>$$
+        E(\mathbb{Q})
+        =\{\,(x,y)\in\mathbb{Q}^2:\text{$(x,y)$ satisfies the equation}\,\}\cup\{O\}.
+      $$</p>
+      <p>So far this is only a set. There is no reason yet that two rational points should produce a
+        third, or that $O$ should do anything except close the projective curve. The missing structure
+        comes from the degree: substituting a line into a cubic gives an equation of degree three.
+        If two intersection points are known, the third is forced.</p>
+      <p>The learner's task in this essay is concrete: given $P,Q\in E(\mathbb{Q})$, calculate
+        $P+Q$ and know which part of the claim has actually been proved. That second clause matters.
+        Most group axioms fall straight out of the picture; associativity does not.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Three points on a line sum to zero</h3>
+      <p>Take two points $P$ and $Q$ on $E$. Draw the line through them. If $P=Q$, use the tangent
+        line at $P$. The line meets the cubic once more at a point $S$, counting a tangency as a
+        repeated intersection. Define</p>
+      <p>$$ P+Q=-S. $$</p>
+      <p>Equivalently, whenever $P,Q,S$ lie on one line, counted with multiplicity, declare</p>
+      <p>$$ P+Q+S=O. $$</p>
+      <p>The minus sign needs a definition. At a fixed $x$, the general Weierstrass equation is a
+        quadratic in $y$. Its two roots add to $-(a_1x+a_3)$, so the other point above the same
+        $x$-coordinate is</p>
+      <p>$$ -(x,y)=(x,-y-a_1x-a_3). $$</p>
+      <p>Set $-O=O$. The line through $P$ and $O$ is vertical, and its third intersection is
+        $-P$; therefore $P+O=-(-P)=P$. The vertical line through $P$ and $-P$ has $O$ as its
+        third intersection, so $P+(-P)=-O=O$. Thus $O$ is the identity and the displayed point is
+        the inverse of $P$. The construction treats $P$ and $Q$ symmetrically, so
+        $P+Q=Q+P$.</p>
+
+      <h3>Why rational points stay rational</h3>
+      <p>Suppose $P$ and $Q$ have rational coordinates. Their line has rational coefficients.
+        Substituting it into the equation of $E$ produces a cubic polynomial in $x$ with rational
+        coefficients. Two roots are the rational $x$-coordinates of $P$ and $Q$; Vieta's formulas
+        make the third root rational too. Its $y$-coordinate lies on the same rational line, and
+        negation preserves rationality. Thus</p>
+      <p>$$ P,Q\in E(\mathbb{Q})\quad\Longrightarrow\quad P+Q\in E(\mathbb{Q}). $$</p>
+      <p>The tangent case is the same argument with a repeated root. Smoothness, supplied by essay 06,
+        guarantees that a tangent is defined; implicit differentiation gives it rational slope at a
+        rational point unless it is vertical, in which case doubling gives $O$.</p>
+
+      <h3>The formulas in short form</h3>
+      <p>Over $\mathbb{Q}$ we may use a short equation $y^2=x^3+Ax+B$ when we want to calculate.
+        This does not undo essay 06's warning: short form is convenient for the group law over
+        $\mathbb{Q}$, while general integral form remains necessary for arithmetic at $2$ and $3$.</p>
+      <p>Let $P=(x_1,y_1)$ and $Q=(x_2,y_2)$, with $Q\neq-P$. The slope is</p>
+      <p>$$
+        m=
+        \begin{cases}
+          \dfrac{y_2-y_1}{x_2-x_1},&P\neq Q,\\[1.1ex]
+          \dfrac{3x_1^2+A}{2y_1},&P=Q.
+        \end{cases}
+      $$</p>
+      <p>Then $P+Q=(x_3,y_3)$, where</p>
+      <p>$$
+        x_3=m^2-x_1-x_2,\qquad
+        y_3=m(x_1-x_3)-y_1.
+      $$</p>
+      <p>The first formula is Vieta's relation for the three intersections. The second substitutes
+        $x_3$ into the line and reflects the third point across the $x$-axis. Together with
+        $P+O=P$ and $P+(-P)=O$, these formulas cover every case.</p>
+
+      <h3>The axiom the picture does not prove</h3>
+      <div class="fence">
+        <strong>Associativity is stated, not proved.</strong> For all $P,Q,R\in E(\mathbb{Q})$,
+        $$(P+Q)+R=P+(Q+R).$$
+        The identity, inverses, closure and commutativity were established above. Associativity is a
+        theorem about the rational formulas defining addition, and its complete proof must handle
+        tangencies, repeated points and points at infinity simultaneously. We do not reproduce that
+        case analysis here.
+      </div>
+      <p>With that theorem, $E(\mathbb{Q})$ is an <strong>abelian group</strong>. The word “abelian”
+        means that the order of addition does not matter. It does not mean the group is finite, or
+        that its rational points are easy to find; both questions are substantially harder than
+        defining the operation.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The curve from essay 06 contains a five-cycle</h3>
+      <p>Return to</p>
+      <p>$$ E:\quad y^2+y=x^3-x^2, $$</p>
+      <p>and let $P=(0,0)$. For this general Weierstrass equation,
+        $-(x,y)=(x,-y-1)$, so $-P=(0,-1)$.</p>
+      <p><em>Double $P$.</em> Implicit differentiation gives</p>
+      <p>$$ (2y+1)\frac{dy}{dx}=3x^2-2x, $$</p>
+      <p>so the tangent at $P$ is $y=0$. Substitution gives
+        $0=x^2(x-1)$: $P$ occurs twice and the third intersection is $(1,0)$. Reflecting it in the
+        Weierstrass sense gives</p>
+      <p>$$ 2P=(1,-1). $$</p>
+      <p><em>Add $P$ once more.</em> The line through $(0,0)$ and $(1,-1)$ is $y=-x$. On the curve,</p>
+      <p>$$ x^2-x=x^3-x^2
+        \quad\Longleftrightarrow\quad
+        x(x-1)^2=0. $$</p>
+      <p>The third intersection is $(1,-1)$ again, now with multiplicity two. Negating it gives</p>
+      <p>$$ 3P=(1,0). $$</p>
+      <p>The line through $P$ and $3P$ is $y=0$, whose third intersection is $P$ again. Therefore</p>
+      <p>$$ 4P=-P=(0,-1),\qquad 5P=P+(-P)=O. $$</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>$n$</th><th>$nP$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$0$</td><td>$O$</td></tr>
+            <tr><td>$1$</td><td>$(0,0)$</td></tr>
+            <tr><td>$2$</td><td>$(1,-1)$</td></tr>
+            <tr><td>$3$</td><td>$(1,0)$</td></tr>
+            <tr><td>$4$</td><td>$(0,-1)$</td></tr>
+            <tr><td>$5$</td><td>$O$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The five points $O,P,2P,3P,4P$ are distinct, so $P$ has order exactly $5$. This proves that
+        they form a subgroup of $E(\mathbb{Q})$; it does not prove that there are no other rational
+        points. Essay 09 will call such finite-order points <em>torsion</em> and study them
+        systematically.</p>
+
+      <h3>The same group becomes a torus over $\mathbb{C}$</h3>
+      <p>A <strong>lattice</strong> in the complex plane is an additive subgroup</p>
+      <p>$$ \Lambda=\mathbb{Z}\omega_1+\mathbb{Z}\omega_2, $$</p>
+      <p>where $\omega_1$ and $\omega_2$ are linearly independent over $\mathbb{R}$. Quotienting
+        $\mathbb{C}$ by this lattice identifies opposite sides of a fundamental parallelogram. The
+        result $\mathbb{C}/\Lambda$ is a torus, and its addition law is simply complex addition modulo
+        the lattice.</p>
+      <p><strong>Complex uniformization, stated.</strong> For every elliptic curve $E/\mathbb{C}$
+        there is a lattice $\Lambda$ and an isomorphism of complex analytic groups</p>
+      <p>$$
+        \Phi:\mathbb{C}/\Lambda\xrightarrow{\;\sim\;}E(\mathbb{C}).
+      $$</p>
+      <p>In one direction the map is explicit: the Weierstrass function $\wp$ attached to $\Lambda$
+        satisfies a cubic differential equation, and
+        $z\mapsto(\wp(z),\wp'(z))$ lands on the corresponding elliptic curve, with the lattice class
+        of $0$ sent to $O$. The theorem says every complex elliptic curve arises this way and that
+        addition on the torus becomes chord-and-tangent addition on the cubic.</p>
+      <p>This theorem concerns $E(\mathbb{C})$, not $E(\mathbb{Q})$; rational points form a special
+        arithmetic subset of the torus. But the picture earns its place twice. First, division by
+        $n$ on a two-dimensional lattice produces a two-dimensional grid of points, the shape essay
+        09 will turn into $E[n]\cong(\mathbb{Z}/n)^2$. Second, modular curves in Part IV are also
+        complex curves with group-theoretic structure. A map from one of them to an elliptic curve is
+        no longer a mysterious jump between unrelated objects: analytically, both are complex
+        quotients carrying arithmetic symmetry.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>The group law.</strong> Andrew Sutherland's MIT 18.783 Fall 2023 Lecture 2,
+        §§2.1–2.3, derives chord-and-tangent addition, gives the short-Weierstrass formulas and checks
+        the group axioms. Its discussion makes the same proof boundary used here explicit:
+        commutativity is immediate, while associativity requires a separate argument.</p>
+      <p><strong>Lattices and the Weierstrass function.</strong> The same course's Fall 2023 Lecture
+        14, definition 14.1 and §14.4, constructs $\mathbb{C}/\Lambda$, the function $\wp$, and the
+        cubic attached to a lattice.</p>
+      <p><strong>Uniformization.</strong> Fall 2023 Lecture 15, theorem 15.1 and corollary 15.12,
+        proves that $\mathbb{C}/\Lambda$ maps isomorphically as a group to its elliptic curve and that
+        every elliptic curve over $\mathbb{C}$ arises from a lattice.</p>
+      <p><strong>Further reference.</strong> Silverman's <em>The Arithmetic of Elliptic Curves</em>
+        develops the group law on a general Weierstrass equation and the arithmetic of rational
+        points.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/group_law.py</code>. It implements the
+        general Weierstrass addition formulas with exact rational arithmetic, verifies the five
+        multiples above, and checks the complete addition table of the subgroup they form.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col discharged">
+          <h3>Discharged here</h3>
+          <ul>
+            <li data-proof-id="07-chord-tangent">The chord-and-tangent rule, rational closure,
+              identity, inverses and commutativity; explicit short-Weierstrass addition formulas</li>
+            <li data-proof-id="07-associativity">Associativity, stated rather than proved; hence
+              $E(\mathbb{Q})$ is an abelian group</li>
+            <li data-proof-id="07-order-five">The point $(0,0)$ on $y^2+y=x^3-x^2$ has order $5$,
+              proved by direct calculation</li>
+            <li data-proof-id="07-uniformization">Complex uniformization
+              $E(\mathbb{C})\cong\mathbb{C}/\Lambda$, stated</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>$G_{\mathbb{Q}}$, Frobenius elements, traces <span class="lref">(L2, essay 05)</span></li>
+            <li>$\mathbb{Z}_p$ and the valuation $v_\ell$ <span class="lref">(L3, essay 04)</span></li>
+            <li>Minimal integral models, reduction types and the conductor
+              <span class="lref">(rest of L4 and L5, essay 08)</span></li>
+            <li>$E[n]$, the Tate module <span class="lref">(L6, essay 09)</span></li>
+            <li>$\bar\rho_{E,p}$, Mazur, Néron–Ogg–Shafarevich <span class="lref">(L7–L9, essay 10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 13–15)</span></li>
+            <li>Eichler–Shimura, modularity <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>The Frey curve and its representation <span class="lref">(L15–L17, essays 22–24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="06-elliptic-curves.html"><span class="dir">← Previous written essay</span> 06 · Elliptic curves, written correctly</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 07 · Original prose; no source text reproduced.</p>
+  </div>
+</footer>

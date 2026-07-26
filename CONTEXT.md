@@ -285,7 +285,7 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   nearly independent of the middle. Having 25 drafted early keeps every construction essay honest
   about what it is *for* — the failure mode of expositions like this is beautiful machinery with no
   memory of the target.
-- **Essay 06 is written; next write 07, 08, then a first pass at 23.** This gives the reader the concrete elliptic-curve
+- **Essays 06 and 07 are written; next write 08, then a first pass at 23.** This gives the reader the concrete elliptic-curve
   world and immediately spends essay 22's construction. Essay 23 may initially carry declared debts
   to 04 and 18, but writing it now fixes the exact depth those earlier-numbered essays must supply.
 - **Then 13.** It is the only formula essay 25 evaluates. Discharging that debt early makes the
@@ -400,14 +400,14 @@ Spine formulated (25 essays, 19 ledger lines) and checked against the transcript
 web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in `SOURCES.md`.
 
 **Scaffolded and committed:** `index.html` with the full
-25-essay contents (5 linked, 20 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
+25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 06, 22, 25 — the two ends of the rope and the start of the elliptic-curve bridge.
-**Unwritten:** 03–05, 07–21, 23, 24.
+**Written:** 01, 02, 06, 07, 22, 25 — the two ends of the rope and the start of the elliptic-curve bridge.
+**Unwritten:** 03–05, 08–21, 23, 24.
 
 **Check scripts, all passing:** `dim_s2_gamma0.py`, `frey_discriminant.py`,
-`kummer_regular_primes.py`, `weierstrass_models.py`.
+`group_law.py`, `kummer_regular_primes.py`, `weierstrass_models.py`.
 
 ### Open items for the next pass
 
@@ -419,6 +419,6 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
    before drafting 19–21.
 3. **Essay 02's second case** is an outline, and `about.html` says so. Either complete it or leave the
    fence — but do not quietly upgrade the claim.
-4. When 03–05, 07–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become back-references and its
+4. When 03–05, 08–21, 23, 24 land, essay 25's four declared inputs (A)–(D) must become back-references and its
    ledger must close. `verify.sh`'s forward-dependency check will enforce the direction; the closing
    itself needs a human look.
