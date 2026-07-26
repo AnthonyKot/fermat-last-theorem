@@ -356,3 +356,10 @@ img, svg { max-width: 100%; }
 .scope-counts .scope-roster li::before { content: "·"; position: absolute; left: -.9rem;
   color: var(--accent); font-weight: 700; }
 .roster-planned { font-size: .82em; color: var(--muted); font-style: italic; }
+
+/* Footer build stamp: answers "is what I'm reading current" without asking anyone */
+.build-stamp { margin: .5rem 0 0; font-size: .82rem; color: var(--muted); }
+.build-stamp code { font-size: .95em; }
+.build-stamp a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.build-stamp a:hover { color: var(--accent); }
+@media print { .build-stamp { color: #555; } }

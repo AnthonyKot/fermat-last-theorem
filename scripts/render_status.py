@@ -20,6 +20,89 @@ DATA = ROOT / "data" / "ledger.json"
 ABOUT = ROOT / "about.html"
 START = "<!-- proof-register:start -->"
 END = "<!-- proof-register:end -->"
+STAMP_START = "<!-- build-stamp:start -->"
+STAMP_END = "<!-- build-stamp:end -->"
+REPO = "https://github.com/AnthonyKot/fermat-last-theorem"
+
+
+def stamp_pages() -> list[Path]:
+    return sorted(ROOT.glob("*.html")) + sorted((ROOT / "chapters").glob("*.html"))
+
+
+def git(*args: str) -> str:
+    import subprocess
+
+    return subprocess.run(
+        ["git", *args], cwd=ROOT, capture_output=True, text=True, check=True
+    ).stdout.strip()
+
+
+def build_stamp() -> str:
+    """The revision the generator ran against, plus when it ran.
+
+    A published page cannot carry its own commit hash -- committing the stamp
+    changes the hash -- so this names the *source revision*: HEAD at generation
+    time, which is the parent commit once the stamp itself is committed. That is
+    enough to answer "is what I am reading current", which is the only question
+    it exists to answer. verify.sh pins it to HEAD or HEAD's parent, so content
+    cannot be edited without re-running the generator.
+    """
+    import datetime
+
+    sha = git("rev-parse", "--short", "HEAD")
+    when = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    return (
+        f'{STAMP_START}<p class="build-stamp">Built from '
+        f'<a href="{REPO}/commit/{sha}"><code>{sha}</code></a> · {when} · '
+        f'<a href="{REPO}">source</a></p>{STAMP_END}'
+    )
+
+
+def write_stamps() -> int:
+    stamp = build_stamp()
+    pattern = re.compile(re.escape(STAMP_START) + r".*?" + re.escape(STAMP_END), re.S)
+    changed = 0
+    for path in stamp_pages():
+        text = path.read_text(encoding="utf-8")
+        if STAMP_START not in text:
+            raise ValueError(f"{path} has no build-stamp markers")
+        new = pattern.sub(lambda _m: stamp, text, count=1)
+        if new != text:
+            path.write_text(new, encoding="utf-8")
+            changed += 1
+    return changed
+
+
+def check_stamps() -> str:
+    """Every page carries the same stamp, and it names HEAD or HEAD's parent."""
+    pattern = re.compile(
+        re.escape(STAMP_START) + r'<p class="build-stamp">Built from '
+        r'<a href="[^"]+/commit/([0-9a-f]+)"><code>\1</code></a> · ([^<·]+) · '
+        r'<a href="[^"]+">source</a></p>' + re.escape(STAMP_END)
+    )
+    seen: set[tuple[str, str]] = set()
+    for path in stamp_pages():
+        text = path.read_text(encoding="utf-8")
+        found = pattern.findall(text)
+        if len(found) != 1:
+            raise ValueError(
+                f"{path.relative_to(ROOT)} must carry exactly one well-formed build stamp; found {len(found)}"
+            )
+        seen.add(found[0])
+    if len(seen) != 1:
+        raise ValueError(f"build stamps disagree across pages: {sorted(seen)}")
+    sha, when = seen.pop()
+    allowed = {git("rev-parse", "--short", "HEAD")}
+    try:
+        allowed.add(git("rev-parse", "--short", "HEAD^"))
+    except Exception:
+        pass
+    if sha not in allowed:
+        raise ValueError(
+            f"build stamp names {sha}, which is neither HEAD nor its parent "
+            f"({sorted(allowed)}); re-run scripts/render_status.py --write"
+        )
+    return f"{sha} · {when}"
 
 REGISTER_LABELS = {
     "proved": "Proved",
@@ -340,11 +423,19 @@ def main() -> int:
             print("updated about.html from data/ledger.json")
         else:
             print("about.html already up to date")
+        stamped = write_stamps()
+        print(f"build stamp written to {stamped} page(s)" if stamped else "build stamp already current")
         return 0
 
     if before != after:
         print("about.html is out of date; run: python3 scripts/render_status.py --write")
         return 1
+    try:
+        stamp = check_stamps()
+    except ValueError as exc:
+        print(f"build stamp: {exc}")
+        return 1
+    print(f"build stamp consistent on every page: {stamp}")
     accepted_ids = set(policy["accepted_assumption_ids"])
     owed_count = sum(
         item["role"] == "required_for_flt"
