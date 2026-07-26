@@ -9,7 +9,8 @@
       "16-eichler-shimura",
       "18-modularity",
       "25-ribet",
-      "25-small-exponents"
+      "25-small-exponents",
+      "23-modularity-applied"
     ]
   },
   "proof_register": [
@@ -435,22 +436,43 @@
     {
       "id": "23-frey-minimal-model",
       "register": "proved",
-      "availability": "planned",
+      "availability": "available",
       "role": "required_for_flt",
       "essays": [
         23
       ],
-      "text": "The model exhibited for the Frey curve at $2$ will be shown to be minimal, so that its reduction types and conductor are invariants of the curve without appealing to the general existence theorem."
+      "text": "The substitution $x=4X$, $y=8Y+4X$ yields an integral model with $a_1=1$, minimal at $2$, of discriminant $\\Delta_{\\min}=2^{-8}(abc)^{2p}$, so the FLT chain needs no appeal to the general existence theorem for minimal models."
     },
     {
       "id": "23-frey-reduction",
       "register": "proved",
-      "availability": "planned",
+      "availability": "available",
       "role": "required_for_flt",
       "essays": [
         23
       ],
-      "text": "The Frey curve's minimal model, semistability and conductor will be established."
+      "text": "The Frey curve has multiplicative reduction at every bad prime -- at odd primes because pairwise coprimality forbids a triple root, and at $2$ because $a_1=1$ makes the tangent cone separable -- hence it is semistable with conductor $\\operatorname{rad}(abc)$."
+    },
+    {
+      "id": "23-normalisation-spent",
+      "register": "proved",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        23
+      ],
+      "text": "What each normalisation buys: $A\\equiv-1\\pmod4$ and $16\\mid B$ give integrality of the minimal model, while the extra factor of $2$ in $32\\mid B$ is what makes $2$ a bad prime and puts it in the conductor."
+    },
+    {
+      "id": "23-modularity-applied",
+      "register": "stated",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [
+        23
+      ],
+      "short": "The Modularity Theorem applied to the Frey curve, from essay 18",
+      "text": "Essay 18's Modularity Theorem for semistable curves is applied to $E$, giving a weight-2 newform of level $\\operatorname{rad}(abc)$ with the same Galois representation."
     },
     {
       "id": "24-frey-representation",

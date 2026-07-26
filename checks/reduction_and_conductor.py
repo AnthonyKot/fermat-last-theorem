@@ -207,4 +207,5 @@ assert kind == "good" and a5 == 0  # #E(F_5) = 6
 assert reduction(E11, 11)[0].endswith("multiplicative") and squarefree(11)
 assert reduction(E36, 2)[0] == "additive" and not squarefree(36)
 
-print("PASS reduction_and_conductor: bad primes, a_ell vs LMFDB, reduction types, conductors")
+if __name__ == "__main__":
+    print("PASS reduction_and_conductor: bad primes, a_ell vs LMFDB, reduction types, conductors")

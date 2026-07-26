@@ -78,20 +78,19 @@ available record is tied to exactly one essay-ledger item by `data-proof-id`. `a
 from it; never edit the generated block to change scope.
 
 The completion policy names every required result that the collection deliberately imports rather
-than proves. **This list is generated from `data/ledger.json`, so do not maintain it by hand here**
-— it went stale once already. As of the current register the allowlist holds **seven** records:
+than proves. **Do not list them here.** That list went stale by hand twice — once at six entries and
+once at seven — which is exactly the failure the generated block exists to prevent. The authoritative
+roster is rendered on `about.html` from `data/ledger.json`, by name, with essay links and a marker for
+the ones whose essay is unwritten; read it there. To see it without a browser:
 
-- the genus-one/Weierstrass characterization and discriminant criterion (06);
-- associativity of the elliptic-curve group law (07);
-- the conductor exponent $f_\ell=1$ at a multiplicative prime (08);
-- Mazur's isogeny theorem and Néron–Ogg–Shafarevich (10);
-- Eichler–Shimura (16);
-- the Modularity Theorem (18);
-- Ribet's level-lowering theorem (25).
+```bash
+python3 -c "import json;d=json.load(open('data/ledger.json'));print(*d['completion_policy']['accepted_assumption_ids'],sep=chr(10))"
+```
 
-They are **stated with their usable hypotheses, not proved**. The validator requires the policy's
-allowlist to equal the required records whose proof mode is `stated`; a new assumption cannot slip in
-without changing the canonical policy.
+Those results are **stated with their usable hypotheses, not proved**. The validator requires the
+policy's allowlist to equal exactly the required records whose proof mode is `stated`, and requires
+every stated record to carry a `short` label so it can be published by name rather than merely
+counted; a new assumption cannot slip in without a deliberate edit to the canonical policy.
 
 **Keep the chain's assumptions as narrow as what it spends.** Two entries were deliberately narrowed
 rather than accepted wholesale, and the same test applies to every future one — *does the closing
@@ -102,11 +101,11 @@ argument consume all of this, or only part of it?*
   threshold and the special treatment of $2$ and $3$ are `background`: essay 08's contrast curve needs
   them, the chain does not.
 - **Global minimal-model existence was demoted to `background`.** The chain never needs the general
-  theorem; it needs one curve's minimal model. So essay 23 now carries
-  `23-frey-minimal-model` as a *required, planned, proved* record — it must show the model it exhibits
-  at $2$ is minimal. This trades a permanent trust obligation for a dischargeable debt, which is why
-  the required-owed count went up by one when the assumption count went down by one. That direction of
-  trade is always worth making; the reverse never is.
+  theorem; it needs one curve's minimal model. That trade — a permanent trust obligation for a
+  dischargeable debt — is always worth making, and the reverse never is. **Essay 23 has since
+  discharged it**: the substitution $x=4X$, $y=8Y+4X$ exhibits the Frey curve's minimal model and
+  proves it minimal at $2$, so `23-frey-minimal-model` is now proved and available, and the chain's
+  assumption set did not grow when essay 23 landed.
 
 ### Assumed and owed are not the same kind of thing
 
@@ -343,10 +342,12 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   nearly independent of the middle. Having 25 drafted early keeps every construction essay honest
   about what it is *for* — the failure mode of expositions like this is beautiful machinery with no
   memory of the target.
-- **Essays 04, 06, 07 and 08 are written; next write 23.** Essay 04 was pulled forward out of numeric
-  order precisely so that 08 could link back to it rather than declare a debt, and 08 then spends
-  essay 22's construction. Essay 23 now needs no forward reference except modularity itself, which it
-  imports from 18 as a declared assumption.
+- **Essays 04, 06, 07, 08 and 23 are written; next write 24, then 09–10.** Essay 23 proved its own
+  minimal model rather than importing the general existence theorem, which is why the chain's
+  assumption set did not grow when it landed. Essay 24 is the natural successor: it has the mechanism
+  it needs (Serre's optimal level, from Lecture 25 §25.4) and the arithmetic 23 hands it, namely
+  v_ell(Delta_min) = 2p·v_ell(abc) at odd primes versus the subtracted 8 at 2. Essays 09 and 10 then
+  supply the representation language 24 currently has to gesture at.
 - **Then 13.** It is the only formula essay 25 evaluates. Discharging that debt early makes the
   closing arithmetic self-contained and gives the middle of the book a visible payoff.
 - **Then 03, 04, 05, 09, 10, 24.** Essay 05 remains the highest-dependency node: 10, 16, 18, 19, 21
@@ -486,9 +487,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 04, 06, 07, 08, 22, 25 — the two ends of the rope, the valuation, and the
-elliptic-curve bridge as far as the conductor.
-**Unwritten:** 03, 05, 09–21, 23, 24.
+**Written:** 01, 02, 04, 06, 07, 08, 22, 23, 25 — the two ends of the rope, the valuation, the
+elliptic-curve bridge as far as the conductor, and the semistability check.
+**Unwritten:** 03, 05, 09–21, 24.
 
 **L3, L4 and L5 are now discharged.** Essay 04 supplies $v_\ell$, $\mathbb{Z}_\ell$ and free modules;
 essay 08 supplies reduction types, the conductor, and semistable ⟺ square-free conductor. Essay 23's

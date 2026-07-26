@@ -24,8 +24,8 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Eight essays are written — the two ends of the rope,
-the valuation, and the elliptic-curve bridge as far as the conductor:
+Scaffold and the full 25-essay map are complete. Nine essays are written — the two ends of the rope,
+the valuation, the elliptic-curve bridge as far as the conductor, and the semistability check:
 
 | # | Essay | What it delivers |
 |---|-------|------------------|
@@ -36,12 +36,13 @@ the valuation, and the elliptic-curve bridge as far as the conductor:
 | 07 | The group law | Chord-and-tangent addition and an order-five example; associativity and complex uniformization stated |
 | 08 | Reduction and the conductor | Good, multiplicative and additive reduction; $a_\ell$; semistable ⟺ square-free conductor |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
+| 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
 | 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 03, 05, 09–21, 23 and 24 are stubbed on
+valuation to link back to rather than a declared debt. Essays 03, 05, 09–21 and 24 are stubbed on
 the contents page, and essay 25 states plainly that it is conditional until they exist.
 
 ## Verification
@@ -75,6 +76,10 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
     inequality and its equality case over thousands of pairs, every digit string recomputed from
     congruences, and the $\mathrm{GL}_2(\mathbb{Z}_3)$ determinant criterion checked against the
     adjugate exhaustively.
+  - `frey_semistable.py` — runs essay 23's whole argument over forty triples with the three properties
+    it actually uses: integrality of the minimal model, $\Delta_{\min}=(ABC)^2/2^8$, the double-root
+    analysis at odd primes, the separable tangent cone at $2$, and — independently, by point counting —
+    $a_\ell=\pm1$ at every bad prime.
   - `reduction_and_conductor.py` — point counts over $\mathbb{F}_\ell$ with no elliptic-curve library:
     bad primes from the discriminant, $a_\ell$ against the LMFDB newform coefficients, the Hasse bound,
     and both reduction types located two independent ways — by point count and by the tangent

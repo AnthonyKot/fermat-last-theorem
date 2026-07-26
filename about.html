@@ -37,7 +37,7 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>8</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>9</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>A genus-one curve has a Weierstrass model, and $\Delta\neq0$ is smoothness <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span></li>
@@ -48,6 +48,7 @@
         <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(essay 10)</span> <span class="roster-planned">not yet written</span></li>
         <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
         <li>The Modularity Theorem, semistable case <span class="scope-essays">(essay 18)</span> <span class="roster-planned">not yet written</span></li>
+        <li>The Modularity Theorem applied to the Frey curve, from essay 18 <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span></li>
       </ul>
       <p class="scope-headline">The exposition additionally assumes <strong>9</strong> background results.</p>
       <p class="scope-note">Stated for orientation, and deliberately kept off the chain. Doubting any of them leaves the closing argument intact.</p>
@@ -63,7 +64,7 @@
         <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
       </ul>
       <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
-      <p class="scope-note"><strong>Not yet settled:</strong> 10 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 8 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -160,6 +161,21 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The displayed Frey model has discriminant $16(abc)^{2p}$. <span class="scope-essays">(<a href="chapters/22-the-frey-curve.html">essay 22</a>)</span>
        </li>
+        <li data-proof-id="23-frey-minimal-model">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The substitution $x=4X$, $y=8Y+4X$ yields an integral model with $a_1=1$, minimal at $2$, of discriminant $\Delta_{\min}=2^{-8}(abc)^{2p}$, so the FLT chain needs no appeal to the general existence theorem for minimal models. <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span>
+       </li>
+        <li data-proof-id="23-frey-reduction">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Frey curve has multiplicative reduction at every bad prime -- at odd primes because pairwise coprimality forbids a triple root, and at $2$ because $a_1=1$ makes the tangent cone separable -- hence it is semistable with conductor $\operatorname{rad}(abc)$. <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span>
+       </li>
+        <li data-proof-id="23-normalisation-spent">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          What each normalisation buys: $A\equiv-1\pmod4$ and $16\mid B$ give integrality of the minimal model, while the extra factor of $2$ in $32\mid B$ is what makes $2$ a bad prime and puts it in the conductor. <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span>
+       </li>
       </ul>
 
    <h3>Explicitly assumed, not proved here</h3>
@@ -190,6 +206,11 @@
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The Frey-curve route needs $\bar\rho$ irreducible, which Mazur's isogeny theorem supplies only outside a finite exceptional set containing $5$ and $7$. The exponents $5$ and $7$ are therefore handled by classical work outside this collection — Dirichlet and Legendre in 1825, Lamé in 1839 — and that dependency is recorded here rather than left implicit. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+       </li>
+        <li data-proof-id="23-modularity-applied">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Essay 18's Modularity Theorem for semistable curves is applied to $E$, giving a weight-2 newform of level $\operatorname{rad}(abc)$ with the same Galois representation. <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span>
        </li>
       </ul>
 
@@ -231,16 +252,6 @@
           <span class="scope-mode scope-mode--stated">To assume</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The Modularity Theorem will be stated, not proved. <span class="scope-essays">(essay 18)</span>
-       </li>
-        <li data-proof-id="23-frey-minimal-model">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The model exhibited for the Frey curve at $2$ will be shown to be minimal, so that its reduction types and conductor are invariants of the curve without appealing to the general existence theorem. <span class="scope-essays">(essay 23)</span>
-       </li>
-        <li data-proof-id="23-frey-reduction">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The Frey curve's minimal model, semistability and conductor will be established. <span class="scope-essays">(essay 23)</span>
        </li>
         <li data-proof-id="24-frey-representation">
           <span class="scope-mode scope-mode--proved">To prove</span>
@@ -422,6 +433,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/e605b62"><code>e605b62</code></a> · 2026-07-26 15:24 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/fd15e6c"><code>fd15e6c</code></a> · 2026-07-26 15:54 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
