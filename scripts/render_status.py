@@ -457,7 +457,7 @@ def counts_at(sha: str) -> tuple[int, int] | None:
     return owed, len(accepted)
 
 
-def trajectory() -> list[str]:
+def trajectory(upto: str = "HEAD") -> list[str]:
     """Every commit where either counter moved, oldest first.
 
     The counts have moved for three different reasons -- essays landing, a
@@ -465,7 +465,7 @@ def trajectory() -> list[str]:
     and reading them one snapshot at a time made ordinary movement look like
     error. Computed from git rather than recorded by hand, so it cannot drift.
     """
-    shas = git("log", "--format=%h", "--", "data/ledger.json").split()
+    shas = git("log", upto, "--format=%h", "--", "data/ledger.json").split()
     rows, prev = [], None
     for sha in reversed(shas):
         got = counts_at(sha)
@@ -532,7 +532,7 @@ def render_roster(items: list[dict]) -> list[str]:
     return lines
 
 
-def render_block(items: list[dict], policy: dict, revisions: list[dict]) -> str:  # noqa: C901
+def render_block(items: list[dict], policy: dict, revisions: list[dict], upto: str = "HEAD") -> str:  # noqa: C901
     accepted_ids = set(policy["accepted_assumption_ids"])
     proved = [
         item
@@ -596,7 +596,7 @@ def render_block(items: list[dict], policy: dict, revisions: list[dict]) -> str:
         "currently uses. That granularity has changed, so counts from different dates are not "
         "comparable; each change is logged below rather than applied silently.</p>",
         *render_revisions(revisions),
-        *trajectory(),
+        *trajectory(upto),
         '      <p class="scope-note"><strong>Not yet settled:</strong> '
         f'{n_owed_chain} required item{"" if n_owed_chain == 1 else "s"} remain'
         f'{"s" if n_owed_chain == 1 else ""} owed, listed below. Until that list is empty the'
@@ -660,8 +660,18 @@ def main() -> int:
         return 0
 
     if before != after:
-        print("about.html is out of date; run: python3 scripts/render_status.py --write")
-        return 1
+        # The trajectory is computed from git history, so a commit that touches
+        # data/ledger.json leaves the committed page one row short until the next
+        # render -- the same off-by-one as the build stamp, and for the same
+        # reason. Accept the render as of HEAD's parent too.
+        try:
+            lagged = replace_block(before, render_block(items, policy, revisions, upto="HEAD^"))
+        except Exception:  # noqa: BLE001
+            lagged = None
+        if lagged is None or before != lagged:
+            print("about.html is out of date; run: python3 scripts/render_status.py --write")
+            return 1
+        print("about.html trails HEAD by one trajectory row, which is expected after a ledger commit")
     try:
         counted = check_essay_count()
     except ValueError as exc:
