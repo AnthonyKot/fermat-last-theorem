@@ -43,20 +43,27 @@
       <p>$$ E \;:\; y^2 = x(x-a^p)(x+b^p) $$</p>
       <p>is an elliptic curve over $\mathbb{Q}$ with discriminant $\Delta = 16\,(abc)^{2p}$.</p>
       <div class="fence">
-        <strong>Declared debts.</strong> Essays 03, 05, 09–21, 23 and 24 are unwritten, so this essay
-        <em>assumes</em> four results rather than pointing back to established ones. They are listed
-        explicitly below and carried in the ledger as owed. Until they are written, this essay is a
-        conditional argument, and describing it otherwise would be a misrepresentation.
+        <strong>Declared debts, now two rather than four.</strong> When this essay was written, all of
+        03, 05, 09–21, 23 and 24 were unwritten and it had to assume four results outright. Two are now
+        established: essay <a href="23-semistable-and-modular.html">23</a> proves the Frey curve
+        semistable, and essay <a href="24-the-frey-representation.html">24</a> proves
+        $N(\bar\rho)=2$ and settles irreducibility for $p\gt7$ — and for $p=5,7$ outside two residual
+        cases. What is still assumed is <strong>(A)</strong> modularity itself, from the unwritten essay
+        18, and <strong>(D)</strong> the dimension formula, from the unwritten essay 13. Until those
+        exist this remains a conditional argument, and describing it otherwise would be a
+        misrepresentation.
       </div>
-      <p>The four assumed inputs:</p>
+      <p>The four inputs, with their present status:</p>
       <ul>
         <li><strong>(A)</strong> $E$ is semistable, and modular — a weight-2 newform of level
           $\mathrm{rad}(abc)$ has the same Galois representation. <span class="lref">essay 23, via
           Wiles's theorem in essay 18</span></li>
         <li><strong>(B)</strong> The mod $p$ representation $\bar\rho = \bar\rho_{E,p}$ is continuous,
-          odd, and irreducible. <span class="lref">essay 24, via Mazur</span></li>
+          odd, and irreducible. <span class="lref">no longer assumed — oddness proved in essay 10,
+          irreducibility in essay 24</span></li>
         <li><strong>(C)</strong> $\bar\rho$ is finite at $p$, and its conductor is exactly $2$.
-          <span class="lref">essay 24, via Néron–Ogg–Shafarevich</span></li>
+          <span class="lref">no longer assumed — the conductor is computed in essay 24, which imports
+          only finiteness at $p$</span></li>
         <li><strong>(D)</strong> $\dim S_2(\Gamma_0(N)) = 1 + \frac{\mu}{12} - \frac{\nu_2}{4} -
           \frac{\nu_3}{3} - \frac{\nu_\infty}{2}$, where $\mu$ is the index of $\Gamma_0(N)$ in
           $\mathrm{SL}_2(\mathbb{Z})$ and $\nu_2, \nu_3, \nu_\infty$ count elliptic points of order two
@@ -271,14 +278,11 @@
               $n=3$</li>
             <li><strong>(A)</strong> $E$ modular. Its semistability is no longer owed
               <span class="lref">(L14; essay 18)</span></li>
-            <li><strong>(B)</strong> $\bar\rho$ irreducible <span class="lref">(L8; essay 24)</span>.
-              The threshold itself is <em>settled</em>: Mazur gives a finite exceptional list, and
-              semistability collapses it to $p\leq7$. What essay 24 still owes is the application, not
-              the theorem</li>
-            <li><strong>(C)</strong> $\bar\rho$ finite at $p$, conductor $2$ <span class="lref">(L9, L17; essay 24)</span></li>
             <li><strong>(D)</strong> The dimension formula itself <span class="lref">(L10; essay 13)</span></li>
             <li>The second-case descent for $n=3$ <span class="lref">(L1; essay 02)</span></li>
-            <li>Everything (A)–(D) now rests on unwritten essays alone: 11–21 and 24</li>
+            <li>Fermat for $n=5$ when $21\mid abc$, and for $n=7$ when $85\mid abc$ — external
+              classical work, now narrowed to those residual cases</li>
+            <li>What remains is the modular side alone: the unwritten essays 11–21</li>
           </ul>
         </div>
       </div>
@@ -288,7 +292,7 @@
     </section>
 
     <nav class="chapter-nav">
-      <a href="23-semistable-and-modular.html"><span class="dir">← Previous written essay</span> 23 · Semistable, and therefore modular</a>
+      <a href="24-the-frey-representation.html"><span class="dir">← Previous written essay</span> 24 · The Frey representation</a>
       <a class="next" href="../index.html"><span class="dir">Contents →</span></a>
     </nav>
   </div>
@@ -297,6 +301,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 25 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/2f902c6"><code>2f902c6</code></a> · 2026-07-26 17:40 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/863063c"><code>863063c</code></a> · 2026-07-26 17:50 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

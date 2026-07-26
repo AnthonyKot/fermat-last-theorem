@@ -18,6 +18,8 @@
       "15-newforms",
       "16-eichler-shimura",
       "18-modularity",
+      "24-finite-at-p",
+      "24-multiplicative-ramification",
       "25-ribet",
       "25-small-exponents"
     ]
@@ -773,12 +775,47 @@
     {
       "id": "24-frey-representation",
       "register": "proved",
-      "availability": "planned",
+      "availability": "available",
       "role": "required_for_flt",
       "essays": [
         24
       ],
-      "text": "The conductor of the Frey curve's mod $p$ representation will be established, with the irreducibility threshold handled explicitly."
+      "text": "$N(\\bar\\rho_{E,p})=2$. At an odd bad prime $v_\\ell(\\Delta_{\\min})=2p\\,v_\\ell(abc)$ is a multiple of $p$, so the prime drops out of the conductor; at $2$, $v_2=2p\\,v_2(b)-8\\equiv-8\\not\\equiv0$ because $p\\nmid8$, so $2$ survives, tamely, with $n_2=1$.",
+      "depends_on": [
+        "24-multiplicative-ramification"
+      ]
+    },
+    {
+      "id": "24-small-exponent-narrowing",
+      "register": "proved",
+      "role": "background",
+      "essays": [
+        24
+      ],
+      "text": "Full rational $E[2]$ forces $4\\mid\\#\\tilde E(\\mathbb{F}_\\ell)$, and with Hasse this pins $a_3=0$, $a_5=\\pm2$, $a_7\\in\\{0,\\pm4\\}$, $a_{17}\\in\\{\\pm2,\\pm6\\}$. Each makes $a_\\ell^2-4\\ell$ a non-square modulo $p$, proving irreducibility when the witness prime has good reduction -- so $\\bar\\rho$ is irreducible for $p=5$ unless $21\\mid abc$ and for $p=7$ unless $85\\mid abc$. Derived here, not sourced; no further uniform witness exists below 400.",
+      "availability": "available"
+    },
+    {
+      "id": "24-multiplicative-ramification",
+      "register": "stated",
+      "role": "required_for_flt",
+      "essays": [
+        24
+      ],
+      "short": "Ramification at a multiplicative prime: unramified iff $p\\mid v_\\ell(\\Delta_{\\min})$",
+      "text": "At a prime $\\ell\\neq p$ of multiplicative reduction, $\\bar\\rho_{E,p}$ is unramified exactly when $p$ divides $v_\\ell(\\Delta_{\\min})$, and is otherwise tamely ramified with $n_\\ell=1$. This is Serre's level recipe in the semistable case, and it is what converts essay 23's valuations into ramification data.",
+      "availability": "available"
+    },
+    {
+      "id": "24-finite-at-p",
+      "register": "stated",
+      "role": "required_for_flt",
+      "essays": [
+        24
+      ],
+      "short": "$\\bar\\rho_{E,p}$ is finite at $p$",
+      "text": "$\\bar\\rho_{E,p}$ arises from a finite flat group scheme over $\\mathbb{Z}_p$ -- a condition at $p$ itself, separate from the primes $\\ell\\neq p$, and required by Ribet's theorem.",
+      "availability": "available"
     },
     {
       "id": "25-contradiction",

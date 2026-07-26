@@ -1,0 +1,328 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24 · The Frey representation — No Such Form</title>
+<meta name="description" content="The mod p representation of the Frey curve: odd, irreducible, unramified outside 2, and of conductor exactly 2 — with the p >= 5 threshold faced rather than glossed.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part VI · The contradiction — Essay 24</p>
+    <h1>The Frey representation</h1>
+    <p class="lede">The curve's conductor is $\operatorname{rad}(abc)$, an unknown number of
+      unbounded size. Its mod $p$ representation has conductor $2$. That collapse is one line of
+      arithmetic, and it is the reason the argument can end.</p>
+
+    <div class="claim">
+      <span class="tag">This essay computes, derives, and states</span>
+      <strong>Computes:</strong> $N(\bar\rho_{E,p})=2$ — every odd prime drops out because
+      $p$ divides its valuation of $\Delta_{\min}$, and $2$ survives because $p\nmid8$.
+      <strong>Derives:</strong> irreducibility for $p=5$ and $p=7$ whenever a witness prime is good,
+      narrowing the classical dependency to $21\mid abc$ and $85\mid abc$.
+      <strong>States:</strong> that $\bar\rho$ is finite at $p$, and the ramification criterion for
+      multiplicative primes.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Everything. This essay has no forward debts.</p>
+      <p>Essay <a href="23-semistable-and-modular.html">23</a> is the arithmetic input: the Frey curve
+        is <strong>semistable</strong>, its minimal model has</p>
+      <p>$$ \Delta_{\min}=2^{-8}(abc)^{2p}, $$</p>
+      <p>every bad prime is multiplicative, and its conductor is $\operatorname{rad}(abc)$.</p>
+      <p>Essay <a href="10-elliptic-representation.html">10</a> supplies the representation
+        $\bar\rho=\bar\rho_{E,p}:G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{F}_p)$, the facts that
+        $\det\bar\rho=\bar\chi$ and that <em>every</em> $\bar\rho_{E,\ell}$ is <strong>odd</strong>,
+        the equivalence <em>reducible $\iff$ a rational subgroup of order $p$</em>, Mazur's isogeny
+        theorem, and Néron–Ogg–Shafarevich.</p>
+      <p>Essay <a href="09-torsion-and-tate-module.html">09</a> supplies the extra structure that turns
+        out to matter for small $p$: the Frey curve has <strong>full rational $2$-torsion</strong>,
+        $E[2]\subset E(\mathbb{Q})$.</p>
+      <p>Essay <a href="05-galois-representations.html">05</a> supplies the object being computed — the
+        conductor $N(\rho)=\prod\ell^{n_\ell}$, with $n_\ell=0$ exactly when $\rho$ is unramified at
+        $\ell$, and $n_\ell=\dim V-\dim V^{I_\ell}$ when the ramification is tame.</p>
+      <p>So two of Ribet's four hypotheses are already discharged before this essay begins: $\bar\rho$
+        is odd, for every elliptic curve at once, and its determinant is known. What remains is
+        irreducibility and the conductor.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>When does the mod $p$ representation forget a bad prime?</h3>
+      <p>There is an apparent contradiction to clear first, and clearing it <em>is</em> the essay.</p>
+      <p>Néron–Ogg–Shafarevich says $\rho_{E,p}$ is unramified at $\ell\neq p$ exactly when $E$ has
+        good reduction at $\ell$. The Frey curve has bad reduction at every prime dividing $abc$ — an
+        enormous set. So how can $\bar\rho$ be unramified outside $2$?</p>
+      <p>Because $\bar\rho$ is the representation <em>modulo $p$</em>, and reduction can lose
+        ramification that the $p$-adic representation has. At a prime of multiplicative reduction the
+        local picture is governed by a single integer, $v_\ell(\Delta_{\min})$, and inertia acts through
+        it; passing mod $p$ sees that integer only modulo $p$. So the ramification survives exactly
+        when $p$ does not divide it.</p>
+      <div class="fence">
+        <strong>Stated: the ramification criterion at a multiplicative prime.</strong> Let $E$ have
+        multiplicative reduction at $\ell\neq p$. Then
+        $$
+          \bar\rho_{E,p}\text{ is unramified at }\ell
+          \quad\Longleftrightarrow\quad
+          p\mid v_\ell\bigl(\Delta_{\min}(E)\bigr),
+        $$
+        and when it is ramified the ramification is tame with $n_\ell=1$. Equivalently, in the form
+        Serre gave it: the conductor of $\bar\rho_{E,p}$ for a semistable $E$ is
+        $$
+          N(\bar\rho_{E,p})=\prod_{\substack{\ell\\ v_\ell(\Delta_{\min})\not\equiv0\ (p)}}\ell.
+        $$
+      </div>
+      <p>That is the whole mechanism, and it is worth saying what kind of statement it is: a
+        <em>local</em> fact about multiplicative reduction, imported here, which converts essay 23's
+        valuations into ramification data. Essay 23 did the work of computing those valuations; this
+        essay only has to read them modulo $p$.</p>
+
+      <h3>Reading the valuations modulo $p$</h3>
+      <p>From essay 23, $\Delta_{\min}=2^{-8}(abc)^{2p}$. Take valuations.</p>
+      <p><strong>At an odd bad prime $\ell$</strong>, so $\ell\mid abc$ and $\ell\neq2$:</p>
+      <p>$$
+        v_\ell(\Delta_{\min})=2p\,v_\ell(abc)\;\equiv\;0\pmod p.
+      $$</p>
+      <p>A multiple of $p$, because $a$, $b$, $c$ enter as $p$-th powers. <strong>Every odd prime drops
+        out of the conductor.</strong> This is the first and only place in the collection where it
+        matters that the solution's terms are $p$-th powers rather than merely coprime integers —
+        essay 23's semistability argument never used it, and said so.</p>
+      <p><strong>At $2$</strong>, using $v_2(abc)=v_2(b)$ since $a$ and $c$ are odd:</p>
+      <p>$$
+        v_2(\Delta_{\min})=2p\,v_2(b)-8\;\equiv\;-8\pmod p.
+      $$</p>
+      <p>And $p\nmid8$, since $p$ is an odd prime. So $-8\not\equiv0$, and <strong>$2$ survives</strong>.
+        Two facts about $2$ conspire here, both inherited: essay 23's mod-$32$ normalisation is what
+        made $v_2(\Delta_{\min})$ positive at all, so that $2$ is a bad prime; and the subtracted $8$
+        from the minimal model at $2$ is what stops its valuation being a multiple of $p$. Had the
+        model not been made minimal, this exponent would have been wrong.</p>
+      <p>Therefore the product has exactly one factor, and since the reduction at $2$ is multiplicative
+        the ramification is tame with $n_2=1$:</p>
+      <p>$$ \boxed{\quad N(\bar\rho_{E,p})=2.\quad} $$</p>
+      <p>Look at what has happened to the size of things. The curve's conductor is
+        $\operatorname{rad}(abc)$, which depends on a solution nobody has and could be astronomically
+        large. The representation's conductor is $2$, for every $p$ and every hypothetical solution.
+        All the arithmetic of the solution has been absorbed into the phrase "a multiple of $p$".</p>
+
+      <h3>Irreducible: what Mazur gives, and what $E[2]$ adds</h3>
+      <p>Essay 10 reduced irreducibility to a question about subgroups: $\bar\rho$ is reducible exactly
+        when $E$ has a rational subgroup of order $p$. Mazur's theorem forbids that on a semistable
+        curve for $p\gt7$, and essay 23 supplied semistability. So</p>
+      <p>$$ p\gt7\quad\Longrightarrow\quad\bar\rho\text{ is irreducible.} $$</p>
+      <p>That leaves $p=5$ and $p=7$, which sit inside Mazur's exceptional list. The collection has
+        until now handed those two exponents to classical results — Dirichlet and Legendre in 1825,
+        Lamé in 1839 — and recorded the dependency openly. The Frey curve has structure Mazur's general
+        theorem does not use, and it narrows that dependency considerably.</p>
+      <p>The lever is essay 09's full rational $2$-torsion, and it works through counting. Since
+        $E[2]\subset E(\mathbb{Q})$ and reduction is injective on $2$-torsion at an odd prime of good
+        reduction, $E[2]$ injects into $E(\mathbb{F}_\ell)$, so</p>
+      <p>$$ 4\mid\#\tilde{E}(\mathbb{F}_\ell)=\ell+1-a_\ell,\qquad\text{i.e.}\qquad
+        a_\ell\equiv\ell+1\pmod4. $$</p>
+      <p>Combine that with the Hasse bound $|a_\ell|\leq2\sqrt\ell$ from essay 08 and, at small $\ell$,
+        almost nothing is left:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>$\ell$</th><th>$a_\ell\bmod4$</th><th>Hasse range</th><th>forced values</th></tr></thead>
+          <tbody>
+            <tr><td>$3$</td><td>$0$</td><td>$|a|\leq3$</td><td>$a_3=0$</td></tr>
+            <tr><td>$5$</td><td>$2$</td><td>$|a|\leq4$</td><td>$a_5=\pm2$</td></tr>
+            <tr><td>$7$</td><td>$0$</td><td>$|a|\leq5$</td><td>$a_7\in\{0,\pm4\}$</td></tr>
+            <tr><td>$17$</td><td>$2$</td><td>$|a|\leq8$</td><td>$a_{17}\in\{\pm2,\pm6\}$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Now the other half. If $\bar\rho$ were reducible it would be conjugate to upper triangular by
+        essay 05, so the characteristic polynomial of every Frobenius would split over $\mathbb{F}_p$.
+        By essay 10 that polynomial is $x^2-a_\ell x+\ell$, so splitting requires</p>
+      <p>$$ a_\ell^2-4\ell\ \text{to be a square modulo }p. $$</p>
+      <p><strong>One non-square proves irreducibility.</strong> Check the forced values against that:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>$p$</th><th>witness $\ell$</th><th>$a_\ell^2-4\ell\bmod p$</th><th>squares mod $p$</th><th>verdict</th></tr></thead>
+          <tbody>
+            <tr><td>$5$</td><td>$3$</td><td>$3$</td><td>$\{0,1,4\}$</td><td>non-square</td></tr>
+            <tr><td>$5$</td><td>$7$</td><td>$2$ or $3$</td><td>$\{0,1,4\}$</td><td>non-square</td></tr>
+            <tr><td>$7$</td><td>$5$</td><td>$5$</td><td>$\{0,1,2,4\}$</td><td>non-square</td></tr>
+            <tr><td>$7$</td><td>$17$</td><td>$6$ or $3$</td><td>$\{0,1,2,4\}$</td><td>non-square</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Each row holds for <em>every</em> value the constraints permit, not for a sample — so each is a
+        proof, provided the witness prime is one of good reduction. For the Frey curve the bad primes
+        are exactly those dividing $abc$, together with $2$. Hence:</p>
+      <p>$$
+        \begin{aligned}
+        p=5:&\quad\bar\rho\text{ irreducible unless }3\mid abc\text{ and }7\mid abc,\\
+        p=7:&\quad\bar\rho\text{ irreducible unless }5\mid abc\text{ and }17\mid abc.
+        \end{aligned}
+      $$</p>
+      <div class="fence">
+        <strong>What this does and does not settle.</strong> It is a narrowing, not a removal. The
+        classical results are still needed for $n=5$ when $21\mid abc$, and for $n=7$ when
+        $85\mid abc$ — and the ledger still records that dependency, unchanged in kind. Searching every
+        prime below $400$ turns up no further uniform witness for either exponent, so this method does
+        not close the gap by itself; a uniform theorem would need rational points on a modular curve,
+        which this collection does not build. The argument above is ours, derived rather than cited, and
+        it is offered at exactly that strength.
+      </div>
+
+      <h3>Finite at $p$</h3>
+      <div class="fence">
+        <strong>Stated.</strong> $\bar\rho_{E,p}$ is <em>finite at $p$</em> — arising from a finite flat
+        group scheme over $\mathbb{Z}_p$ — which for a semistable curve holds because the $p$-torsion of
+        $E$ is. This is a condition at $p$ itself, separate from everything above, which concerned
+        primes $\ell\neq p$. Ribet's theorem needs it, and this collection does not prove it.
+      </div>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The four hypotheses, assembled</h3>
+      <p>Essay 25 opens by assuming four things. Three are now established, and the fourth is elsewhere:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Hypothesis</th><th>Status</th><th>From</th></tr></thead>
+          <tbody>
+            <tr><td>$\bar\rho$ continuous, odd</td><td>proved</td><td>essay 10, for every curve at once</td></tr>
+            <tr><td>$\bar\rho$ irreducible</td><td>proved for $p\gt7$; and for $p=5,7$ outside the residual cases</td><td>Mazur via essay 10; the $E[2]$ argument above</td></tr>
+            <tr><td>$\bar\rho$ finite at $p$</td><td>stated</td><td>this essay</td></tr>
+            <tr><td>$N(\bar\rho)=2$</td><td><strong>proved</strong></td><td>this essay, from essay 23's valuations</td></tr>
+            <tr><td>$E$ modular of level $\operatorname{rad}(abc)$</td><td>conditional on modularity</td><td>essay 23, via essay 18</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>So the only genuinely deep inputs left in the whole chain are the two named theorems —
+        modularity in essay 18 and level lowering in essay 25 — plus the dimension formula that essay 13
+        owes. Everything local about the Frey curve is now computed.</p>
+
+      <h3>Why the gap Ribet crosses is the size it is</h3>
+      <p>Set the two conductors side by side:</p>
+      <p>$$
+        N_E=\operatorname{rad}(abc),
+        \qquad
+        N(\bar\rho_{E,p})=2.
+      $$</p>
+      <p>The first is a statement about the curve and grows with the solution; the second is a statement
+        about the representation and does not. Modularity, in essay 18, attaches to $E$ a newform of
+        level $N_E$ — useless on its own, because $N_E$ is unknown. Ribet's theorem, in essay 25, says
+        the level can be pushed down to $N(\bar\rho)$. The distance between those two numbers is exactly
+        what level lowering exists to cross, and this essay is where the far side becomes a specific
+        number rather than a hope.</p>
+      <p>And the number is $2$ for a reason worth restating: not because of anything about level $2$,
+        but because $2$ is the one prime whose valuation of $\Delta_{\min}$ escapes being a multiple of
+        $p$ — and it escapes by exactly the $8$ that the minimal model at $2$ removed.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Serre's level recipe.</strong> Andrew Sutherland's MIT 18.783 Fall 2023 Lecture 25,
+        §25.4, gives the optimal level of an irreducible mod-residual-prime representation attached to a
+        semistable curve as the product of the primes whose $\Delta_{\min}$-valuation is not divisible by
+        the residual prime, and applies it to the Frey curve to obtain level $2$. Its letters are the
+        reverse of this collection's — it writes $\ell$ for the residual prime and $p$ for auxiliary
+        ones — so the formula must be transcribed with the roles swapped, as it is above.</p>
+      <p><strong>Ramification of the Frey representation.</strong> Darmon, Diamond and Taylor's survey
+        <em>Fermat's Last Theorem</em>, p. 8, records that the ramification of the division field is
+        restricted to $2$ and the exponent, with the precise statement at their theorem 2.15 in §2.2;
+        their p. 9 records that Mazur's theorem gives irreducibility for exponent greater than $7$ using
+        semistability.</p>
+      <p><strong>Mazur's exceptional list.</strong> The same Lecture 25, §25.4, states that no elliptic
+        curve over $\mathbb{Q}$ admits a rational isogeny of prime degree outside
+        $\{2,3,5,7,11,13,17,19,37,43,67,163\}$, of which $19$, $43$, $67$ and $163$ require complex
+        multiplication.</p>
+      <p><strong>Further reference.</strong> Silverman's <em>The Arithmetic of Elliptic Curves</em>
+        treats the Tate curve and the local structure at a prime of multiplicative reduction, which is
+        what the ramification criterion rests on.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/frey_conductor.py</code>. It evaluates
+        Serre's recipe symbolically over many exponents and valuation patterns and confirms the product
+        is always exactly $2$; asserts that $p\nmid8$ is what makes $2$ survive; and then computes the
+        irreducibility witnesses by enumerating <em>every</em> $a_\ell$ that full rational $E[2]$ and the
+        Hasse bound permit, rather than sampling curves — confirming $\ell=3,7$ for $p=5$ and
+        $\ell=5,17$ for $p=7$, that no further uniform witness exists below $400$, and hence the exact
+        residual cases $21\mid abc$ and $85\mid abc$.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="24-frey-representation">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              <span class="ledger-dep">conditional on the multiplicative ramification criterion</span>
+              $N(\bar\rho_{E,p})=2$: every odd bad prime has $v_\ell(\Delta_{\min})=2p\,v_\ell(abc)$, a
+              multiple of $p$, while $v_2=2p\,v_2(b)-8\equiv-8\not\equiv0$ since $p\nmid8$
+              <span class="lref">(L17)</span></li>
+            <li data-proof-id="24-small-exponent-narrowing">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              Full rational $E[2]$ plus Hasse forces $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$,
+              $a_{17}\in\{\pm2,\pm6\}$, and each makes $a_\ell^2-4\ell$ a non-square — so $\bar\rho$ is
+              irreducible for $p=5$ unless $21\mid abc$, and for $p=7$ unless $85\mid abc$</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="24-multiplicative-ramification">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              At a multiplicative prime $\ell\neq p$, $\bar\rho_{E,p}$ is unramified exactly when
+              $p\mid v_\ell(\Delta_{\min})$, and is tame with $n_\ell=1$ otherwise — Serre's level
+              recipe in the semistable case</li>
+            <li data-proof-id="24-finite-at-p">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $\bar\rho_{E,p}$ is finite at $p$, arising from a finite flat group scheme over
+              $\mathbb{Z}_p$ — a condition at $p$ itself, which Ribet's theorem requires</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
+            <li>Fermat for $n=5$ when $21\mid abc$, and $n=7$ when $85\mid abc$ — narrowed above, still
+              external <span class="lref">(essay 25)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 11–15)</span></li>
+            <li>Eichler–Shimura, and the essays that state modularity
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="23-semistable-and-modular.html"><span class="dir">← Previous written essay</span> 23 · Semistable, and therefore modular</a>
+      <a class="next" href="25-ribet-and-the-end.html"><span class="dir">Next written essay →</span> 25 · Ribet, and the end</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 24 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/863063c"><code>863063c</code></a> · 2026-07-26 17:50 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

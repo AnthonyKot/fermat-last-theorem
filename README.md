@@ -24,7 +24,7 @@ python3 -m http.server 8000
 
 ## Status
 
-Scaffold and the full 25-essay map are complete. Thirteen essays are written — the two ends of the rope,
+Scaffold and the full 25-essay map are complete. Fourteen essays are written — the two ends of the rope,
 the valuation, the elliptic-curve bridge as far as the conductor, and the semistability check:
 
 | # | Essay | What it delivers |
@@ -41,12 +41,13 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 | 10 | The representation attached to a curve | $\rho_{E,\ell}$ from the Tate module; $\det=\chi_\ell$ so every $\bar\rho$ is odd; reducible $\iff$ a rational subgroup |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
+| 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; small-exponent dependency narrowed |
 | 25 | Ribet, and the end | Level lowering stated; the level-2 arithmetic computed; the contradiction assembled conditionally |
 
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 11–21 and 24 are stubbed on
+valuation to link back to rather than a declared debt. Essays 11–21 are stubbed on
 the contents page, and essay 25 states plainly that it is conditional until they exist.
 
 ## Verification
@@ -87,6 +88,9 @@ net — a checked page reference — is unavailable. Two substitutes carry it in
   - `galois.py` — cyclotomic polynomials built from scratch, $\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})$
     as a multiplication table, and the Frobenius claim tested the only way it can be: the least $d$ with
     $x^{\ell^d}=x$ in $\mathbb{F}_\ell[x]/\Phi_n$ equals the multiplicative order of $\ell$ mod $n$.
+  - `frey_conductor.py` — Serre's level recipe evaluated symbolically over many exponents and valuation
+    patterns, always yielding exactly $\{2\}$; and the irreducibility witnesses computed by enumerating
+    every $a_\ell$ the constraints permit, giving $\ell=3,7$ for $p=5$ and $\ell=5,17$ for $p=7$.
   - `frey_irreducibility.py` — progress on the collection's open question. Rational $E[2]$ forces
     $4 \mid \#E(\mathbb{F}_\ell)$, which with Hasse pins $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$;
     since reducibility would force $a_\ell^2-4\ell$ to be a square mod $p$, each pinned value is a

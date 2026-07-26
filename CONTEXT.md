@@ -407,7 +407,7 @@ the stamp.
   $G_{\mathbb{Q}}\to\mathrm{GL}_2(\mathbb{Z}/\ell^n)$ is determined at a finite level, while $\rho$
   itself need not be. *Finite level on each layer, not finite overall.* Essay 05 states it in that
   form and points at the single-layer case as the reason $\bar\rho$ is easier.
-- **Writing order from here: 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
+- **Writing order from here: then 11 → 12 → 13, then 14 → 15 → 16 → 18,
   then 17, 19–21 and 02's second case.** This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
   until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
@@ -554,6 +554,11 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
    correctly refuse to let a chain result rest on them — they would need promoting, exactly as
    `07-uniformization` did.
 
+   **Essay 24 narrowed it, and the narrowing is now shipped.** Enumerating *every* $a_\ell$ that full
+   rational $E[2]$ and Hasse permit — not sampling curves — the uniform witnesses are $\ell=3,7$ for
+   $p=5$ and $\ell=5,17$ for $p=7$, with none others below 400. A witness works when it does not divide
+   $abc$, so the classical dependency shrinks from *all of* $n=5,7$ to the residual cases
+   $21\mid abc$ and $85\mid abc$. `25-small-exponents` stays, with that scope.
    **So the dependency stays declared.** An *undeclared* dependency is the failure mode; a
    conservatively *declared* one costs one line on About and can be deleted the moment a real citation
    appears. Do not write p ≥ 5 before then. To close it: get Mazur 1978 itself, or any paper stating
@@ -618,9 +623,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 22, 23, 25 — the two ends of the rope, the valuation, the
+**Written:** 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 22, 23, 24, 25 — the two ends of the rope, the valuation, the
 elliptic-curve bridge through the representation, and the semistability check.
-**Unwritten:** 11–21, 24.
+**Unwritten:** 11–21 — Part III, Part IV and Part V.
 
 ⚠ **Essay 10 was written before 03 and 05, and it is the first essay whose declared debts are its own
 vocabulary rather than peripheral.** It uses $G_{\mathbb{Q}}$ only as a group of field automorphisms,

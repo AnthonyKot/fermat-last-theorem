@@ -37,7 +37,7 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>18</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>20</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
         <li>Frobenius elements at unramified primes, as a conjugacy class <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
@@ -56,6 +56,8 @@
         <li>Newform theory, and the level of a newform <span class="scope-essays">(essay 15)</span> <span class="roster-planned">not yet written</span></li>
         <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
         <li>The Modularity Theorem, semistable case <span class="scope-essays">(essay 18)</span> <span class="roster-planned">not yet written</span></li>
+        <li>Ramification at a multiplicative prime: unramified iff $p\mid v_\ell(\Delta_{\min})$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
+        <li>$\bar\rho_{E,p}$ is finite at $p$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
         <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
         <li>Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
       </ul>
@@ -81,7 +83,7 @@
           <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 · <strong>assumed 14&nbsp;&rarr;&nbsp;13</strong><br>The depends_on state was added, so a proof conditional on an assumption made elsewhere is no longer filed as a second assumption. The assumption count therefore changed meaning: it now counts ROOT imports, not every record resting on one. A better metric, and a different one.</li>
         </ul>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 13 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 12 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -268,6 +270,16 @@
           <span class="scope-role scope-role--background">Background</span>
           What each normalisation buys: $A\equiv-1\pmod4$ and $16\mid B$ give integrality of the minimal model, while the extra factor of $2$ in $32\mid B$ is what makes $2$ a bad prime and puts it in the conductor. <span class="scope-essays">(<a href="chapters/23-semistable-and-modular.html">essay 23</a>)</span>
        </li>
+        <li data-proof-id="24-frey-representation">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span> <span class="scope-dep">conditional on: Ramification at a multiplicative prime: unramified iff $p\mid v_\ell(\Delta_{\min})$</span>
+          $N(\bar\rho_{E,p})=2$. At an odd bad prime $v_\ell(\Delta_{\min})=2p\,v_\ell(abc)$ is a multiple of $p$, so the prime drops out of the conductor; at $2$, $v_2=2p\,v_2(b)-8\equiv-8\not\equiv0$ because $p\nmid8$, so $2$ survives, tamely, with $n_2=1$. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
+       </li>
+        <li data-proof-id="24-small-exponent-narrowing">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          Full rational $E[2]$ forces $4\mid\#\tilde E(\mathbb{F}_\ell)$, and with Hasse this pins $a_3=0$, $a_5=\pm2$, $a_7\in\{0,\pm4\}$, $a_{17}\in\{\pm2,\pm6\}$. Each makes $a_\ell^2-4\ell$ a non-square modulo $p$, proving irreducibility when the witness prime has good reduction -- so $\bar\rho$ is irreducible for $p=5$ unless $21\mid abc$ and for $p=7$ unless $85\mid abc$. Derived here, not sourced; no further uniform witness exists below 400. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
+       </li>
       </ul>
 
    <h3>Explicitly assumed, not proved here</h3>
@@ -328,6 +340,16 @@
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Mazur's isogeny theorem -- no curve over $\mathbb{Q}$ has a rational subgroup of prime order $\ell$ outside $\{2,3,5,7,11,13,17,19,37,43,67,163\}$, collapsing to $\ell\leq7$ for semistable curves -- and the Néron--Ogg--Shafarevich criterion that $\rho_{E,p}$ is unramified at $\ell\neq p$ exactly when $E$ has good reduction there. <span class="scope-essays">(<a href="chapters/10-elliptic-representation.html">essay 10</a>)</span>
+       </li>
+        <li data-proof-id="24-multiplicative-ramification">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          At a prime $\ell\neq p$ of multiplicative reduction, $\bar\rho_{E,p}$ is unramified exactly when $p$ divides $v_\ell(\Delta_{\min})$, and is otherwise tamely ramified with $n_\ell=1$. This is Serre's level recipe in the semistable case, and it is what converts essay 23's valuations into ramification data. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
+       </li>
+        <li data-proof-id="24-finite-at-p">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          $\bar\rho_{E,p}$ arises from a finite flat group scheme over $\mathbb{Z}_p$ -- a condition at $p$ itself, separate from the primes $\ell\neq p$, and required by Ribet's theorem. <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span>
        </li>
         <li data-proof-id="25-ribet">
           <span class="scope-mode scope-mode--stated">Assumed</span>
@@ -394,11 +416,6 @@
           <span class="scope-mode scope-mode--stated">To assume</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The Modularity Theorem will be stated, not proved. <span class="scope-essays">(essay 18)</span>
-       </li>
-        <li data-proof-id="24-frey-representation">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          The conductor of the Frey curve's mod $p$ representation will be established, with the irreducibility threshold handled explicitly. <span class="scope-essays">(essay 24)</span>
        </li>
         <li data-proof-id="25-contradiction">
           <span class="scope-mode scope-mode--conditional">Conditional</span>
@@ -590,6 +607,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/2f902c6"><code>2f902c6</code></a> · 2026-07-26 17:40 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/863063c"><code>863063c</code></a> · 2026-07-26 17:50 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
