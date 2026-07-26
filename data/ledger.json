@@ -8,7 +8,8 @@
       "10-local-theorems",
       "16-eichler-shimura",
       "18-modularity",
-      "25-ribet"
+      "25-ribet",
+      "25-small-exponents"
     ]
   },
   "proof_register": [
@@ -70,7 +71,8 @@
       "essays": [
         2
       ],
-      "text": "Kummer's regular-prime criterion and his theorem for regular prime exponents are stated."
+      "text": "Kummer's regular-prime criterion and his theorem for regular prime exponents are stated.",
+      "short": "Kummer's regular-prime criterion"
     },
     {
       "id": "04-valuation",
@@ -130,7 +132,8 @@
       "essays": [
         4
       ],
-      "text": "$\\mathbb{Q}_\\ell$ exists as the completion of $\\mathbb{Q}$ for $|\\cdot|_\\ell$, is a field, and contains $\\mathbb{Q}$ as a dense subfield."
+      "text": "$\\mathbb{Q}_\\ell$ exists as the completion of $\\mathbb{Q}$ for $|\\cdot|_\\ell$, is a field, and contains $\\mathbb{Q}$ as a dense subfield.",
+      "short": "$\\mathbb{Q}_\\ell$ exists as the completion of $\\mathbb{Q}$"
     },
     {
       "id": "04-inverse-limit",
@@ -140,7 +143,8 @@
       "essays": [
         4
       ],
-      "text": "The metric and congruence constructions agree: $\\mathbb{Z}_\\ell\\cong\\varprojlim\\mathbb{Z}/\\ell^n\\mathbb{Z}$."
+      "text": "The metric and congruence constructions agree: $\\mathbb{Z}_\\ell\\cong\\varprojlim\\mathbb{Z}/\\ell^n\\mathbb{Z}$.",
+      "short": "$\\mathbb{Z}_\\ell\\cong\\varprojlim\\mathbb{Z}/\\ell^n\\mathbb{Z}$"
     },
     {
       "id": "06-weierstrass-definition",
@@ -150,7 +154,8 @@
       "essays": [
         6
       ],
-      "text": "The genus-one characterization and existence of a general Weierstrass model are stated; its point at infinity and discriminant are defined; the discriminant criterion for smoothness is stated."
+      "text": "The genus-one characterization and existence of a general Weierstrass model are stated; its point at infinity and discriminant are defined; the discriminant criterion for smoothness is stated.",
+      "short": "A genus-one curve has a Weierstrass model, and $\\Delta\\neq0$ is smoothness"
     },
     {
       "id": "06-integral-model-example",
@@ -190,7 +195,8 @@
       "essays": [
         7
       ],
-      "text": "Associativity of chord-and-tangent addition, and hence the full abelian-group theorem for $E(\\mathbb{Q})$, is stated rather than proved."
+      "text": "Associativity of chord-and-tangent addition, and hence the full abelian-group theorem for $E(\\mathbb{Q})$, is stated rather than proved.",
+      "short": "Associativity of the chord-and-tangent group law"
     },
     {
       "id": "07-uniformization",
@@ -200,7 +206,8 @@
       "essays": [
         7
       ],
-      "text": "Complex uniformization $E(\\mathbb{C})\\cong\\mathbb{C}/\\Lambda$ is stated, not proved."
+      "text": "Complex uniformization $E(\\mathbb{C})\\cong\\mathbb{C}/\\Lambda$ is stated, not proved.",
+      "short": "Complex uniformization $E(\\mathbb{C})\\cong\\mathbb{C}/\\Lambda$"
     },
     {
       "id": "08-bad-primes",
@@ -250,7 +257,8 @@
       "essays": [
         8
       ],
-      "text": "Every elliptic curve over $\\mathbb{Q}$ has a global minimal model. The FLT chain does not need this in general: essay 23 exhibits the Frey curve's minimal model and must prove that model minimal."
+      "text": "Every elliptic curve over $\\mathbb{Q}$ has a global minimal model. The FLT chain does not need this in general: essay 23 exhibits the Frey curve's minimal model and must prove that model minimal.",
+      "short": "Global minimal models exist over $\\mathbb{Q}$"
     },
     {
       "id": "08-conductor-multiplicative",
@@ -260,7 +268,8 @@
       "essays": [
         8
       ],
-      "text": "At a prime of multiplicative reduction the conductor exponent is $f_\\ell=1$. This is the only conductor exponent the Fermat argument uses, because the Frey curve is semistable."
+      "text": "At a prime of multiplicative reduction the conductor exponent is $f_\\ell=1$. This is the only conductor exponent the Fermat argument uses, because the Frey curve is semistable.",
+      "short": "Conductor exponent $f_\\ell=1$ at a multiplicative prime"
     },
     {
       "id": "08-conductor-additive",
@@ -270,7 +279,8 @@
       "essays": [
         8
       ],
-      "text": "At an additive prime $f_\\ell\\geq2$, with equality for $\\ell>3$, and the primes $2$ and $3$ permit larger exponents."
+      "text": "At an additive prime $f_\\ell\\geq2$, with equality for $\\ell>3$, and the primes $2$ and $3$ permit larger exponents.",
+      "short": "Conductor exponents at additive primes"
     },
     {
       "id": "08-hasse",
@@ -280,7 +290,8 @@
       "essays": [
         8
       ],
-      "text": "The Hasse bound $|a_\\ell|\\leq2\\sqrt{\\ell}$."
+      "text": "The Hasse bound $|a_\\ell|\\leq2\\sqrt{\\ell}$.",
+      "short": "The Hasse bound $|a_\\ell|\\leq2\\sqrt{\\ell}$"
     },
     {
       "id": "08-torsion-injects",
@@ -290,7 +301,8 @@
       "essays": [
         8
       ],
-      "text": "Reduction at a good prime is injective on torsion of order coprime to $\\ell$, which is why $5$ divides every point count of the conductor-$11$ curve."
+      "text": "Reduction at a good prime is injective on torsion of order coprime to $\\ell$, which is why $5$ divides every point count of the conductor-$11$ curve.",
+      "short": "Torsion injects under good reduction"
     },
     {
       "id": "22-frey-construction",
@@ -320,7 +332,19 @@
       "essays": [
         25
       ],
-      "text": "Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument."
+      "text": "Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument.",
+      "short": "Ribet's level-lowering theorem"
+    },
+    {
+      "id": "25-small-exponents",
+      "register": "stated",
+      "availability": "available",
+      "role": "required_for_flt",
+      "essays": [
+        25
+      ],
+      "short": "Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection",
+      "text": "The Frey-curve route needs $\\bar\\rho$ irreducible, which Mazur's isogeny theorem supplies only outside a finite exceptional set containing $5$ and $7$. The exponents $5$ and $7$ are therefore handled by classical work outside this collection \u2014 Dirichlet and Legendre in 1825, Lam\u00e9 in 1839 \u2014 and that dependency is recorded here rather than left implicit."
     },
     {
       "id": "25-level-two",
@@ -350,7 +374,8 @@
       "essays": [
         10
       ],
-      "text": "Mazur's isogeny theorem and the N\u00e9ron\u2013Ogg\u2013Shafarevich criterion will be stated with their hypotheses."
+      "text": "Mazur's isogeny theorem and the N\u00e9ron\u2013Ogg\u2013Shafarevich criterion will be stated with their hypotheses.",
+      "short": "Mazur's isogeny theorem, and N\u00e9ron\u2013Ogg\u2013Shafarevich"
     },
     {
       "id": "13-dimension-formula",
@@ -370,7 +395,8 @@
       "essays": [
         16
       ],
-      "text": "Eichler\u2013Shimura will be stated, not proved."
+      "text": "Eichler\u2013Shimura will be stated, not proved.",
+      "short": "Eichler\u2013Shimura"
     },
     {
       "id": "18-modularity",
@@ -380,7 +406,8 @@
       "essays": [
         18
       ],
-      "text": "The Modularity Theorem will be stated, not proved."
+      "text": "The Modularity Theorem will be stated, not proved.",
+      "short": "The Modularity Theorem, semistable case"
     },
     {
       "id": "19-21-wiles",
@@ -402,7 +429,8 @@
       "essays": [
         21
       ],
-      "text": "Langlands\u2013Tunnell will be stated, not proved."
+      "text": "Langlands\u2013Tunnell will be stated, not proved.",
+      "short": "Langlands\u2013Tunnell"
     },
     {
       "id": "23-frey-minimal-model",

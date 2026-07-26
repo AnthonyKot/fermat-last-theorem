@@ -351,3 +351,8 @@ img, svg { max-width: 100%; }
 .scope-counts .scope-headline strong { color: var(--accent); font-size: 1.15em; }
 .scope-counts .scope-note { margin: 0 0 .8rem; font-size: .92rem; color: var(--muted); }
 .scope-counts .scope-note:last-child { margin-bottom: 0; }
+.scope-counts .scope-roster { margin: .1rem 0 1rem 0; padding-left: 1.1rem; list-style: none; }
+.scope-counts .scope-roster li { position: relative; margin: .3rem 0; font-size: .95rem; }
+.scope-counts .scope-roster li::before { content: "·"; position: absolute; left: -.9rem;
+  color: var(--accent); font-weight: 700; }
+.roster-planned { font-size: .82em; color: var(--muted); font-style: italic; }

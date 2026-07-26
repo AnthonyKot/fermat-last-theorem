@@ -89,6 +89,11 @@ def load_register() -> tuple[list[dict], dict]:
             raise ValueError(f"unknown availability for {item['id']}: {item['availability']}")
         if item["role"] not in ROLE_LABELS:
             raise ValueError(f"unknown role for {item['id']}: {item['role']}")
+        # Every assumption must be publishable by name, not merely counted: a
+        # reader who sees the roster can argue with the classification, while a
+        # reader who sees only a number can do nothing but trust it.
+        if item["register"] == "stated" and not item.get("short"):
+            raise ValueError(f"{item['id']} is a stated record and needs a 'short' label for the roster")
         if not item["essays"] or not all(isinstance(n, int) and 1 <= n <= 25 for n in item["essays"]):
             raise ValueError(f"invalid essay list for {item['id']}")
         if item["availability"] == "available":
@@ -209,6 +214,19 @@ def render_items(items: list[dict]) -> list[str]:
     return lines
 
 
+def render_roster(items: list[dict]) -> list[str]:
+    """Name every assumption in a count, so the classification can be argued with."""
+    lines = ['      <ul class="scope-roster">']
+    for item in items:
+        pending = "" if item["availability"] == "available" else ' <span class="roster-planned">not yet written</span>'
+        lines.append(
+            f'        <li>{html.escape(item["short"], quote=False)}'
+            f' <span class="scope-essays">({essay_refs(item["essays"])})</span>{pending}</li>'
+        )
+    lines.append("      </ul>")
+    return lines
+
+
 def render_block(items: list[dict], policy: dict) -> str:
     accepted_ids = set(policy["accepted_assumption_ids"])
     proved = [
@@ -253,11 +271,21 @@ def render_block(items: list[dict], policy: dict) -> str:
         "adding one is a deliberate edit rather than a side effect. This is the only number against "
         "which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is "
         "defensible.</p>",
+        *render_roster(chain_assumed),
         '      <p class="scope-headline">The exposition additionally assumes '
         f'<strong>{len(bg_assumed)}</strong> background result'
         f'{"" if len(bg_assumed) == 1 else "s"}.</p>',
         '      <p class="scope-note">Stated for orientation, and deliberately kept off the chain.'
         " Doubting any of them leaves the closing argument intact.</p>",
+        *render_roster(bg_assumed),
+        '      <p class="scope-note">Both rosters come from one <code>role</code> field per record, so'
+        " re-classifying an assumption is a one-word edit and the validator immediately re-pins the"
+        " completion policy to match. Three of the calls above are judgements rather than obvious facts,"
+        " and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the"
+        " group law is what defines torsion and reduction, <em>complex uniformization</em> is off it"
+        " because nothing in the closing argument evaluates a lattice, and the <em>discriminant"
+        " criterion</em> is on it because essay 08 reads bad reduction straight off"
+        " $\\Delta_{\\min}$. Essays 09 and 23 may move any of the three.</p>",
         '      <p class="scope-note"><strong>Not yet settled:</strong> '
         f'{n_owed_chain} required item{"" if n_owed_chain == 1 else "s"} remain'
         f'{"s" if n_owed_chain == 1 else ""} owed, listed below. Until that list is empty the'

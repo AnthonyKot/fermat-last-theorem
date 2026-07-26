@@ -400,13 +400,25 @@ These correct the *written plan summary*, which is lossy. Where the video gets i
    closing that gap is its whole function. *The video keeps these distinct.*
 6. **Irreducibility is a theorem, not an observation.** Ribet needs ρ̄ irreducible; Mazur's isogeny
    theorem supplies it. The summary lists "irreducible" as a property one notices.
-7. **The irreducibility threshold is p > 7, not p ≥ 5.** ⚠ Both the plan summary and the video say
-   p ≥ 5. DDT (p. 8–9) is precise: Mazur shows a semistable elliptic curve over Q has no rational
-   cyclic subgroup of order ℓ for **ℓ > 7**, and that is what gives irreducibility of ρ̄_{E,ℓ}. The
-   exponents p = 5 and p = 7 are **not** covered by that route and are instead covered by the
-   nineteenth-century results (Dirichlet and Legendre for 5, Lamé for 7), so the Frey-curve argument
-   proper runs for p ≥ 11. **Do not write "p ≥ 5" into essay 24 without resolving this**, and verify
-   against Mazur 1978 and Ribet 1990 directly before drafting. Flagged, not yet settled.
+7. **The irreducibility threshold — SETTLED (2026-07-26).** Both the plan summary and the video say
+   p ≥ 5, and that is wrong. The correct shape is not a threshold at all: **Mazur's isogeny theorem
+   gives a finite exceptional list.** Sutherland's 18.783 Fall 2023 Lecture 25, §25.4, states that
+   ρ̄_{E,ℓ} is irreducible iff E admits no rational ℓ-isogeny, and that no elliptic curve over Q has
+   one for
+   ℓ ∉ {2, 3, 5, 7, 11, 13, 17, 19, 37, 43, 67, 163}, the last four requiring CM. Two routes close
+   the gap:
+   - **Semistable refinement (DDT p. 8):** for a semistable curve the list collapses to ℓ ≤ 7, so the
+     Frey representation is irreducible for **ℓ > 7** and the argument runs for p ≥ 11. *This is the
+     route the essays take* — tightest, and the Frey curve is semistable anyway.
+   - **Sutherland's route:** take ℓ > 163, legitimate because FLT was known for all exponents ≤ 163.
+     Cheaper in machinery, much more expensive in imported results.
+   Either way **p = 5 and p = 7 are outside the Frey argument**, since both are in Mazur's list. The
+   suggestion that full rational 2-torsion buys p ≥ 5 is **not supported** by either source checked;
+   do not write it without a Tier A citation that states it.
+   **Consequence, now recorded rather than implicit:** the collection depends on classical work it does
+   not contain — Dirichlet and Legendre for n = 5 (1825), Lamé for n = 7 (1839). That is the register
+   record `25-small-exponents`, which is why the chain's assumption count is 8 and not 7. Leaving it
+   out was the one genuinely hidden dependency in the collection.
 8. **Ribet lowers the level at primes ℓ ≠ p.** The condition at p (finite at p, weight 2) is separate
    and must be stated as such. *The video states the full hypotheses.*
 9. **Chronology.** **Frey 1986, following Hellegouarch** (DDT p. 8) — the summary's ~1984 is wrong.
@@ -478,8 +490,25 @@ all written, plus a declared import of modularity from 18.
 
 ### Open items for the next pass
 
-1. **Resolve the p > 7 threshold** (Corrections #7). Essay 25 currently flags it in prose and essay 24
-   must settle it. Verify against Mazur 1978 and Ribet 1990 directly, not via the survey.
+1. ~~Resolve the p > 7 threshold~~ — **done**, see Corrections #7. Mazur gives a finite exceptional
+   list, not a threshold; the essays take the semistable refinement (ℓ > 7, so p ≥ 11); and the
+   dependency on classical n = 5 and n = 7 is now an explicit register record. Essay 24 should cite
+   Lecture 25 §25.4 for the list and DDT p. 8 for the semistable collapse.
+1b. **Sutherland 18.783 Fall 2023 Lecture 25 is the single best source for Part V and essays 24–25**,
+   fetched and logged. Numbered items to use: **theorem 25.2** Ribet in exactly the form the endgame
+   needs; **25.4** Taylor–Wiles (semistable ⟹ modular) in modularity-lifting form; **25.5**
+   Langlands–Tunnell; **25.6** no semistable curve over Q admits a rational 15-isogeny, proved
+   concretely via X₀(15) having 8 rational points of which 4 are non-cuspidal, all of conductor
+   50 = 2·5² and hence not semistable — that is a *provable* essay-21 centrepiece rather than a
+   citation; **25.7** the 3–5 trick; **25.8** the assembled proof; **conjecture 25.1** Serre's
+   modularity conjecture, proved by Khare–Wintenberger in 2008. Also **Serre's optimal level recipe**:
+   N(ρ̄_{E,ℓ}) is the product of primes p with v_p(Δ_min) ≢ 0 mod ℓ. For the Frey curve
+   Δ_min = 2^{-8}(abc)^{2ℓ}, so every odd bad prime has v_p ≡ 0 mod ℓ and drops out, leaving level 2.
+   **That is the mechanism essay 24 owes** — currently 24 plans to assert conductor 2 via
+   Néron–Ogg–Shafarevich; this recipe explains *why* it is 2.
+1c. **Lecture 25 §25.2 prints Δ(E_{a,b,c}) = −16(abc)^{2ℓ}; the sign is wrong.** Δ = 16∏(eᵢ−eⱼ)²,
+   a positive multiple of a square. Verified three ways (see `SOURCES.md`). Essay 22 keeps
+   +16(abc)^{2p}. Do not "correct" the essay to match the source.
 2. **Part V is unblocked** — DDT is fetched. Its citable structure so far: §1.2 and §1.5 (modular
    curves), §1.8 (Shimura–Taniyama), theorem 2.15 in §2.2 (ramification of the Frey representation),
    §3.2 (Serre's conjectures). Read the chapter openings for the deformation-theory and R = T sections

@@ -62,13 +62,30 @@
           $\mathrm{SL}_2(\mathbb{Z})$ and $\nu_2, \nu_3, \nu_\infty$ count elliptic points of order two
           and three and cusps. <span class="lref">essay 13</span></li>
       </ul>
-      <p>One caveat on (B), because it is the hypothesis most often stated loosely. Irreducibility comes
-        from Mazur's theorem that a semistable elliptic curve over $\mathbb{Q}$ has no rational cyclic
-        subgroup of order $\ell$ for $\ell \gt 7$. That threshold is $7$, not $5$. The exponents $p = 5$
-        and $p = 7$ are therefore not covered by this route — they are covered instead by the classical
-        nineteenth-century results, so the argument of this essay runs for $p \geq 11$ and the two small
-        primes are handled separately. Essay 24 must settle this precisely; here it is flagged rather
-        than glossed.</p>
+      <p>One caveat on (B), because it is the hypothesis most often stated loosely, and it is worth
+        stating exactly what the threshold is and where it comes from. The mod $p$ representation
+        $\bar\rho_{E,p}$ is irreducible precisely when $E$ admits no rational $p$-isogeny, and
+        <strong>Mazur's isogeny theorem does not give a threshold — it gives a finite exceptional
+        list</strong>:</p>
+      <p>$$ p\in\{2,3,5,7,11,13,17,19,37,43,67,163\}, $$</p>
+      <p>outside which no elliptic curve over $\mathbb{Q}$ has a rational $p$-isogeny at all, the last
+        four requiring complex multiplication. Two routes then close the gap, and they cost different
+        things.</p>
+      <ul>
+        <li>Use semistability. For a semistable curve the list collapses to $p \leq 7$, so the Frey
+          curve's representation is irreducible for $p \gt 7$ and the argument here runs for
+          $p \geq 11$. This is the route taken below.</li>
+        <li>Avoid the refinement, and simply take $p \gt 163$ — legitimate because Fermat's Last
+          Theorem was already known for every exponent up to $163$ long before Wiles. Cheaper in
+          machinery, far more expensive in imported results.</li>
+      </ul>
+      <p>Either way the exponents $p = 5$ and $p = 7$ fall outside the Frey-curve argument, because both
+        sit in Mazur's exceptional list. They are covered by classical work that this collection does
+        <em>not</em> contain: Dirichlet and Legendre completed $n=5$ in 1825, and Lamé addressed $n=7$
+        in 1839. Neither appears among the twenty-five essays, so <strong>that dependency is now
+        recorded in the ledger as an assumed input rather than left implicit</strong> — which is the
+        honest bookkeeping, since a reader entitled to ask what this proof rests on is entitled to be
+        told about two exponents handed off elsewhere.</p>
       <p>The four inputs above close the modular argument. The collection's claim to a proof of the
         full theorem has one further debt: essay 02 currently outlines rather than proves the
         second-case descent for $n=3$. The classical cases $p=5$ and $p=7$ are likewise external to
@@ -230,6 +247,12 @@
               <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
               Ribet's level-lowering theorem, stated with hypotheses
               <span class="lref">(L18)</span></li>
+            <li data-proof-id="25-small-exponents">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Fermat's Last Theorem for $n=5$ and $n=7$ — both sit inside Mazur's exceptional list, so
+              the Frey-curve route cannot reach them. Dirichlet and Legendre, 1825; Lamé, 1839. No
+              essay here proves either
           </ul>
         </div>
         <div class="col owed">

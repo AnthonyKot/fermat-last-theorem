@@ -37,10 +37,32 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>7</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>8</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
+      <ul class="scope-roster">
+        <li>A genus-one curve has a Weierstrass model, and $\Delta\neq0$ is smoothness <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span></li>
+        <li>Associativity of the chord-and-tangent group law <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
+        <li>Conductor exponent $f_\ell=1$ at a multiplicative prime <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
+        <li>Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
+        <li>Mazur's isogeny theorem, and Néron–Ogg–Shafarevich <span class="scope-essays">(essay 10)</span> <span class="roster-planned">not yet written</span></li>
+        <li>Eichler–Shimura <span class="scope-essays">(essay 16)</span> <span class="roster-planned">not yet written</span></li>
+        <li>The Modularity Theorem, semistable case <span class="scope-essays">(essay 18)</span> <span class="roster-planned">not yet written</span></li>
+      </ul>
       <p class="scope-headline">The exposition additionally assumes <strong>9</strong> background results.</p>
       <p class="scope-note">Stated for orientation, and deliberately kept off the chain. Doubting any of them leaves the closing argument intact.</p>
+      <ul class="scope-roster">
+        <li>Kummer's regular-prime criterion <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span></li>
+        <li>$\mathbb{Q}_\ell$ exists as the completion of $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span></li>
+        <li>$\mathbb{Z}_\ell\cong\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$ <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span></li>
+        <li>Complex uniformization $E(\mathbb{C})\cong\mathbb{C}/\Lambda$ <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
+        <li>Global minimal models exist over $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>Conductor exponents at additive primes <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>The Hasse bound $|a_\ell|\leq2\sqrt{\ell}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>Torsion injects under good reduction <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
+      </ul>
+      <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
       <p class="scope-note"><strong>Not yet settled:</strong> 10 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
@@ -163,6 +185,11 @@
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
+       </li>
+        <li data-proof-id="25-small-exponents">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Frey-curve route needs $\bar\rho$ irreducible, which Mazur's isogeny theorem supplies only outside a finite exceptional set containing $5$ and $7$. The exponents $5$ and $7$ are therefore handled by classical work outside this collection — Dirichlet and Legendre in 1825, Lamé in 1839 — and that dependency is recorded here rather than left implicit. <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span>
        </li>
       </ul>
 
