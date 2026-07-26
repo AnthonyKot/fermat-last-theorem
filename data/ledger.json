@@ -4,8 +4,7 @@
     "accepted_assumption_ids": [
       "06-weierstrass-definition",
       "07-associativity",
-      "08-minimal-model",
-      "08-conductor-exponents",
+      "08-conductor-multiplicative",
       "10-local-theorems",
       "16-eichler-shimura",
       "18-modularity",
@@ -18,7 +17,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [1],
+      "essays": [
+        1
+      ],
       "text": "$x^4+y^4=z^2$ has no solution in positive integers, and therefore Fermat's Last Theorem holds for $n=4$."
     },
     {
@@ -26,7 +27,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [1],
+      "essays": [
+        1
+      ],
       "text": "A counterexample at any exponent $n\\geq3$ would give one at exponent $4$ or at an odd prime exponent."
     },
     {
@@ -34,7 +37,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [2],
+      "essays": [
+        2
+      ],
       "text": "The first case of Fermat's Last Theorem for $n=3$ is ruled out in the Eisenstein integers."
     },
     {
@@ -42,7 +47,9 @@
       "register": "outlined",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [2],
+      "essays": [
+        2
+      ],
       "text": "The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed."
     },
     {
@@ -50,7 +57,9 @@
       "register": "proved",
       "availability": "available",
       "role": "background",
-      "essays": [2],
+      "essays": [
+        2
+      ],
       "text": "Unique factorisation is shown to fail by an explicit double factorisation in $\\mathbb{Z}[\\sqrt{-5}]$."
     },
     {
@@ -58,7 +67,9 @@
       "register": "stated",
       "availability": "available",
       "role": "background",
-      "essays": [2],
+      "essays": [
+        2
+      ],
       "text": "Kummer's regular-prime criterion and his theorem for regular prime exponents are stated."
     },
     {
@@ -66,7 +77,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [4],
+      "essays": [
+        4
+      ],
       "text": "The valuation $v_\\ell$ is additive on products and ultrametric on sums, with equality when the valuations differ, and $|\\cdot|_\\ell$ is multiplicative and non-archimedean."
     },
     {
@@ -74,7 +87,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [4],
+      "essays": [
+        4
+      ],
       "text": "$\\mathbb{Z}_\\ell$ is a ring whose units are the elements of valuation $0$, with the single maximal ideal $\\ell\\mathbb{Z}_\\ell$, and every element has a unique digit expansion."
     },
     {
@@ -82,7 +97,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [4],
+      "essays": [
+        4
+      ],
       "text": "Free modules over $\\mathbb{Z}_\\ell$ have well-defined rank, and a matrix lies in $\\mathrm{GL}_2(\\mathbb{Z}_\\ell)$ exactly when its determinant has valuation $0$."
     },
     {
@@ -90,7 +107,9 @@
       "register": "proved",
       "availability": "available",
       "role": "background",
-      "essays": [4],
+      "essays": [
+        4
+      ],
       "text": "Essay 01's step that coprime factors of a perfect power are themselves powers is proved once, for every exponent, as a statement about valuations."
     },
     {
@@ -98,7 +117,9 @@
       "register": "stated",
       "availability": "available",
       "role": "background",
-      "essays": [4],
+      "essays": [
+        4
+      ],
       "text": "$\\mathbb{Q}_\\ell$ exists as the completion of $\\mathbb{Q}$ for $|\\cdot|_\\ell$, is a field, and contains $\\mathbb{Q}$ as a dense subfield."
     },
     {
@@ -106,7 +127,9 @@
       "register": "stated",
       "availability": "available",
       "role": "background",
-      "essays": [4],
+      "essays": [
+        4
+      ],
       "text": "The metric and congruence constructions agree: $\\mathbb{Z}_\\ell\\cong\\varprojlim\\mathbb{Z}/\\ell^n\\mathbb{Z}$."
     },
     {
@@ -114,7 +137,9 @@
       "register": "stated",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [6],
+      "essays": [
+        6
+      ],
       "text": "The genus-one characterization and existence of a general Weierstrass model are stated; its point at infinity and discriminant are defined; the discriminant criterion for smoothness is stated."
     },
     {
@@ -122,7 +147,9 @@
       "register": "proved",
       "availability": "available",
       "role": "background",
-      "essays": [6],
+      "essays": [
+        6
+      ],
       "text": "For $y^2+y=x^3-x^2$, direct calculation gives $\\Delta=-11$ and a short integral model whose discriminant is $6^{12}(-11)$."
     },
     {
@@ -130,7 +157,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [7],
+      "essays": [
+        7
+      ],
       "text": "The chord-and-tangent rule, rational closure and the short-Weierstrass addition formulas are derived."
     },
     {
@@ -138,7 +167,9 @@
       "register": "proved",
       "availability": "available",
       "role": "background",
-      "essays": [7],
+      "essays": [
+        7
+      ],
       "text": "The point $(0,0)$ on $y^2+y=x^3-x^2$ is shown by direct calculation to have order $5$."
     },
     {
@@ -146,7 +177,9 @@
       "register": "stated",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [7],
+      "essays": [
+        7
+      ],
       "text": "Associativity of chord-and-tangent addition, and hence the full abelian-group theorem for $E(\\mathbb{Q})$, is stated rather than proved."
     },
     {
@@ -154,7 +187,9 @@
       "register": "stated",
       "availability": "available",
       "role": "background",
-      "essays": [7],
+      "essays": [
+        7
+      ],
       "text": "Complex uniformization $E(\\mathbb{C})\\cong\\mathbb{C}/\\Lambda$ is stated, not proved."
     },
     {
@@ -162,7 +197,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [8],
+      "essays": [
+        8
+      ],
       "text": "Bad reduction at $\\ell$ holds exactly when $\\ell$ divides $\\Delta_{\\min}$, so there are finitely many bad primes and one valuation computation finds them all."
     },
     {
@@ -170,7 +207,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [8],
+      "essays": [
+        8
+      ],
       "text": "The trichotomy good / multiplicative / additive follows from the tangent directions at the unique singular point of the reduced cubic, and $a_\\ell\\in\\{0,\\pm1\\}$ at a bad prime names the type."
     },
     {
@@ -178,7 +217,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [8],
+      "essays": [
+        8
+      ],
       "text": "Given the conductor exponents, $N_E$ is square-free exactly when $E$ is semistable, and a semistable curve has $N_E=\\operatorname{rad}(\\Delta_{\\min})$."
     },
     {
@@ -186,31 +227,49 @@
       "register": "proved",
       "availability": "available",
       "role": "background",
-      "essays": [8],
+      "essays": [
+        8
+      ],
       "text": "$y^2+y=x^3-x^2$ is semistable of conductor $11$, split multiplicative at $11$ with $a_{11}=1$; $y^2=x^3+1$ is additive at $2$ and $3$, so it is not semistable."
     },
     {
       "id": "08-minimal-model",
       "register": "stated",
       "availability": "available",
-      "role": "required_for_flt",
-      "essays": [8],
-      "text": "Every elliptic curve over $\\mathbb{Q}$ has a global minimal model, so $\\Delta_{\\min}$ is an invariant of the curve rather than of an equation."
+      "role": "background",
+      "essays": [
+        8
+      ],
+      "text": "Every elliptic curve over $\\mathbb{Q}$ has a global minimal model. The FLT chain does not need this in general: essay 23 exhibits the Frey curve's minimal model and must prove that model minimal."
     },
     {
-      "id": "08-conductor-exponents",
+      "id": "08-conductor-multiplicative",
       "register": "stated",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [8],
-      "text": "The conductor exponents: $f_\\ell=1$ at multiplicative primes and $f_\\ell\\geq2$ at additive primes, with equality for $\\ell>3$ and larger exponents permitted at $2$ and $3$."
+      "essays": [
+        8
+      ],
+      "text": "At a prime of multiplicative reduction the conductor exponent is $f_\\ell=1$. This is the only conductor exponent the Fermat argument uses, because the Frey curve is semistable."
+    },
+    {
+      "id": "08-conductor-additive",
+      "register": "stated",
+      "availability": "available",
+      "role": "background",
+      "essays": [
+        8
+      ],
+      "text": "At an additive prime $f_\\ell\\geq2$, with equality for $\\ell>3$, and the primes $2$ and $3$ permit larger exponents."
     },
     {
       "id": "08-hasse",
       "register": "stated",
       "availability": "available",
       "role": "background",
-      "essays": [8],
+      "essays": [
+        8
+      ],
       "text": "The Hasse bound $|a_\\ell|\\leq2\\sqrt{\\ell}$."
     },
     {
@@ -218,7 +277,9 @@
       "register": "stated",
       "availability": "available",
       "role": "background",
-      "essays": [8],
+      "essays": [
+        8
+      ],
       "text": "Reduction at a good prime is injective on torsion of order coprime to $\\ell$, which is why $5$ divides every point count of the conductor-$11$ curve."
     },
     {
@@ -226,7 +287,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [22],
+      "essays": [
+        22
+      ],
       "text": "A normalised hypothetical Fermat solution produces the Frey curve $y^2=x(x-a^p)(x+b^p)$."
     },
     {
@@ -234,7 +297,9 @@
       "register": "proved",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [22],
+      "essays": [
+        22
+      ],
       "text": "The displayed Frey model has discriminant $16(abc)^{2p}$."
     },
     {
@@ -242,7 +307,9 @@
       "register": "stated",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [25],
+      "essays": [
+        25
+      ],
       "text": "Ribet's level-lowering theorem is stated with the hypotheses used by the closing argument."
     },
     {
@@ -250,7 +317,9 @@
       "register": "conditional",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [25],
+      "essays": [
+        25
+      ],
       "text": "The level-$2$ arithmetic is computed, but its dimension formula remains owed by essay 13."
     },
     {
@@ -258,7 +327,9 @@
       "register": "conditional",
       "availability": "available",
       "role": "required_for_flt",
-      "essays": [25],
+      "essays": [
+        25
+      ],
       "text": "The final contradiction is assembled conditionally on the explicit inputs assigned to essays 13, 18, 23 and 24, and the collection's full FLT conclusion also still owes the outlined second case for $n=3$."
     },
     {
@@ -266,15 +337,19 @@
       "register": "stated",
       "availability": "planned",
       "role": "required_for_flt",
-      "essays": [10],
-      "text": "Mazur's isogeny theorem and the Néron–Ogg–Shafarevich criterion will be stated with their hypotheses."
+      "essays": [
+        10
+      ],
+      "text": "Mazur's isogeny theorem and the N\u00e9ron\u2013Ogg\u2013Shafarevich criterion will be stated with their hypotheses."
     },
     {
       "id": "13-dimension-formula",
       "register": "proved",
       "availability": "planned",
       "role": "required_for_flt",
-      "essays": [13],
+      "essays": [
+        13
+      ],
       "text": "The dimension formula for $S_2(\\Gamma_0(N))$ will be derived from the index, elliptic-point counts and cusp count."
     },
     {
@@ -282,15 +357,19 @@
       "register": "stated",
       "availability": "planned",
       "role": "required_for_flt",
-      "essays": [16],
-      "text": "Eichler–Shimura will be stated, not proved."
+      "essays": [
+        16
+      ],
+      "text": "Eichler\u2013Shimura will be stated, not proved."
     },
     {
       "id": "18-modularity",
       "register": "stated",
       "availability": "planned",
       "role": "required_for_flt",
-      "essays": [18],
+      "essays": [
+        18
+      ],
       "text": "The Modularity Theorem will be stated, not proved."
     },
     {
@@ -298,7 +377,11 @@
       "register": "described",
       "availability": "planned",
       "role": "background",
-      "essays": [19, 20, 21],
+      "essays": [
+        19,
+        20,
+        21
+      ],
       "text": "Wiles's deformation-theoretic machinery will be described as an anatomy, not presented as a proof."
     },
     {
@@ -306,15 +389,29 @@
       "register": "stated",
       "availability": "planned",
       "role": "background",
-      "essays": [21],
-      "text": "Langlands–Tunnell will be stated, not proved."
+      "essays": [
+        21
+      ],
+      "text": "Langlands\u2013Tunnell will be stated, not proved."
+    },
+    {
+      "id": "23-frey-minimal-model",
+      "register": "proved",
+      "availability": "planned",
+      "role": "required_for_flt",
+      "essays": [
+        23
+      ],
+      "text": "The model exhibited for the Frey curve at $2$ will be shown to be minimal, so that its reduction types and conductor are invariants of the curve without appealing to the general existence theorem."
     },
     {
       "id": "23-frey-reduction",
       "register": "proved",
       "availability": "planned",
       "role": "required_for_flt",
-      "essays": [23],
+      "essays": [
+        23
+      ],
       "text": "The Frey curve's minimal model, semistability and conductor will be established."
     },
     {
@@ -322,7 +419,9 @@
       "register": "proved",
       "availability": "planned",
       "role": "required_for_flt",
-      "essays": [24],
+      "essays": [
+        24
+      ],
       "text": "The conductor of the Frey curve's mod $p$ representation will be established, with the irreducibility threshold handled explicitly."
     }
   ]

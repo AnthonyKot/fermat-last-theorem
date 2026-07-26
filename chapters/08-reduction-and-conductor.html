@@ -189,6 +189,13 @@
         $f_\ell\geq2$ at primes of additive reduction, where $f_\ell=2$ exactly when $\ell>3$. The
         primes $2$ and $3$ need separate treatment and permit larger exponents. Computing $f_\ell$ in
         general is done by an algorithm, and we do not develop it.
+        <br><br>
+        Only the first of these is load-bearing for Fermat. The Frey curve will turn out to be
+        semistable, so every bad prime is multiplicative and the single fact
+        <strong>$f_\ell=1$ at a multiplicative prime</strong> is all the closing argument consumes. The
+        additive exponents, the $\ell>3$ threshold and the special treatment of $2$ and $3$ are needed
+        only for the contrast curve below, and the ledger records them as background so that the chain's
+        assumption is not broader than what it spends.
       </div>
       <p>Grant those exponents and the criterion we need drops out, because square-freeness is a
         statement about exponents and nothing else:</p>
@@ -363,16 +370,22 @@
         <div class="col assumed-here">
           <h3>Assumed here</h3>
           <ul>
+            <li data-proof-id="08-conductor-multiplicative">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $f_\ell=1$ at a prime of multiplicative reduction — the only conductor exponent the
+              Fermat argument uses, since the Frey curve is semistable</li>
             <li data-proof-id="08-minimal-model">
               <span class="ledger-mode ledger-mode--stated">Assumed</span>
-              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              Every elliptic curve over $\mathbb{Q}$ has a global minimal model, so
-              $\Delta_{\min}$ is an invariant of the curve</li>
-            <li data-proof-id="08-conductor-exponents">
+              <span class="ledger-role ledger-role--background">Background</span>
+              Every elliptic curve over $\mathbb{Q}$ has a global minimal model. The FLT chain does not
+              need this in general: essay 23 exhibits the Frey curve's minimal model and must prove
+              that model minimal</li>
+            <li data-proof-id="08-conductor-additive">
               <span class="ledger-mode ledger-mode--stated">Assumed</span>
-              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              The conductor exponents: $f_\ell=1$ at multiplicative primes, $f_\ell\geq2$ at additive
-              primes with equality for $\ell>3$, and larger exponents permitted at $2$ and $3$</li>
+              <span class="ledger-role ledger-role--background">Background</span>
+              At an additive prime $f_\ell\geq2$, with equality for $\ell>3$, and $2$ and $3$ permit
+              larger exponents — needed for the contrast curve below, not for the Frey curve</li>
             <li data-proof-id="08-hasse">
               <span class="ledger-mode ledger-mode--stated">Assumed</span>
               <span class="ledger-role ledger-role--background">Background</span>

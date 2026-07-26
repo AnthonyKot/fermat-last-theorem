@@ -78,18 +78,54 @@ available record is tied to exactly one essay-ledger item by `data-proof-id`. `a
 from it; never edit the generated block to change scope.
 
 The completion policy names every required result that the collection deliberately imports rather
-than proves. At present those records are:
+than proves. **This list is generated from `data/ledger.json`, so do not maintain it by hand here**
+— it went stale once already. As of the current register the allowlist holds **seven** records:
 
-- the genus-one/Weierstrass characterization and discriminant criterion;
-- associativity of the elliptic-curve group law;
-- Mazur's isogeny theorem and Néron–Ogg–Shafarevich;
-- Eichler–Shimura;
-- the Modularity Theorem;
-- Ribet's level-lowering theorem.
+- the genus-one/Weierstrass characterization and discriminant criterion (06);
+- associativity of the elliptic-curve group law (07);
+- the conductor exponent $f_\ell=1$ at a multiplicative prime (08);
+- Mazur's isogeny theorem and Néron–Ogg–Shafarevich (10);
+- Eichler–Shimura (16);
+- the Modularity Theorem (18);
+- Ribet's level-lowering theorem (25).
 
 They are **stated with their usable hypotheses, not proved**. The validator requires the policy's
 allowlist to equal the required records whose proof mode is `stated`; a new assumption cannot slip in
 without changing the canonical policy.
+
+**Keep the chain's assumptions as narrow as what it spends.** Two entries were deliberately narrowed
+rather than accepted wholesale, and the same test applies to every future one — *does the closing
+argument consume all of this, or only part of it?*
+
+- **The conductor exponents were split.** The Frey curve is semistable, so every bad prime is
+  multiplicative and only $f_\ell=1$ there is load-bearing. The additive exponents, the $\ell>3$
+  threshold and the special treatment of $2$ and $3$ are `background`: essay 08's contrast curve needs
+  them, the chain does not.
+- **Global minimal-model existence was demoted to `background`.** The chain never needs the general
+  theorem; it needs one curve's minimal model. So essay 23 now carries
+  `23-frey-minimal-model` as a *required, planned, proved* record — it must show the model it exhibits
+  at $2$ is minimal. This trades a permanent trust obligation for a dischargeable debt, which is why
+  the required-owed count went up by one when the assumption count went down by one. That direction of
+  trade is always worth making; the reverse never is.
+
+### Assumed and owed are not the same kind of thing
+
+They behave differently on purpose, and the difference must not be smoothed away:
+
+| | *Still owed* | *Assumed here* |
+|---|---|---|
+| Direction | a forward promise | a standing trust obligation |
+| Over the collection | **shrinks**, and must reach empty | **accumulates**, and never empties |
+| Discharged by | a later essay proving it | nothing — it is permanent by construction |
+| Scope shown | per essay, because it changes essay to essay | per essay for what that essay adds |
+| Global view | the release gate in `verify.sh` | the allowlist plus About's generated block |
+
+So **the assumed column does not carry forward, and should not.** Repeating every inherited assumption
+in all eight ledgers would duplicate About's job and grow without bound. But because the set only ever
+grows, the accumulating view is the one that needs teeth, and that is where the allowlist lives: it is
+a hand-edited constant that must exactly equal the required stated records, so adding an assumption is
+always a visible, deliberate edit to the policy. The per-essay column answers *what did this essay ask
+me to take on trust*; the allowlist answers *what does the finished proof rest on*.
 
 The rest of the non-negotiable boundary is:
 
