@@ -619,8 +619,29 @@
       "essays": [
         12
       ],
-      "text": "Weight-$k$ modularity, holomorphy at the cusps, $q$-expansions, and the space $S_2(\\Gamma_0(N))$ of weight-2 cusp forms -- without which the phrase \"a weight-2 newform of level $N$\" is undefined.",
-      "availability": "planned"
+      "text": "Weight-$k$ modularity is consistent because $(cz+d)^k$ satisfies the cocycle identity, and $-I\\in\\Gamma_0(N)$ forces $k$ even; periodicity under $T$ gives the $q$-expansion, and holomorphy at the cusps is $\\nu_\\infty$ separate conditions; $M_k(\\Gamma_0(N))$ and its subspace of cusp forms $S_k(\\Gamma_0(N))$ are defined -- without which \"a weight-2 newform of level $N$\" has no referent.",
+      "availability": "available"
+    },
+    {
+      "id": "12-worked-expansions",
+      "register": "proved",
+      "role": "background",
+      "essays": [
+        12
+      ],
+      "text": "$E_4^3-E_6^2=1728\\Delta$ verified as exact power series; and $(\\eta(z)\\eta(11z))^2$ is normalised with $a_1=1$, has multiplicative coefficients, and matches essay 08's hand-counted $a_\\ell$ at every prime below forty -- including the bad prime $11$, where essay 08 used a different formula entirely.",
+      "availability": "available"
+    },
+    {
+      "id": "12-eta-is-modular",
+      "register": "stated",
+      "role": "background",
+      "essays": [
+        12
+      ],
+      "short": "That $\\Delta$ and $(\\eta(z)\\eta(11z))^2$ are modular of the stated weight and level",
+      "text": "That $\\Delta$ and $(\\eta(z)\\eta(11z))^2$ satisfy the transformation law for weights $12$ and $2$ at levels $1$ and $11$. Their $q$-expansions are computed here; the transformation law itself is not verified.",
+      "availability": "available"
     },
     {
       "id": "13-dimension-formula",

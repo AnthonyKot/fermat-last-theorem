@@ -61,7 +61,7 @@
         <li>$\bar\rho_{E,p}$ is finite at $p$ <span class="scope-essays">(<a href="chapters/24-the-frey-representation.html">essay 24</a>)</span></li>
         <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
       </ul>
-      <p class="scope-headline">The exposition additionally assumes <strong>9</strong> background results.</p>
+      <p class="scope-headline">The exposition additionally assumes <strong>10</strong> background results.</p>
       <p class="scope-note">Stated for orientation, and deliberately kept off the chain. Doubting any of them leaves the closing argument intact.</p>
       <ul class="scope-roster">
         <li>Kummer's regular-prime criterion <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span></li>
@@ -72,6 +72,7 @@
         <li>The Hasse bound $|a_\ell|\leq2\sqrt{\ell}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>Global minimal models exist over $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
         <li>Torsion injects under good reduction <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
+        <li>That $\Delta$ and $(\eta(z)\eta(11z))^2$ are modular of the stated weight and level <span class="scope-essays">(<a href="chapters/12-modular-forms.html">essay 12</a>)</span></li>
         <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
       </ul>
       <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
@@ -104,7 +105,7 @@
         </tbody></table>
         <p class="scope-note">Computed from the register at each commit, not recorded by hand. Owed falls as essays land and rises when the register is made finer; assumed rises when an essay names a new import and falls when one is discharged or narrowed.</p>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 11 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 10 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -271,6 +272,16 @@
           <span class="scope-role scope-role--background">Background</span>
           The index matches brute-force coset counting in $\mathrm{SL}_2(\mathbb{Z}/N)$ for $N\leq25$; $\nu_2$ and $\nu_3$ equal the numbers of roots of $x^2+1$ and $x^2+x+1$ modulo $N$ for $N&lt;200$, a route independent of the product formulas; and the genus combination is a non-negative integer for every $N&lt;400$, which jointly constrains all four counts. <span class="scope-essays">(<a href="chapters/11-the-modular-group.html">essay 11</a>)</span>
        </li>
+        <li data-proof-id="12-modular-forms">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Weight-$k$ modularity is consistent because $(cz+d)^k$ satisfies the cocycle identity, and $-I\in\Gamma_0(N)$ forces $k$ even; periodicity under $T$ gives the $q$-expansion, and holomorphy at the cusps is $\nu_\infty$ separate conditions; $M_k(\Gamma_0(N))$ and its subspace of cusp forms $S_k(\Gamma_0(N))$ are defined -- without which "a weight-2 newform of level $N$" has no referent. <span class="scope-essays">(<a href="chapters/12-modular-forms.html">essay 12</a>)</span>
+       </li>
+        <li data-proof-id="12-worked-expansions">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          $E_4^3-E_6^2=1728\Delta$ verified as exact power series; and $(\eta(z)\eta(11z))^2$ is normalised with $a_1=1$, has multiplicative coefficients, and matches essay 08's hand-counted $a_\ell$ at every prime below forty -- including the bad prime $11$, where essay 08 used a different formula entirely. <span class="scope-essays">(<a href="chapters/12-modular-forms.html">essay 12</a>)</span>
+       </li>
         <li data-proof-id="22-frey-construction">
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -403,11 +414,6 @@
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
        </li>
-        <li data-proof-id="12-modular-forms">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          Weight-$k$ modularity, holomorphy at the cusps, $q$-expansions, and the space $S_2(\Gamma_0(N))$ of weight-2 cusp forms -- without which the phrase "a weight-2 newform of level $N$" is undefined. <span class="scope-essays">(essay 12)</span>
-       </li>
         <li data-proof-id="13-dimension-formula">
           <span class="scope-mode scope-mode--proved">To prove</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -498,6 +504,11 @@
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--background">Background</span>
           Reduction at a good prime is injective on torsion of order coprime to $\ell$, which is why $5$ divides every point count of the conductor-$11$ curve. <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span>
+       </li>
+        <li data-proof-id="12-eta-is-modular">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--background">Background</span>
+          That $\Delta$ and $(\eta(z)\eta(11z))^2$ satisfy the transformation law for weights $12$ and $2$ at levels $1$ and $11$. Their $q$-expansions are computed here; the transformation law itself is not verified. <span class="scope-essays">(<a href="chapters/12-modular-forms.html">essay 12</a>)</span>
        </li>
         <li data-proof-id="17-l-functions">
           <span class="scope-mode scope-mode--proved">To prove</span>
@@ -633,6 +644,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/eb19775"><code>eb19775</code></a> · 2026-07-26 18:36 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/42b3575"><code>42b3575</code></a> · 2026-07-26 18:44 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

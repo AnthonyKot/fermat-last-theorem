@@ -587,9 +587,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 22, 23, 24, 25 — the two ends of the rope, the valuation, the
+**Written:** 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 22, 23, 24, 25 — the two ends of the rope, the valuation, the
 elliptic-curve bridge through the representation, and the semistability check.
-**Unwritten:** 11–21 — Part III, Part IV and Part V.
+**Unwritten:** 13–21 — the rest of Part III, then Part IV and Part V.
 
 ⚠ **Essay 10 was written before 03 and 05, and it is the first essay whose declared debts are its own
 vocabulary rather than peripheral.** It uses $G_{\mathbb{Q}}$ only as a group of field automorphisms,

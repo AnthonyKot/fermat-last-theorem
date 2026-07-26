@@ -39,6 +39,8 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 | 08 | Reduction and the conductor | Good, multiplicative and additive reduction; $a_\ell$; semistable ⟺ square-free conductor |
 | 09 | Division points and the Tate module | $E[2]$ and $E[3]$ by hand; the Frey curve's full rational $2$-torsion; $T_\ell(E)$ free of rank $2$ |
 | 10 | The representation attached to a curve | $\rho_{E,\ell}$ from the Tate module; $\det=\chi_\ell$ so every $\bar\rho$ is odd; reducible $\iff$ a rational subgroup |
+| 11 | The modular group | $\mathbb{H}$, $\Gamma_0(N)$, the fundamental domain, and the four counts $\mu$, $\nu_2$, $\nu_3$, $\nu_\infty$ |
+| 12 | Modular forms | $q$-expansions and cusp forms; $E_4^3-E_6^2=1728\Delta$; the level-$11$ form exhibited and matched to essay 08's point counts |
 | 22 | The Frey curve | The construction, and $\Delta = 16(abc)^{2p}$ |
 | 23 | Semistable, and therefore modular | A minimal model at $2$; multiplicative reduction at every bad prime; conductor $\mathrm{rad}(abc)$ |
 | 24 | The Frey representation | $N(\bar\rho_{E,p})=2$: odd primes drop out because $p$ divides their valuation, $2$ survives because $p\nmid8$; irreducibility for every $p\geq5$ |
@@ -47,7 +49,7 @@ the valuation, the elliptic-curve bridge as far as the conductor, and the semist
 The ends were written first deliberately: with the destination on paper, every construction in between
 has to justify itself. Writing order follows dependency rather than page number, which is why 04 and 08
 arrived before 03 and 05 — essay 08 reads the discriminant one prime at a time, so it wanted the
-valuation to link back to rather than a declared debt. Essays 11–21 are stubbed on
+valuation to link back to rather than a declared debt. Essays 13–21 are stubbed on
 the contents page, and essay 25 states plainly that it is conditional until they exist.
 
 ## Verification

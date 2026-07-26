@@ -1,0 +1,293 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12 · Modular forms — No Such Form</title>
+<meta name="description" content="Weight-k modularity, q-expansions, cusp forms, and the space S_2(Gamma_0(N)) — ending by exhibiting the level-11 form whose existence essay 11's dimension count predicted.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part III · Modular forms — Essay 12</p>
+    <h1>Modular forms</h1>
+    <p class="lede">Essay 11 counted the geometry. Now put functions on it — and the functions turn out
+      to be sequences of integers, one of which this essay writes down and compares with numbers
+      obtained four essays ago by counting points.</p>
+
+    <div class="claim">
+      <span class="tag">This essay defines, computes, and exhibits</span>
+      <strong>Defines:</strong> weight-$k$ modularity, holomorphy at the cusps, $q$-expansions, and the
+      spaces $M_k(\Gamma_0(N))\supset S_k(\Gamma_0(N))$.
+      <strong>Computes:</strong> the identity $E_4^3-E_6^2=1728\Delta$ exactly, as power series.
+      <strong>Exhibits:</strong> the level-$11$ weight-$2$ cusp form
+      $(\eta(z)\eta(11z))^2$, whose coefficients are the $a_\ell$ essay 08 obtained by counting points.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="11-the-modular-group.html">11</a> supplies everything: $\mathbb{H}$, the action
+        of $\mathrm{SL}_2(\mathbb{Z})$ with
+        $\operatorname{Im}(\gamma z)=\operatorname{Im}(z)/|cz+d|^2$, the generators $S$ and $T$, the
+        fundamental domain, $\Gamma_0(N)$, and the cusps. Two of those are about to do specific work:
+        $T$ is why a form has a $q$-expansion at all, and the cusp count $\nu_\infty$ is exactly the
+        number of conditions in the phrase "holomorphic at the cusps".</p>
+      <div class="fence">
+        <strong>Which hypothesis this essay serves.</strong> Essay 25 assumes <strong>(F)</strong>, the
+        dimension formula for $S_2(\Gamma_0(N))$, and <strong>(M)</strong>, modularity. Essay 11
+        computed the four numbers that go into (F); this essay defines the <em>space</em> whose
+        dimension the formula measures. Without it, "$\dim S_2(\Gamma_0(2))=0$" is an assertion about
+        an undefined object, and so is the phrase "a weight-2 newform of level $N$" that Ribet's theorem
+        turns on.
+      </div>
+      <p>The $X_0(11)$ thread reaches its point in this essay. Essay
+        <a href="06-elliptic-curves.html">06</a> introduced $y^2+y=x^3-x^2$; essay
+        <a href="08-reduction-and-conductor.html">08</a> found its conductor is $11$ and counted
+        $a_2=-2$, $a_3=-1$, $a_5=1$, $a_7=-2$, $a_{13}=4$ by hand; essay 11 computed that
+        $\dim S_2(\Gamma_0(11))=1$, so at that level there is room for exactly one form up to scaling.
+        Rung 3 writes that form down.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Why a weight, and not just invariance</h3>
+      <p>The naive thing to want is a holomorphic function on $\mathbb{H}$ invariant under $\Gamma_0(N)$
+        — a function on the quotient. That is too restrictive to be useful: essay 11's quotient is a
+        compact surface once the cusps are added, and a holomorphic function on a compact surface is
+        constant. So invariance must be weakened.</p>
+      <p>Weaken it by a factor. Fix an even integer $k$ and ask for</p>
+      <p>$$
+        f(\gamma z)=(cz+d)^k f(z)\qquad\text{for all }
+        \gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\Gamma_0(N).
+      $$</p>
+      <p>The factor cannot be chosen freely: applying two elements in turn must agree with applying
+        their product, so $j(\gamma,z)=(cz+d)^k$ has to satisfy</p>
+      <p>$$ j(\gamma\delta,z)=j(\gamma,\delta z)\,j(\delta,z). $$</p>
+      <p>It does, and that identity is the reason the definition is consistent rather than a
+        convention. The script verifies it over every pair of matrices with small entries.</p>
+      <p>Why <em>even</em> $k$: the matrix $-I$ lies in $\Gamma_0(N)$ for every $N$, it acts trivially on
+        $\mathbb{H}$, and its factor is $(-1)^k$. So $f=(-1)^kf$, and for odd $k$ the only such function
+        is zero. Essay 11 made the same point about counting in
+        $\mathrm{PSL}_2(\mathbb{Z})$; here it decides which weights exist.</p>
+
+      <h3>The $q$-expansion, and what "at the cusps" means</h3>
+      <p>The element $T\in\Gamma_0(N)$ has $c=0$, $d=1$, so its factor is $1$ and modularity gives
+        simply</p>
+      <p>$$ f(z+1)=f(z). $$</p>
+      <p>A periodic holomorphic function is a function of $q=e^{2\pi iz}$, and since
+        $\operatorname{Im}z\gt 0$ we have $|q|\lt 1$: the half plane becomes a punctured disc, with the
+        puncture at $q=0$ standing for $z\to i\infty$. So $f$ has a Laurent expansion in $q$, and the
+        condition <strong>holomorphic at $\infty$</strong> is exactly that no negative powers appear:</p>
+      <p>$$ f=\sum_{n\geq0}a_nq^n,\qquad q=e^{2\pi iz}. $$</p>
+      <p>That sequence $(a_n)$ is what a modular form <em>is</em>, for every computational purpose in
+        this collection. The rest of Part III manipulates integers.</p>
+      <p>Infinity is one cusp, and essay 11 counted $\nu_\infty(N)$ of them. For each of the others,
+        move it to $\infty$ by some $\gamma\in\mathrm{SL}_2(\mathbb{Z})$ and impose the same condition on
+        $(cz+d)^{-k}f(\gamma z)$. So <em>holomorphic at the cusps</em> is $\nu_\infty$ separate
+        conditions — which is why $\nu_\infty$ appears in the dimension formula with a minus sign: each
+        cusp is a constraint.</p>
+      <p>Write $M_k(\Gamma_0(N))$ for the weight-$k$ forms. It is a complex vector space, since the
+        conditions are linear.</p>
+
+      <h3>Cusp forms</h3>
+      <p>Among those, the ones that not merely stay finite at each cusp but <em>vanish</em> there:</p>
+      <p>$$
+        S_k(\Gamma_0(N))=\{f\in M_k(\Gamma_0(N)):a_0=0\text{ at every cusp}\}.
+      $$</p>
+      <p>These are the <strong>cusp forms</strong>, and they are the ones the Fermat argument is about.
+        The reason is worth stating now even though it is essay 16's business: the Galois representation
+        attached to a form is built from a space of differentials on essay 11's curve $X_0(N)$, and only
+        forms vanishing at the cusps give differentials without poles there.</p>
+      <p>The distinction is visible at level $1$. The <strong>Eisenstein series</strong></p>
+      <p>$$
+        E_4=1+240\sum_{n\geq1}\sigma_3(n)q^n,
+        \qquad
+        E_6=1-504\sum_{n\geq1}\sigma_5(n)q^n,
+      $$</p>
+      <p>with $\sigma_r(n)=\sum_{d\mid n}d^r$, are modular of weights $4$ and $6$ and have
+        $a_0=1$ — they do not vanish at the cusp, so they are not cusp forms. Subtracting the constant
+        term is exactly the decomposition $M_k=\langle E_k\rangle\oplus S_k$ at level $1$.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>An identity that three series have no right to satisfy</h3>
+      <p>The smallest non-zero cusp form at level $1$ has weight $12$:</p>
+      <p>$$
+        \Delta=q\prod_{n\geq1}(1-q^n)^{24}
+        =q-24q^2+252q^3-1472q^4+4830q^5-\cdots
+      $$</p>
+      <p>It vanishes at the cusp, so it is a cusp form; those coefficients are Ramanujan's $\tau(n)$.
+        Now $E_4^3$ and $E_6^2$ both have weight $12$ and both have constant term $1$, so their
+        difference vanishes at the cusp — and in a one-dimensional space of weight-$12$ cusp forms it
+        must therefore be a multiple of $\Delta$. It is:</p>
+      <p>$$ \boxed{\quad E_4^3-E_6^2=1728\,\Delta.\quad} $$</p>
+      <p>Three series defined by unrelated recipes — divisor sums of cubes, divisor sums of fifth
+        powers, and an infinite product — agreeing to every order. The script verifies it as an exact
+        power-series identity, and the first few terms are
+        $1728q-41472q^2+435456q^3-\cdots$ on both sides. This is the first evidence in Part III that
+        modular forms are rigid objects rather than a definition one could have made differently.</p>
+
+      <h3>The level-11 form, written down</h3>
+      <p>Essay 11 computed $\dim S_2(\Gamma_0(11))=1$. That says a form exists and is unique up to
+        scaling; it does not say what it is. Here it is. With the Dedekind eta function
+        $\eta(z)=q^{1/24}\prod_{n\geq1}(1-q^n)$, the product</p>
+      <p>$$
+        f=\bigl(\eta(z)\,\eta(11z)\bigr)^2
+        =q\prod_{n\geq1}(1-q^n)^2(1-q^{11n})^2
+      $$</p>
+      <p>is a weight-$2$ cusp form of level $11$ — the eta prefactors contribute
+        $q^{1/24}\cdot q^{11/24}$, squared to give the single $q$ in front, which is why the
+        construction lands on an integer power series at all. Multiply it out:</p>
+      <p>$$
+        f=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7-2q^9-2q^{10}+q^{11}-2q^{12}+4q^{13}-\cdots
+      $$</p>
+      <p>Now set that beside essay 08, which counted points on $y^2+y=x^3-x^2$ over $\mathbb{F}_\ell$
+        with no modular forms anywhere in sight:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>$\ell$</th><th>$2$</th><th>$3$</th><th>$5$</th><th>$7$</th><th>$11$</th><th>$13$</th><th>$17$</th><th>$19$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>coefficient of $q^\ell$ in $f$</td><td>$-2$</td><td>$-1$</td><td>$1$</td><td>$-2$</td><td>$1$</td><td>$4$</td><td>$-2$</td><td>$0$</td></tr>
+            <tr><td>$a_\ell$ from counting points</td><td>$-2$</td><td>$-1$</td><td>$1$</td><td>$-2$</td><td>$1$</td><td>$4$</td><td>$-2$</td><td>$0$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Every entry agrees, and the agreement at $\ell=11$ is the one to notice: that is the curve's
+        bad prime, where essay 08 computed $a_{11}$ by a <em>different formula</em> —
+        $\ell-\#\tilde{E}^{\mathrm{ns}}(\mathbb{F}_\ell)$, with the singular point deleted — and got
+        $+1$ for split multiplicative reduction. The eta product knows that too.</p>
+      <p>This is the Modularity Theorem, in the one case where both sides can be computed by hand. Essay
+        18 states the theorem; what makes it credible rather than merely impressive is that the two
+        computations here share no machinery at all. One is counting solutions of a cubic congruence;
+        the other is expanding an infinite product.</p>
+
+      <h3>A pattern that essay 14 will explain</h3>
+      <p>The coefficients of $f$ satisfy</p>
+      <p>$$ a_{mn}=a_ma_n\qquad\text{whenever }\gcd(m,n)=1, $$</p>
+      <p>so for instance $a_6=a_2a_3=(-2)(-1)=2$ and $a_{10}=a_2a_5=-2$, both visible in the expansion
+        above. Ramanujan's $\tau$ does the same: $\tau(6)=\tau(2)\tau(3)=-24\cdot252$. Nothing in the
+        definition of a modular form asks for that. It is a consequence of these particular forms being
+        eigenvectors of the Hecke operators, which is essay 14's subject, and it is what makes the
+        coefficient sequence behave like an Euler product in essay 17.</p>
+
+      <h3>What the next essays collect</h3>
+      <ul>
+        <li><strong>Essay 13</strong> computes $\dim S_k(\Gamma_0(N))$ from essay 11's four counts,
+          discharging assumption <strong>(F)</strong>. The space is now defined, so the dimension has
+          something to be the dimension of.</li>
+        <li><strong>Essay 14</strong> explains the multiplicativity above, and shows that for a
+          normalised eigenform the Hecke eigenvalues <em>are</em> these coefficients.</li>
+        <li><strong>Essay 15</strong> separates forms genuinely of level $N$ from those inherited from
+          divisors of $N$ — the distinction that gives "the level" of a newform a meaning for Ribet to
+          lower.</li>
+      </ul>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Weak modular forms, holomorphy at the cusps, and cusp forms.</strong> Andrew
+        Sutherland's MIT 18.783 Fall 2023 Lecture 24 gives definition 24.3 for a weak modular form of
+        weight $k$ for a congruence subgroup, the argument that $-I\in\Gamma$ forces even weight,
+        definition 24.5 for a modular form as one holomorphic at the cusps — with the $q$-expansion
+        $f=\sum_{n\geq0}a_nq^n$ appearing because $\Gamma$ contains a translation — and definition 24.6
+        for a cusp form as one vanishing at every cusp, equivalently with $a_0=0$. Its example 24.7
+        exhibits $\Delta=g_2^3-27g_3^2$ as a weight-$12$ cusp form for
+        $\mathrm{SL}_2(\mathbb{Z})$, and example 24.4 treats the Eisenstein series $G_k$.</p>
+      <p><strong>The level-11 newform.</strong> The LMFDB records exactly one newform of weight $2$ and
+        level $11$, labelled <code>11.2.a.a</code>, with coefficients
+        $1,-2,-1,2,1,2,-2,0,-2,-2,1,-2,4$ — the sequence computed here from the eta product — attached
+        to the isogeny class <code>11.a</code> containing <code>11.a3</code>, essay 06's curve.</p>
+      <p><strong>Further reference.</strong> Diamond and Shurman's <em>A First Course in Modular
+        Forms</em> develops modular forms for congruence subgroups, the Eisenstein series, eta products
+        and the structure of the graded ring of level-one forms.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/modular_forms.py</code>. With exact
+        integer power series and no library, it confirms the cocycle identity for the weight factor over
+        every pair of small matrices; that $-I$ contributes $(-1)^k$, so odd weight forces $f=0$; that
+        $\Delta$ has Ramanujan's coefficients and that $E_4^3-E_6^2=1728\Delta$ holds to forty terms;
+        and that $(\eta(z)\eta(11z))^2$ is normalised with $a_1=1$, has multiplicative coefficients, and
+        matches the point counts of essay 08's curve at every prime below forty — the bad prime $11$
+        included.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="12-modular-forms">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Weight-$k$ modularity is consistent because $(cz+d)^k$ is a cocycle, and $-I$ forces $k$
+              even; periodicity under $T$ gives the $q$-expansion, and holomorphy at the cusps is
+              $\nu_\infty$ conditions; $M_k(\Gamma_0(N))$ and its subspace of cusp forms
+              $S_k(\Gamma_0(N))$ are defined <span class="lref">(L11, in part)</span></li>
+            <li data-proof-id="12-worked-expansions">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              $E_4^3-E_6^2=1728\Delta$ as exact power series; and
+              $(\eta(z)\eta(11z))^2$ is normalised with multiplicative coefficients matching essay 08's
+              point counts at every prime below forty, including the bad prime $11$</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="12-eta-is-modular">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              That $\Delta$ and $(\eta(z)\eta(11z))^2$ really are modular of weights $12$ and $2$ and
+              levels $1$ and $11$. Their $q$-expansions are computed here; the transformation law under
+              the full group is not verified</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1, essay 02)</span></li>
+            <li>The valence formula and the dimension formula — assumption (F)
+              <span class="lref">(L10, essay 13)</span></li>
+            <li>Hecke operators, and why the coefficients are multiplicative
+              <span class="lref">(L11, essay 14)</span></li>
+            <li>Newforms, and the meaning of <em>the level</em> <span class="lref">(L12, essay 15)</span></li>
+            <li>Eichler–Shimura, and modularity — assumption (M)
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="11-the-modular-group.html"><span class="dir">← Previous written essay</span> 11 · The modular group</a>
+      <a class="next" href="22-the-frey-curve.html"><span class="dir">Next written essay →</span> 22 · The Frey curve</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 12 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/42b3575"><code>42b3575</code></a> · 2026-07-26 18:44 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>
