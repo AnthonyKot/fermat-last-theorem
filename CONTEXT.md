@@ -382,7 +382,7 @@ Not in the video at all. Opens with a standing banner: these three essays descri
   Weil pairing and the resulting oddness of $\bar\rho$ therefore move to **essay 10**, where they are
   also what supplies Ribet's "odd" hypothesis. Essay 09 keeps $E[2]$, $E[3]$, $E[n]\cong(\mathbb{Z}/n)^2$
   and the Tate module, and it stays one idea.
-- **Writing order from here: 03 → 05 → 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
+- **Writing order from here: 05 → 24, then 11 → 12 → 13, then 14 → 15 → 16 → 18,
   then 17, 19–21 and 02's second case.** This replaces an earlier note that put 24 next, which was
   wrong: essay 24 is about the *representation's* conductor, and the representation does not exist
   until essay 10, which needs essay 09's Tate module. 24 cannot precede them.
@@ -593,9 +593,9 @@ web-assisted and tiered; LMFDB and the DDT survey are both fetched and logged in
 25-essay contents (6 linked, 19 stubs), `about.html`, `static/`, `.nojekyll`, `.gitignore` excluding
 `resources/` and `sources/`, `README.md` with GitHub Pages instructions, `verify.sh` — passing.
 
-**Written:** 01, 02, 04, 06, 07, 08, 09, 10, 22, 23, 25 — the two ends of the rope, the valuation, the
+**Written:** 01, 02, 03, 04, 06, 07, 08, 09, 10, 22, 23, 25 — the two ends of the rope, the valuation, the
 elliptic-curve bridge through the representation, and the semistability check.
-**Unwritten:** 03, 05, 11–21, 24.
+**Unwritten:** 05, 11–21, 24.
 
 ⚠ **Essay 10 was written before 03 and 05, and it is the first essay whose declared debts are its own
 vocabulary rather than peripheral.** It uses $G_{\mathbb{Q}}$ only as a group of field automorphisms,
@@ -604,6 +604,14 @@ which needs no machinery and carries the construction, the determinant and the o
 essay 03. **When 03 and 05 land, revisit essay 10**: the trace formula should become a derivation, and
 `10-trace-formula` should move from the allowlist to a `depends_on` proof or disappear. Do not leave it
 as a permanent import out of inertia — it is only an import because of writing order.
+
+**03 has landed and paid half of that.** The determinant half of the trace formula is now a computation:
+essay 03 proves $\chi(\mathrm{Frob}_\ell)=\ell$ in the cyclotomic family, which is what essay 10
+asserted as $\det\bar\rho(\mathrm{Frob}_\ell)\equiv\ell$. The trace half still needs essay 05's
+ramification vocabulary. Essay 03 also supplies the reason traces are the right invariant at all:
+$\mathrm{Frob}_\ell$ is a *conjugacy class*, so only conjugation-invariant quantities can be read off
+it — which retro-justifies essay 10's phrasing and is the hook essay 05 needs for
+`05-traces-determine`.
 
 **L3, L4 and L5 are now discharged.** Essay 04 supplies $v_\ell$, $\mathbb{Z}_\ell$ and free modules;
 essay 08 supplies reduction types, the conductor, and semistable ⟺ square-free conductor. Essay 23's

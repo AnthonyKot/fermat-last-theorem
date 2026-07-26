@@ -1,0 +1,359 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 · The absolute Galois group — No Such Form</title>
+<meta name="description" content="Field extensions, the Galois correspondence, and G_Q as an inverse limit of finite groups — with Frobenius elements made completely explicit in the cyclotomic case.">
+<script>try{var t=localStorage.getItem("nosuchform-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="../static/theme.js"></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">No&nbsp;Such&nbsp;<span>Form</span></a>
+    <nav class="site-nav">
+      <a href="../index.html">Contents</a>
+      <a href="../about.html">About</a>
+      <button class="theme-toggle" type="button">☾ Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="kicker">Part I · The old method, and why it stops — Essay 03</p>
+    <h1>The absolute Galois group</h1>
+    <p class="lede">Essay 02 adjoined a cube root of unity to $\mathbb{Q}$ and used it without ever
+      asking what its symmetries were. Ask, and one group appears that contains every such
+      symmetry at once — infinite, unpresentable, and assembled entirely from finite pieces.</p>
+
+    <div class="claim">
+      <span class="tag">This essay constructs, computes, and states</span>
+      <strong>Constructs:</strong> $G_{\mathbb{Q}}=\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})$ as
+      an inverse limit of finite Galois groups, and its topology.
+      <strong>Computes:</strong> $\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong(\mathbb{Z}/n)^\times$
+      with $\mathrm{Frob}_\ell=\sigma_\ell$, so the cyclotomic character satisfies
+      $\chi(\mathrm{Frob}_\ell)=\ell$.
+      <strong>States:</strong> the existence of $\overline{\mathbb{Q}}$, the Galois correspondence,
+      irreducibility of $\Phi_n$, and the construction of Frobenius elements at unramified primes.
+    </div>
+
+    <section class="rung">
+      <h2><span class="num">Rung 1</span> What we already have</h2>
+      <p>Essay <a href="02-unique-factorization-and-n3.html">02</a> did all of this essay's motivating
+        work without naming it. It adjoined $\omega$, a primitive cube root of unity, to $\mathbb{Q}$ and
+        worked in $\mathbb{Z}[\omega]$. It used the fact that $\omega$ satisfies
+        $\omega^2+\omega+1=0$ and that $\omega$ and $\omega^2$ are interchangeable — the norm
+        $N(a+b\omega)=a^2-ab+b^2$ is exactly the product of $a+b\omega$ with $a+b\omega^2$. That
+        interchange is a symmetry of the field, and this essay is about the group of all such
+        symmetries.</p>
+      <p>Essay 02 also found that $3$ behaves specially in $\mathbb{Z}[\omega]$: it is not a product of
+        two distinct primes but $-\omega^2\lambda^2$ with $\lambda=1-\omega$. That is
+        <em>ramification</em>, and it will be exactly the case this essay's construction has to
+        exclude.</p>
+      <p>Essay <a href="01-descent-and-n4.html">01</a> is not used. Nor is essay 04: the two are
+        deliberately independent, and a reader who took the number systems first has lost nothing.</p>
+      <p>Assumed of the reader: groups, rings, fields, ideals and quotients, and the definition of a
+        field extension. No Galois theory beyond that definition.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 2</span> The construction</h2>
+
+      <h3>Extensions, degree, and their automorphisms</h3>
+      <p>A field $K$ containing $\mathbb{Q}$ is a vector space over $\mathbb{Q}$, and its
+        <strong>degree</strong> $[K:\mathbb{Q}]$ is that dimension. For $K=\mathbb{Q}(\omega)$, the
+        relation $\omega^2=-1-\omega$ means $1,\omega$ already spans, so the degree is $2$.</p>
+      <p>Write $\mathrm{Aut}(K/\mathbb{Q})$ for the field automorphisms of $K$ fixing every rational
+        number. Such a $\sigma$ is heavily constrained: it must send a root of a rational polynomial to
+        another root of the same polynomial, because applying $\sigma$ to $f(\alpha)=0$ gives
+        $f(\sigma\alpha)=0$. So an automorphism can only permute the roots of each rational
+        polynomial — that single observation is the whole subject in miniature.</p>
+      <p>For $\mathbb{Q}(\omega)$ the possibilities are $\omega\mapsto\omega$ and
+        $\omega\mapsto\omega^2$, the two roots of $x^2+x+1$. Both occur, so
+        $\#\mathrm{Aut}=2=[K:\mathbb{Q}]$, and the extension is called <strong>Galois</strong>. The
+        group is written $\mathrm{Gal}(K/\mathbb{Q})$.</p>
+      <p>It does not always work out. Take $K=\mathbb{Q}(2^{1/3})$, of degree $3$. The other two roots
+        of $x^3-2$ are complex, and $K$ consists of real numbers, so there is nowhere for $2^{1/3}$ to
+        go: $\#\mathrm{Aut}(K/\mathbb{Q})=1\lt3$. The extension is not Galois. Being Galois means the
+        field is large enough to contain all the roots it needs.</p>
+      <div class="fence">
+        <strong>Stated: the Galois correspondence.</strong> For a finite Galois extension
+        $K/\mathbb{Q}$, the subgroups $H\leq\mathrm{Gal}(K/\mathbb{Q})$ correspond one-to-one with the
+        intermediate fields $\mathbb{Q}\subseteq F\subseteq K$, by sending $H$ to its fixed field and
+        $F$ to the automorphisms fixing $F$. The correspondence reverses inclusions and satisfies
+        $[K:F]=\#H$. Not proved here; it is the standard theorem of a first course.
+      </div>
+
+      <h3>All the algebraic numbers at once</h3>
+      <p>Each finite extension sees only some polynomials. To see all of them, take
+        $\overline{\mathbb{Q}}$, the <strong>algebraic closure</strong>: the field of all complex
+        numbers satisfying some non-zero rational polynomial. Every rational polynomial factors into
+        linear factors over it.</p>
+      <div class="fence">
+        <strong>Stated.</strong> $\overline{\mathbb{Q}}$ exists, is algebraically closed, and is the
+        union of all finite extensions of $\mathbb{Q}$ inside $\mathbb{C}$.
+      </div>
+      <p>The <strong>absolute Galois group</strong> is</p>
+      <p>$$
+        G_{\mathbb{Q}}=\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})
+        =\{\text{field automorphisms of }\overline{\mathbb{Q}}\text{ fixing }\mathbb{Q}\}.
+      $$</p>
+      <p>This object is the reason the rest of the collection exists, and it is worth being blunt about
+        why it cannot be studied directly. It is infinite, in fact uncountable. It has no finite
+        presentation. Its elements cannot be written down: specifying one means choosing, coherently,
+        a permutation of the roots of <em>every</em> rational polynomial at once. Nobody computes in
+        $G_{\mathbb{Q}}$ by manipulating elements.</p>
+
+      <h3>Assembled from finite pieces</h3>
+      <p>What saves the situation is that although $G_{\mathbb{Q}}$ is not finite, it is built out of
+        groups that are. Let $\sigma\in G_{\mathbb{Q}}$ and let $K/\mathbb{Q}$ be finite Galois. Since
+        $\sigma$ permutes the roots of each rational polynomial, it maps $K$ to itself, so it
+        <em>restricts</em> to an element $\sigma|_K\in\mathrm{Gal}(K/\mathbb{Q})$. These restrictions
+        are compatible: if $K\subseteq L$ then $(\sigma|_L)|_K=\sigma|_K$.</p>
+      <p>Conversely a compatible family of automorphisms, one for each finite Galois $K$, determines
+        $\sigma$ — because every algebraic number lies in some finite $K$, so its image is already
+        decided. Hence</p>
+      <p>$$
+        \boxed{\quad
+        G_{\mathbb{Q}}\;\cong\;\varprojlim_K\ \mathrm{Gal}(K/\mathbb{Q}),\quad}
+      $$</p>
+      <p>the inverse limit over finite Galois extensions ordered by inclusion. A group of this shape is
+        called <strong>profinite</strong>.</p>
+      <p>Compare essay <a href="04-p-adics-and-modules.html">04</a>, where $\mathbb{Z}_\ell$ was built
+        as $\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$: an element was a coherent choice of residue at
+        every precision. Here an element is a coherent choice of root-permutation in every finite
+        extension. The two constructions are the same manoeuvre, and neither essay needs the other —
+        which is why they can be read in either order.</p>
+      <p>The inverse limit also supplies a topology, and this is what makes the word
+        <em>continuous</em> mean something in essay 05. Declare the subgroups
+        $\mathrm{Gal}(\overline{\mathbb{Q}}/K)$, for $K$ finite Galois, to be open. Then a map out of
+        $G_{\mathbb{Q}}$ is continuous exactly when it is <strong>determined at some finite
+        level</strong> — when it factors through $\mathrm{Gal}(K/\mathbb{Q})$ for one finite $K$. That
+        is the whole content of continuity here: a continuous representation is one that only ever
+        cares about finitely much of the tower.</p>
+
+      <h3>Frobenius: one element per prime, up to conjugacy</h3>
+      <p>Individual elements of $G_{\mathbb{Q}}$ are inaccessible, with one crucial family of
+        exceptions. Each prime supplies one, and those are the elements every later essay evaluates.</p>
+      <p>Fix a finite Galois $K/\mathbb{Q}$ with ring of integers $\mathcal{O}_K$, and a prime $\ell$
+        that is <strong>unramified</strong> in $K$ — meaning $\ell\mathcal{O}_K$ factors into
+        <em>distinct</em> prime ideals, $\ell\mathcal{O}_K=\mathfrak{P}_1\cdots\mathfrak{P}_r$. This is
+        the condition essay 02's prime $3$ fails in $\mathbb{Z}[\omega]$, where the two factors of
+        $\lambda$ coincide.</p>
+      <div class="fence">
+        <strong>Stated: the Frobenius package.</strong> $\mathrm{Gal}(K/\mathbb{Q})$ permutes the
+        $\mathfrak{P}_i$ transitively. The stabiliser of one of them, the <em>decomposition group</em>
+        $D_{\mathfrak{P}}$, maps isomorphically onto
+        $\mathrm{Gal}(\mathbb{F}_{\mathfrak{P}}/\mathbb{F}_\ell)$ when $\ell$ is unramified — and that
+        group is cyclic, generated by $x\mapsto x^\ell$. The preimage of that generator is the
+        <strong>Frobenius element</strong> $\mathrm{Frob}_{\mathfrak{P}}$.
+      </div>
+      <p>Transitivity has an immediate consequence that matters more than it looks. Different choices of
+        $\mathfrak{P}$ give <em>conjugate</em> Frobenius elements, so</p>
+      <p>$$
+        \mathrm{Frob}_\ell\ \text{is a conjugacy class, not an element.}
+      $$</p>
+      <p>Keep that in view. Every use of Frobenius in this collection is a use of something
+        conjugation-invariant — which is exactly why essay 10 could speak of
+        $\operatorname{tr}\rho(\mathrm{Frob}_\ell)$ and $\det\rho(\mathrm{Frob}_\ell)$, and could not
+        have spoken of the matrix itself.</p>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 3</span> What it buys</h2>
+
+      <h3>The one family where everything is explicit</h3>
+      <p>Let $\zeta=\zeta_n$ be a primitive $n$-th root of unity and $K=\mathbb{Q}(\zeta)$. An
+        automorphism must send $\zeta$ to another primitive $n$-th root, so $\sigma(\zeta)=\zeta^a$ for
+        some $a$ coprime to $n$; and composing two of them multiplies the exponents. So
+        $\sigma_a\sigma_b=\sigma_{ab}$ and</p>
+      <p>$$
+        \mathrm{Gal}\bigl(\mathbb{Q}(\zeta_n)/\mathbb{Q}\bigr)\;\cong\;(\mathbb{Z}/n)^\times,
+      $$</p>
+      <p>of order $\varphi(n)$ — given that every such $a$ really occurs, which is the statement that
+        the cyclotomic polynomial $\Phi_n$ is irreducible over $\mathbb{Q}$. That we state.</p>
+      <p>Now the payoff. In this family the Frobenius element is not merely constructible, it is
+        <em>obvious</em>: reduction modulo $\ell$ sends $\zeta\mapsto\zeta^\ell$, so</p>
+      <p>$$
+        \boxed{\quad\mathrm{Frob}_\ell=\sigma_\ell,\quad\text{that is}\quad
+        \mathrm{Frob}_\ell(\zeta)=\zeta^{\ell}.\quad}
+      $$</p>
+      <p>The map $\sigma_a\mapsto a$ is the <strong>cyclotomic character</strong> $\chi$, and therefore
+        $\chi(\mathrm{Frob}_\ell)=\ell$. Essay 10 asserted exactly that, when it wrote
+        $\det\bar\rho(\mathrm{Frob}_\ell)\equiv\ell$ after identifying $\det\rho$ with $\chi$. Here is
+        where the assertion comes from, and it is a one-line computation.</p>
+      <p>Because the group is abelian, conjugacy classes are single elements, so in this family
+        $\mathrm{Frob}_\ell$ genuinely is one automorphism.</p>
+
+      <h3>Frobenius predicts how primes factor</h3>
+      <p>The order of $\mathrm{Frob}_\ell$ in the Galois group is the degree of the residue field
+        extension, so it says how $\ell$ splits. For $\mathbb{Q}(\zeta_5)$, where the group is cyclic
+        of order $4$:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>$\ell$</th><th>$\ell\bmod5$</th><th>order of $\mathrm{Frob}_\ell$</th><th>how $\ell$ factors</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$11$</td><td>$1$</td><td>$1$</td><td>four primes — splits completely</td></tr>
+            <tr><td>$19$</td><td>$4$</td><td>$2$</td><td>two primes of degree $2$</td></tr>
+            <tr><td>$2$</td><td>$2$</td><td>$4$</td><td>one prime — inert</td></tr>
+            <tr><td>$3$</td><td>$3$</td><td>$4$</td><td>inert</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>This is checkable without any algebraic number theory, by factoring
+        $\Phi_5=x^4+x^3+x^2+x+1$ modulo $\ell$. Modulo $11$ the fifth roots of unity are
+        $1,3,9,5,4$, so $\Phi_5\equiv(x-3)(x-4)(x-5)(x-9)$ — four linear factors, matching
+        $\mathrm{Frob}_{11}=\sigma_1=\mathrm{id}$. Modulo $2$ it is irreducible, matching an element of
+        order $4$. The general statement, verified in the script for many $n$ and $\ell$, is that the
+        irreducible factors of $\Phi_n$ modulo $\ell$ all have degree equal to the multiplicative order
+        of $\ell$ modulo $n$.</p>
+      <p>Read that backwards and it becomes the reason this collection cares. <strong>A statement about
+        Frobenius is a statement about congruences.</strong> "$\mathrm{Frob}_\ell$ is trivial in
+        $\mathbb{Q}(\zeta_n)$" says $\ell\equiv1\pmod n$. Essay 02 met a case of this without the
+        vocabulary: in $\mathbb{Z}[\omega]$, which is $\mathbb{Q}(\zeta_3)$, a prime splits exactly when
+        $\ell\equiv1\pmod 3$, and $3$ itself is the ramified exception.</p>
+
+      <h3>The correspondence, on one field</h3>
+      <p>$\mathrm{Gal}(\mathbb{Q}(\zeta_5)/\mathbb{Q})$ is cyclic of order $4$, so it has exactly one
+        proper non-trivial subgroup, $\{1,\sigma_{-1}\}$, and the correspondence therefore predicts
+        exactly one intermediate field, of degree $2$. Find it: $\sigma_{-1}$ sends
+        $\zeta\mapsto\zeta^{-1}$, so it fixes</p>
+      <p>$$ \alpha=\zeta+\zeta^{-1}. $$</p>
+      <p>Squaring, $\alpha^2=\zeta^2+2+\zeta^{-2}$, and since
+        $\zeta+\zeta^2+\zeta^3+\zeta^4=-1$ we get $\alpha^2+\alpha-1=0$. So
+        $\alpha=\tfrac{-1\pm\sqrt5}{2}$ and the intermediate field is</p>
+      <p>$$ \mathbb{Q}(\alpha)=\mathbb{Q}(\sqrt5). $$</p>
+      <p>One subgroup, one subfield, and the subfield is one a reader already knows.</p>
+
+      <h3>What the next essays collect</h3>
+      <ul>
+        <li><strong>Essay 05</strong> takes the topology and defines a continuous
+          $\rho:G_{\mathbb{Q}}\to\mathrm{GL}_2(K)$, together with what it means for such a
+          representation to be ramified at a prime and what its conductor is. It also takes the fact
+          that $\mathrm{Frob}_\ell$ is a conjugacy class, which is why traces are the right invariant
+          to record.</li>
+        <li><strong>Essay 10</strong> becomes fully grounded. It built $\rho_{E,\ell}$ using only
+          $G_{\mathbb{Q}}$ as a group of automorphisms, which needed nothing from here, but it had to
+          <em>state</em> $\operatorname{tr}\bar\rho(\mathrm{Frob}_\ell)\equiv a_\ell$ because
+          $\mathrm{Frob}_\ell$ did not yet exist. Now it does, and the determinant half of that
+          statement — $\det\equiv\ell$ — is the computation $\chi(\mathrm{Frob}_\ell)=\ell$ above.</li>
+        <li><strong>Essays 16 and 18</strong> compare two representations by comparing traces of
+          Frobenius. That is only a sensible thing to do because of the conjugacy-class remark; essay
+          05 turns it into a theorem.</li>
+      </ul>
+    </section>
+
+    <section class="rung">
+      <h2><span class="num">Rung 4</span> Reading</h2>
+      <p><strong>Frobenius elements, decomposition groups, and the profinite structure.</strong> Andrew
+        Sutherland's MIT 18.783 Fall 2023 Lecture 25, §25.3, sets out exactly the package used here: for
+        a prime unramified in $K$, the factorisation $p\mathcal{O}_K=\mathfrak{p}_1\cdots\mathfrak{p}_r$
+        into distinct primes, the transitive action of $\mathrm{Gal}(K/\mathbb{Q})$ on those primes, the
+        decomposition group $D_{\mathfrak{p}}$ as a stabiliser, its isomorphism onto
+        $\mathrm{Gal}(\mathbb{F}_{\mathfrak{p}}/\mathbb{F}_p)$, that group's generation by the
+        $p$-power map, and the resulting definition of $\mathrm{Frob}_{\mathfrak{p}}$ — noting that
+        different choices of $\mathfrak{p}$ give conjugates, so that $\mathrm{Frob}_p$ is a conjugacy
+        class. It also treats $G_{\mathbb{Q}}$ as a profinite group whose topology is what continuity of
+        $\rho$ refers to.</p>
+      <p><strong>Absolute values and the ramified case.</strong> Andrew Sutherland's MIT 18.785 Fall
+        2021 Lecture 1, definition 1.7, gives the $p$-adic valuation whose vanishing or not is what
+        ramification measures; that course's Lecture 8, §8.2, treats valuation rings and uniformizers,
+        the local picture behind the decomposition group.</p>
+      <p><strong>Further reference.</strong> Any first course in Galois theory proves the
+        correspondence and the irreducibility of the cyclotomic polynomials; a first course in algebraic
+        number theory proves the Frobenius package.
+        <span class="unverified" role="note" aria-label="Source pointer not verified against a copy"
+          title="Source pointer not verified against a copy"></span></p>
+      <p><strong>Check it yourself.</strong> Run <code>checks/galois.py</code>. It builds $\Phi_n$ from
+        scratch by dividing $x^n-1$ by the lower cyclotomic polynomials, confirms
+        $\deg\Phi_n=\varphi(n)$, verifies that $\sigma_a\sigma_b=\sigma_{ab}$ gives
+        $(\mathbb{Z}/n)^\times$ as a full multiplication table, and then tests the Frobenius claim the
+        only way it can be tested — by computing, for many $n$ and $\ell$, the least $d$ with
+        $x^{\ell^d}=x$ in $\mathbb{F}_\ell[x]/\Phi_n$ and checking it equals the multiplicative order of
+        $\ell$ modulo $n$. It also confirms the splitting extremes and that
+        $\alpha=\zeta_5+\zeta_5^{-1}$ satisfies $x^2+x-1$.</p>
+    </section>
+
+    <section class="ledger">
+      <h2>Ledger</h2>
+      <div class="cols">
+        <div class="col proved-here">
+          <h3>Proved here</h3>
+          <ul>
+            <li data-proof-id="03-g-q">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              Restriction to finite Galois subextensions is compatible and determines an element, so
+              $G_{\mathbb{Q}}\cong\varprojlim\mathrm{Gal}(K/\mathbb{Q})$ is profinite; continuity means
+              factoring through a finite level <span class="lref">(part of L2)</span></li>
+            <li data-proof-id="03-cyclotomic-character">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              <span class="ledger-dep">conditional on irreducibility of $\Phi_n$</span>
+              $\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong(\mathbb{Z}/n)^\times$ with
+              $\mathrm{Frob}_\ell=\sigma_\ell$, hence $\chi(\mathrm{Frob}_\ell)=\ell$ — the
+              computation essay 10 assumed</li>
+            <li data-proof-id="03-frobenius-computed">
+              <span class="ledger-mode ledger-mode--proved">Proved</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The factors of $\Phi_n$ modulo $\ell$ all have degree equal to the order of $\ell$ modulo
+              $n$, so Frobenius predicts splitting; and $\mathbb{Q}(\sqrt5)$ is the unique intermediate
+              field of $\mathbb{Q}(\zeta_5)$</li>
+          </ul>
+        </div>
+        <div class="col assumed-here">
+          <h3>Assumed here</h3>
+          <ul>
+            <li data-proof-id="03-frobenius">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              The Frobenius package: transitivity on the primes above $\ell$, the decomposition group's
+              isomorphism onto the residue-field Galois group, and its generation by $x\mapsto x^\ell$
+              <span class="lref">(part of L2)</span></li>
+            <li data-proof-id="03-cyclotomic-irreducibility">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
+              $\Phi_n$ is irreducible over $\mathbb{Q}$, so $[\mathbb{Q}(\zeta_n):\mathbb{Q}]=\varphi(n)$
+              and every $\sigma_a$ occurs</li>
+            <li data-proof-id="03-galois-correspondence">
+              <span class="ledger-mode ledger-mode--stated">Assumed</span>
+              <span class="ledger-role ledger-role--background">Background</span>
+              The Galois correspondence for finite extensions, and the existence of
+              $\overline{\mathbb{Q}}$</li>
+          </ul>
+        </div>
+        <div class="col owed">
+          <h3>Still owed</h3>
+          <ul>
+            <li>The second-case descent for $n=3$ in full <span class="lref">(L1)</span></li>
+            <li>Continuous $\rho$, ramification, and the conductor of a representation
+              <span class="lref">(rest of L2, essay 05)</span></li>
+            <li>Elliptic curves, reduction, torsion and the representation
+              <span class="lref">(L4–L7, essays 06–10)</span></li>
+            <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 11–15)</span></li>
+            <li>Eichler–Shimura, and the essays that state modularity
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>The Frey curve and its representation <span class="lref">(L15–L17, essays 22–24)</span></li>
+            <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chapter-nav">
+      <a href="02-unique-factorization-and-n3.html"><span class="dir">← Previous written essay</span> 02 · Unique factorisation, and where it runs out</a>
+      <a class="next" href="04-p-adics-and-modules.html"><span class="dir">Next written essay →</span> 04 · A new pair of sunglasses: the $p$-adics</a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>No Such Form · Essay 03 · Original prose; no source text reproduced.</p>
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/68ea7ee"><code>68ea7ee</code></a> · 2026-07-26 17:02 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+  </div>
+</footer>

@@ -37,9 +37,11 @@
 
 <!-- proof-register:start -->
     <div class="scope-counts">
-      <p class="scope-headline">The finished proof would rest on <strong>15</strong> assumed results.</p>
+      <p class="scope-headline">The finished proof would rest on <strong>17</strong> assumed results.</p>
       <p class="scope-note">These are the results the FLT chain consumes and does not prove. Each is named in the completion policy, which the validator pins to this register, so adding one is a deliberate edit rather than a side effect. This is the only number against which the phrase <em>a derivation of Fermat's Last Theorem from named assumptions</em> is defensible.</p>
       <ul class="scope-roster">
+        <li>Frobenius elements at unramified primes, as a conjugacy class <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
+        <li>$\Phi_n$ is irreducible over $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
         <li>Traces of Frobenius determine a semisimple representation <span class="scope-essays">(essay 05)</span> <span class="roster-planned">not yet written</span></li>
         <li>A genus-one curve has a Weierstrass model, and $\Delta\neq0$ is smoothness <span class="scope-essays">(<a href="chapters/06-elliptic-curves.html">essay 06</a>)</span></li>
         <li>Associativity of the chord-and-tangent group law <span class="scope-essays">(<a href="chapters/07-the-group-law.html">essay 07</a>)</span></li>
@@ -56,10 +58,11 @@
         <li>Ribet's level-lowering theorem <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
         <li>Fermat's Last Theorem for $n=5$ and $n=7$, classical and external to this collection <span class="scope-essays">(<a href="chapters/25-ribet-and-the-end.html">essay 25</a>)</span></li>
       </ul>
-      <p class="scope-headline">The exposition additionally assumes <strong>8</strong> background results.</p>
+      <p class="scope-headline">The exposition additionally assumes <strong>9</strong> background results.</p>
       <p class="scope-note">Stated for orientation, and deliberately kept off the chain. Doubting any of them leaves the closing argument intact.</p>
       <ul class="scope-roster">
         <li>Kummer's regular-prime criterion <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span></li>
+        <li>The Galois correspondence, and the existence of $\overline{\mathbb{Q}}$ <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span></li>
         <li>$\mathbb{Q}_\ell$ exists as the completion of $\mathbb{Q}$ <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span></li>
         <li>$\mathbb{Z}_\ell\cong\varprojlim\mathbb{Z}/\ell^n\mathbb{Z}$ <span class="scope-essays">(<a href="chapters/04-p-adics-and-modules.html">essay 04</a>)</span></li>
         <li>Conductor exponents at additive primes <span class="scope-essays">(<a href="chapters/08-reduction-and-conductor.html">essay 08</a>)</span></li>
@@ -77,7 +80,7 @@
           <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 · <strong>assumed 14&nbsp;&rarr;&nbsp;13</strong><br>The depends_on state was added, so a proof conditional on an assumption made elsewhere is no longer filed as a second assumption. The assumption count therefore changed meaning: it now counts ROOT imports, not every record resting on one. A better metric, and a different one.</li>
         </ul>
       </details>
-      <p class="scope-note"><strong>Not yet settled:</strong> 16 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
+      <p class="scope-note"><strong>Not yet settled:</strong> 15 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
    <h3>Proved in the written essays</h3>
@@ -103,6 +106,21 @@
           <span class="scope-mode scope-mode--proved">Proved</span>
           <span class="scope-role scope-role--background">Background</span>
           Unique factorisation is shown to fail by an explicit double factorisation in $\mathbb{Z}[\sqrt{-5}]$. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+       </li>
+        <li data-proof-id="03-g-q">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Restriction to finite Galois subextensions is compatible and determines an element, so $G_{\mathbb{Q}}\cong\varprojlim\mathrm{Gal}(K/\mathbb{Q})$ is profinite; its topology makes continuity mean factoring through a finite level. <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span>
+       </li>
+        <li data-proof-id="03-cyclotomic-character">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span> <span class="scope-dep">conditional on: $\Phi_n$ is irreducible over $\mathbb{Q}$</span>
+          $\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong(\mathbb{Z}/n)^\times$ via $\sigma_a(\zeta)=\zeta^a$, and $\mathrm{Frob}_\ell=\sigma_\ell$, so the cyclotomic character satisfies $\chi(\mathrm{Frob}_\ell)=\ell$ -- the computation essay 10 assumed when it wrote $\det\bar\rho(\mathrm{Frob}_\ell)\equiv\ell$. <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span>
+       </li>
+        <li data-proof-id="03-frobenius-computed">
+          <span class="scope-mode scope-mode--proved">Proved</span>
+          <span class="scope-role scope-role--background">Background</span>
+          The irreducible factors of $\Phi_n$ modulo $\ell$ all have degree equal to the multiplicative order of $\ell$ modulo $n$, so Frobenius predicts how $\ell$ splits; and $\mathbb{Q}(\sqrt5)$ is the unique intermediate field of $\mathbb{Q}(\zeta_5)$. <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span>
        </li>
         <li data-proof-id="04-descent-restated">
           <span class="scope-mode scope-mode--proved">Proved</span>
@@ -240,6 +258,16 @@
     <p class="scope-note">These available inputs are named in the completion policy. They
      close a dependency without being presented as proofs.</p>
       <ul class="scope-register">
+        <li data-proof-id="03-frobenius">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          The Frobenius package: $\mathrm{Gal}(K/\mathbb{Q})$ acts transitively on the primes above an unramified $\ell$, the decomposition group maps isomorphically onto the residue-field Galois group, and that group is generated by $x\mapsto x^\ell$. Different choices give conjugates, so $\mathrm{Frob}_\ell$ is a conjugacy class. <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span>
+       </li>
+        <li data-proof-id="03-cyclotomic-irreducibility">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
+          Irreducibility of the cyclotomic polynomial, giving $[\mathbb{Q}(\zeta_n):\mathbb{Q}]=\varphi(n)$ and ensuring every $\sigma_a$ occurs. <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span>
+       </li>
         <li data-proof-id="06-weierstrass-definition">
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
@@ -295,11 +323,6 @@
           <span class="scope-mode scope-mode--outlined">Outlined</span>
           <span class="scope-role scope-role--required_for_flt">FLT chain</span>
           The second case for $n=3$ is outlined, not proved; the unit analysis inside the descent remains compressed. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
-       </li>
-        <li data-proof-id="03-g-q">
-          <span class="scope-mode scope-mode--proved">To prove</span>
-          <span class="scope-role scope-role--required_for_flt">FLT chain</span>
-          $\overline{\mathbb{Q}}$ and $G_{\mathbb{Q}}=\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})$ as a profinite group, with decomposition groups and Frobenius elements at unramified primes, defined up to conjugacy. <span class="scope-essays">(essay 03)</span>
        </li>
         <li data-proof-id="05-galois-representations">
           <span class="scope-mode scope-mode--proved">To prove</span>
@@ -381,6 +404,11 @@
           <span class="scope-mode scope-mode--stated">Assumed</span>
           <span class="scope-role scope-role--background">Background</span>
           Kummer's regular-prime criterion and his theorem for regular prime exponents are stated. <span class="scope-essays">(<a href="chapters/02-unique-factorization-and-n3.html">essay 02</a>)</span>
+       </li>
+        <li data-proof-id="03-galois-correspondence">
+          <span class="scope-mode scope-mode--stated">Assumed</span>
+          <span class="scope-role scope-role--background">Background</span>
+          The Galois correspondence between subgroups and intermediate fields for a finite Galois extension, and the existence of the algebraic closure. <span class="scope-essays">(<a href="chapters/03-galois-and-g-q.html">essay 03</a>)</span>
        </li>
         <li data-proof-id="04-completion">
           <span class="scope-mode scope-mode--stated">Assumed</span>
@@ -546,6 +574,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/3d4fd4d"><code>3d4fd4d</code></a> · 2026-07-26 16:54 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/68ea7ee"><code>68ea7ee</code></a> · 2026-07-26 17:02 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
