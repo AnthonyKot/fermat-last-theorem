@@ -30,7 +30,8 @@ import glob, re, sys
 from html.parser import HTMLParser
 KNOWN = {"meta","title","link","script","header","div","a","nav","button","main","p","h1","h2","h3",
          "span","section","ul","ol","li","em","strong","table","thead","tbody","tr","th","td","br",
-         "footer","code","hr","sup","sub","abbr","figure","figcaption","blockquote","b","i"}
+         "footer","code","hr","sup","sub","abbr","figure","figcaption","blockquote","b","i",
+         "details","summary"}
 MATH = re.compile(r'\$\$(.+?)\$\$|(?<!\$)\$([^$\n]+?)\$(?!\$)', re.S)
 bad = 0
 for f in sorted(glob.glob("*.html") + glob.glob("chapters/*.html")):

@@ -69,6 +69,14 @@
         <li>Langlands–Tunnell <span class="scope-essays">(essay 21)</span> <span class="roster-planned">not yet written</span></li>
       </ul>
       <p class="scope-note">Both rosters come from one <code>role</code> field per record, so re-classifying an assumption is a one-word edit and the validator immediately re-pins the completion policy to match. Three of the calls above are judgements rather than obvious facts, and are the ones worth disagreeing with: <em>associativity</em> is on the chain because the group law is what defines torsion and reduction, <em>complex uniformization</em> is off it because nothing in the closing argument evaluates a lattice, and the <em>discriminant criterion</em> is on it because essay 08 reads bad reduction straight off $\Delta_{\min}$. Essays 09 and 23 may move any of the three.</p>
+      <p class="scope-note">Every figure above counts <strong>records in <code>data/ledger.json</code></strong>, one per claim, at whatever granularity the register currently uses. That granularity has changed, so counts from different dates are not comparable; each change is logged below rather than applied silently.</p>
+      <details class="scope-revisions">
+        <summary>How these numbers have been counted</summary>
+        <ul>
+          <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/9a0cfc2"><code>9a0cfc2</code></a> · 2026-07-26 · <strong>owed 8&nbsp;&rarr;&nbsp;19; assumed 9&nbsp;&rarr;&nbsp;13</strong><br>Eight essays had no register entry at all, so the owed count tracked only pre-declared debts and could not fall when an unregistered essay landed. Twelve records were added for essays 03, 05, 09, 11, 12, 13, 14, 15 and 17. The owed number stopped being a partial tally and became the whole remaining required work -- which is why it rose while five essays were shipping.</li>
+          <li><a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 · <strong>assumed 14&nbsp;&rarr;&nbsp;13</strong><br>The depends_on state was added, so a proof conditional on an assumption made elsewhere is no longer filed as a second assumption. The assumption count therefore changed meaning: it now counts ROOT imports, not every record resting on one. A better metric, and a different one.</li>
+        </ul>
+      </details>
       <p class="scope-note"><strong>Not yet settled:</strong> 16 required items remain owed, listed below. Until that list is empty the collection is an argument in progress, not a completed derivation.</p>
    </div>
 
@@ -538,6 +546,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Original prose throughout; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/ca96ee8"><code>ca96ee8</code></a> · 2026-07-26 16:40 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/02a746f"><code>02a746f</code></a> · 2026-07-26 16:47 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>

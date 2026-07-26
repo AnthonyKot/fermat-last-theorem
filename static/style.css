@@ -365,3 +365,7 @@ img, svg { max-width: 100%; }
 @media print { .build-stamp { color: #555; } }
 .ledger-dep, .scope-dep { display: inline-block; font-size: .78rem; padding: .05rem .4rem;
   border: 1px dashed var(--rule); border-radius: 3px; color: var(--muted); margin-right: .3rem; }
+.scope-revisions { margin: .9rem 0 .2rem; font-size: .9rem; }
+.scope-revisions summary { cursor: pointer; color: var(--accent); }
+.scope-revisions ul { margin: .6rem 0 0; padding-left: 1.1rem; }
+.scope-revisions li { margin: .55rem 0; color: var(--muted); }

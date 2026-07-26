@@ -145,6 +145,16 @@ def load_register() -> tuple[list[dict], dict]:
     items = raw.get("proof_register")
     if not isinstance(items, list):
         raise ValueError("data/ledger.json must contain a proof_register list")
+    revisions = raw.get("register_revisions", [])
+    if not isinstance(revisions, list):
+        raise ValueError("register_revisions must be a list")
+    for rev in revisions:
+        missing = {"commit", "date", "owed", "assumptions", "note"} - rev.keys()
+        if missing:
+            raise ValueError(f"register_revisions entry missing {sorted(missing)}")
+        for field in ("owed", "assumptions"):
+            if not (isinstance(rev[field], list) and len(rev[field]) == 2):
+                raise ValueError(f"{rev['commit']}: {field} must be [before, after]")
     policy = raw.get("completion_policy")
     if not isinstance(policy, dict):
         raise ValueError("data/ledger.json must contain a completion_policy object")
@@ -275,7 +285,7 @@ def load_register() -> tuple[list[dict], dict]:
             "accepted assumptions must equal the required stated records; "
             f"missing={missing}, extra={extra}"
         )
-    return items, policy
+    return items, policy, revisions
 
 
 def essay_refs(numbers: list[int]) -> str:
@@ -331,6 +341,31 @@ def render_items(items: list[dict], allitems: list[dict] | None = None) -> list[
     return lines
 
 
+def render_revisions(revisions: list[dict]) -> list[str]:
+    """Log every change to what the counters count, so the series stays readable."""
+    if not revisions:
+        return []
+    lines = ['      <details class="scope-revisions">',
+             "        <summary>How these numbers have been counted</summary>",
+             '        <ul>']
+    for rev in revisions:
+        ob, oa = rev["owed"]
+        ab, aa = rev["assumptions"]
+        moved = []
+        if ob != oa:
+            moved.append(f"owed {ob}&nbsp;&rarr;&nbsp;{oa}")
+        if ab != aa:
+            moved.append(f"assumed {ab}&nbsp;&rarr;&nbsp;{aa}")
+        shift = "; ".join(moved) or "counts unchanged"
+        lines.append(
+            f'          <li><a href="{REPO}/commit/{rev["commit"]}"><code>{rev["commit"]}</code></a>'
+            f' · {rev["date"]} · <strong>{shift}</strong><br>'
+            f'{html.escape(rev["note"], quote=False)}</li>'
+        )
+    lines += ["        </ul>", "      </details>"]
+    return lines
+
+
 def render_roster(items: list[dict]) -> list[str]:
     """Name every assumption in a count, so the classification can be argued with."""
     lines = ['      <ul class="scope-roster">']
@@ -344,7 +379,7 @@ def render_roster(items: list[dict]) -> list[str]:
     return lines
 
 
-def render_block(items: list[dict], policy: dict) -> str:  # noqa: C901
+def render_block(items: list[dict], policy: dict, revisions: list[dict]) -> str:  # noqa: C901
     accepted_ids = set(policy["accepted_assumption_ids"])
     proved = [
         item
@@ -403,6 +438,11 @@ def render_block(items: list[dict], policy: dict) -> str:  # noqa: C901
         " because nothing in the closing argument evaluates a lattice, and the <em>discriminant"
         " criterion</em> is on it because essay 08 reads bad reduction straight off"
         " $\\Delta_{\\min}$. Essays 09 and 23 may move any of the three.</p>",
+        '      <p class="scope-note">Every figure above counts <strong>records in '
+        "<code>data/ledger.json</code></strong>, one per claim, at whatever granularity the register "
+        "currently uses. That granularity has changed, so counts from different dates are not "
+        "comparable; each change is logged below rather than applied silently.</p>",
+        *render_revisions(revisions),
         '      <p class="scope-note"><strong>Not yet settled:</strong> '
         f'{n_owed_chain} required item{"" if n_owed_chain == 1 else "s"} remain'
         f'{"s" if n_owed_chain == 1 else ""} owed, listed below. Until that list is empty the'
@@ -447,9 +487,9 @@ def main() -> int:
     mode.add_argument("--write", action="store_true", help="update about.html in place")
     args = parser.parse_args()
 
-    items, policy = load_register()
+    items, policy, revisions = load_register()
     before = ABOUT.read_text(encoding="utf-8")
-    after = replace_block(before, render_block(items, policy))
+    after = replace_block(before, render_block(items, policy, revisions))
 
     if args.write:
         if before != after:

@@ -19,6 +19,34 @@
       "25-small-exponents"
     ]
   },
+  "register_revisions": [
+    {
+      "commit": "9a0cfc2",
+      "date": "2026-07-26",
+      "owed": [
+        8,
+        19
+      ],
+      "assumptions": [
+        9,
+        13
+      ],
+      "note": "Eight essays had no register entry at all, so the owed count tracked only pre-declared debts and could not fall when an unregistered essay landed. Twelve records were added for essays 03, 05, 09, 11, 12, 13, 14, 15 and 17. The owed number stopped being a partial tally and became the whole remaining required work -- which is why it rose while five essays were shipping."
+    },
+    {
+      "commit": "ca96ee8",
+      "date": "2026-07-26",
+      "owed": [
+        17,
+        17
+      ],
+      "assumptions": [
+        14,
+        13
+      ],
+      "note": "The depends_on state was added, so a proof conditional on an assumption made elsewhere is no longer filed as a second assumption. The assumption count therefore changed meaning: it now counts ROOT imports, not every record resting on one. A better metric, and a different one."
+    }
+  ],
   "proof_register": [
     {
       "id": "01-exponent-reduction",
