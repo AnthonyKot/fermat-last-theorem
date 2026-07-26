@@ -527,7 +527,7 @@
       "essays": [
         23
       ],
-      "text": "The substitution $x=4X$, $y=8Y+4X$ yields an integral model with $a_1=1$, minimal at $2$, of discriminant $\\Delta_{\\min}=2^{-8}(abc)^{2p}$, so the FLT chain needs no appeal to the general existence theorem for minimal models."
+      "text": "The substitution $x=4X$, $y=8Y+4X$ yields an integral model with $a_1=1$ whose discriminant is $\\Delta_{\\min}=2^{-8}(abc)^{2p}$, and it is minimal at every prime because $c_4=A^2+AB+B^2$ is a unit at each bad prime -- so the FLT chain needs no appeal to the general existence theorem for minimal models."
     },
     {
       "id": "23-frey-reduction",

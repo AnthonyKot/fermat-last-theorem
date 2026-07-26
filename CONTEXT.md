@@ -115,9 +115,21 @@ They behave differently on purpose, and the difference must not be smoothed away
 |---|---|---|
 | Direction | a forward promise | a standing trust obligation |
 | Over the collection | **shrinks**, and must reach empty | **accumulates**, and never empties |
-| Discharged by | a later essay proving it | nothing — it is permanent by construction |
+| Discharged by | a later essay **resolving** it — proving it, or being the essay that states an accepted assumption | nothing — it is permanent by construction |
 | Scope shown | per essay, because it changes essay to essay | per essay for what that essay adds |
 | Global view | the release gate in `verify.sh` | the allowlist plus About's generated block |
+
+**A required assumption is therefore listed in both places, and that is not a contradiction — but say
+which is which.** An accepted import like modularity is *permanently assumed* (it will never be
+proved), while the collection still *owes the essay that states it*. What leaves the owed column is the
+missing essay, not the missing proof. Word owed-column lines accordingly, and never list an
+already-available accepted assumption as owed: `25-small-exponents` is external classical work, so
+nothing can ever discharge it, and filing it as owed would keep the release gate from closing for ever.
+
+⚠ **The owed column is free prose and the validator does not check it.** `render_status.py` pins every
+*registered* item to the right column, but a hand-written line in an owed list can drift out of date
+with nothing to catch it. Two such lines had already drifted in essay 23. When editing an owed column,
+re-derive it from the register rather than from the previous essay's list.
 
 So **the assumed column does not carry forward, and should not.** Repeating every inherited assumption
 in all eight ledgers would duplicate About's job and grow without bound. But because the set only ever

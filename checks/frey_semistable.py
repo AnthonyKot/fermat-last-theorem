@@ -11,7 +11,8 @@ Checked here:
 
   * the change of variables x = 4X, y = 8Y + 4X lands on an integral model
     with a_1 = 1, and its discriminant is exactly (ABC)^2 / 2^8,
-  * that model is minimal at 2, since v_2 drops by the full 12,
+  * that model is minimal at EVERY prime: c_4 = A^2 + AB + B^2 scales as u^4 and is a
+    unit at each bad prime, so no substitution can lower v_ell(Delta),
   * at every odd bad prime the reduced cubic has a double root and never a
     triple root, so the reduction is multiplicative,
   * at 2 the singular point is (0,0) and the quadratic part splits into two
@@ -49,6 +50,13 @@ def frey_minimal(A, B):
     assert (B - A - 1) % 4 == 0, "a_2 is not integral"
     assert (A * B) % 16 == 0, "a_4 is not integral"
     return (1, (B - A - 1) // 4, 0, -(A * B) // 16, 0)
+
+
+def c4(a1, a2, a3, a4, a6):
+    """c_4 = b_2^2 - 24 b_4. Scales as u^4 under any admissible substitution."""
+    b2 = a1 * a1 + 4 * a2
+    b4 = 2 * a4 + a1 * a3
+    return b2 * b2 - 24 * b4
 
 
 def v(ell, n):
@@ -97,7 +105,14 @@ for A, B, C in CASES:
     # --- a_1 = 1 is what survives at 2, and it is the whole point ----------
     assert mini[0] == 1
 
+    # --- minimality at EVERY prime, via c_4 --------------------------------
+    # c_4 scales as u^4, so a non-minimal model at ell would need v_ell(c_4) >= 4.
+    # For this model c_4 = A^2 + AB + B^2, and it is a unit at every bad prime.
+    assert c4(*mini) == A * A + A * B + B * B
+
     bad = [p for p in primes_up_to(200) if d_min % p == 0]
+    for ell in bad:
+        assert v(ell, c4(*mini)) == 0, (A, B, ell, v(ell, c4(*mini)))
     assert 2 in bad
     assert all(p in bad for p in primes_up_to(200) if (A * B * C) % p == 0)
 
@@ -153,6 +168,11 @@ for A, B in product(range(-30, 31), repeat=2):
 A, B = 3, 16                      # 16 | B but not 32 | B
 mini_16 = frey_minimal(A, B)      # still integral, still a_1 = 1
 assert mini_16[0] == 1
+# Second route to the same conclusion: the char-2 computation locates the
+# singular point by forcing Y = a_4 and Y = 0 at once, which needs a_4 even.
+# Here a_4 = -AB/16 = -A is odd, so there is no singular point at all.
+assert mini_16[3] == -A and mini_16[3] % 2 != 0
+assert points_and_singular(mini_16, 2)[1] == []
 assert v(2, discriminant(*mini_16)) == 2 * v(2, B) - 8 == 0
 kind_16, _ = reduction(mini_16, 2)
 assert kind_16 == "good", kind_16
@@ -169,5 +189,5 @@ assert radical(discriminant(*mini_32)) % 2 == 0  # 2 now in the conductor
 assert all(2 * (5 * k) - 8 >= 2 for k in range(1, 10))
 
 print("  (aside) 16 | B gives good reduction at 2; 32 | B makes 2 multiplicative")
-print("PASS frey_semistable: minimal model at 2, multiplicative everywhere, conductor = rad(abc)")
+print("PASS frey_semistable: minimal everywhere, multiplicative everywhere, conductor = rad(abc)")
 

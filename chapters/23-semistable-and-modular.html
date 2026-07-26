@@ -30,8 +30,8 @@
 
     <div class="claim">
       <span class="tag">This essay proves, and assumes exactly one thing</span>
-      <strong>Proves:</strong> an integral model for the Frey curve with $a_1=1$, minimal at $2$, of
-      discriminant $\Delta_{\min}=2^{-8}(abc)^{2p}$; multiplicative reduction at <em>every</em> bad
+      <strong>Proves:</strong> an integral model for the Frey curve with $a_1=1$, minimal at
+      <em>every</em> prime, of discriminant $\Delta_{\min}=2^{-8}(abc)^{2p}$; multiplicative reduction at <em>every</em> bad
       prime; hence <strong>semistable</strong>, with conductor $\operatorname{rad}(abc)$.
       <strong>Assumes:</strong> the Modularity Theorem for semistable curves, from essay 18.
     </div>
@@ -110,13 +110,36 @@
       $$</p>
       <p>The bracket collapses because $(B-A)^2+4AB=(A+B)^2$. So</p>
       <p>$$ \boxed{\quad\Delta_{\min}=2^{-8}(abc)^{2p}.\quad} $$</p>
-      <p>Calling this $\Delta_{\min}$ requires knowing $E'$ is minimal, and at $2$ it is: the
-        substitution removed twelve factors of $2$, which is the most any change of variables can
-        remove, and one cannot repeat the trick because $a_1=1$ is now odd. At the odd primes the
-        displayed model was already minimal, since $v_\ell(\Delta)=2p\,v_\ell(abc)$ and reducing that
-        by $12$ would require $v_\ell(\Delta)\geq12$ together with a coordinate change that this
-        model does not admit. We record minimality as proved at $2$ and rely on it nowhere else: every
-        conclusion below is about $v_\ell$ of the integer displayed above.</p>
+      <h3>Minimal at every prime, in one line</h3>
+      <p>Calling that number $\Delta_{\min}$ requires knowing $E'$ is minimal, and there is a clean
+        argument that settles every prime at once. Any two integral models are related by a substitution
+        $x=u^2x'+r$, $y=u^3y'+\cdots$, and under it the invariants scale by fixed powers of $u$
+        alone — the translations $r$ and the rest do not appear:</p>
+      <p>$$ \Delta=u^{12}\Delta',\qquad c_4=u^4c_4',\qquad\text{where } c_4=b_2^2-24b_4. $$</p>
+      <p>So if $E'$ were <em>not</em> minimal at $\ell$, some integral model would have
+        $v_\ell(\Delta)$ smaller by at least $12$, forcing $v_\ell(u)\geq1$ and hence
+        $v_\ell(c_4)\geq4$. Contrapositive: <strong>if $v_\ell(c_4)\leq3$ then $E'$ is minimal at
+        $\ell$.</strong> And for our model, using $b_2=B-A$ and $b_4=-AB/8$,</p>
+      <p>$$ c_4=(B-A)^2+3AB=A^2+AB+B^2. $$</p>
+      <p>Now read that at each bad prime. At $\ell=2$: $A$ is odd and $B$ is even, so
+        $c_4\equiv A^2\equiv1$, and $v_2(c_4)=0$. At an odd bad prime, use the same fact the node
+        argument uses below — exactly one of $A$, $B$, $C$ is divisible by $\ell$:</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Case</th><th>$c_4=A^2+AB+B^2$ modulo $\ell$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$\ell\mid A$</td><td>$\equiv B^2\not\equiv0$</td></tr>
+            <tr><td>$\ell\mid B$</td><td>$\equiv A^2\not\equiv0$</td></tr>
+            <tr><td>$\ell\mid C$, so $B\equiv-A$</td><td>$\equiv A^2-A^2+A^2=A^2\not\equiv0$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>So $v_\ell(c_4)=0$ at every bad prime, and $E'$ is minimal at all of them — including at $2$,
+        which the scaling rule alone would not have settled. Nothing here appeals to which coordinate
+        changes happen to exist, and the case analysis is one the reader is about to perform again for a
+        different purpose.</p>
 
       <h3>Every odd bad prime is a node</h3>
       <p>Let $\ell$ be an odd prime with $\ell\mid\Delta_{\min}$, equivalently $\ell\mid abc$. The
@@ -237,8 +260,14 @@
       </ul>
       <p>The last point is sharp enough to test. With $A=3$ and $B=16$ the model is still integral with
         $a_1=1$, but $v_2(\Delta_{\min})=2\cdot4-8=0$: the curve has <em>good</em> reduction at $2$ and
-        $2$ does not divide the conductor. For a genuine solution this cannot happen, since
-        $v_2(B)=p\,v_2(b)\geq p\geq5$. So the two normalisations are not bookkeeping — one buys the
+        $2$ does not divide the conductor.</p>
+      <p>The characteristic-$2$ computation says the same thing a second way, and the agreement is worth
+        seeing. That computation found the singular point by forcing $Y=a_4$ and $Y=0$
+        simultaneously, which requires $a_4$ to be <em>even</em>. When $16\mid B$ but $32\nmid B$ we have
+        $a_4=-AB/16=-A$, which is odd — so <strong>there is no singular point at all</strong>, and good
+        reduction at $2$ drops out of the same lines that produced $v_2(\Delta_{\min})=0$. Two
+        independent routes, one conclusion. For a genuine solution neither case arises, since
+        $v_2(B)=p\,v_2(b)\geq p\geq5$. So the two normalisations are not bookkeeping: one buys the
         model, the other buys the prime that the endgame is about.</p>
 
       <h3>What essay 24 collects</h3>
@@ -293,8 +322,8 @@
             <li data-proof-id="23-frey-minimal-model">
               <span class="ledger-mode ledger-mode--proved">Proved</span>
               <span class="ledger-role ledger-role--required_for_flt">FLT chain</span>
-              The substitution $x=4X$, $y=8Y+4X$ gives an integral model with $a_1=1$, minimal at $2$,
-              of discriminant $\Delta_{\min}=2^{-8}(abc)^{2p}$ — so no appeal to the general
+              The substitution $x=4X$, $y=8Y+4X$ gives an integral model with $a_1=1$, minimal at every
+              prime because $c_4=A^2+AB+B^2$ is a unit at each bad prime, of discriminant $\Delta_{\min}=2^{-8}(abc)^{2p}$ — so no appeal to the general
               existence theorem is needed</li>
             <li data-proof-id="23-frey-reduction">
               <span class="ledger-mode ledger-mode--proved">Proved</span>
@@ -328,10 +357,11 @@
             <li>$E[n]$, the Tate module <span class="lref">(L6, essay 09)</span></li>
             <li>$\bar\rho_{E,p}$, Mazur, Néron–Ogg–Shafarevich <span class="lref">(L7–L9, essay 10)</span></li>
             <li>$\dim S_2(\Gamma_0(N))$, Hecke, newforms <span class="lref">(L10–L12, essays 13–15)</span></li>
-            <li>Eichler–Shimura, and modularity itself <span class="lref">(L13–L14, essays 16–18)</span></li>
+            <li>Eichler–Shimura, and <em>the essays that state</em> modularity — the assumption above has no
+              home to point at until 18 exists. Neither will ever be proved here
+              <span class="lref">(L13–L14, essays 16–18)</span></li>
             <li>Conductor of $\bar\rho_{E,p}$ is $2$ <span class="lref">(L17, essay 24)</span></li>
             <li>Ribet, and $\dim S_2(\Gamma_0(2))=0$ <span class="lref">(L18–L19, essay 25)</span></li>
-            <li>Fermat for $n=5$ and $n=7$, external to this collection <span class="lref">(essay 25)</span></li>
           </ul>
         </div>
       </div>
@@ -347,6 +377,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>No Such Form · Essay 23 · Original prose; no source text reproduced.</p>
-    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/f232d58"><code>f232d58</code></a> · 2026-07-26 16:07 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
+    <!-- build-stamp:start --><p class="build-stamp">Built from <a href="https://github.com/AnthonyKot/fermat-last-theorem/commit/9a0cfc2"><code>9a0cfc2</code></a> · 2026-07-26 16:13 UTC · <a href="https://github.com/AnthonyKot/fermat-last-theorem">source</a></p><!-- build-stamp:end -->
   </div>
 </footer>
